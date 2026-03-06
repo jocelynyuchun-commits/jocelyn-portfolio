@@ -234,6 +234,7 @@
     border: 1px solid var(--border);
     position: relative;
     background: var(--gray-bg);
+    overflow: hidden;
   }
   .demo-frame-bar {
     padding: 10px 16px;
@@ -271,24 +272,14 @@
   .demo-panel { display: none; }
   .demo-panel.active { display: block; }
   .demo-iframe {
-    width: 100%;
+    width: 1440px;
     height: 600px;
     border: none;
     display: block;
     background: white;
+    transform-origin: top left;
   }
   .demo-iframe.tall { height: 800px; }
-
-  /* Break demo area out of .page max-width to show full 1440px designs */
-  .demo-wide {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 1440px;
-    padding-left: var(--gutter);
-    padding-right: var(--gutter);
-  }
 
   /* BEFORE / AFTER */
   .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 36px; }
@@ -686,8 +677,6 @@
       <p>Three components built as proof-of-concept — token-wired from Figma JSON, zero hardcoded values. The test: one component structure, three brand voices, switched by a single <code>data-brand</code> attribute. Live demos below, each loading directly from production.</p>
     </div>
 
-    <!-- Wide wrapper for tabs + iframes -->
-    <div class="demo-wide">
     <!-- Tab switcher -->
     <div class="demo-tabs">
       <div class="demo-tab active" onclick="switchDemo('buttons')">Buttons</div>
@@ -768,7 +757,6 @@
       </div>
     </div>
 
-    </div><!-- /demo-wide -->
   </div>
 
   <!-- BEFORE / AFTER — 3 LAYOUT OPTIONS -->
@@ -870,7 +858,26 @@
     const map = { 'buttons': 0, 'product-card': 1, 'discovery': 2, 'multibrand': 3 };
     tabs[map[id]].classList.add('active');
   }
-  function iframeLoaded(iframe) {}
+  function iframeLoaded(iframe) {
+    scaleIframe(iframe);
+  }
+
+  function scaleIframe(iframe) {
+    var wrap = iframe.closest('.demo-frame-wrap');
+    if (!wrap) return;
+    var containerW = wrap.clientWidth;
+    var scale = Math.min(containerW / 1440, 1);
+    iframe.style.transform = 'scale(' + scale + ')';
+    var h = iframe.classList.contains('tall') ? 800 : 600;
+    iframe.style.height = h + 'px';
+    wrap.style.height = (h * scale) + 'px';
+  }
+
+  function scaleAllIframes() {
+    document.querySelectorAll('.demo-iframe').forEach(scaleIframe);
+  }
+  window.addEventListener('resize', scaleAllIframes);
+  window.addEventListener('DOMContentLoaded', scaleAllIframes);
   function iframeFailed(iframe, url) {
     iframe.style.display = 'none';
     const fallback = iframe.nextElementSibling;
