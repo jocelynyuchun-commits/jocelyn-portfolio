@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Experiments — Jocelyn Lin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --gray-dark: #444444;
+    --gray-mid: #888888;
+    --gray-light: #cccccc;
+    --gray-bg: #f5f5f5;
+    --border: #e8e8e8;
+    --white: #ffffff;
+    --max-width: 1100px;
+    --gutter: 80px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 var(--gutter);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+
+  /* DROPDOWN */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-trigger {
+    font-size: 13px; font-weight: 400; color: var(--gray-mid);
+    cursor: pointer; transition: color 0.15s;
+    display: flex; align-items: center; gap: 4px;
+    user-select: none;
+  }
+  .nav-dropdown-trigger:hover, .nav-dropdown-trigger.active { color: var(--black); }
+  .nav-dropdown-trigger svg { transition: transform 0.15s; }
+  .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: calc(100% + 12px); right: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    min-width: 200px;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1; pointer-events: all; transform: translateY(0);
+  }
+  .nav-dropdown-item {
+    display: block;
+    padding: 11px 16px;
+    font-size: 13px; font-weight: 400;
+    color: var(--gray-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  .nav-dropdown-item:last-child { border-bottom: none; }
+  .nav-dropdown-item:hover { background: var(--gray-bg); color: var(--black); }
+  .nav-dropdown-item .item-label { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 2px; }
+  .nav-dropdown-item .item-sub { font-size: 11px; font-weight: 300; color: var(--gray-mid); }
+
+  /* PAGE */
+  .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* HEADER */
+  .page-header {
+    padding-top: 112px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray-mid); margin-bottom: 16px; display: block;
+  }
+  .page-header h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600; letter-spacing: -0.025em;
+    line-height: 1.1; color: var(--black);
+    max-width: 600px; margin-bottom: 16px;
+  }
+  .page-header p {
+    font-size: 16px; font-weight: 300;
+    color: var(--gray-dark); max-width: 520px;
+    line-height: 1.75; margin: 0;
+  }
+
+  /* EXPERIMENT CARDS */
+  .experiments { padding: 64px 0; }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .exp-card {
+    background: var(--white);
+    padding: 40px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .exp-card:hover { background: var(--gray-bg); }
+  .exp-card.coming-soon { cursor: default; }
+  .exp-card.coming-soon:hover { background: var(--white); }
+
+  .exp-number {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; color: var(--gray-light);
+    margin-bottom: 20px;
+  }
+  .exp-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .exp-tag {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--gray-dark); background: var(--gray-bg);
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .exp-tag.ai { background: #111; color: white; }
+
+  .exp-card h2 {
+    font-size: 20px; font-weight: 600;
+    letter-spacing: -0.015em; line-height: 1.2;
+    color: var(--black); margin-bottom: 12px;
+  }
+  .exp-card p {
+    font-size: 13px; font-weight: 300;
+    color: var(--gray-dark); line-height: 1.7;
+    max-width: none; margin-bottom: 28px;
+  }
+
+  .exp-meta {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+  .exp-meta-left { display: flex; gap: 20px; }
+  .exp-meta-item { font-size: 11px; font-weight: 400; color: var(--gray-mid); }
+  .exp-meta-item strong { font-weight: 500; color: var(--black); display: block; margin-bottom: 2px; }
+
+  .exp-arrow {
+    font-size: 16px; color: var(--gray-light);
+    transition: transform 0.15s, color 0.15s;
+  }
+  .exp-card:hover .exp-arrow { transform: translate(3px, -3px); color: var(--black); }
+
+  /* COMING SOON BADGE */
+  .coming-badge {
+    position: absolute; top: 24px; right: 24px;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gray-mid);
+    border: 1px solid var(--border);
+    padding: 4px 10px; border-radius: 2px;
+    background: var(--white);
+  }
+  .exp-card.coming-soon h2,
+  .exp-card.coming-soon p { color: var(--gray-mid); }
+  .exp-card.coming-soon h2 { color: var(--gray-light); }
+
+  /* ABOUT SECTION */
+  .about-strip {
+    padding: 56px 0;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 40px;
+  }
+  .about-strip p {
+    font-size: 14px; font-weight: 300;
+    color: var(--gray-mid); max-width: 480px;
+    line-height: 1.75; margin: 0;
+  }
+  .about-strip a {
+    font-size: 13px; font-weight: 500;
+    color: var(--black); text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px var(--gutter);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 13px; color: var(--gray-mid); margin: 0; max-width: none; }
+  footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    :root { --gutter: 24px; }
+    nav { padding: 0 24px; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .about-strip { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://jocelynlin.framer.ai" class="nav-logo">Jocelyn Lin</a>
+  <ul class="nav-links">
+    <!-- Work dropdown -->
+    <li class="nav-dropdown">
+      <div class="nav-dropdown-trigger">
+        Work
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1L5 5L9 1" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="./top-nav-plp.html">
+          <div class="item-label">Top Nav &amp; PLP Redesign</div>
+          <div class="item-sub">UX / E-commerce</div>
+        </a>
+        <a class="nav-dropdown-item" href="https://jocelynlin.framer.ai/work/pdp">
+          <div class="item-label">PDP Redesign</div>
+          <div class="item-sub">UX / E-commerce</div>
+        </a>
+      </div>
+    </li>
+    <!-- AI Experiments — current page -->
+    <li><a href="#" class="active">AI Experiments</a></li>
+    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <span class="eyebrow">Explorations · 2025–2026</span>
+    <h1>AI Experiments</h1>
+    <p>A space to explore ideas, test what's possible, and apply AI to real work — from design systems and product architecture to building functional apps without an engineering team. Each experiment is a hands-on proof of concept, not a polished case study.</p>
+  </div>
+
+  <!-- CARDS -->
+  <div class="experiments">
+    <div class="exp-grid">
+
+      <!-- Experiment 1 — LIVE -->
+      <a class="exp-card" href="./dls-2026-case-study.html">
+        <div class="exp-number">01</div>
+        <div class="exp-tag-row">
+          <span class="exp-tag ai">AI</span>
+          <span class="exp-tag">Design Systems</span>
+          <span class="exp-tag">Figma MCP</span>
+          <span class="exp-tag">Multi-Brand</span>
+        </div>
+        <h2>AI-Governed Design System That Scales Across Three Brands</h2>
+        <p>Building a token-first, 3-layer CSS architecture using Figma MCP + Claude Code. Testing if AI can reconstruct, document, and scale a design system faster than building it by hand.</p>
+        <div class="exp-meta">
+          <div class="exp-meta-left">
+            <div class="exp-meta-item">
+              <strong>&lt; 20 min</strong>
+              Component docs
+            </div>
+            <div class="exp-meta-item">
+              <strong>0</strong>
+              Hardcoded values
+            </div>
+            <div class="exp-meta-item">
+              <strong>3</strong>
+              Brand themes
+            </div>
+          </div>
+          <span class="exp-arrow">↗</span>
+        </div>
+      </a>
+
+      <!-- Experiment 2 — Coming soon -->
+      <div class="exp-card coming-soon">
+        <span class="coming-badge">Coming Soon</span>
+        <div class="exp-number">02</div>
+        <div class="exp-tag-row">
+          <span class="exp-tag ai">AI</span>
+          <span class="exp-tag">Product</span>
+          <span class="exp-tag">Claude API</span>
+          <span class="exp-tag">Personalization</span>
+        </div>
+        <h2>The Insight Engine: AI-Powered Personalized Learning Platform</h2>
+        <p>A solo weekend sprint to build a fully functional AI product from scratch — no engineering support. Personalized daily insights, adaptive to each user's goals, expertise, and language. No two users get the same experience.</p>
+        <div class="exp-meta">
+          <div class="exp-meta-left">
+            <div class="exp-meta-item">
+              <strong>72 hrs</strong>
+              MVP to launch
+            </div>
+            <div class="exp-meta-item">
+              <strong>∞</strong>
+              Subject areas
+            </div>
+            <div class="exp-meta-item">
+              <strong>Solo</strong>
+              No eng support
+            </div>
+          </div>
+          <span class="exp-arrow" style="opacity:0.2">↗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <p>These experiments are part of an ongoing practice — exploring how AI can be applied to real work problems, not just hypotheticals. Each one starts with a concrete question and ends with something that actually runs.</p>
+    <a href="https://jocelynlin.framer.ai/about-me">About Jocelyn →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Jocelyn Lin</p>
+  <a href="https://jocelynlin.framer.ai">jocelynlin.framer.ai</a>
+</footer>
+
+</body>
+</html>

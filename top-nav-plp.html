@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Nav & PLP Redesign — Jocelyn Lin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --gray-dark: #444444;
+    --gray-mid: #888888;
+    --gray-light: #cccccc;
+    --gray-bg: #f5f5f5;
+    --border: #e8e8e8;
+    --white: #ffffff;
+    --max-width: 1100px;
+    --gutter: 80px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 var(--gutter);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+
+  /* DROPDOWN */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-trigger {
+    font-size: 13px; font-weight: 400; color: var(--black);
+    cursor: pointer; transition: color 0.15s;
+    display: flex; align-items: center; gap: 4px;
+    user-select: none;
+  }
+  .nav-dropdown-trigger svg { transition: transform 0.15s; }
+  .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: calc(100% + 12px); right: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    min-width: 200px;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1; pointer-events: all; transform: translateY(0);
+  }
+  .nav-dropdown-item {
+    display: block;
+    padding: 11px 16px;
+    font-size: 13px; font-weight: 400;
+    color: var(--gray-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  .nav-dropdown-item:last-child { border-bottom: none; }
+  .nav-dropdown-item:hover { background: var(--gray-bg); color: var(--black); }
+  .nav-dropdown-item .item-label { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 2px; }
+  .nav-dropdown-item .item-sub { font-size: 11px; font-weight: 300; color: var(--gray-mid); }
+  .nav-dropdown-item.current { background: var(--gray-bg); }
+  .nav-dropdown-item.current .item-label { font-weight: 600; }
+
+  /* PAGE */
+  .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* HERO */
+  .hero { padding-top: 120px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
+  .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--black); max-width: 800px; margin-bottom: 22px; }
+  .hero-desc { font-size: 17px; font-weight: 300; color: var(--gray-dark); max-width: 620px; line-height: 1.75; margin-bottom: 32px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: var(--gray-bg); padding: 5px 12px; border-radius: 2px; }
+
+  /* QUICK FACTS */
+  .facts-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .fact { padding-right: 40px; border-right: 1px solid var(--border); }
+  .fact + .fact { padding-left: 40px; }
+  .fact:last-child { border-right: none; }
+  .fact-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 9px; }
+  .fact-value { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .fact-detail { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.65; }
+
+  /* SECTIONS */
+  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  .section:last-of-type { border-bottom: none; }
+  h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--black); margin-bottom: 18px; }
+  h3 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
+  p { font-size: 15px; font-weight: 300; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; max-width: 680px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* PLACEHOLDERS */
+  .ph {
+    background: #ebebeb;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; color: #b0b0b0;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--border);
+    margin-top: 36px;
+  }
+  .ph-wide { aspect-ratio: 16 / 9; }
+  .ph-ultra { aspect-ratio: 21 / 9; }
+  .ph-diagram { aspect-ratio: 2 / 1; }
+  .ph-square { aspect-ratio: 1 / 1; }
+  .ph-portrait { aspect-ratio: 3 / 5; }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+
+  /* COMPARISON */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .compare-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 12px; }
+
+  /* STAT CARDS */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .stat-card { border: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+  .stat-num { font-size: clamp(28px, 4vw, 40px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 13px; font-weight: 400; color: var(--gray-mid); }
+
+  /* CALLOUT */
+  .callout { margin: 36px 0; padding: 24px 28px; background: var(--gray-bg); border-left: 3px solid var(--black); }
+  .callout p { font-size: 14px; font-weight: 400; color: var(--black); max-width: none; margin: 0; line-height: 1.7; }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    padding: 56px 0;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 40px;
+  }
+  .about-strip p { font-size: 14px; font-weight: 300; color: var(--gray-mid); max-width: 480px; line-height: 1.75; margin: 0; }
+  .about-strip a {
+    font-size: 13px; font-weight: 500; color: var(--black); text-decoration: none;
+    white-space: nowrap; border-bottom: 1px solid var(--black); padding-bottom: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px var(--gutter);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 13px; color: var(--gray-mid); margin: 0; max-width: none; }
+  footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    :root { --gutter: 24px; }
+    nav { padding: 0 24px; }
+    .facts-row { grid-template-columns: 1fr 1fr; gap: 32px 0; }
+    .fact { border-right: none; padding: 0; }
+    .fact + .fact { padding-left: 0; }
+    .fact:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
+    .grid-2, .compare { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .about-strip { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://jocelynlin.framer.ai" class="nav-logo">Jocelyn Lin</a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <div class="nav-dropdown-trigger">
+        Work
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1L5 5L9 1" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item current" href="#">
+          <div class="item-label">Top Nav &amp; PLP Redesign</div>
+          <div class="item-sub">UX / E-commerce</div>
+        </a>
+        <a class="nav-dropdown-item" href="https://jocelynlin.framer.ai/work/pdp">
+          <div class="item-label">PDP Redesign</div>
+          <div class="item-sub">UX / E-commerce</div>
+        </a>
+      </div>
+    </li>
+    <li><a href="./ai-experiments.html">AI Experiments</a></li>
+    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">Case Study &middot; 2025</span>
+    <h1>Top Nav &amp; PLP Redesign</h1>
+    <p class="hero-desc">Redesigning the global navigation and product listing experience for a major e-commerce platform &mdash; improving wayfinding, reducing bounce, and creating a scalable system that works across categories.</p>
+    <div class="tag-row">
+      <span class="tag">UX Design</span>
+      <span class="tag">E-Commerce</span>
+      <span class="tag">Navigation</span>
+      <span class="tag">Responsive</span>
+    </div>
+  </div>
+
+  <!-- QUICK FACTS -->
+  <div class="facts-row">
+    <div class="fact">
+      <div class="fact-label">Role</div>
+      <div class="fact-value">Lead Designer</div>
+      <div class="fact-detail">UX, visual design, prototyping</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">Team</div>
+      <div class="fact-value">Cross-functional</div>
+      <div class="fact-detail">PM, 2 engineers, researcher</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">Timeline</div>
+      <div class="fact-value">12 weeks</div>
+      <div class="fact-detail">Research through launch</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">Tools</div>
+      <div class="fact-value">Figma, Analytics</div>
+      <div class="fact-detail">Hotjar, Google Analytics</div>
+    </div>
+  </div>
+
+  <!-- 1. OVERVIEW -->
+  <div class="section">
+    <h2>Overview</h2>
+    <p>The existing top navigation and product listing pages hadn't been updated in three years. Analytics showed high bounce rates on category pages, low engagement with the nav menu, and a growing gap between mobile and desktop conversion rates.</p>
+    <p>The goal was to rethink both the navigation architecture and the PLP layout as a connected system &mdash; making it easier for users to find what they're looking for and browse with confidence.</p>
+    <div class="ph ph-wide">Hero image &mdash; Final PLP design overview</div>
+  </div>
+
+  <!-- 2. RESEARCH & DISCOVERY -->
+  <div class="section">
+    <h2>Research &amp; Discovery</h2>
+    <p>We started with a two-week discovery sprint: reviewing analytics, running heatmap analysis on the existing PLP, and conducting 8 moderated user interviews to understand browsing and filtering behavior.</p>
+    <p>Key findings shaped the rest of the project: users weren't discovering sub-categories, filters were underused on mobile, and the nav mega-menu felt overwhelming with too many links competing for attention.</p>
+    <div class="grid-2">
+      <div class="ph ph-wide">Analytics dashboard &mdash; bounce rate by category</div>
+      <div class="ph ph-wide">Heatmap &mdash; existing PLP interaction patterns</div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <p><strong>Key insight:</strong> 62% of users who landed on a PLP left without clicking a single product. The primary driver wasn't lack of interest &mdash; it was decision paralysis from too many unfiltered options.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="ph ph-wide">User interview synthesis &mdash; affinity map</div>
+      <div class="ph ph-wide">Competitive audit &mdash; nav patterns comparison</div>
+    </div>
+  </div>
+
+  <!-- 3. INFORMATION ARCHITECTURE -->
+  <div class="section">
+    <h2>Information Architecture</h2>
+    <p>Before touching UI, we restructured the category taxonomy. The existing nav had 140+ links across 4 levels. Card sorting with 12 participants helped us consolidate to a flatter, more intuitive hierarchy.</p>
+    <p>The new IA reduced top-level categories from 12 to 7, introduced curated "shop by" entry points, and gave sub-categories more descriptive labels.</p>
+    <div class="ph ph-diagram">Sitemap &mdash; before vs. after category hierarchy</div>
+  </div>
+
+  <!-- 4. NAVIGATION DESIGN -->
+  <div class="section">
+    <h2>Navigation Design</h2>
+    <p>The redesigned nav moved from a dense mega-menu to a cleaner, category-focused panel. Each top-level category opens a contextual flyout showing sub-categories with visual cues &mdash; reducing cognitive load while maintaining deep access.</p>
+
+    <h3>Before vs. After</h3>
+    <div class="compare">
+      <div>
+        <div class="compare-label">Before</div>
+        <div class="ph ph-wide">Existing mega-menu &mdash; dense link list</div>
+      </div>
+      <div>
+        <div class="compare-label">After</div>
+        <div class="ph ph-wide">Redesigned nav panel &mdash; visual categories</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px">Desktop Navigation Detail</h3>
+    <p>The flyout adapts to content density: categories with many sub-items use a two-column layout, while simpler categories stay single-column with featured imagery.</p>
+    <div class="ph ph-wide">Nav flyout &mdash; expanded state with sub-categories</div>
+
+    <h3 style="margin-top:48px">Mobile Navigation</h3>
+    <p>On mobile, the nav becomes a full-screen drawer with progressive disclosure. Users drill down one level at a time, with a clear breadcrumb trail back.</p>
+    <div class="grid-3">
+      <div class="ph ph-portrait">Mobile nav &mdash; closed state</div>
+      <div class="ph ph-portrait">Mobile nav &mdash; L1 categories</div>
+      <div class="ph ph-portrait">Mobile nav &mdash; L2 sub-categories</div>
+    </div>
+  </div>
+
+  <!-- 5. PLP EXPLORATION -->
+  <div class="section">
+    <h2>PLP Exploration</h2>
+    <p>We explored three directions for the product listing page, each testing a different hypothesis about how users browse: grid-first with minimal filtering, filter-forward with a persistent sidebar, and a hybrid approach with smart defaults.</p>
+    <div class="grid-3">
+      <div class="ph ph-wide">Option A &mdash; Grid-first, minimal filters</div>
+      <div class="ph ph-wide">Option B &mdash; Filter-forward, persistent sidebar</div>
+      <div class="ph ph-wide">Option C &mdash; Hybrid with smart defaults</div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <p><strong>Decision:</strong> User testing favored Option C. Participants appreciated having pre-applied filters they could remove, rather than starting from a blank slate.</p>
+    </div>
+  </div>
+
+  <!-- 6. VISUAL DESIGN — DESKTOP -->
+  <div class="section">
+    <h2>Visual Design &mdash; Desktop</h2>
+    <p>The final PLP design uses a clean 4-column product grid with a collapsible filter sidebar. Key refinements included larger product imagery, visible color swatches, and a sticky filter bar for quick sorting without scrolling back to the top.</p>
+    <div class="ph ph-ultra">Full PLP page &mdash; desktop, filters expanded</div>
+
+    <div class="grid-2" style="margin-top:24px">
+      <div class="ph ph-wide">Product card detail &mdash; hover state with quick-shop</div>
+      <div class="ph ph-wide">Filter sidebar &mdash; expanded with active selections</div>
+    </div>
+  </div>
+
+  <!-- 7. VISUAL DESIGN — MOBILE -->
+  <div class="section">
+    <h2>Visual Design &mdash; Mobile</h2>
+    <p>On mobile, the PLP shifts to a 2-column grid with a bottom-sheet filter panel. Horizontal scrolling chips at the top surface the most-used filters, so users can refine results without opening the full filter drawer.</p>
+    <div class="grid-4">
+      <div class="ph ph-portrait">Mobile PLP &mdash; default view</div>
+      <div class="ph ph-portrait">Mobile PLP &mdash; filter chips active</div>
+      <div class="ph ph-portrait">Mobile PLP &mdash; filter drawer open</div>
+      <div class="ph ph-portrait">Mobile PLP &mdash; product quick view</div>
+    </div>
+  </div>
+
+  <!-- 8. PRODUCT GRID & FILTERS -->
+  <div class="section">
+    <h2>Product Grid &amp; Filters</h2>
+    <p>The filter system was designed to be contextual: different categories surface different filter types. Apparel shows size, color, and fit; home goods shows material, room, and price range. This reduced irrelevant filter options by 40%.</p>
+    <div class="ph ph-wide">Filter bar &mdash; contextual filters for different categories</div>
+    <div class="ph ph-wide" style="margin-top:16px">Product grid &mdash; mixed layout with editorial tiles</div>
+  </div>
+
+  <!-- 9. RESULTS & IMPACT -->
+  <div class="section">
+    <h2>Results &amp; Impact</h2>
+    <p>The redesign launched as an A/B test across two product categories before a full rollout. Results after 6 weeks showed meaningful improvements across key metrics.</p>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num">-24%</div>
+        <div class="stat-label">PLP bounce rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">+18%</div>
+        <div class="stat-label">Filter engagement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">+12%</div>
+        <div class="stat-label">Add-to-cart rate</div>
+      </div>
+    </div>
+
+    <p style="margin-top:36px">Beyond the numbers, the new navigation and PLP system established a scalable framework that the team continued to build on &mdash; adding seasonal merchandising slots, A/B testable grid layouts, and category-specific entry points.</p>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <p>This project was part of a broader e-commerce platform modernization. Each decision was grounded in data and validated through testing before launch.</p>
+    <a href="https://jocelynlin.framer.ai/about-me">About Jocelyn &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Jocelyn Lin</p>
+  <a href="https://jocelynlin.framer.ai">jocelynlin.framer.ai</a>
+</footer>
+
+</body>
+</html>

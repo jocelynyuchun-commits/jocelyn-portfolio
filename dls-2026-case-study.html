@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Augmented Design System Experiment 2026 — Jocelyn Lin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --gray-dark: #444444;
+    --gray-mid: #888888;
+    --gray-light: #cccccc;
+    --gray-bg: #f5f5f5;
+    --border: #e8e8e8;
+    --white: #ffffff;
+    --navy: #1b2d4f;
+    --brand1: #1e3a6e;
+    --brand2: #5e1e0e;
+    --brand3: #1a4535;
+    --max-width: 1100px;
+    --gutter: 80px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 var(--gutter);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--black); }
+
+  /* LAYOUT */
+  .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* HERO */
+  .hero { padding-top: 120px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
+  .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--black); max-width: 800px; margin-bottom: 22px; }
+  .hero-desc { font-size: 17px; font-weight: 300; color: var(--gray-dark); max-width: 620px; line-height: 1.75; margin-bottom: 32px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: var(--gray-bg); padding: 5px 12px; border-radius: 2px; }
+
+  /* QUICK FACTS */
+  .facts-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .fact { padding-right: 40px; border-right: 1px solid var(--border); }
+  .fact + .fact { padding-left: 40px; }
+  .fact:last-child { border-right: none; }
+  .fact-num { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--gray-mid); margin-bottom: 9px; }
+  .fact-title { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 7px; }
+  .fact-body { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.65; }
+
+  /* SECTIONS */
+  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--black); margin-bottom: 18px; }
+  h3 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
+  p { font-size: 15px; font-weight: 300; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; max-width: 680px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; }
+  code { font-size: 12px; background: var(--gray-bg); padding: 2px 5px; font-family: monospace; }
+
+  /* BRAND CARDS */
+  .brand-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 36px 0; }
+  .brand-card { border: 1px solid var(--border); padding: 28px 24px; position: relative; }
+  .brand-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+  .brand-card.b1::after { background: var(--brand1); }
+  .brand-card.b2::after { background: var(--brand2); }
+  .brand-card.b3::after { background: var(--brand3); }
+  .brand-card h4 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .brand-card p { font-size: 13px; color: var(--gray-mid); max-width: none; margin: 0; }
+
+  /* FAILURE CHAIN */
+  .failure-chain { margin: 28px 0; padding: 20px 24px; background: var(--gray-bg); border-left: 3px solid var(--black); }
+  .failure-chain p { font-size: 14px; font-weight: 400; color: var(--black); max-width: none; margin: 0; line-height: 1.7; }
+
+  /* ─── ARCHITECTURE SECTION ─────────────────────────────── */
+  /* Replicate the 3-panel slide layout from the design image */
+  .arch-slide {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* Panel shared */
+  .arch-panel {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--white);
+    overflow: hidden;
+  }
+  .arch-panel-header {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    padding: 14px 18px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* PANEL 1: Primitive Values */
+  .prim-panel { padding: 0; }
+  .prim-section { padding: 14px 18px; border-bottom: 1px solid var(--border); }
+  .prim-section:last-child { border-bottom: none; }
+  .prim-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 5px; }
+  .prim-detail { font-size: 11px; font-weight: 300; color: var(--gray-mid); line-height: 1.6; }
+  .prim-divider {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    padding: 10px 18px 4px;
+    background: var(--gray-bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* PANEL 2: Semantic Tokens */
+  .sem-panel-body { padding: 14px 18px; }
+  .sem-token { margin-bottom: 18px; }
+  .sem-token:last-child { margin-bottom: 0; }
+  .sem-token-name { font-size: 12px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+  .sem-token-desc { font-size: 10px; font-weight: 300; color: var(--gray-mid); margin-bottom: 6px; line-height: 1.5; }
+  .sem-row { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .sem-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sem-dot.d1 { background: var(--brand1); }
+  .sem-dot.d2 { background: var(--brand2); }
+  .sem-dot.d3 { background: var(--brand3); }
+  .sem-text { font-size: 10px; font-weight: 300; color: var(--gray-dark); }
+  .sem-divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+  /* PANEL 3: Components — three product cards */
+  .comp-panel-body { padding: 14px 18px; }
+  .comp-panel-body h4 {
+    font-size: 13px; font-weight: 600;
+    color: var(--black); margin-bottom: 16px;
+  }
+  .mini-cards { display: flex; flex-direction: column; gap: 10px; }
+  .mini-card { border: 1px solid var(--border); overflow: hidden; }
+  .mini-card-header {
+    padding: 6px 10px;
+    font-size: 10px; font-weight: 600;
+    color: white;
+  }
+  .mini-card-header.b1 { background: var(--brand1); }
+  .mini-card-header.b2 { background: var(--brand2); }
+  .mini-card-header.b3 { background: var(--brand3); }
+  .mini-card-body { padding: 10px; }
+  .mini-card-img {
+    width: 100%; height: 56px;
+    background: #e0e0e0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: var(--gray-mid);
+    margin-bottom: 8px;
+  }
+  .mini-card-title { font-size: 10px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+  .mini-card-desc { font-size: 9px; font-weight: 300; color: var(--gray-mid); margin-bottom: 6px; }
+  .mini-card-price { font-size: 11px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .mini-card-btn {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 9px; font-weight: 600;
+    color: white;
+    border: none; cursor: pointer;
+  }
+  .mini-card-btn.b1 { background: var(--brand1); border-radius: 2px; }
+  .mini-card-btn.b2 { background: var(--brand2); border-radius: 0; }
+  .mini-card-btn.b3 { background: var(--brand3); border-radius: 8px; }
+
+  /* FLOW STEPS */
+  .flow-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-top: 36px; }
+  .flow-step { border: 1px solid var(--border); padding: 20px 16px; }
+  .step-num { width: 24px; height: 24px; border: 1.5px solid var(--black); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; margin-bottom: 12px; }
+  .flow-step h4 { font-size: 13px; font-weight: 600; line-height: 1.4; margin-bottom: 7px; }
+  .flow-step p { font-size: 12px; font-weight: 300; max-width: none; margin: 0; line-height: 1.6; }
+
+  /* ─── COMPONENT LIVE DEMOS ──────────────────────────────── */
+  .demo-intro { margin-bottom: 32px; }
+  .demo-intro p { max-width: 680px; }
+
+  /* Tab switcher */
+  .demo-tabs {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    width: fit-content;
+    margin-bottom: 0;
+  }
+  .demo-tab {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-mid);
+    cursor: pointer;
+    background: var(--gray-bg);
+    border-right: 1px solid var(--border);
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .demo-tab:last-child { border-right: none; }
+  .demo-tab.active {
+    background: var(--white);
+    color: var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+  .demo-tab:hover:not(.active) { color: var(--black); background: var(--white); }
+
+  /* iFrame wrapper */
+  .demo-frame-wrap {
+    border: 1px solid var(--border);
+    position: relative;
+    background: var(--gray-bg);
+  }
+  .demo-frame-bar {
+    padding: 10px 16px;
+    background: var(--gray-bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .demo-frame-dots { display: flex; gap: 5px; }
+  .demo-frame-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--border);
+  }
+  .demo-frame-url {
+    font-size: 11px;
+    color: var(--gray-mid);
+    background: white;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 3px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .demo-frame-link {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray-mid);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .demo-frame-link:hover { color: var(--black); }
+  .demo-panel { display: none; }
+  .demo-panel.active { display: block; }
+  .demo-iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    display: block;
+    background: white;
+  }
+  .demo-iframe.tall { height: 800px; }
+
+  /* BEFORE / AFTER */
+  .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 36px; }
+  .ba-col { background: var(--white); padding: 40px; }
+  .ba-col.after-col { background: var(--navy); }
+  .ba-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 8px; }
+  .ba-col.after-col .ba-eyebrow { color: rgba(255,255,255,0.45); }
+  .ba-headline { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--black); margin-bottom: 28px; }
+  .ba-col.after-col .ba-headline { color: white; }
+  .ba-list { list-style: none; }
+  .ba-list li { font-size: 13px; font-weight: 300; color: var(--gray-dark); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; }
+  .ba-col.after-col .ba-list li { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.1); }
+  .ba-list li::before { content: '—'; color: var(--gray-light); flex-shrink: 0; }
+  .ba-col.after-col .ba-list li::before { color: rgba(255,255,255,0.25); }
+
+  /* LEARNINGS */
+  .learning { padding: 48px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 180px 1fr; gap: 72px; align-items: start; }
+  .learning:first-child { padding-top: 40px; }
+  .learning:last-child { border-bottom: none; padding-bottom: 0; }
+  .learning-num { font-size: 72px; font-weight: 600; letter-spacing: -0.04em; color: var(--border); line-height: 1; }
+  .learning-title { font-size: 17px; font-weight: 600; color: var(--black); margin-bottom: 14px; line-height: 1.35; letter-spacing: -0.01em; }
+  .learning p { font-size: 15px; font-weight: 300; color: var(--gray-dark); max-width: none; line-height: 1.8; }
+
+  /* IFRAME FALLBACK / BLOCKED */
+  .iframe-fallback { padding: 24px; background: var(--gray-bg); font-size: 13px; color: var(--gray-mid); text-align: center; }
+  .iframe-fallback a { color: var(--black); font-weight: 500; }
+  .iframe-blocked { background: var(--gray-bg); border-top: 1px solid var(--border); min-height: 420px; display: flex; align-items: center; justify-content: center; padding: 60px 40px; }
+  .iframe-blocked-inner { text-align: center; max-width: 400px; }
+  .iframe-blocked-icon { margin-bottom: 20px; opacity: 0.5; }
+  .iframe-blocked-label { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
+  .iframe-blocked-desc { font-size: 13px; font-weight: 300; color: var(--gray-mid); line-height: 1.7; margin-bottom: 24px; }
+  .iframe-blocked-btn { display: inline-block; padding: 11px 28px; background: var(--black); color: white; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.03em; border-radius: 2px; transition: opacity 0.15s; margin-bottom: 20px; }
+  .iframe-blocked-btn:hover { opacity: 0.8; }
+  .iframe-blocked-url { font-size: 11px; color: var(--gray-light); font-family: monospace; margin-bottom: 20px; }
+  .iframe-blocked-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .iframe-blocked-tags span { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: white; border: 1px solid var(--border); padding: 4px 10px; border-radius: 2px; }
+
+  /* IFRAME FALLBACK / BLOCKED */
+  .ba-a-grid { border: 1px solid var(--border); }
+  .ba-a-header { display: grid; grid-template-columns: 200px 1fr 1fr; border-bottom: 2px solid var(--black); }
+  .ba-a-col-label { padding: 12px 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); border-left: 1px solid var(--border); }
+  .ba-a-row { display: grid; grid-template-columns: 200px 1fr 1fr; border-bottom: 1px solid var(--border); }
+  .ba-a-row:last-child { border-bottom: none; }
+  .ba-a-topic { padding: 14px 20px; font-size: 13px; font-weight: 500; color: var(--black); background: var(--gray-bg); }
+  .ba-a-before { padding: 14px 20px; font-size: 13px; font-weight: 300; color: var(--gray-dark); border-left: 1px solid var(--border); }
+  .ba-a-after { padding: 14px 20px; font-size: 13px; font-weight: 400; color: var(--black); border-left: 1px solid var(--border); }
+
+  /* BA OPTION B — two columns with arrow, no color */
+  .ba-b-wrap { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: start; margin-top: 8px; }
+  .ba-b-arrow { font-size: 24px; color: var(--gray-light); text-align: center; padding-top: 48px; }
+  .ba-b-col { padding: 32px; border: 1px solid var(--border); }
+  .ba-b-col-right { border-left: none; }
+  .ba-b-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 12px; }
+  .ba-b-stat { font-size: 40px; font-weight: 600; letter-spacing: -0.04em; color: var(--black); line-height: 1; }
+  .ba-b-stat-sub { font-size: 13px; font-weight: 300; color: var(--gray-mid); margin-top: 4px; margin-bottom: 0; }
+  .ba-b-divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .ba-b-list { list-style: none; }
+  .ba-b-list li { font-size: 13px; font-weight: 300; color: var(--gray-dark); padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+  .ba-b-list li::before { content: '—'; color: var(--gray-light); flex-shrink: 0; }
+
+  /* BA OPTION C — big metric numbers */
+  .ba-c-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border); margin-top: 8px; }
+  .ba-c-metric { padding: 32px 24px; border-right: 1px solid var(--border); }
+  .ba-c-metric:last-child { border-right: none; }
+  .ba-c-num { font-size: 36px; font-weight: 600; letter-spacing: -0.04em; color: var(--black); line-height: 1; margin-bottom: 10px; }
+  .ba-c-desc { font-size: 13px; font-weight: 400; color: var(--black); line-height: 1.5; }
+  .ba-c-desc span { font-size: 12px; font-weight: 300; color: var(--gray-mid); display: block; margin-top: 3px; }
+
+  /* LEARN OPTION A — 3 column cards */
+  .learn-a-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px; }
+  .learn-a-item { background: var(--white); padding: 28px 24px; }
+  .learn-a-num { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gray-light); margin-bottom: 12px; }
+  .learn-a-title { font-size: 15px; font-weight: 600; color: var(--black); line-height: 1.35; margin-bottom: 12px; }
+  .learn-a-item p { font-size: 13px; font-weight: 300; color: var(--gray-dark); max-width: none; line-height: 1.7; margin: 0; }
+
+  /* LEARN OPTION B — horizontal tag cards */
+  .learn-b-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 8px; }
+  .learn-b-card { border: 1px solid var(--border); padding: 28px 24px; }
+  .learn-b-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 14px; }
+  .learn-b-title { font-size: 16px; font-weight: 600; color: var(--black); line-height: 1.3; margin-bottom: 14px; }
+  .learn-b-card p { font-size: 13px; font-weight: 300; color: var(--gray-dark); max-width: none; line-height: 1.7; margin: 0; }
+
+  /* LEARN OPTION C — minimal inline list */
+  .learn-c-list { margin-top: 8px; }
+  .learn-c-item { display: grid; grid-template-columns: 24px 1fr; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .learn-c-item:last-child { border-bottom: none; }
+  .learn-c-marker { font-size: 16px; font-weight: 300; color: var(--gray-light); padding-top: 2px; }
+  .learn-c-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
+  .learn-c-item p { font-size: 14px; font-weight: 300; color: var(--gray-dark); max-width: none; line-height: 1.75; margin: 0; }
+
+  /* NEXT / FOOTER */
+  .next-project { padding: 72px 0 0; display: flex; justify-content: space-between; align-items: flex-end; }
+  .next-project .label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 10px; }
+  .next-project a.next-link { font-size: 26px; font-weight: 600; color: var(--black); text-decoration: none; letter-spacing: -0.02em; border-bottom: 2px solid var(--black); padding-bottom: 2px; display: block; }
+  a.back-link { font-size: 13px; color: var(--gray-mid); text-decoration: none; }
+  a.back-link:hover { color: var(--black); }
+  .site-footer { padding: 44px var(--gutter); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .site-footer p { font-size: 13px; color: var(--gray-mid); max-width: none; margin: 0; }
+  .site-footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    :root { --gutter: 24px; }
+    .facts-row, .brand-cards, .arch-slide, .flow-steps, .ba-grid,
+    .ba-a-header, .ba-a-row, .ba-b-wrap,
+    .ba-c-metrics, .learn-a-grid, .learn-b-grid { grid-template-columns: 1fr; }
+    .learning { grid-template-columns: 1fr; gap: 10px; }
+    .learning-num { font-size: 40px; }
+    .fact { border-right: none; padding: 0 0 20px; border-bottom: 1px solid var(--border); }
+    .fact:last-child { border-bottom: none; }
+    .next-project { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .site-footer { flex-direction: column; gap: 12px; align-items: flex-start; }
+    nav { padding: 0 24px; }
+    .demo-tabs { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://jocelynlin.framer.ai" class="nav-logo">Jocelyn Lin</a>
+  <ul class="nav-links">
+    <li><a href="https://jocelynlin.framer.ai">Work</a></li>
+    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">AI Experimentation · Design Systems · 2026</span>
+    <h1>What Happens When You Let AI Govern a Design System</h1>
+    <p class="hero-desc">An experiment in token-first, multi-brand architecture using Figma MCP + Claude Code — testing how far AI can take design systems work, from token extraction to component documentation to multi-brand scaling.</p>
+    <div class="tag-row">
+      <span class="tag">Design Systems</span>
+      <span class="tag">AI Workflow</span>
+      <span class="tag">Figma MCP</span>
+      <span class="tag">React / TypeScript</span>
+      <span class="tag">CSS Token Architecture</span>
+      <span class="tag">Multi-Brand</span>
+    </div>
+  </div>
+
+  <!-- QUICK FACTS -->
+  <span class="eyebrow" style="padding-top:48px;">Experiment Overview</span>
+  <div class="facts-row">
+    <div class="fact">
+      <div class="fact-num">01</div>
+      <div class="fact-title">My Role</div>
+      <div class="fact-body">Solo design systems architect. Led token strategy, component architecture, AI workflow design, and engineering handoff.</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num">02</div>
+      <div class="fact-title">Scope</div>
+      <div class="fact-body">3-layer CSS token system · 3 brand themes · Button, ProductCard, and ProductDiscovery Module · Figma MCP integration.</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num">03</div>
+      <div class="fact-title">Stack</div>
+      <div class="fact-body">Figma → JSON export · Claude Code (Figma MCP) · React + TypeScript · CSS Custom Properties · Vercel</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num">04</div>
+      <div class="fact-title">Key Finding</div>
+      <div class="fact-body">Docs time cut from 2–5 hours (or days) to under 20 minutes. Zero hardcoded values across all three brand implementations.</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section">
+    <span class="eyebrow">The Problem</span>
+    <h2>When Sub-Brands Don't Share A System</h2>
+    <p>The experiment started with a real problem: three distinct brand expressions sharing no design infrastructure. Each brand had its own visual language, typography, and color personality — but no shared token architecture to connect them. Designers hardcoded values, developers hardcoded colors, and every refresh meant manual find-and-replace across every file, codebase, and platform.</p>
+    <p>The question: could AI help reconstruct and scale a design system faster than building it by hand?</p>
+
+    <div class="brand-cards">
+      <div class="brand-card b1">
+        <h4>Brand 1</h4>
+        <p>Clean American minimalism — Navy, Helvetica Neue, 2px sharp corners</p>
+      </div>
+      <div class="brand-card b2">
+        <h4>Brand 2</h4>
+        <p>Sophisticated refinement — Warm brown, Canela serif, zero border radius</p>
+      </div>
+      <div class="brand-card b3">
+        <h4>Brand 3</h4>
+        <p>Performance empowerment — Deep green, Nunito, soft 8px rounded edges</p>
+      </div>
+    </div>
+
+    <span class="eyebrow" style="margin-top:44px;">The Common Failure: Each Brand Becomes A Silo</span>
+    <div class="failure-chain">
+      <p>Designers Hardcode Values → Developers Hardcode Colors → Brand Refresh → Manual Find-And-Replace Across Every File, Every Codebase, Every Platform</p>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE / TOKEN AS DATA — matching the 3-panel slide design -->
+  <div class="section">
+    <span class="eyebrow">The Approach: Token As Data</span>
+    <h2>Brands Share Structure, Not Values</h2>
+    <p>The architecture separates <em>what things are</em> (primitive values) from <em>what they mean</em> (semantic tokens) from <em>how they're used</em> (components). Brands share the structure — they own the values.</p>
+
+    <div class="arch-slide">
+
+      <!-- Panel 1: Primitive Values -->
+      <div class="arch-panel">
+        <div class="arch-panel-header">Layer 1: Primitive Values</div>
+        <div class="prim-panel">
+          <div class="prim-section">
+            <div class="prim-title" style="font-size:16px;margin-bottom:8px;">Shared Structure</div>
+          </div>
+          <div class="prim-divider">Shared Primitives</div>
+          <div class="prim-section">
+            <div class="prim-title">Space</div>
+            <div class="prim-detail">Consistent 4pt/8pt modular scale<br>Space-1 through space-12</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Grid / Breakpoint</div>
+            <div class="prim-detail">Large Desktop / Desktop / Small Desktop / Tablet / Mobile</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Typography Scale</div>
+            <div class="prim-detail">Display / h1–h6 / body / caption / overline · Scale ratios</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Motion &amp; Duration</div>
+            <div class="prim-detail">duration.fast / moderate / slow<br>ease-in / ease-out / ease-in-out</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Opacity / Elevation</div>
+            <div class="prim-detail">Opacity level<br>Drop shadow / blur / spread</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Z-Index</div>
+            <div class="prim-detail">Tooltip · Modal · Dropdown · Header · Page content</div>
+          </div>
+          <div class="prim-divider">Brand-Owned Primitive Categories</div>
+          <div class="prim-section">
+            <div class="prim-title">Typography</div>
+            <div class="prim-detail">Font family, weight, size, line-height, letter-spacing, text-case, type scale</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Color</div>
+            <div class="prim-detail">Primary Brand Color · Neutral · Black · Blue · Green…</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Border Width</div>
+            <div class="prim-detail">Width</div>
+          </div>
+          <div class="prim-section">
+            <div class="prim-title">Border Radius</div>
+            <div class="prim-detail">Radius</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Semantic Tokens -->
+      <div class="arch-panel">
+        <div class="arch-panel-header">Layer 2: Semantic Values</div>
+        <div class="sem-panel-body">
+          <div style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:16px;line-height:1.3;">Semantic Tokens for Product Card Component</div>
+
+          <div class="sem-token">
+            <div class="sem-token-name">color.action.primary</div>
+            <div class="sem-token-desc">The main CTA color. Named the same in code — valued differently per brand.</div>
+            <div class="sem-row"><span class="sem-dot d1"></span><span class="sem-text">Brand 1 → Blue 700 → primitive.blue.700</span></div>
+            <div class="sem-row"><span class="sem-dot d2"></span><span class="sem-text">Brand 2 → Brown 900 → primitive.brown.900</span></div>
+            <div class="sem-row"><span class="sem-dot d3"></span><span class="sem-text">Brand 3 → Red 600 → primitive.red.600</span></div>
+          </div>
+          <div class="sem-divider"></div>
+
+          <div class="sem-token">
+            <div class="sem-token-name">color.surface.card</div>
+            <div class="sem-token-desc">Card background color. Provides visual separation from page background.</div>
+            <div class="sem-row"><span class="sem-dot d1"></span><span class="sem-text">Brand 1 → White → primitive.neutral.white</span></div>
+            <div class="sem-row"><span class="sem-dot d2"></span><span class="sem-text">Brand 2 → Cream-50 → primitive.cream.50</span></div>
+            <div class="sem-row"><span class="sem-dot d3"></span><span class="sem-text">Brand 3 → White-Warm → primitive.white.warm</span></div>
+          </div>
+          <div class="sem-divider"></div>
+
+          <div class="sem-token">
+            <div class="sem-token-name">color.text.primary</div>
+            <div class="sem-token-desc">Main content text. Product titles, headings.</div>
+            <div class="sem-row"><span class="sem-dot d1"></span><span class="sem-text">Brand 1 → Neutral-900 → primitive.neutral.900</span></div>
+            <div class="sem-row"><span class="sem-dot d2"></span><span class="sem-text">Brand 2 → Brown-900 → primitive.brown.900</span></div>
+            <div class="sem-row"><span class="sem-dot d3"></span><span class="sem-text">Brand 3 → Black → primitive.black</span></div>
+          </div>
+          <div class="sem-divider"></div>
+
+          <div class="sem-token">
+            <div class="sem-token-name">font.heading.family</div>
+            <div class="sem-token-desc">Display typeface for product titles. Scale structure is shared — the voice is brand-owned.</div>
+            <div class="sem-row"><span class="sem-dot d1"></span><span class="sem-text">Brand 1 → "Helvetica Neue"</span></div>
+            <div class="sem-row"><span class="sem-dot d2"></span><span class="sem-text">Brand 2 → "Canela"</span></div>
+            <div class="sem-row"><span class="sem-dot d3"></span><span class="sem-text">Brand 3 → "Nunito"</span></div>
+          </div>
+          <div class="sem-divider"></div>
+
+          <div class="sem-token">
+            <div class="sem-token-name">radius.button</div>
+            <div class="sem-token-desc">Button corner radius. Sharp vs soft signals brand personality.</div>
+            <div class="sem-row"><span class="sem-dot d1"></span><span class="sem-text">Brand 1 → 2px (sharp)</span></div>
+            <div class="sem-row"><span class="sem-dot d2"></span><span class="sem-text">Brand 2 → 0px (none)</span></div>
+            <div class="sem-row"><span class="sem-dot d3"></span><span class="sem-text">Brand 3 → 8px (rounded)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: Components — 3 mini product cards -->
+      <div class="arch-panel">
+        <div class="arch-panel-header">Layer 3: Components</div>
+        <div class="comp-panel-body">
+          <h4>Same Components Structure — Three Brands</h4>
+          <div class="mini-cards">
+            <div class="mini-card">
+              <div class="mini-card-header b1">Brand 1</div>
+              <div class="mini-card-body">
+                <div class="mini-card-img">[Product Image]</div>
+                <div class="mini-card-title">Performance Short-Sleeve Shirt</div>
+                <div class="mini-card-desc">Made from moisture-wicking, quick-drying fabric with plenty of stretch.</div>
+                <div class="mini-card-price">$89</div>
+                <button class="mini-card-btn b1">Shop Now</button>
+              </div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-header b2">Brand 2</div>
+              <div class="mini-card-body">
+                <div class="mini-card-img">[Product Image]</div>
+                <div class="mini-card-title" style="font-style:italic;">Performance Short-Sleeve Shirt</div>
+                <div class="mini-card-desc">Made from moisture-wicking, quick-drying fabric with plenty of stretch.</div>
+                <div class="mini-card-price" style="font-style:italic;">$89</div>
+                <button class="mini-card-btn b2">Shop Now</button>
+              </div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-header b3">Brand 3</div>
+              <div class="mini-card-body">
+                <div class="mini-card-img">[Product Image]</div>
+                <div class="mini-card-title">Performance Short-Sleeve Shirt</div>
+                <div class="mini-card-desc">Made from moisture-wicking, quick-drying fabric with plenty of stretch.</div>
+                <div class="mini-card-price">$89</div>
+                <button class="mini-card-btn b3">Shop Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /arch-slide -->
+  </div>
+
+  <!-- WORKFLOW -->
+  <div class="section">
+    <span class="eyebrow">Figma MCP &amp; Claude Integration</span>
+    <h2>How It Actually Works</h2>
+    <p>The workflow chains Figma as the single source of truth through an MCP server into Claude Code. Tokens are extracted as structured JSON, then auto-generated into a three-layer CSS system. Components are built once — consuming CSS variables, never raw values.</p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <h4>Connect Figma MCP to Claude Code</h4>
+        <p>Desktop MCP (GUI + terminal) or Remote MCP (terminal only). Figma becomes queryable by Claude.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <h4>Extract Figma Tokens</h4>
+        <p>Primitives, semantic tokens, and component values read directly from Figma JSON export per brand.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <h4>Export JSON Token Files</h4>
+        <p>Primitives.json + Semantic.json generated as structured data with resolved values per brand.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <h4>CSS Token System</h4>
+        <p>Tokens.css auto-generated across all 3 layers. Brand switching via data-brand attribute only.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <h4>React Components</h4>
+        <p>BEM class composition. Zero hardcoded values. All visual decisions resolved through the token chain.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENTS — LIVE DEMO IFRAMES -->
+  <div class="section">
+    <span class="eyebrow">Components Built</span>
+    <h2>Same Architecture. Three Brand Expressions.</h2>
+
+    <div class="demo-intro">
+      <p>Three components built as proof-of-concept — token-wired from Figma JSON, zero hardcoded values. The test: one component structure, three brand voices, switched by a single <code>data-brand</code> attribute. Live demos below, each loading directly from production.</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="demo-tabs">
+      <div class="demo-tab active" onclick="switchDemo('buttons')">Buttons</div>
+      <div class="demo-tab" onclick="switchDemo('product-card')">Product Card</div>
+      <div class="demo-tab" onclick="switchDemo('discovery')">Product Discovery</div>
+      <div class="demo-tab" onclick="switchDemo('multibrand')">Multi-Brand</div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="demo-panel active" id="demo-buttons">
+      <div class="demo-frame-wrap">
+        <div class="demo-frame-bar">
+          <div class="demo-frame-dots">
+            <div class="demo-frame-dot"></div><div class="demo-frame-dot"></div><div class="demo-frame-dot"></div>
+          </div>
+          <div class="demo-frame-url">figma-claude-test-henna.vercel.app</div>
+          <a class="demo-frame-link" href="https://figma-claude-test-henna.vercel.app/" target="_blank">↗ Open</a>
+        </div>
+        <iframe class="demo-iframe" src="https://figma-claude-test-henna.vercel.app/" loading="lazy" title="Button Components"
+          onload="iframeLoaded(this)" onerror="iframeFailed(this, 'https://figma-claude-test-henna.vercel.app/')"></iframe>
+        <div class="iframe-fallback" style="display:none;">
+          <p>This page can't be embedded — <a href="https://figma-claude-test-henna.vercel.app/" target="_blank">open live demo ↗</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Card -->
+    <div class="demo-panel" id="demo-product-card">
+      <div class="demo-frame-wrap">
+        <div class="demo-frame-bar">
+          <div class="demo-frame-dots">
+            <div class="demo-frame-dot"></div><div class="demo-frame-dot"></div><div class="demo-frame-dot"></div>
+          </div>
+          <div class="demo-frame-url">figma-claude-test-henna.vercel.app/product-card</div>
+          <a class="demo-frame-link" href="https://figma-claude-test-henna.vercel.app/product-card" target="_blank">↗ Open</a>
+        </div>
+        <iframe class="demo-iframe tall" src="https://figma-claude-test-henna.vercel.app/product-card" loading="lazy" title="Product Card"
+          onload="iframeLoaded(this)" onerror="iframeFailed(this, 'https://figma-claude-test-henna.vercel.app/product-card')"></iframe>
+        <div class="iframe-fallback" style="display:none;">
+          <p>This page can't be embedded — <a href="https://figma-claude-test-henna.vercel.app/product-card" target="_blank">open live demo ↗</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Discovery -->
+    <div class="demo-panel" id="demo-discovery">
+      <div class="demo-frame-wrap">
+        <div class="demo-frame-bar">
+          <div class="demo-frame-dots">
+            <div class="demo-frame-dot"></div><div class="demo-frame-dot"></div><div class="demo-frame-dot"></div>
+          </div>
+          <div class="demo-frame-url">figma-claude-test-henna.vercel.app/product-discovery</div>
+          <a class="demo-frame-link" href="https://figma-claude-test-henna.vercel.app/product-discovery" target="_blank">↗ Open</a>
+        </div>
+        <iframe class="demo-iframe tall" src="https://figma-claude-test-henna.vercel.app/product-discovery" loading="lazy" title="Product Discovery"
+          onload="iframeLoaded(this)" onerror="iframeFailed(this, 'https://figma-claude-test-henna.vercel.app/product-discovery')"></iframe>
+        <div class="iframe-fallback" style="display:none;">
+          <p>This page can't be embedded — <a href="https://figma-claude-test-henna.vercel.app/product-discovery" target="_blank">open live demo ↗</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multi-Brand — blocked by X-Frame-Options, show link card instead -->
+    <div class="demo-panel" id="demo-multibrand">
+      <div class="demo-frame-wrap">
+        <div class="demo-frame-bar">
+          <div class="demo-frame-dots">
+            <div class="demo-frame-dot"></div><div class="demo-frame-dot"></div><div class="demo-frame-dot"></div>
+          </div>
+          <div class="demo-frame-url">figma-claude-test-henna.vercel.app/multibrand</div>
+          <a class="demo-frame-link" href="https://figma-claude-test-henna.vercel.app/multibrand" target="_blank">↗ Open</a>
+        </div>
+        <iframe class="demo-iframe tall" src="https://figma-claude-test-henna.vercel.app/multibrand" loading="lazy" title="Multi-Brand Demo"
+          onload="iframeLoaded(this)" onerror="iframeFailed(this, 'https://figma-claude-test-henna.vercel.app/multibrand')"></iframe>
+        <div class="iframe-fallback" style="display:none;">
+          <p>This page can't be embedded — <a href="https://figma-claude-test-henna.vercel.app/multibrand" target="_blank">open live demo ↗</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BEFORE / AFTER — 3 LAYOUT OPTIONS -->
+  <div class="section">
+    <span class="eyebrow">Before vs. After</span>
+    <h2>The Time Impact</h2>
+    <p>Documentation time is the clearest measure of this experiment's value — the unglamorous but business-critical work of speccing components for engineering handoff.</p>
+
+    <div class="ba-a-grid">
+      <div class="ba-a-header">
+        <div></div>
+        <div class="ba-a-col-label">Before</div>
+        <div class="ba-a-col-label">After · AI</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">Documentation</div>
+        <div class="ba-a-before">2–5 hours per component</div>
+        <div class="ba-a-after">&lt; 20 minutes ✓</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">Token references</div>
+        <div class="ba-a-before">Written from memory by hand</div>
+        <div class="ba-a-after">Sourced from Figma JSON ✓</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">Variant coverage</div>
+        <div class="ba-a-before">Manual screenshots, easy to miss states</div>
+        <div class="ba-a-after">All states auto-documented ✓</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">Breakpoints</div>
+        <div class="ba-a-before">Recreated one at a time in docs</div>
+        <div class="ba-a-after">All 3 rendered side-by-side ✓</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">Multi-brand</div>
+        <div class="ba-a-before">Full repeat per brand</div>
+        <div class="ba-a-after">One doc, all brands compared ✓</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">Hardcoded values</div>
+        <div class="ba-a-before">Scattered throughout codebase</div>
+        <div class="ba-a-after">0 — verified by token audit ✓</div>
+      </div>
+      <div class="ba-a-row">
+        <div class="ba-a-topic">On component update</div>
+        <div class="ba-a-before">Manual re-documentation</div>
+        <div class="ba-a-after">Fully regeneratable ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNINGS — 3 LAYOUT OPTIONS -->
+  <div class="section">
+    <span class="eyebrow">What I Learned</span>
+    <h2>Three Findings From The Experiment</h2>
+
+    <div class="learn-a-grid">
+      <div class="learn-a-item">
+        <div class="learn-a-num">01</div>
+        <div class="learn-a-title">Speed up front, slow down in the middle.</div>
+        <p>AI compresses ideation — layout variations and token-wired code faster than Figma mockups. But matching an existing spec is high-iteration. AI is fast at "good enough." Pixel-perfect is still human work.</p>
+      </div>
+      <div class="learn-a-item">
+        <div class="learn-a-num">02</div>
+        <div class="learn-a-title">The prompt is the source of truth.</div>
+        <p>AI has no memory between sessions. Every correction must be rewritten into the prompt or it disappears. Prompt updates work best treated like code commits — incremental, versioned, intentional.</p>
+      </div>
+      <div class="learn-a-item">
+        <div class="learn-a-num">03</div>
+        <div class="learn-a-title">Plan the role before you start.</div>
+        <p>AI saves designer time on exploration. It saves engineer time on implementation. But it doesn't save time if you start without clear scope and token constraints — it just optimizes for the wrong thing faster.</p>
+      </div>
+    </div>
+
+    <!-- NEXT -->
+    <div class="next-project">
+      <div>
+        <div class="label">Next Project</div>
+        <a class="next-link" href="./top-nav-plp.html">Top Nav &amp; PLP Redesign →</a>
+      </div>
+      <a class="back-link" href="./ai-experiments.html">← Back to all work</a>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer class="site-footer">
+  <p>© 2026 Jocelyn Lin</p>
+  <a href="https://jocelynlin.framer.ai">jocelynlin.framer.ai</a>
+</footer>
+
+<script>
+  function switchDemo(id) {
+    document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('demo-' + id).classList.add('active');
+    const tabs = document.querySelectorAll('.demo-tab');
+    const map = { 'buttons': 0, 'product-card': 1, 'discovery': 2, 'multibrand': 3 };
+    tabs[map[id]].classList.add('active');
+  }
+  function iframeLoaded(iframe) {}
+  function iframeFailed(iframe, url) {
+    iframe.style.display = 'none';
+    const fallback = iframe.nextElementSibling;
+    if (fallback && fallback.classList.contains('iframe-fallback')) fallback.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
