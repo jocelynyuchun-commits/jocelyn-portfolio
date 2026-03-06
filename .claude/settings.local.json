@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "mcp__figma-remote-mcp__get_metadata",
+      "mcp__figma-remote-mcp__get_design_context",
+      "mcp__figma-remote-mcp__get_variable_defs",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); print\\(type\\(data\\)\\); print\\(len\\(data\\)\\)\")",
+      "Bash(printf \"/** @type {import\\(''next''\\).NextConfig} */\\\\nconst nextConfig = {}\\\\nexport default nextConfig\\\\n\")",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill -9)",
+      "mcp__figma-remote-mcp__generate_figma_design",
+      "Bash(open \"http://localhost:3000/#figmacapture=f2b8c41d-01ca-44a1-ac6b-334513c3841e&figmaendpoint=https%3A%2F%2Fmcp.figma.com%2Fmcp%2Fcapture%2Ff2b8c41d-01ca-44a1-ac6b-334513c3841e%2Fsubmit&figmadelay=2000\")",
+      "mcp__figma-remote-mcp__get_screenshot",
+      "Bash(open \"http://localhost:3000/product-card#figmacapture=bd3f29d6-8e93-4712-be58-de3b7e67be3d&figmaendpoint=https%3A%2F%2Fmcp.figma.com%2Fmcp%2Fcapture%2Fbd3f29d6-8e93-4712-be58-de3b7e67be3d%2Fsubmit&figmadelay=1000\")",
+      "Bash(sudo npm install -g vercel)",
+      "Bash(npm install --prefix /Users/jocelynlin/Desktop/Figma-claude-test vercel)",
+      "Bash(node -e \":*)",
+      "Bash(node -e ':*)",
+      "Bash(ls /Users/jocelynlin/Desktop/Semantic* /Users/jocelynlin/Desktop/figma-claude-test/Semantic*)",
+      "Bash(node scripts/token-audit.js)",
+      "Bash(node /Users/jocelynlin/Desktop/figma-claude-test/scripts/token-audit.js)",
+      "Bash(npx vercel --yes)",
+      "Bash(npx vercel --prod)",
+      "Bash(npx vercel ls)",
+      "Bash(npx vercel domains ls)",
+      "Bash(npx vercel inspect dls-productcard-n2f01jhj4-outfit-styling.vercel.app)",
+      "Bash(curl -s http://127.0.0.1:3000/)",
+      "Bash(npx vercel ls --prod)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://product-card-tokens-outfit-styling.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://buttons-ruddy.vercel.app/)",
+      "Bash(curl -s https://product-card-tokens-outfit-styling.vercel.app/)",
+      "Bash(curl -s https://dls-productcard-outfit-styling.vercel.app/)",
+      "Bash(curl -s https://dls-productcard-outfit-styling.vercel.app/product-card)",
+      "Bash(npx vercel --yes --prod)",
+      "Bash(npx vercel --yes --prod --scope outfit-styling)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://figma-claude-test-henna.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://figma-claude-test-henna.vercel.app/product-card)"
+    ]
+  }
+}

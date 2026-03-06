@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Components · Token-Synced Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Figma Brand 1 Primitives */
+      --color-blue-900: #142d51;
+      --color-blue-700: #255090;
+      --color-blue-500: #2f71d4;
+      --color-blue-300: #90a5c4;
+      --color-blue-200: #bdc9dd;
+      --color-blue-100: #e4eaf4;
+      --color-neutral-300: #c5c5c5;
+      --color-neutral-400: #9b9b9b;
+      --color-white: #ffffff;
+      
+      /* Button Dimensions */
+      --button-width-sm: 144px;
+      --button-width-md: 172px;
+      --button-width-lg: 366px;
+      --button-height-sm: 40px;
+      --button-height-md: 48px;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+    }
+    
+    .section {
+      background: white;
+      padding: 40px;
+      margin-bottom: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    
+    .section.dark {
+      background: #1a2942;
+      color: white;
+    }
+    
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .meta {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 32px;
+    }
+    
+    .demo-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+    }
+    
+    .button-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+    
+    .section.dark .button-row {
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    
+    .states-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .size-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .size-row:first-child {
+      margin-bottom: 8px;
+    }
+    
+    .size-label {
+      min-width: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      flex-shrink: 0;
+    }
+    
+    .section.dark .size-label {
+      color: #9ca3af;
+    }
+    
+    .size-spec {
+      display: block;
+      font-size: 10px;
+      color: #9ca3af;
+      font-weight: 400;
+    }
+    
+    .state-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #6b7280;
+      letter-spacing: 0.08em;
+      min-width: 150px;
+      text-align: center;
+    }
+    
+    .state-label.wide {
+      min-width: 380px;
+    }
+    
+    .section.dark .state-label {
+      color: #9ca3af;
+    }
+    
+    /* Button Base */
+    .button {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
+      border: 1px solid;
+      border-radius: 4px;
+      transition: all 150ms ease-in-out;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .button:disabled { cursor: not-allowed; }
+    .button:focus-visible { box-shadow: 0 0 0 3px #90a5c4; outline: none; }
+    
+    .button--sm { width: 144px; height: 40px; }
+    .button--md { width: 172px; height: 48px; }
+    .button--lg { width: 366px; height: 48px; }
+    
+    /* Solid Variant */
+    .button--solid {
+      background: #142d51;
+      border-color: #142d51;
+      color: #ffffff;
+    }
+    .button--solid.hover-state {
+      background: #255090;
+      border-color: #255090;
+      color: #ffffff;
+    }
+    .button--solid.active-state {
+      background: #2f71d4;
+      border-color: #2f71d4;
+      color: #ffffff;
+    }
+    .button--solid.focus-state {
+      background: #e4eaf4;
+      border-color: #142d51;
+      color: #142d51;
+      box-shadow: 0 0 0 3px #90a5c4;
+    }
+    .button--solid:disabled {
+      background: #c5c5c5;
+      border-color: #c5c5c5;
+      color: #9b9b9b;
+    }
+    
+    /* Outline Variant */
+    .button--outline {
+      background: transparent;
+      border-color: #142d51;
+      color: #142d51;
+    }
+    .button--outline.hover-state {
+      background: transparent;
+      border-color: #255090;
+      color: #255090;
+    }
+    .button--outline.active-state {
+      background: transparent;
+      border-color: #2f71d4;
+      color: #2f71d4;
+    }
+    .button--outline.focus-state {
+      background: #e4eaf4;
+      border-color: #142d51;
+      color: #142d51;
+      box-shadow: 0 0 0 3px #90a5c4;
+    }
+    .button--outline:disabled {
+      background: transparent;
+      border-color: #c5c5c5;
+      color: #c5c5c5;
+    }
+    
+    /* Inverted Variant */
+    .button--inverted {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #142d51;
+    }
+    .button--inverted.hover-state {
+      background: #e4eaf4;
+      border-color: #e4eaf4;
+      color: #142d51;
+    }
+    .button--inverted.active-state {
+      background: #bdc9dd;
+      border-color: #bdc9dd;
+      color: #142d51;
+    }
+    .button--inverted.focus-state {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #142d51;
+      box-shadow: 0 0 0 3px #90a5c4;
+    }
+    .button--inverted:disabled {
+      background: #c5c5c5;
+      border-color: #c5c5c5;
+      color: #9b9b9b;
+    }
+    
+    /* Outline White Variant */
+    .button--outline-white {
+      background: transparent;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+    .button--outline-white.hover-state {
+      background: transparent;
+      border-color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.7);
+    }
+    .button--outline-white.active-state {
+      background: transparent;
+      border-color: #e4eaf4;
+      color: #e4eaf4;
+    }
+    .button--outline-white.focus-state {
+      background: transparent;
+      border-color: #ffffff;
+      color: #ffffff;
+      box-shadow: 0 0 0 3px #90a5c4;
+    }
+    .button--outline-white:disabled {
+      background: transparent;
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Solid Variant -->
+<section class="section">
+  <h2>Solid <span style="font-weight:400;opacity:0.6">Light Mode · Primary</span></h2>
+  <p class="meta">Figma: Buttons/Solid/Light Mode → Buttons/Solid/Blue · Default tag:±2651 (Buttons/Solid/Default → Color/Blue/Blue-900)</p>
+  
+  <p class="demo-label">Interactive — Hover & Click to preview states</p>
+  <div class="button-row">
+    <button class="button button--solid button--sm">Shop Now</button>
+    <button class="button button--solid button--md">Shop Now</button>
+    <button class="button button--solid button--lg">Shop Now</button>
+  </div>
+  
+  <div class="states-grid">
+    <div class="size-row">
+      <div class="size-label">Size</div>
+      <div class="state-label">Default</div>
+      <div class="state-label">Hover</div>
+      <div class="state-label">Active</div>
+      <div class="state-label">Focus</div>
+      <div class="state-label">Disabled</div>
+    </div>
+    <div class="size-row">
+      <div class="size-label">Small<span class="size-spec">144 × 40</span></div>
+      <button class="button button--solid button--sm">Shop Now</button>
+      <button class="button button--solid button--sm hover-state">Shop Now</button>
+      <button class="button button--solid button--sm active-state">Shop Now</button>
+      <button class="button button--solid button--sm focus-state">Shop Now</button>
+      <button class="button button--solid button--sm" disabled>Shop Now</button>
+    </div>
+    <div class="size-row">
+      <div class="size-label">Regular<span class="size-spec">172 × 48</span></div>
+      <button class="button button--solid button--md">Shop Now</button>
+      <button class="button button--solid button--md hover-state">Shop Now</button>
+      <button class="button button--solid button--md active-state">Shop Now</button>
+      <button class="button button--solid button--md focus-state">Shop Now</button>
+      <button class="button button--solid button--md" disabled>Shop Now</button>
+    </div>
+    <div class="size-row">
+      <div class="size-label">CTA<span class="size-spec">366 × 48</span></div>
+      <button class="button button--solid button--lg">Shop Now</button>
+      <button class="button button--solid button--lg hover-state">Shop Now</button>
+      <button class="button button--solid button--lg active-state">Shop Now</button>
+      <button class="button button--solid button--lg focus-state">Shop Now</button>
+      <button class="button button--solid button--lg" disabled>Shop Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Outline Variant -->
+<section class="section">
+  <h2>Outline <span style="font-weight:400;opacity:0.6">Light Mode · Secondary</span></h2>
+  <p class="meta">Figma: Buttons/Outline → Buttons, CTA/Outline/(Border+Blue) · Border+Icon: (Buttons/Outline/Default → Color/Blue/Blue-900)</p>
+  
+  <p class="demo-label">Interactive</p>
+  <div class="button-row">
+    <button class="button button--outline button--sm">Shop Now</button>
+    <button class="button button--outline button--md">Shop Now</button>
+    <button class="button button--outline button--lg">Shop Now</button>
+  </div>
+  
+  <div class="states-grid">
+    <div class="size-row">
+      <div class="size-label">Size</div>
+      <div class="state-label">Default</div>
+      <div class="state-label">Hover</div>
+      <div class="state-label">Active</div>
+      <div class="state-label">Focus</div>
+      <div class="state-label">Disabled</div>
+    </div>
+    <div class="size-row">
+      <div class="size-label">Small<span class="size-spec">144 × 40</span></div>
+      <button class="button button--outline button--sm">Shop Now</button>
+      <button class="button button--outline button--sm hover-state">Shop Now</button>
+      <button class="button button--outline button--sm active-state">Shop Now</button>
+      <button class="button button--outline button--sm focus-state">Shop Now</button>
+      <button class="button button--outline button--sm" disabled>Shop Now</button>
+    </div>
+    <div class="size-row">
+      <div class="size-label">Regular<span class="size-spec">172 × 48</span></div>
+      <button class="button button--outline button--md">Shop Now</button>
+      <button class="button button--outline button--md hover-state">Shop Now</button>
+      <button class="button button--outline button--md active-state">Shop Now</button>
+      <button class="button button--outline button--md focus-state">Shop Now</button>
+      <button class="button button--outline button--md" disabled>Shop Now</button>
+    </div>
+    <div class="size-row">
+      <div class="size-label">CTA<span class="size-spec">366 × 48</span></div>
+      <button class="button button--outline button--lg">Shop Now</button>
+      <button class="button button--outline button--lg hover-state">Shop Now</button>
+      <button class="button button--outline button--lg active-state">Shop Now</button>
+      <button class="button button--outline button--lg focus-state">Shop Now</button>
+      <button class="button button--outline button--lg" disabled>Shop Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Dark Mode -->
+<section class="section dark">
+  <h2 style="margin-bottom:12px">Dark Mode</h2>
+  <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;margin-bottom:24px">Dark Background · Navy #142D51</p>
+  <p class="meta">Figma: Buttons/Solid/Dark Mode · Use on images, hero banners, or dark surface sections</p>
+  
+  <div style="margin-bottom:40px">
+    <h3 style="font-size:14px;margin-bottom:24px;font-weight:600;text-transform:uppercase">Inverted <span style="font-weight:400;opacity:0.6">White Solid · Dark Mode Primary</span></h3>
+    
+    <p class="demo-label">Interactive</p>
+    <div class="button-row">
+      <button class="button button--inverted button--sm">Shop Now</button>
+      <button class="button button--inverted button--md">Shop Now</button>
+      <button class="button button--inverted button--lg">Shop Now</button>
+    </div>
+    
+    <div class="states-grid">
+      <div class="size-row">
+        <div class="size-label">Size</div>
+        <div class="state-label">Default</div>
+        <div class="state-label">Hover</div>
+        <div class="state-label">Active</div>
+        <div class="state-label">Focus</div>
+        <div class="state-label">Disabled</div>
+      </div>
+      <div class="size-row">
+        <div class="size-label">Small<span class="size-spec">144 × 40</span></div>
+        <button class="button button--inverted button--sm">Shop Now</button>
+        <button class="button button--inverted button--sm hover-state">Shop Now</button>
+        <button class="button button--inverted button--sm active-state">Shop Now</button>
+        <button class="button button--inverted button--sm focus-state">Shop Now</button>
+        <button class="button button--inverted button--sm" disabled>Shop Now</button>
+      </div>
+      <div class="size-row">
+        <div class="size-label">Regular<span class="size-spec">172 × 48</span></div>
+        <button class="button button--inverted button--md">Shop Now</button>
+        <button class="button button--inverted button--md hover-state">Shop Now</button>
+        <button class="button button--inverted button--md active-state">Shop Now</button>
+        <button class="button button--inverted button--md focus-state">Shop Now</button>
+        <button class="button button--inverted button--md" disabled>Shop Now</button>
+      </div>
+      <div class="size-row">
+        <div class="size-label">CTA<span class="size-spec">366 × 48</span></div>
+        <button class="button button--inverted button--lg">Shop Now</button>
+        <button class="button button--inverted button--lg hover-state">Shop Now</button>
+        <button class="button button--inverted button--lg active-state">Shop Now</button>
+        <button class="button button--inverted button--lg focus-state">Shop Now</button>
+        <button class="button button--inverted button--lg" disabled>Shop Now</button>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <h3 style="font-size:14px;margin-bottom:24px;font-weight:600;text-transform:uppercase">Outline White <span style="font-weight:400;opacity:0.6">White Border · Dark Mode Secondary</span></h3>
+    
+    <p class="demo-label">Interactive</p>
+    <div class="button-row">
+      <button class="button button--outline-white button--sm">Shop Now</button>
+      <button class="button button--outline-white button--md">Shop Now</button>
+      <button class="button button--outline-white button--lg">Shop Now</button>
+    </div>
+    
+    <div class="states-grid">
+      <div class="size-row">
+        <div class="size-label">Size</div>
+        <div class="state-label">Default</div>
+        <div class="state-label">Hover</div>
+        <div class="state-label">Active</div>
+        <div class="state-label">Focus</div>
+        <div class="state-label">Disabled</div>
+      </div>
+      <div class="size-row">
+        <div class="size-label">Small<span class="size-spec">144 × 40</span></div>
+        <button class="button button--outline-white button--sm">Shop Now</button>
+        <button class="button button--outline-white button--sm hover-state">Shop Now</button>
+        <button class="button button--outline-white button--sm active-state">Shop Now</button>
+        <button class="button button--outline-white button--sm focus-state">Shop Now</button>
+        <button class="button button--outline-white button--sm" disabled>Shop Now</button>
+      </div>
+      <div class="size-row">
+        <div class="size-label">Regular<span class="size-spec">172 × 48</span></div>
+        <button class="button button--outline-white button--md">Shop Now</button>
+        <button class="button button--outline-white button--md hover-state">Shop Now</button>
+        <button class="button button--outline-white button--md active-state">Shop Now</button>
+        <button class="button button--outline-white button--md focus-state">Shop Now</button>
+        <button class="button button--outline-white button--md" disabled>Shop Now</button>
+      </div>
+      <div class="size-row">
+        <div class="size-label">CTA<span class="size-spec">366 × 48</span></div>
+        <button class="button button--outline-white button--lg">Shop Now</button>
+        <button class="button button--outline-white button--lg hover-state">Shop Now</button>
+        <button class="button button--outline-white button--lg active-state">Shop Now</button>
+        <button class="button button--outline-white button--lg focus-state">Shop Now</button>
+        <button class="button button--outline-white button--lg" disabled>Shop Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

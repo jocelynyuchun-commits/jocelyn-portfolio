@@ -1,0 +1,91 @@
+---
+description: Figma variables usage from UNTUCKit DLS—when to use them and where to apply
+alwaysApply: false
+globs: "**/*.{tsx,ts,css,scss,json}"
+---
+
+# Figma Variables — UNTUCKit DLS
+
+Reference design system: [UNTUCKit DLS](https://www.figma.com/design/oqfhkzHq6xa1STjHbS3Ofo/UNTUCKit_DLS_MCP?node-id=825-446)
+
+When implementing designs from this Figma file, use the Figma MCP to get variable names and values. In your prompt, say: **"Get the variable names and values for this selection"** to ensure the agent fetches design tokens instead of raw code.
+
+---
+
+## When to Use Variables vs Styles
+
+| Use **Variables** when… | Use **Styles** when… |
+|-------------------------|----------------------|
+| Values change by context (light/dark, mobile/desktop) | You need a fixed composite (e.g. full text style) |
+| You need aliasing/token hierarchy (primitives → semantic) | You need blend modes, gradients, images |
+| You want scoping (e.g. color only for strokes) | A single static value is enough |
+| You're building a scalable design system | You're applying a one-off combination of values |
+
+**Rule of thumb:** Variables are dynamic and context-dependent. Styles are static predefined sets. Use variables for design tokens; use styles for stable, composite values.
+
+---
+
+## Variable Types and Where to Apply Them
+
+### Color variables
+
+Use for: fills, strokes, shadows, gradient stops, color styles.
+
+- Theming (light/dark modes)
+- Brand palette and semantic colors
+- Icon colors, backgrounds, borders
+
+### Number variables
+
+Use for: spacing, sizing, typography, layout.
+
+- Font size, line height, letter spacing
+- Padding, margin, gap
+- Layout grid width, height, gutter
+- Responsive modes (mobile vs desktop)
+
+### String variables
+
+Use for: text content and font properties.
+
+- Font family, font style/weight
+- Localization (different languages)
+- Prototype copy switches
+
+### Boolean variables
+
+Use for: visibility and component state.
+
+- Layer visibility
+- Component variant toggles
+- Show/hide for different contexts
+
+---
+
+## Token Structure (DLS Best Practice)
+
+Apply variables in this hierarchy:
+
+1. **Primitives** — Raw values (e.g. `blue-400`, `spacing-8`)
+2. **Aliases / Semantic tokens** — Context-aware references (e.g. `icon-default` → `brand-400`)
+3. **Component tokens** — Component-specific values (e.g. `button-bg-hover`)
+
+When implementing in code, mirror this structure: primitives → semantic tokens → component tokens.
+
+---
+
+## When Variables Should Be Applied
+
+- **Do use variables** for: colors, spacing, typography scale, shadows, radii, breakpoints
+- **Do use variables** when: implementing new components, updating existing ones, or syncing with design changes
+- **Do not hardcode** values that exist in the Figma variable set
+- **Do not use variables** for one-off layout values with no design-token equivalent
+
+---
+
+## Quick Checklist
+
+- [ ] Fetched variable names/values from Figma via MCP before implementing
+- [ ] Used semantic aliases where primitives exist upstream
+- [ ] Applied the correct variable type (color, number, string, boolean)
+- [ ] Matched token names to Figma when exporting to code (CSS vars, JSON, etc.)

@@ -1,0 +1,237 @@
+/**
+ * AI-Governed Design System — Token System (Brand 1)
+ * Extracted from Figma: UNTUCKit_DLS_2026
+ * Mode: Brand 1
+ * 
+ * Three-Layer Architecture:
+ *   Layer 1: Foundation primitives (Brand 1 specific)
+ *   Layer 2: Semantic aliases
+ *   Layer 3: Component-specific tokens
+ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════
+     LAYER 1: FOUNDATION PRIMITIVES (Brand 1)
+     ═══════════════════════════════════════════════════════════════════
+     Source: Figma Variables → Primitives → Brand 1
+  */
+
+  /* ─── Blue Brand 1 Scale ─────────────────────────────────────────── */
+  --color-blue-900: #142d51;
+  --color-blue-800: #1c3e70;
+  --color-blue-700: #255090;
+  --color-blue-600: #2a60b2;
+  --color-blue-500: #2f71d4;
+  --color-blue-400: #5a84bc;
+  --color-blue-300: #90a5c4;
+  --color-blue-200: #bdc9dd;
+  --color-blue-100: #e4eaf4;
+
+  /* ─── Neutral Scale ──────────────────────────────────────────────── */
+  --color-neutral-900: #181818;
+  --color-neutral-800: #333333;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-600: #686868;
+  --color-neutral-500: #7c7c7c;
+  --color-neutral-400: #9b9b9b;
+  --color-neutral-300: #c5c5c5;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-100: #fbfbfb;
+  
+  /* ─── Semantic Colors ────────────────────────────────────────────── */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+  
+  /* ─── Brand Colors ──────────────────────────────────────────────── */
+  --color-brand-primary: #2c4e7e;
+  --color-brand-secondary: #2f71d4;
+  --color-brand-logo: #8e2231;
+  
+  /* ─── Feedback Colors ───────────────────────────────────────────── */
+  --color-green-900: #24882d;
+  --color-green-500: #72d07c;
+  --color-red-900: #c02321;
+  --color-red-700: #db100e;
+  --color-red-500: #ef6664;
+
+  /* ─── Spacing Scale ─────────────────────────────────────────────── */
+  --spacing-050: 2px;
+  --spacing-100: 4px;
+  --spacing-200: 8px;
+  --spacing-300: 12px;
+  --spacing-400: 16px;
+  --spacing-500: 20px;
+  --spacing-600: 24px;
+  --spacing-800: 32px;
+  --spacing-1000: 40px;
+  --spacing-1200: 48px;
+
+  /* ─── Typography ────────────────────────────────────────────────── */
+  --font-family-primary: 'Proxima Nova', -apple-system, sans-serif;
+  --font-size-base: 16px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* ─── Border ─────────────────────────────────────────────────────── */
+  --radius-default: 4px;
+  --border-width-default: 1px;
+
+  /* ─── Motion ─────────────────────────────────────────────────────── */
+  --duration-default: 150ms;
+  --easing-default: ease-in-out;
+
+
+  /* ═══════════════════════════════════════════════════════════════════
+     LAYER 2: SEMANTIC ALIASES
+     ═══════════════════════════════════════════════════════════════════
+     Meaningful names with fallbacks
+  */
+
+  /* ─── Primary Actions ────────────────────────────────────────────── */
+  --color-primary: var(--color-blue-900, #142d51);
+  --color-primary-hover: var(--color-blue-700, #255090);
+  --color-primary-active: var(--color-blue-500, #2f71d4);
+  --color-primary-focus-fill: var(--color-blue-100, #e4eaf4);
+  --color-primary-focus-ring: var(--color-blue-300, #90a5c4);
+
+  /* ─── Text Colors ───────────────────────────────────────────────── */
+  --color-text-default: var(--color-neutral-900, #181818);
+  --color-text-secondary: var(--color-neutral-700, #4a4a4a);
+  --color-text-disabled: var(--color-neutral-400, #9b9b9b);
+  --color-text-inverse: var(--color-white, #ffffff);
+
+  /* ─── Background Colors ─────────────────────────────────────────── */
+  --color-bg-default: var(--color-white, #ffffff);
+  --color-bg-disabled: var(--color-neutral-300, #c5c5c5);
+
+  /* ─── Border Colors ─────────────────────────────────────────────── */
+  --color-border-default: var(--color-neutral-200, #eaeaea);
+  --color-border-disabled: var(--color-neutral-300, #c5c5c5);
+  --color-border-focus: var(--color-primary, #142d51);
+
+
+  /* ═══════════════════════════════════════════════════════════════════
+     LAYER 3: BUTTON COMPONENT TOKENS
+     ═══════════════════════════════════════════════════════════════════
+     Extracted from Figma: Semantic → Buttons/*
+  */
+
+  /* ─── Button: Dimensions ────────────────────────────────────────── */
+  --button-width-sm: 144px;
+  --button-width-md: 172px;
+  --button-width-lg: 366px;
+  --button-width-full: 100%;
+  
+  --button-height-sm: 40px;
+  --button-height-md: 48px;
+  
+  --button-padding-x-sm: var(--spacing-400, 16px);
+  --button-padding-x-md: var(--spacing-500, 20px);
+
+  /* ─── Button: Typography ────────────────────────────────────────── */
+  --button-font-family: var(--font-family-primary);
+  --button-font-size: var(--font-size-base, 16px);
+  --button-font-weight: var(--font-weight-medium, 500);
+  --button-line-height: 1.25;
+  --button-letter-spacing: 0.02em;
+
+  /* ─── Button: Border & Motion ───────────────────────────────────── */
+  --button-border-radius: var(--radius-default, 4px);
+  --button-border-width: var(--border-width-default, 1px);
+  --button-transition-duration: var(--duration-default, 150ms);
+  --button-transition-easing: var(--easing-default, ease-in-out);
+
+  /* ─── Button: Focus (shared across all variants) ────────────────── */
+  --button-focus-ring: var(--color-primary-focus-ring, #90a5c4);
+  --button-focus-shadow: 0 0 0 3px var(--button-focus-ring);
+
+
+  /* ─── SOLID VARIANT (Light Mode Primary) ────────────────────────── */
+  /* Figma: Buttons/Solid/* */
+  
+  --button-solid-bg-default: #142d51;
+  --button-solid-bg-hover: #255090;
+  --button-solid-bg-active: #2f71d4;
+  --button-solid-bg-focus: #e4eaf4;
+  --button-solid-bg-disabled: #c5c5c5;
+  
+  --button-solid-border-default: #142d51;
+  --button-solid-border-hover: #255090;
+  --button-solid-border-active: #2f71d4;
+  --button-solid-border-focus: #142d51;
+  --button-solid-border-disabled: #c5c5c5;
+  
+  --button-solid-text-default: #ffffff;
+  --button-solid-text-hover: #ffffff;
+  --button-solid-text-active: #ffffff;
+  --button-solid-text-focus: #142d51;
+  --button-solid-text-disabled: #9b9b9b;
+
+
+  /* ─── OUTLINE VARIANT (Light Mode Secondary) ────────────────────── */
+  /* Figma: Buttons/Outline/* */
+  
+  --button-outline-bg-default: transparent;
+  --button-outline-bg-hover: transparent;
+  --button-outline-bg-active: transparent;
+  --button-outline-bg-focus: #e4eaf4;
+  --button-outline-bg-disabled: transparent;
+  
+  --button-outline-border-default: #142d51;
+  --button-outline-border-hover: #255090;
+  --button-outline-border-active: #2f71d4;
+  --button-outline-border-focus: #142d51;
+  --button-outline-border-disabled: #c5c5c5;
+  
+  --button-outline-text-default: #142d51;
+  --button-outline-text-hover: #255090;
+  --button-outline-text-active: #2f71d4;
+  --button-outline-text-focus: #142d51;
+  --button-outline-text-disabled: #c5c5c5;
+
+
+  /* ─── INVERTED VARIANT (Dark Mode Primary) ──────────────────────── */
+  /* Inferred from design pattern (white bg on dark surfaces) */
+  
+  --button-inverted-bg-default: #ffffff;
+  --button-inverted-bg-hover: #e4eaf4;
+  --button-inverted-bg-active: #bdc9dd;
+  --button-inverted-bg-focus: #ffffff;
+  --button-inverted-bg-disabled: #c5c5c5;
+  
+  --button-inverted-border-default: #ffffff;
+  --button-inverted-border-hover: #e4eaf4;
+  --button-inverted-border-active: #bdc9dd;
+  --button-inverted-border-focus: #ffffff;
+  --button-inverted-border-disabled: #c5c5c5;
+  
+  --button-inverted-text-default: #142d51;
+  --button-inverted-text-hover: #142d51;
+  --button-inverted-text-active: #142d51;
+  --button-inverted-text-focus: #142d51;
+  --button-inverted-text-disabled: #9b9b9b;
+
+
+  /* ─── OUTLINE WHITE VARIANT (Dark Mode Secondary) ───────────────── */
+  /* Inferred from design pattern (white outline on dark surfaces) */
+  
+  --button-outline-white-bg-default: transparent;
+  --button-outline-white-bg-hover: transparent;
+  --button-outline-white-bg-active: transparent;
+  --button-outline-white-bg-focus: transparent;
+  --button-outline-white-bg-disabled: transparent;
+  
+  --button-outline-white-border-default: #ffffff;
+  --button-outline-white-border-hover: rgba(255, 255, 255, 0.7);
+  --button-outline-white-border-active: #e4eaf4;
+  --button-outline-white-border-focus: #ffffff;
+  --button-outline-white-border-disabled: rgba(255, 255, 255, 0.3);
+  
+  --button-outline-white-text-default: #ffffff;
+  --button-outline-white-text-hover: rgba(255, 255, 255, 0.7);
+  --button-outline-white-text-active: #e4eaf4;
+  --button-outline-white-text-focus: #ffffff;
+  --button-outline-white-text-disabled: rgba(255, 255, 255, 0.3);
+}

@@ -1,0 +1,191 @@
+/**
+ * Button Component Styles — Token-Synced
+ * All values reference tokens.css custom properties
+ */
+
+.button {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  
+  /* Typography — references Layer 3 button tokens */
+  font-family: var(--button-font-family);
+  font-weight: var(--button-font-weight);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: capitalize;
+  
+  /* Border */
+  border-style: solid;
+  border-width: var(--button-border-width);
+  border-radius: var(--button-border-radius);
+  
+  /* Motion */
+  transition-property: color, background-color, border-color;
+  transition-duration: var(--button-transition-duration);
+  transition-timing-function: var(--button-transition-easing);
+  
+  /* Focus */
+  outline: none;
+  
+  /* Cursor */
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--button-focus-shadow);
+}
+
+/* ─── Size Variants ─────────────────────────────────────────────────────── */
+
+.button--sm {
+  width: var(--button-width-sm);
+  height: var(--button-height-sm);
+  padding-left: var(--button-padding-x-sm);
+  padding-right: var(--button-padding-x-sm);
+}
+
+.button--md {
+  width: var(--button-width-md);
+  height: var(--button-height-md);
+  padding-left: var(--button-padding-x-md);
+  padding-right: var(--button-padding-x-md);
+}
+
+.button--lg {
+  width: var(--button-width-lg);
+  height: var(--button-height-lg);
+  padding-left: var(--button-padding-x-md);
+  padding-right: var(--button-padding-x-md);
+}
+
+.button--full {
+  width: var(--button-width-full);
+  height: var(--button-height-md);
+  padding-left: var(--button-padding-x-md);
+  padding-right: var(--button-padding-x-md);
+}
+
+/* ─── Variant: Solid (Light Mode Primary) ──────────────────────────────── */
+
+.button--solid {
+  background-color: var(--button-solid-bg-default);
+  border-color: var(--button-solid-border-default);
+  color: var(--button-solid-text-default);
+}
+
+.button--solid:hover:not(:disabled) {
+  background-color: var(--button-solid-bg-hover);
+  border-color: var(--button-solid-border-hover);
+}
+
+.button--solid:active:not(:disabled) {
+  background-color: var(--button-solid-bg-active);
+  border-color: var(--button-solid-border-active);
+}
+
+.button--solid:focus-visible:not(:disabled) {
+  background-color: var(--button-solid-bg-focus);
+  border-color: var(--button-solid-border-focus);
+  color: var(--button-solid-text-focus);
+}
+
+.button--solid:disabled {
+  background-color: var(--button-solid-bg-disabled);
+  border-color: var(--button-solid-border-disabled);
+  color: var(--button-solid-text-disabled);
+}
+
+/* ─── Variant: Outline (Light Mode Secondary) ──────────────────────────── */
+
+.button--outline {
+  background-color: var(--button-outline-bg-default);
+  border-color: var(--button-outline-border-default);
+  color: var(--button-outline-text-default);
+}
+
+.button--outline:hover:not(:disabled) {
+  border-color: var(--button-outline-border-hover);
+  color: var(--button-outline-text-hover);
+}
+
+.button--outline:active:not(:disabled) {
+  border-color: var(--button-outline-border-active);
+  color: var(--button-outline-text-active);
+}
+
+.button--outline:focus-visible:not(:disabled) {
+  border-color: var(--button-outline-border-focus);
+  color: var(--button-outline-text-focus);
+}
+
+.button--outline:disabled {
+  border-color: var(--button-outline-border-disabled);
+  color: var(--button-outline-text-disabled);
+}
+
+/* ─── Variant: Inverted (Dark Mode Primary) ────────────────────────────── */
+
+.button--inverted {
+  background-color: var(--button-inverted-bg-default);
+  border-color: var(--button-inverted-border-default);
+  color: var(--button-inverted-text-default);
+}
+
+.button--inverted:hover:not(:disabled) {
+  background-color: var(--button-inverted-bg-hover);
+  border-color: var(--button-inverted-border-hover);
+}
+
+.button--inverted:active:not(:disabled) {
+  background-color: var(--button-inverted-bg-active);
+  border-color: var(--button-inverted-border-active);
+}
+
+.button--inverted:focus-visible:not(:disabled) {
+  background-color: var(--button-inverted-bg-focus);
+  border-color: var(--button-inverted-border-focus);
+}
+
+.button--inverted:disabled {
+  background-color: var(--button-inverted-bg-disabled);
+  border-color: var(--button-inverted-border-disabled);
+  color: var(--button-inverted-text-disabled);
+}
+
+/* ─── Variant: Outline White (Dark Mode Secondary) ─────────────────────── */
+
+.button--outline-white {
+  background-color: var(--button-outline-white-bg-default);
+  border-color: var(--button-outline-white-border-default);
+  color: var(--button-outline-white-text-default);
+}
+
+.button--outline-white:hover:not(:disabled) {
+  border-color: var(--button-outline-white-border-hover);
+  color: var(--button-outline-white-text-hover);
+}
+
+.button--outline-white:active:not(:disabled) {
+  border-color: var(--button-outline-white-border-active);
+  color: var(--button-outline-white-text-active);
+}
+
+.button--outline-white:focus-visible:not(:disabled) {
+  border-color: var(--button-outline-white-border-focus);
+  color: var(--button-outline-white-text-focus);
+}
+
+.button--outline-white:disabled {
+  border-color: var(--button-outline-white-border-disabled);
+  color: var(--button-outline-white-text-disabled);
+}

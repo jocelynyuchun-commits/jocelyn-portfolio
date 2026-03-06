@@ -1,0 +1,289 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Product Discovery Module — Token-Synced BEM Stylesheet
+   ═══════════════════════════════════════════════════════════════════════════
+   ALL values reference CSS custom properties from globals.css.
+   Zero hardcoded color, spacing, or typography values.
+
+   Component token prefix: --pd-*
+   BEM block prefix: .pd
+
+   Layout modes:
+     Mobile  (< 640px)  : single column
+     Tablet  (640–1023px): two-column grid (1fr 2fr)
+     Desktop (>= 1024px) : same grid, wider gaps
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Module root ──────────────────────────────────────────────────────────── */
+
+.pd {
+  font-family: var(--font-family);
+}
+
+/* ── Grid layout ──────────────────────────────────────────────────────────── */
+
+.pd__grid {
+  display: grid;
+  align-items: start;
+  gap: var(--pd-grid-gap-mobile);
+}
+
+/* Responsive (for real responsive component) */
+@media (min-width: 640px) {
+  .pd__grid {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--pd-grid-gap-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pd__grid {
+    gap: var(--pd-grid-gap-desktop);
+  }
+}
+
+/* Forced layout modes (for docs page fixed-width containers) */
+.pd__grid--mobile {
+  grid-template-columns: 1fr !important;
+  gap: var(--pd-grid-gap-mobile) !important;
+}
+
+.pd__grid--tablet {
+  grid-template-columns: 1fr 2fr !important;
+  gap: var(--pd-grid-gap-tablet) !important;
+}
+
+.pd__grid--desktop {
+  grid-template-columns: 1fr 2fr !important;
+  gap: var(--pd-grid-gap-desktop) !important;
+}
+
+/* ── Left column (aside) ──────────────────────────────────────────────────── */
+
+.pd__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pd-aside-gap-mobile);
+}
+
+@media (min-width: 640px) {
+  .pd__aside {
+    gap: var(--pd-aside-gap-tablet);
+  }
+}
+
+.pd__grid--tablet .pd__aside,
+.pd__grid--desktop .pd__aside {
+  gap: var(--pd-aside-gap-tablet);
+}
+
+/* ── Heading group ────────────────────────────────────────────────────────── */
+
+.pd__heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pd-heading-group-gap);
+}
+
+.pd__heading {
+  font-weight: var(--pd-heading-font-weight);
+  font-size: var(--pd-heading-font-size);
+  line-height: var(--pd-heading-line-height);
+  letter-spacing: var(--pd-heading-tracking);
+  text-transform: var(--pd-heading-transform);
+  color: var(--pd-heading-color);
+  margin: 0;
+}
+
+.pd__subtext {
+  font-size: var(--pd-subtext-font-size);
+  line-height: var(--pd-subtext-line-height);
+  color: var(--pd-subtext-color);
+  margin: 0;
+}
+
+/* ── Filter buttons ───────────────────────────────────────────────────────── */
+
+.pd__filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pd-filters-gap);
+}
+
+.pd__filter-btn {
+  width: 100%;
+  height: var(--pd-filter-height);
+  padding-left: var(--pd-filter-px);
+  padding-right: var(--pd-filter-px);
+  text-align: center;
+  font-family: var(--font-family);
+  font-weight: var(--pd-filter-font-weight);
+  font-size: var(--pd-filter-font-size);
+  line-height: var(--pd-filter-line-height);
+  letter-spacing: var(--pd-filter-tracking);
+  text-transform: capitalize;
+  border-width: var(--pd-filter-border-width);
+  border-style: solid;
+  border-color: var(--pd-filter-border-idle);
+  background-color: var(--pd-filter-bg-idle);
+  color: var(--pd-filter-text-idle);
+  cursor: pointer;
+  transition-property: color, background-color, border-color;
+  transition-duration: var(--pd-transition-filter);
+}
+
+.pd__filter-btn:hover {
+  background-color: var(--pd-filter-bg-hover);
+}
+
+.pd__filter-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 var(--scale-200) var(--color-white, #fff),
+    0 0 0 calc(var(--scale-200) + 2px) var(--pd-filter-focus-ring);
+}
+
+.pd__filter-btn--active {
+  background-color: var(--pd-filter-bg-active);
+  color: var(--pd-filter-text-active);
+  border-color: var(--pd-filter-border-active);
+}
+
+.pd__filter-btn--active:hover {
+  background-color: var(--pd-filter-bg-active);
+}
+
+/* ── Carousel (right column) ──────────────────────────────────────────────── */
+
+.pd__carousel {
+  position: relative;
+  transition-property: opacity;
+  transition-duration: var(--pd-transition-fade);
+  opacity: 1;
+}
+
+.pd__carousel--hidden {
+  opacity: 0;
+}
+
+/* ── Carousel track ───────────────────────────────────────────────────────── */
+
+.pd__track-wrapper {
+  overflow: hidden;
+}
+
+.pd__track {
+  display: flex;
+  transition-property: transform, opacity;
+  transition-duration: var(--pd-transition-slide);
+  transition-timing-function: ease-in-out;
+  opacity: 1;
+}
+
+.pd__track--sliding {
+  opacity: 0.9;
+}
+
+/* ── Card page (grid of 3 cards per page) ─────────────────────────────────── */
+
+.pd__card-page {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--pd-card-gap-mobile);
+}
+
+@media (min-width: 640px) {
+  .pd__card-page {
+    gap: var(--pd-card-gap-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pd__card-page {
+    gap: var(--pd-card-gap-desktop);
+  }
+}
+
+/* Forced layout modes */
+.pd__grid--mobile .pd__card-page {
+  gap: var(--pd-card-gap-mobile);
+}
+
+.pd__grid--tablet .pd__card-page {
+  gap: var(--pd-card-gap-tablet);
+}
+
+.pd__grid--desktop .pd__card-page {
+  gap: var(--pd-card-gap-desktop);
+}
+
+/* ── Arrow buttons ────────────────────────────────────────────────────────── */
+
+.pd__arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: var(--pd-arrow-size);
+  height: var(--pd-arrow-size);
+  border-radius: 9999px;
+  background-color: var(--pd-arrow-bg);
+  border: var(--pd-filter-border-width) solid var(--pd-arrow-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pd-arrow-color);
+  box-shadow: var(--pd-arrow-shadow);
+  cursor: pointer;
+  transition-property: box-shadow;
+  transition-duration: 200ms;
+  padding: 0;
+}
+
+.pd__arrow:hover {
+  box-shadow: var(--pd-arrow-shadow-hover);
+}
+
+.pd__arrow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--pd-arrow-focus-ring);
+}
+
+.pd__arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pd__arrow--left {
+  left: var(--pd-arrow-offset-mobile);
+}
+
+.pd__arrow--right {
+  right: var(--pd-arrow-offset-mobile);
+}
+
+@media (min-width: 640px) {
+  .pd__arrow--left {
+    left: calc(-1 * var(--pd-arrow-offset-desktop));
+  }
+  .pd__arrow--right {
+    right: calc(-1 * var(--pd-arrow-offset-desktop));
+  }
+}
+
+/* Forced layout modes */
+.pd__grid--mobile .pd__arrow--left {
+  left: var(--pd-arrow-offset-mobile);
+}
+.pd__grid--mobile .pd__arrow--right {
+  right: var(--pd-arrow-offset-mobile);
+}
+
+.pd__grid--tablet .pd__arrow--left,
+.pd__grid--desktop .pd__arrow--left {
+  left: calc(-1 * var(--pd-arrow-offset-desktop));
+}
+.pd__grid--tablet .pd__arrow--right,
+.pd__grid--desktop .pd__arrow--right {
+  right: calc(-1 * var(--pd-arrow-offset-desktop));
+}

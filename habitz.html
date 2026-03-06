@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habitz — Mission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400&family=Roboto:wght@500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* ── Outer wrapper ── */
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px;
+      width: 100%;
+    }
+
+    /* ── Introduction Card (two-column) ── */
+    .introduction-card {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      max-width: 1343px;
+      width: 100%;
+    }
+
+    /* ── Left: text guidance ── */
+    .guidance {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mission-heading {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      color: #000;
+      font-feature-settings: "case" 1;
+      width: 635px;
+    }
+
+    .body-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 64px;
+      width: 647px;
+    }
+
+    .subtitle {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      color: #49454f;
+    }
+
+    .description {
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      color: #49454f;
+      font-variation-settings: "opsz" 14;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* ── Links ── */
+    .link-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pink-link {
+      font-family: "Roboto", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      color: #ff5fac;
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+      letter-spacing: 0.5625px;
+      white-space: nowrap;
+      font-variation-settings: "wdth" 100;
+    }
+
+    .link-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    /* ── "Now with variables" sub-section ── */
+    .variables-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 24px 0;
+    }
+
+    .variables-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      color: #49454f;
+    }
+
+    /* ── Right: image ── */
+    .image-col {
+      flex: 1 0 0;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+    }
+
+    .image-inner {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 366px;
+      object-fit: cover;
+      border: 2px solid #000;
+      border-radius: 7px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="body">
+    <div class="introduction-card">
+
+      <!-- Left column: Guidance text -->
+      <div class="guidance">
+        <h1 class="mission-heading">mission</h1>
+
+        <div class="body-content">
+          <p class="subtitle">Provide the Figma community with a documented, researched, and usable design systems example.</p>
+
+          <div class="description">
+            <p>This file is part of an educational series from the Product Education team at Figma that covers all-things design systems, and is meant for those looking to get started or asking themselves if they need to get started.</p>
+            <p>This system demonstrates one way of constructing and managing a design system beyond just a UI kit.</p>
+            <p>This is not the only approach to design systems, but we hope it gives you confidence to tackle this problem for yourself and/or your organization.</p>
+          </div>
+
+          <div class="link-row">
+            <a class="pink-link" href="https://www.youtube.com/watch?v=Dtd40cHQQlk&list=PLXDU_eVOJTx6vqOWJSWH87Zb5-riiG63A&index=1" target="_blank" rel="noopener">check the course out!</a>
+            <img class="link-icon" src="https://www.figma.com/api/mcp/asset/5fb84b0a-c3da-41f0-9939-95012dee6ee6" alt="" aria-hidden="true" />
+          </div>
+
+          <div class="variables-section">
+            <p class="variables-title">Now with variables</p>
+            <div class="link-row">
+              <a class="pink-link" href="https://www.youtube.com/watch?v=JyCmacSyDY4" target="_blank" rel="noopener">learn about design tokens and variables</a>
+              <img class="link-icon" src="https://www.figma.com/api/mcp/asset/5fb84b0a-c3da-41f0-9939-95012dee6ee6" alt="" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: Hero image -->
+      <div class="image-col">
+        <div class="image-inner">
+          <img
+            class="hero-image"
+            src="https://www.figma.com/api/mcp/asset/5c082031-6616-4f97-9009-aeef14acb264"
+            alt="Introduction to design systems — Figma"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

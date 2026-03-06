@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProductCard Components · Token-Synced Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Import Tokens */
+    :root {
+      /* Layer 1: Primitives */
+      --color-blue-900: #142d51;
+      --color-blue-300: #90a5c4;
+      --color-neutral-900: #181818;
+      --color-neutral-800: #333333;
+      --color-neutral-700: #4a4a4a;
+      --color-neutral-600: #686868;
+      --color-neutral-500: #7c7c7c;
+      --color-neutral-400: #9b9b9b;
+      --color-neutral-300: #c5c5c5;
+      --color-neutral-200: #eaeaea;
+      --color-neutral-100: #fbfbfb;
+      --color-white: #ffffff;
+      --color-brand-maroon: #8e2231;
+      --spacing-050: 2px;
+      --spacing-100: 4px;
+      --spacing-200: 8px;
+      --spacing-300: 12px;
+      --spacing-400: 16px;
+      --spacing-500: 20px;
+      --spacing-600: 24px;
+      --spacing-800: 32px;
+      --font-family-primary: 'Proxima Nova', -apple-system, sans-serif;
+      --font-size-xs: 10px;
+      --font-size-sm: 14px;
+      --font-size-base: 16px;
+      --font-weight-normal: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --line-height-tight: 1.25;
+      --radius-full: 9999px;
+      --duration-default: 200ms;
+      --easing-default: ease-in-out;
+      
+      /* Layer 3: ProductCard Tokens */
+      --card-image-aspect-ratio: 321 / 381;
+      --card-cta-width: 240px;
+      --card-cta-height: 40px;
+      --card-cta-offset-bottom: 80px;
+      --card-wishlist-size: 32px;
+      --card-wishlist-inset: 12px;
+      --card-badge-height: 24px;
+      --card-badge-inset: 10px;
+      --card-badge-padding-x: 4px;
+      --card-swatch-size-mobile: 36px;
+      --card-swatch-size-desktop: 30px;
+      --card-swatch-gap-mobile: 16px;
+      --card-swatch-gap-desktop: 8px;
+      --card-swatch-row-gap: 6.67px;
+      --card-swatch-ring-width: 1.5px;
+      --card-swatch-ring-color: var(--color-blue-900);
+      --card-swatch-ring-inset-default: 8.33%;
+      --card-swatch-ring-inset-selected: 10%;
+      --card-badge-bg: var(--color-neutral-200);
+      --card-badge-text-default: var(--color-blue-900);
+      --card-badge-text-sale: var(--color-brand-maroon);
+      --card-overlay-bg: rgba(255, 255, 255, 0.6);
+      --card-placeholder-bg: var(--color-neutral-400);
+      --card-title-text: var(--color-neutral-700);
+      --card-price-text: var(--color-neutral-700);
+      --card-price-original-text: var(--color-neutral-500);
+      --card-price-sale-text: var(--color-brand-maroon);
+      --card-promo-text: var(--color-brand-maroon);
+      --card-color-name-text: var(--color-neutral-600);
+      --card-footnote-text: var(--color-neutral-600);
+      --card-cta-bg: var(--card-overlay-bg);
+      --card-cta-text: var(--color-blue-900);
+      --card-icon-fill: var(--color-blue-900);
+      --card-icon-stroke: var(--color-blue-900);
+      --card-icon-stroke-width: 1.5px;
+      --card-focus-ring: var(--color-blue-300);
+      --card-font-family: var(--font-family-primary);
+      --card-title-size: var(--font-size-base);
+      --card-title-weight: var(--font-weight-medium);
+      --card-title-line-height: var(--line-height-tight);
+      --card-title-tracking: 0.32px;
+      --card-price-size: var(--font-size-base);
+      --card-price-weight: var(--font-weight-normal);
+      --card-price-line-height: var(--line-height-tight);
+      --card-price-tracking: 0.32px;
+      --card-promo-size: var(--font-size-sm);
+      --card-promo-weight: var(--font-weight-normal);
+      --card-promo-line-height: 1.14;
+      --card-promo-tracking: 0.28px;
+      --card-badge-size: var(--font-size-sm);
+      --card-badge-weight: var(--font-weight-semibold);
+      --card-badge-line-height: 1.14;
+      --card-badge-tracking: 0.28px;
+      --card-cta-size: var(--font-size-sm);
+      --card-cta-weight: var(--font-weight-medium);
+      --card-cta-line-height: 1.14;
+      --card-cta-tracking: 0.28px;
+      --card-color-name-size: var(--font-size-sm);
+      --card-color-name-weight: var(--font-weight-medium);
+      --card-color-name-line-height: 1.14;
+      --card-color-name-tracking: 0.28px;
+      --card-footnote-size: var(--font-size-xs);
+      --card-footnote-weight: var(--font-weight-semibold);
+      --card-footnote-line-height: 1.2;
+      --card-footnote-tracking: 0.2px;
+      --card-cta-transition-duration: var(--duration-default);
+      --card-cta-transition-easing: var(--easing-default);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+    }
+    
+    .section {
+      max-width: 1400px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #142d51;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .meta {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 24px;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+      }
+    }
+    
+    .variant-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #142d51;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    
+    /* ProductCard Component Styles (Token-Synced) */
+    .product-card {
+      width: 100%;
+      font-family: var(--card-font-family);
+    }
+    
+    .product-card__image-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: var(--card-image-aspect-ratio);
+      overflow: hidden;
+      background-color: var(--card-placeholder-bg);
+    }
+    
+    .product-card__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .product-card__wishlist {
+      position: absolute;
+      top: var(--card-wishlist-inset);
+      right: var(--card-wishlist-inset);
+      z-index: 10;
+      width: var(--card-wishlist-size);
+      height: var(--card-wishlist-size);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .product-card__heart-icon {
+      width: var(--spacing-500);
+      height: var(--spacing-400);
+    }
+    
+    .product-card__heart-icon--filled {
+      fill: var(--card-icon-fill);
+      stroke: var(--card-icon-stroke);
+      stroke-width: var(--card-icon-stroke-width);
+    }
+    
+    .product-card__heart-icon--outline {
+      fill: none;
+      stroke: var(--card-icon-stroke);
+      stroke-width: var(--card-icon-stroke-width);
+    }
+    
+    .product-card__cta {
+      position: absolute;
+      left: 50%;
+      bottom: var(--card-cta-offset-bottom);
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--card-cta-width);
+      max-width: calc(100% - 24px);
+      height: var(--card-cta-height);
+      background: var(--card-cta-bg);
+      border: none;
+      cursor: pointer;
+      font-family: var(--card-font-family);
+      font-size: var(--card-cta-size);
+      font-weight: var(--card-cta-weight);
+      line-height: var(--card-cta-line-height);
+      letter-spacing: var(--card-cta-tracking);
+      text-transform: capitalize;
+      color: var(--card-cta-text);
+      text-align: center;
+      transition: opacity var(--card-cta-transition-duration) var(--card-cta-transition-easing);
+    }
+    
+    .product-card__cta--quick-shop {
+      opacity: 0;
+    }
+    
+    .product-card:hover .product-card__cta--quick-shop {
+      opacity: 1;
+    }
+    
+    .product-card__cta--notify-me {
+      opacity: 1;
+    }
+    
+    .product-card__badge {
+      position: absolute;
+      bottom: var(--card-badge-inset);
+      left: var(--card-badge-inset);
+      z-index: 10;
+      height: var(--card-badge-height);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--card-badge-padding-x);
+      background: var(--card-badge-bg);
+      font-family: var(--card-font-family);
+      font-size: var(--card-badge-size);
+      font-weight: var(--card-badge-weight);
+      line-height: var(--card-badge-line-height);
+      letter-spacing: var(--card-badge-tracking);
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+    
+    .product-card__badge--default {
+      color: var(--card-badge-text-default);
+    }
+    
+    .product-card__badge--sale {
+      color: var(--card-badge-text-sale);
+    }
+    
+    .product-card__info {
+      width: 100%;
+      padding-top: var(--spacing-200);
+    }
+    
+    .product-card__title {
+      font-family: var(--card-font-family);
+      font-size: var(--card-title-size);
+      font-weight: var(--card-title-weight);
+      line-height: var(--card-title-line-height);
+      letter-spacing: var(--card-title-tracking);
+      text-transform: capitalize;
+      color: var(--card-title-text);
+      margin: 0;
+    }
+    
+    .product-card__price-section {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-card__price {
+      font-family: var(--card-font-family);
+      font-size: var(--card-price-size);
+      font-weight: var(--card-price-weight);
+      line-height: var(--card-price-line-height);
+      letter-spacing: var(--card-price-tracking);
+      text-transform: capitalize;
+      color: var(--card-price-text);
+      margin: 0;
+    }
+    
+    .product-card__price-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-200);
+    }
+    
+    .product-card__price--original {
+      color: var(--card-price-original-text);
+    }
+    
+    .product-card__price--sale {
+      color: var(--card-price-sale-text);
+    }
+    
+    .product-card__promo {
+      font-family: var(--card-font-family);
+      font-size: var(--card-promo-size);
+      font-weight: var(--card-promo-weight);
+      line-height: var(--card-promo-line-height);
+      letter-spacing: var(--card-promo-tracking);
+      text-transform: capitalize;
+      color: var(--card-promo-text);
+      margin: 0;
+    }
+    
+    .product-card__swatches {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-200);
+      padding-top: var(--spacing-200);
+    }
+    
+    .product-card__color-name {
+      font-family: var(--card-font-family);
+      font-size: var(--card-color-name-size);
+      font-weight: var(--card-color-name-weight);
+      line-height: var(--card-color-name-line-height);
+      letter-spacing: var(--card-color-name-tracking);
+      text-transform: capitalize;
+      color: var(--card-color-name-text);
+      margin: 0;
+    }
+    
+    .product-card__swatch-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--card-swatch-gap-desktop);
+      row-gap: var(--card-swatch-row-gap);
+    }
+    
+    .product-card__swatch {
+      position: relative;
+      flex-shrink: 0;
+      width: var(--card-swatch-size-desktop);
+      height: var(--card-swatch-size-desktop);
+      border-radius: var(--radius-full);
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    
+    .product-card__swatch-color {
+      position: absolute;
+      inset: var(--card-swatch-ring-inset-default);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    
+    .product-card__swatch--selected .product-card__swatch-color {
+      inset: var(--card-swatch-ring-inset-selected);
+    }
+    
+    .product-card__swatch-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-full);
+      border: var(--card-swatch-ring-width) solid var(--card-swatch-ring-color);
+      pointer-events: none;
+    }
+    
+    .product-card__footnote {
+      font-family: var(--card-font-family);
+      font-size: var(--card-footnote-size);
+      font-weight: var(--card-footnote-weight);
+      line-height: var(--card-footnote-line-height);
+      letter-spacing: var(--card-footnote-tracking);
+      text-transform: capitalize;
+      color: var(--card-footnote-text);
+      margin: 0;
+      padding-top: var(--card-badge-padding-x);
+    }
+  </style>
+</head>
+<body>
+
+<h1>ProductCard Components</h1>
+<p class="subtitle">Token-Synced · AI-Governed Design System 2026</p>
+
+<!-- All 4 Variants -->
+<section class="section">
+  <h2>All Variants</h2>
+  <p class="meta">Figma: ProductCard Component → 4 Variants (Default, Sale, Final Sale, Notify Me)</p>
+  
+  <div class="card-grid">
+    <!-- Default Variant -->
+    <div>
+      <p class="variant-label">Default</p>
+      <article class="product-card">
+        <div class="product-card__image-container">
+          <button class="product-card__wishlist">
+            <svg class="product-card__heart-icon product-card__heart-icon--outline" viewBox="0 0 20 18">
+              <path d="M17.36 1.64a5 5 0 0 0-7.07 0L10 1.93l-.29-.29a5 5 0 0 0-7.07 7.07l.29.29L10 16.07l7.07-7.07.29-.29a5 5 0 0 0 0-7.07z" />
+            </svg>
+          </button>
+          <button class="product-card__cta product-card__cta--quick-shop">Quick Shop</button>
+          <div class="product-card__badge product-card__badge--default">
+            <span>New</span>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__title">Wrinkle-Free Short Sleeve Shirt</p>
+          <p class="product-card__price">$110</p>
+          <div class="product-card__swatches">
+            <p class="product-card__color-name">Navy</p>
+            <div class="product-card__swatch-strip">
+              <button class="product-card__swatch product-card__swatch--selected">
+                <span class="product-card__swatch-color" style="background-color: #142d51;"></span>
+                <span class="product-card__swatch-ring"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #ffffff; border: 1px solid #eaeaea;"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #4a4a4a;"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <!-- Sale Variant -->
+    <div>
+      <p class="variant-label">Sale</p>
+      <article class="product-card">
+        <div class="product-card__image-container">
+          <button class="product-card__wishlist">
+            <svg class="product-card__heart-icon product-card__heart-icon--filled" viewBox="0 0 20 18">
+              <path d="M17.36 1.64a5 5 0 0 0-7.07 0L10 1.93l-.29-.29a5 5 0 0 0-7.07 7.07l.29.29L10 16.07l7.07-7.07.29-.29a5 5 0 0 0 0-7.07z" />
+            </svg>
+          </button>
+          <button class="product-card__cta product-card__cta--quick-shop">Quick Shop</button>
+          <div class="product-card__badge product-card__badge--sale">
+            <span>Sale</span>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__title">Wrinkle-Free Short Sleeve Shirt</p>
+          <div class="product-card__price-section">
+            <div class="product-card__price-row">
+              <p class="product-card__price product-card__price--original">$110*</p>
+              <p class="product-card__price product-card__price--sale">$88</p>
+            </div>
+            <p class="product-card__promo">Extra 30% Off With Code GIFT At Checkout</p>
+          </div>
+          <div class="product-card__swatches">
+            <p class="product-card__color-name">Navy</p>
+            <div class="product-card__swatch-strip">
+              <button class="product-card__swatch product-card__swatch--selected">
+                <span class="product-card__swatch-color" style="background-color: #142d51;"></span>
+                <span class="product-card__swatch-ring"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #ffffff; border: 1px solid #eaeaea;"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #4a4a4a;"></span>
+              </button>
+            </div>
+          </div>
+          <p class="product-card__footnote">*Price On 11/20/23</p>
+        </div>
+      </article>
+    </div>
+    
+    <!-- Final Sale Variant -->
+    <div>
+      <p class="variant-label">Final Sale</p>
+      <article class="product-card">
+        <div class="product-card__image-container">
+          <button class="product-card__wishlist">
+            <svg class="product-card__heart-icon product-card__heart-icon--outline" viewBox="0 0 20 18">
+              <path d="M17.36 1.64a5 5 0 0 0-7.07 0L10 1.93l-.29-.29a5 5 0 0 0-7.07 7.07l.29.29L10 16.07l7.07-7.07.29-.29a5 5 0 0 0 0-7.07z" />
+            </svg>
+          </button>
+          <button class="product-card__cta product-card__cta--quick-shop">Quick Shop</button>
+          <div class="product-card__badge product-card__badge--sale">
+            <span>Final Sale</span>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__title">Wrinkle-Free Short Sleeve Shirt</p>
+          <p class="product-card__price">$88</p>
+          <div class="product-card__swatches">
+            <p class="product-card__color-name">Navy</p>
+            <div class="product-card__swatch-strip">
+              <button class="product-card__swatch product-card__swatch--selected">
+                <span class="product-card__swatch-color" style="background-color: #142d51;"></span>
+                <span class="product-card__swatch-ring"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #ffffff; border: 1px solid #eaeaea;"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #4a4a4a;"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <!-- Notify Me Variant -->
+    <div>
+      <p class="variant-label">Notify Me (Coming Soon)</p>
+      <article class="product-card">
+        <div class="product-card__image-container">
+          <button class="product-card__wishlist">
+            <svg class="product-card__heart-icon product-card__heart-icon--outline" viewBox="0 0 20 18">
+              <path d="M17.36 1.64a5 5 0 0 0-7.07 0L10 1.93l-.29-.29a5 5 0 0 0-7.07 7.07l.29.29L10 16.07l7.07-7.07.29-.29a5 5 0 0 0 0-7.07z" />
+            </svg>
+          </button>
+          <button class="product-card__cta product-card__cta--notify-me">Coming Soon: Notify Me</button>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__title">Wrinkle-Free Short Sleeve Shirt</p>
+          <p class="product-card__price">$110</p>
+          <div class="product-card__swatches">
+            <p class="product-card__color-name">Navy</p>
+            <div class="product-card__swatch-strip">
+              <button class="product-card__swatch product-card__swatch--selected">
+                <span class="product-card__swatch-color" style="background-color: #142d51;"></span>
+                <span class="product-card__swatch-ring"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #ffffff; border: 1px solid #eaeaea;"></span>
+              </button>
+              <button class="product-card__swatch">
+                <span class="product-card__swatch-color" style="background-color: #4a4a4a;"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Token Architecture -->
+<section class="section">
+  <h2>Token Architecture</h2>
+  <p class="meta">62 Component Tokens · 3-Layer System</p>
+  
+  <div style="background: #f8f9fa; padding: 24px; border-radius: 8px; font-family: monospace; font-size: 12px; line-height: 1.6;">
+    <div style="color: #142d51; font-weight: 600; margin-bottom: 12px;">Layer 1: Primitives (Brand 1)</div>
+    <div style="color: #6b7280;">
+      --color-blue-900: #142d51<br>
+      --color-brand-maroon: #8e2231<br>
+      --color-neutral-200: #eaeaea<br>
+      --spacing-200: 8px<br>
+      --font-size-base: 16px
+    </div>
+    
+    <div style="color: #142d51; font-weight: 600; margin: 16px 0 12px;">Layer 2: Semantic</div>
+    <div style="color: #6b7280;">
+      --card-badge-bg: var(--color-neutral-200)<br>
+      --card-title-text: var(--color-neutral-700)<br>
+      --card-price-sale-text: var(--color-brand-maroon)
+    </div>
+    
+    <div style="color: #142d51; font-weight: 600; margin: 16px 0 12px;">Layer 3: Component (ProductCard)</div>
+    <div style="color: #6b7280;">
+      --card-cta-width: 240px<br>
+      --card-badge-height: 24px<br>
+      --card-swatch-size-desktop: 30px<br>
+      --card-image-aspect-ratio: 321 / 381
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div style="text-align: center; color: #6b7280; font-size: 13px;">
+    <p style="margin-bottom: 8px;"><strong>✅ Zero Hardcoded Values</strong></p>
+    <p>All styling controlled via CSS custom properties · Single source of truth in Figma</p>
+  </div>
+</section>
+
+</body>
+</html>

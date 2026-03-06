@@ -1,0 +1,392 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNTUCKit DLS 2026 — Design Token CSS Custom Properties
+   Source: Primitives.json + Semantic.json (Brand 1 mode)
+   Last synced: 2026-03-05
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Proxima Nova — commercial typeface; falls back to system fonts */
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('Proxima Nova'), local('ProximaNova'), local('Proxima Nova Regular');
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('Proxima Nova Medium'), local('ProximaNova-Medium');
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: local('Proxima Nova Semibold'), local('ProximaNova-Semibold'), local('Proxima Nova Bold'), local('ProximaNova-Bold');
+}
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════
+     LAYER 1 — FOUNDATION PRIMITIVES (from Primitives.json, Brand 1)
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* ── Blue-Brand 1 ───────────────────────────────────────────────────── */
+  --color-blue-100: #E4EAF4; /* Color/Blue-Brand 1/Blue-100 */
+  --color-blue-200: #BDC9DD; /* Color/Blue-Brand 1/Blue-200 */
+  --color-blue-300: #90A5C4; /* Color/Blue-Brand 1/Blue-300 */
+  --color-blue-400: #5A84BC; /* Color/Blue-Brand 1/Blue-400 */
+  --color-blue-500: #2F71D4; /* Color/Blue-Brand 1/Blue-500  — Active/Pressed  */
+  --color-blue-600: #2A60B2; /* Color/Blue-Brand 1/Blue-600 */
+  --color-blue-700: #255090; /* Color/Blue-Brand 1/Blue-700  — Hover           */
+  --color-blue-800: #1C3E70; /* Color/Blue-Brand 1/Blue-800 */
+  --color-blue-900: #142D51; /* Color/Blue-Brand 1/Blue-900  — Default/Navy    */
+
+  /* ── Brown-Brand 2 ──────────────────────────────────────────────────── */
+  --color-brown-100: #C6B9B4; /* Color/Brown-Brand 2/Brown-100 */
+  --color-brown-200: #B7A69F; /* Color/Brown-Brand 2/Brown-200 */
+  --color-brown-300: #B7A69F; /* Color/Brown-Brand 2/Brown-300 */
+  --color-brown-400: #A7928A; /* Color/Brown-Brand 2/Brown-400 */
+  --color-brown-500: #987E75; /* Color/Brown-Brand 2/Brown-500 */
+  --color-brown-600: #896B60; /* Color/Brown-Brand 2/Brown-600 */
+  --color-brown-700: #79574A; /* Color/Brown-Brand 2/Brown-700 */
+  --color-brown-800: #623220; /* Color/Brown-Brand 2/Brown-800 */
+  --color-brown-900: #5A2F1F; /* Color/Brown-Brand 2/Brown-900 */
+
+  /* ── Green-Brand 3 ──────────────────────────────────────────────────── */
+  --color-green-brand-100: #C8D7D1; /* Color/Green-Brand 3/Green-100 */
+  --color-green-brand-200: #B1C8BE; /* Color/Green-Brand 3/Green-200 */
+  --color-green-brand-300: #9BBAAC; /* Color/Green-Brand 3/Green-300 */
+  --color-green-brand-400: #84AA99; /* Color/Green-Brand 3/Green-400 */
+  --color-green-brand-500: #6E9C88; /* Color/Green-Brand 3/Green-500 */
+  --color-green-brand-600: #588E76; /* Color/Green-Brand 3/Green-600 */
+  --color-green-brand-700: #417F63; /* Color/Green-Brand 3/Green-700 */
+  --color-green-brand-800: #2C7051; /* Color/Green-Brand 3/Green-800 */
+  --color-green-brand-900: #15613F; /* Color/Green-Brand 3/Green-900 */
+
+  /* ── Neutral / Grey ─────────────────────────────────────────────────── */
+  --color-neutral-100: #FBFBFB; /* Color/Neutral/Grey-100 */
+  --color-neutral-200: #EAEAEA; /* Color/Neutral/Grey-200 */
+  --color-neutral-300: #C5C5C5; /* Color/Neutral/Grey-300 — disabled bg  */
+  --color-neutral-400: #9B9B9B; /* Color/Neutral/Grey-400 — disabled text */
+  --color-neutral-500: #7C7C7C; /* Color/Neutral/Grey-500 */
+  --color-neutral-600: #686868; /* Color/Neutral/Grey-600 */
+  --color-neutral-700: #4A4A4A; /* Color/Neutral/Grey-700 */
+  --color-neutral-800: #333333; /* Color/Neutral/Grey-800 */
+  --color-neutral-900: #181818; /* Color/Neutral/Grey-900 */
+  --color-white:       #FFFFFF; /* Color/Neutral/White    */
+
+  /* ── Brand ──────────────────────────────────────────────────────────── */
+  --color-brand-primary:   #2C4E7E; /* Color/Brand/primary   */
+  --color-brand-secondary: #2F71D4; /* Color/Brand/secondary */
+  --color-brand-logo:      #8E2231; /* Color/Brand/Logo      */
+  --color-navy:            #142D51; /* = Blue-900            */
+  --color-maroon:          #8E2231; /* = Brand/Logo          */
+
+  /* ── Feedback ───────────────────────────────────────────────────────── */
+  --color-feedback-success: #24882D; /* Feedback/success */
+  --color-feedback-error:   #C02321; /* Feedback/error   */
+  --color-feedback-pressed: #2F71D4; /* Feedback/Pressed */
+
+  /* ── Green (Feedback) ───────────────────────────────────────────────── */
+  --color-green-900: #24882D; /* Color/Green/Green-900 */
+  --color-green-800: #2A9E35; /* Color/Green/Green-800 */
+  --color-green-700: #34B340; /* Color/Green/Green-700 */
+  --color-green-600: #52C45D; /* Color/Green/Green-600 */
+  --color-green-500: #72D07C; /* Color/Green/Green-500 */
+
+  /* ── Red ─────────────────────────────────────────────────────────────── */
+  --color-red-900: #C02321; /* Color/Red/Red-900 */
+  --color-red-800: #CC1A18; /* Color/Red/Red-800 */
+  --color-red-700: #DB100E; /* Color/Red/Red-700 */
+  --color-red-600: #E83D3B; /* Color/Red/Red-600 */
+  --color-red-500: #EF6664; /* Color/Red/Red-500 */
+
+  /* ── Scale (Spacing) ────────────────────────────────────────────────── */
+  --scale-0:    0px;   /* Scale/0    */
+  --scale-100:  4px;   /* Scale/100  */
+  --scale-200:  8px;   /* Scale/200  */
+  --scale-300:  12px;  /* Scale/300  */
+  --scale-400:  16px;  /* Scale/400  */
+  --scale-500:  20px;  /* Scale/500  */
+  --scale-600:  24px;  /* Scale/600  */
+  --scale-700:  28px;  /* Scale/700  */
+  --scale-800:  32px;  /* Scale/800  */
+  --scale-900:  40px;  /* Scale/900  */
+  --scale-1000: 48px;  /* Scale/1000 */
+  --scale-1100: 64px;  /* Scale/1100 */
+  --scale-1200: 80px;  /* Scale/1200 */
+  --scale-1300: 96px;  /* Scale/1300 */
+  --scale-1400: 120px; /* Scale/1400 */
+
+  /* ── Border Radius ──────────────────────────────────────────────────── */
+  --radius-default: 4px; /* Border Radius/Default */
+
+  /* ── Typography ─────────────────────────────────────────────────────── */
+  --font-family: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-weight-regular:  400; /* Typography/Font Weight/Regular  */
+  --font-weight-medium:   500; /* Typography/Font Weight/Medium   */
+  --font-weight-semibold: 600; /* Typography/Font Weight/Semibold */
+
+  /* Font sizes — Header */
+  --font-size-h1: 24px; /* Typography/Font Size/Header/H1 */
+  --font-size-h2: 20px; /* Typography/Font Size/Header/H2 */
+  --font-size-h3: 18px; /* Typography/Font Size/Header/H3 */
+  --font-size-h4: 16px; /* Typography/Font Size/Header/H4 */
+  --font-size-h5: 14px; /* Typography/Font Size/Header/H5 */
+  /* Font sizes — Body */
+  --font-size-body-xl: 20px; /* Typography/Font Size/BodyText/XL */
+  --font-size-body-l:  18px; /* Typography/Font Size/BodyText/L  */
+  --font-size-body-m:  16px; /* Typography/Font Size/BodyText/M  */
+  --font-size-body-s:  14px; /* Typography/Font Size/BodyText/S  */
+  --font-size-body-xs: 12px; /* Typography/Font Size/BodyText/XS */
+
+  /* Line heights — Header */
+  --line-height-h1: 30px; /* Typography/Line-Height/Header/H1 */
+  --line-height-h2: 26px; /* Typography/Line-Height/Header/H2 */
+  --line-height-h3: 22px; /* Typography/Line-Height/Header/H3 */
+  --line-height-h4: 20px; /* Typography/Line-Height/Header/H4 */
+  --line-height-h5: 18px; /* Typography/Line-Height/Header/H5 */
+  /* Line heights — Body */
+  --line-height-body-xl: 28px; /* Typography/Line-Height/Body/XL */
+  --line-height-body-l:  24px; /* Typography/Line-Height/Body/L  */
+  --line-height-body-m:  22px; /* Typography/Line-Height/Body/M  */
+  --line-height-body-s:  20px; /* Typography/Line-Height/Body/S  */
+  --line-height-body-xs: 16px; /* Typography/Line-Height/Body/XS */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     LAYER 2 — SEMANTIC ALIASES (from Semantic.json)
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* ── Semantic: Headings ─────────────────────────────────────────────── */
+  --color-heading-default: var(--color-neutral-900, #181818);
+  --color-heading-inverse: var(--color-white, #FFFFFF);
+
+  /* ── Semantic: Body Text ────────────────────────────────────────────── */
+  --color-body-default:   var(--color-neutral-900, #181818);
+  --color-body-secondary: var(--color-neutral-700, #4A4A4A);
+  --color-body-muted:     var(--color-neutral-500, #7C7C7C);
+  --color-body-disabled:  var(--color-neutral-300, #C5C5C5);
+  --color-body-inverse:   var(--color-white, #FFFFFF);
+
+  /* ── Semantic: Surfaces ─────────────────────────────────────────────── */
+  --color-surface-page:    var(--color-neutral-100, #FBFBFB);
+  --color-surface-card:    var(--color-white, #FFFFFF);
+  --color-surface-overlay: var(--color-neutral-900, #181818);
+  --color-surface-inverse: var(--color-neutral-900, #181818);
+
+  /* ── Semantic: Borders ──────────────────────────────────────────────── */
+  --color-border-default:  var(--color-neutral-200, #EAEAEA);
+  --color-border-strong:   var(--color-neutral-400, #9B9B9B);
+  --color-border-focus:    var(--color-brand-primary, #2C4E7E);
+  --color-border-disabled: var(--color-neutral-100, #FBFBFB);
+
+  /* ── Semantic: Text Links ───────────────────────────────────────────── */
+  --color-link-default:  var(--color-blue-900, #142D51);
+  --color-link-hover:    var(--color-blue-700, #255090);
+  --color-link-focus:    var(--color-blue-600, #2A60B2);
+  --color-link-disabled: var(--color-neutral-200, #EAEAEA);
+
+  /* ── Semantic: Sale ─────────────────────────────────────────────────── */
+  --color-sale-default: var(--color-red-700, #DB100E);
+  --color-sale-text:    var(--color-red-700, #DB100E);
+  --color-sale-bg:      var(--color-red-500, #EF6664);
+  --color-sale-border:  var(--color-red-600, #E83D3B);
+
+  /* ── Semantic: Error ────────────────────────────────────────────────── */
+  --color-error-default: var(--color-red-900, #C02321);
+  --color-error-text:    var(--color-red-900, #C02321);
+  --color-error-bg:      var(--color-red-500, #EF6664);
+  --color-error-border:  var(--color-red-700, #DB100E);
+
+  /* ── Semantic: Success ──────────────────────────────────────────────── */
+  --color-success-default: var(--color-green-900, #24882D);
+  --color-success-text:    var(--color-green-900, #24882D);
+  --color-success-bg:      var(--color-green-500, #72D07C);
+  --color-success-border:  var(--color-green-800, #2A9E35);
+
+  /* ── Semantic: Buttons/Solid ────────────────────────────────────────── */
+  --btn-solid-default:    var(--color-blue-900, #142D51);
+  --btn-solid-hover:      var(--color-blue-700, #255090);
+  --btn-solid-active:     var(--color-blue-500, #2F71D4);
+  --btn-solid-focus-fill: var(--color-blue-100, #E4EAF4);
+  --btn-solid-focus-ring: var(--color-blue-300, #90A5C4);
+  --btn-solid-disabled:   var(--color-neutral-300, #C5C5C5);
+  --btn-solid-text:       var(--color-white, #FFFFFF);
+  --btn-solid-text-dis:   var(--color-neutral-400, #9B9B9B);
+
+  /* ── Semantic: Buttons/Outline ──────────────────────────────────────── */
+  --btn-outline-default:      var(--color-blue-900, #142D51);
+  --btn-outline-hover:        var(--color-blue-700, #255090);
+  --btn-outline-active:       var(--color-blue-500, #2F71D4);
+  --btn-outline-focus-fill:   var(--color-blue-100, #E4EAF4);
+  --btn-outline-focus-ring:   var(--color-blue-300, #90A5C4);
+  --btn-outline-disabled:     var(--color-neutral-300, #C5C5C5);
+  --btn-outline-text:         var(--color-blue-900, #142D51);
+  --btn-outline-text-hover:   var(--color-blue-700, #255090);
+  --btn-outline-text-active:  var(--color-blue-500, #2F71D4);
+  --btn-outline-text-dis:     var(--color-neutral-300, #C5C5C5);
+
+  /* ── Semantic: Button Sizing ────────────────────────────────────────── */
+  --btn-width-sm:  144px; /* Buttons/Width/Small  */
+  --btn-width-md:  172px; /* Buttons/Width/Medium */
+  --btn-width-lg:  366px; /* Buttons/Width/Large  */
+  --btn-height-sm:  40px; /* Buttons/Height/Small  */
+  --btn-height-md:  48px; /* Buttons/Height/Medium */
+  --btn-height-lg:  48px; /* Buttons/Height/Large  */
+
+  /* ── Semantic: Button Typography ────────────────────────────────────── */
+  --btn-font-size:      16px;   /* Buttons/Font Size/Default   */
+  --btn-font-weight:    600;    /* Buttons/Font Weight/Default */
+  --btn-font-family:    var(--font-family);
+  --btn-letter-spacing: 0.02em; /* ~0.32px at 16px             */
+  --btn-line-height:    20px;
+  --btn-border-radius:  4px;    /* Buttons/Radius/Default      */
+  --btn-border-width:   1px;    /* Buttons/Border Width/Default */
+
+  /* ── Semantic: Label Typography ─────────────────────────────────────── */
+  --label-m-font-size:      var(--font-size-body-m, 16px);
+  --label-m-font-weight:    var(--font-weight-semibold, 600);
+  --label-m-line-height:    var(--line-height-body-xs, 16px);
+  --label-m-letter-spacing: 0;
+  --label-m-text-transform: uppercase;
+
+  --label-xs-font-size:      var(--font-size-body-xs, 12px);
+  --label-xs-font-weight:    var(--font-weight-semibold, 600);
+  --label-xs-line-height:    var(--line-height-body-xs, 16px);
+  --label-xs-letter-spacing: 0;
+  --label-xs-text-transform: uppercase;
+
+  /* ── Semantic: Spacing ──────────────────────────────────────────────── */
+  --spacing-section-py-xl-desktop: var(--scale-1400, 120px);
+  --spacing-section-py-xl-tablet:  var(--scale-1200, 80px);
+  --spacing-section-py-xl-mobile:  var(--scale-1100, 64px);
+  --spacing-section-px-desktop:    var(--scale-900, 40px);
+  --spacing-section-px-tablet:     var(--scale-900, 40px);
+  --spacing-section-px-mobile:     var(--scale-600, 24px);
+
+  --spacing-product-grid-gap-desktop:  var(--scale-600, 24px);
+  --spacing-product-grid-gap-tablet:   var(--scale-400, 16px);
+  --spacing-product-grid-gap-mobile:   var(--scale-400, 16px);
+  --spacing-product-grid-item-desktop: var(--scale-300, 12px);
+  --spacing-product-grid-item-tablet:  var(--scale-200, 8px);
+  --spacing-product-grid-item-mobile:  var(--scale-200, 8px);
+
+  --spacing-stack-xl-desktop: var(--scale-800, 32px);
+  --spacing-stack-xl-tablet:  var(--scale-600, 24px);
+  --spacing-stack-l-desktop:  var(--scale-600, 24px);
+  --spacing-stack-l-tablet:   var(--scale-400, 16px);
+  --spacing-stack-m-desktop:  var(--scale-400, 16px);
+  --spacing-stack-m-tablet:   var(--scale-300, 12px);
+  --spacing-stack-s-desktop:  var(--scale-300, 12px);
+  --spacing-stack-s-tablet:   var(--scale-200, 8px);
+  --spacing-stack-xs-desktop: var(--scale-200, 8px);
+  --spacing-stack-xs-tablet:  var(--scale-100, 4px);
+
+  /* ── Grid ───────────────────────────────────────────────────────────── */
+  --grid-breakpoint-mobile-min:  375px;
+  --grid-breakpoint-mobile-max:  575px;
+  --grid-breakpoint-tablet-min:  576px;
+  --grid-breakpoint-tablet-max:  1023px;
+  --grid-breakpoint-sm-desktop:  1024px;
+  --grid-breakpoint-desktop:     1441px;
+  --grid-margin-desktop:  40px;
+  --grid-margin-tablet:   40px;
+  --grid-margin-mobile:   24px;
+  --grid-gutter:          24px;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     LAYER 3 — COMPONENT TOKENS (ProductDiscovery Module)
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Heading */
+  --pd-heading-color:       var(--color-blue-900, #142D51);
+  --pd-heading-font-size:   var(--font-size-h2, 20px);
+  --pd-heading-line-height: var(--line-height-h2, 26px);
+  --pd-heading-font-weight: var(--font-weight-semibold, 600);
+  --pd-heading-tracking:    0.04em;
+  --pd-heading-transform:   uppercase;
+
+  /* Subtext */
+  --pd-subtext-color:       var(--color-body-secondary, #4A4A4A);
+  --pd-subtext-font-size:   var(--font-size-body-s, 14px);
+  --pd-subtext-line-height: var(--line-height-body-s, 20px);
+
+  /* Filter buttons */
+  --pd-filter-height:       var(--btn-height-md, 48px);
+  --pd-filter-px:           var(--scale-500, 20px);
+  --pd-filter-font-size:    var(--btn-font-size, 16px);
+  --pd-filter-font-weight:  var(--font-weight-medium, 500);
+  --pd-filter-line-height:  var(--btn-line-height, 20px);
+  --pd-filter-tracking:     var(--btn-letter-spacing, 0.02em);
+  --pd-filter-radius:       0px;
+  --pd-filter-border-width: var(--btn-border-width, 1px);
+  --pd-filter-bg-idle:      transparent;
+  --pd-filter-text-idle:    var(--btn-outline-text, #142D51);
+  --pd-filter-border-idle:  var(--btn-outline-default, #142D51);
+  --pd-filter-bg-hover:     var(--color-blue-100, #E4EAF4);
+  --pd-filter-bg-active:    var(--btn-solid-default, #142D51);
+  --pd-filter-text-active:  var(--btn-solid-text, #FFFFFF);
+  --pd-filter-border-active:var(--btn-solid-default, #142D51);
+  --pd-filter-focus-ring:   var(--btn-outline-focus-ring, #90A5C4);
+
+  /* Layout grid */
+  --pd-grid-gap-mobile:   var(--scale-800, 32px);
+  --pd-grid-gap-tablet:   var(--scale-600, 24px);
+  --pd-grid-gap-desktop:  var(--scale-900, 40px);
+  --pd-aside-gap-mobile:  var(--scale-500, 20px);
+  --pd-aside-gap-tablet:  var(--scale-600, 24px);
+  --pd-heading-group-gap: var(--scale-200, 8px);
+  --pd-filters-gap:       var(--scale-300, 12px);
+
+  /* Card grid */
+  --pd-card-gap-mobile:  var(--scale-200, 8px);
+  --pd-card-gap-tablet:  var(--scale-400, 16px);
+  --pd-card-gap-desktop: var(--scale-500, 20px);
+
+  /* Arrow buttons */
+  --pd-arrow-size:        var(--scale-900, 40px);
+  --pd-arrow-bg:          var(--color-white, #FFFFFF);
+  --pd-arrow-border:      var(--color-neutral-300, #C5C5C5);
+  --pd-arrow-color:       var(--color-neutral-600, #686868);
+  --pd-arrow-focus-ring:  var(--color-blue-300, #90A5C4);
+  --pd-arrow-shadow:      0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --pd-arrow-shadow-hover:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --pd-arrow-offset-mobile: var(--scale-200, 8px);
+  --pd-arrow-offset-desktop: var(--scale-500, 20px);
+
+  /* Transitions */
+  --pd-transition-fade:   250ms;
+  --pd-transition-slide:  300ms;
+  --pd-transition-filter: 150ms;
+
+  /* Accent colors (thin bar on placeholder images) */
+  --pd-accent-new-arrivals:  var(--color-blue-900, #142D51);
+  --pd-accent-wrinkle-free:  #2C1810;
+  --pd-accent-performance:   var(--color-maroon, #8E2231);
+
+  /* Placeholder */
+  --pd-placeholder-bg: var(--color-neutral-300, #C5C5C5);
+}
+
+/* ── Utility: hide scrollbar (keeps scroll behavior, removes track) ───── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ── Base reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,18 @@
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+
+# Vercel
+.vercel/
+
+# OS
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env*.local
+.vercel

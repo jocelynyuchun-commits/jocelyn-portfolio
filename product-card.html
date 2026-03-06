@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNTUCKit Product Card — DLS 2026</title>
+
+  <style>
+    /* ─────────────────────────────────────────────────
+       DESIGN TOKENS — UNTUCKit DLS 2026
+       Source: Figma node 4167:2577 + variable defs
+       ───────────────────────────────────────────────── */
+    :root {
+      /* Brand */
+      --color-brand-blue:       #142D51;   /* Color/Brand Color/Untuckit-Blue  */
+      --color-brand-maroon:     #8E2231;   /* Color/Brand Color/Untuckit-Maroon */
+
+      /* Neutral */
+      --color-grey-900:  #181818;
+      --color-grey-800:  #333333;
+      --color-grey-700:  #4A4A4A;   /* Color/Neutral/Grey-700 — body text  */
+      --color-grey-600:  #686868;   /* Color/Neutral/Grey-600               */
+      --color-grey-400:  #9B9B9B;   /* Color/Neutral/Grey-400 — image bg   */
+      --color-grey-300:  #C5C5C5;
+      --color-grey-200:  #EAEAEA;
+      --color-grey-100:  #FBFBFB;
+      --color-white:     #FFFFFF;
+
+      /* Badge */
+      --color-badge-bg:  #ECECEC;   /* from Badge/Image Tag node            */
+
+      /* ── Typography tokens (2026_TypeStyle) ─────── */
+      --font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont,
+                     'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      /* Label/L — 16px */
+      --type-label-l-400-size:    16px;
+      --type-label-l-400-weight:  400;
+      --type-label-l-400-lh:      20px;
+      --type-label-l-400-ls:      0.32px;
+
+      --type-label-l-500-size:    16px;
+      --type-label-l-500-weight:  500;
+      --type-label-l-500-lh:      20px;
+      --type-label-l-500-ls:      0.32px;
+
+      /* Label/M — 14px */
+      --type-label-m-500-size:    14px;
+      --type-label-m-500-weight:  500;
+      --type-label-m-500-lh:      16px;
+      --type-label-m-500-ls:      0.28px;
+
+      --type-label-m-600-size:    14px;
+      --type-label-m-600-weight:  600;
+      --type-label-m-600-lh:      16px;
+      --type-label-m-600-ls:      0.28px;
+
+      /* ── Spacing ─────────────────────────────────── */
+      --space-1:  4px;
+      --space-2:  8px;
+      --space-3:  10px;
+      --space-4:  12px;
+      --space-5:  16px;
+
+      /* ── Card geometry (from Figma frame) ────────── */
+      --card-width:        438px;
+      --image-height:      520px;
+      --card-total-height: 624px;
+      --swatch-size:       30px;
+      --swatch-gap:        6.67px;
+    }
+
+    /* ─────────────────────────────────────────────────
+       RESET & PAGE
+       ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--color-grey-100);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      padding: 48px 24px;
+      min-height: 100vh;
+    }
+
+    /* ─────────────────────────────────────────────────
+       PRODUCT CARD
+       ───────────────────────────────────────────────── */
+    .product-card {
+      width: var(--card-width);
+      background: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ── Image Area ────────────────────────────────── */
+    .product-card__image-wrap {
+      width: 100%;
+      height: var(--image-height);
+      position: relative;
+      overflow: hidden;
+      background-color: var(--color-grey-400);   /* #9B9B9B — exact from Figma */
+      flex-shrink: 0;
+    }
+
+    /* actual <img> when real photo is provided */
+    .product-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Wishlist — top-right, 12px inset ──────────── */
+    .product-card__wishlist {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 30.48px;
+      background: none;
+      border: none;
+      padding: 18.75%;   /* matches Figma inset on icon */
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .product-card__wishlist svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .product-card__wishlist:hover svg path,
+    .product-card__wishlist.is-active svg path {
+      fill: var(--color-brand-maroon);
+      stroke: var(--color-brand-maroon);
+    }
+
+    /* ── Quick Shop — centred, 80px from image bottom  */
+    .product-card__quickshop {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.6);   /* exact from Figma */
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      /* hidden by default, shown on hover */
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .product-card__quickshop span {
+      font-family: var(--font-family);
+      font-size:   var(--type-label-m-500-size);
+      font-weight: var(--type-label-m-500-weight);
+      line-height: var(--type-label-m-500-lh);
+      letter-spacing: var(--type-label-m-500-ls);
+      color: var(--color-brand-blue);
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    .product-card:hover .product-card__quickshop {
+      opacity: 1;
+    }
+
+    /* ── Badge — bottom-left of image, 10px inset ──── */
+    .product-card__badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: var(--color-badge-bg);   /* #ECECEC */
+      padding: 4px;                        /* exact from Figma */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      max-height: 24px;
+      z-index: 3;
+      /* no border-radius — rectangular tag per Figma */
+    }
+
+    .product-card__badge span {
+      font-family:    var(--font-family);
+      font-size:      var(--type-label-m-600-size);     /* 14px Semibold */
+      font-weight:    var(--type-label-m-600-weight);
+      line-height:    var(--type-label-m-600-lh);
+      letter-spacing: var(--type-label-m-600-ls);
+      color: var(--color-brand-blue);
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    /* ── Body (below image) ────────────────────────── */
+    .product-card__body {
+      padding-top: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Product name */
+    .product-card__name {
+      font-family:    var(--font-family);
+      font-size:      var(--type-label-l-500-size);     /* 16px Medium */
+      font-weight:    var(--type-label-l-500-weight);
+      line-height:    var(--type-label-l-500-lh);
+      letter-spacing: var(--type-label-l-500-ls);
+      color: var(--color-grey-700);                     /* #4A4A4A */
+      text-transform: capitalize;
+      width: 321px;
+    }
+
+    /* Price */
+    .product-card__price {
+      font-family:    var(--font-family);
+      font-size:      var(--type-label-l-400-size);     /* 16px Regular */
+      font-weight:    var(--type-label-l-400-weight);
+      line-height:    var(--type-label-l-400-lh);
+      letter-spacing: var(--type-label-l-400-ls);
+      color: var(--color-grey-700);                     /* #4A4A4A */
+      text-transform: capitalize;
+      width: 36px;
+    }
+
+    /* Color section */
+    .product-card__colors {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 12px;   /* exact from Figma pt-[12px] */
+    }
+
+    .product-card__color-label {
+      font-family:    var(--font-family);
+      font-size:      var(--type-label-m-500-size);     /* 14px Medium */
+      font-weight:    var(--type-label-m-500-weight);
+      line-height:    var(--type-label-m-500-lh);
+      letter-spacing: var(--type-label-m-500-ls);
+      color: var(--color-grey-700);
+      text-transform: capitalize;
+      white-space: nowrap;
+      height: 12.6px;
+      overflow: visible;
+    }
+
+    /* Swatch strip */
+    .product-card__swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--swatch-gap);
+      align-content: flex-start;
+    }
+
+    /* Individual swatch — 30×30px, matches Figma Icons/Colors */
+    .swatch {
+      position: relative;
+      width:  var(--swatch-size);    /* 30px */
+      height: var(--swatch-size);
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: none;
+      flex-shrink: 0;
+    }
+
+    /* Inner colour circle — 25px (8.33% inset on each side of 30px) */
+    .swatch__inner {
+      position: absolute;
+      inset: 8.33%;        /* ~2.5px gap — exact Figma inset value */
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* Selected ring — 1.5px outline outside the 30px hit area */
+    .swatch.is-selected::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-grey-700);
+      pointer-events: none;
+    }
+
+    /* Unavailable diagonal stroke overlaid on inner circle */
+    .swatch.is-unavailable .swatch__inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(
+        to top right,
+        transparent calc(50% - 0.75px),
+        var(--color-grey-400) calc(50% - 0.75px),
+        var(--color-grey-400) calc(50% + 0.75px),
+        transparent calc(50% + 0.75px)
+      );
+    }
+
+    /* White swatch gets a subtle border so it reads against white bg */
+    .swatch--white .swatch__inner {
+      box-shadow: inset 0 0 0 1px var(--color-grey-300);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Card — matches node 4167:2577 exactly ────── -->
+  <article class="product-card" aria-label="Wrinkle-Free Short Sleeve Riverstone Shirt">
+
+    <!-- Image area (520px of 624px) -->
+    <div class="product-card__image-wrap">
+
+      <!-- Replace src with real product photo -->
+      <!-- <img class="product-card__img" src="..." alt="Wrinkle-Free Short Sleeve Riverstone Shirt in Sky Blue"> -->
+
+      <!-- Wishlist — top-right, 12px inset -->
+      <button class="product-card__wishlist" aria-label="Add to wishlist"
+              onclick="this.classList.toggle('is-active')">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.25l-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3
+                   7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3
+                   19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.43L12 21.25z"
+                stroke="#9B9B9B" stroke-width="1.5" fill="none"/>
+        </svg>
+      </button>
+
+      <!-- Quick Shop — semi-transparent, centred, 80px from image bottom -->
+      <button class="product-card__quickshop" aria-label="Quick Shop">
+        <span>Quick Shop</span>
+      </button>
+
+      <!-- Badge — rectangular, bottom-left, 10px inset -->
+      <div class="product-card__badge" role="note">
+        <span>New</span>
+      </div>
+
+    </div><!-- /.product-card__image-wrap -->
+
+    <!-- Body (remaining ~104px) -->
+    <div class="product-card__body">
+      <p class="product-card__name">Wrinkle-Free Short Sleeve Riverstone Shirt</p>
+      <p class="product-card__price">$110</p>
+
+      <div class="product-card__colors">
+        <span class="product-card__color-label" id="color-label-1">
+          Color: <span class="color-name">Sky Blue</span>
+        </span>
+        <div class="product-card__swatches" role="group" aria-labelledby="color-label-1">
+
+          <!-- Maroon — selected -->
+          <button class="swatch is-selected" title="Maroon" aria-label="Maroon, selected"
+                  data-color-name="Maroon"
+                  onclick="selectSwatch(this)">
+            <span class="swatch__inner" style="background:#8E2231;"></span>
+          </button>
+
+          <!-- Sky Blue -->
+          <button class="swatch" title="Sky Blue" aria-label="Sky Blue"
+                  data-color-name="Sky Blue"
+                  onclick="selectSwatch(this)">
+            <span class="swatch__inner" style="background:#5A84BC;"></span>
+          </button>
+
+          <!-- Gold — unavailable -->
+          <button class="swatch is-unavailable" title="Gold — unavailable" aria-label="Gold, unavailable"
+                  data-color-name="Gold" aria-disabled="true"
+                  onclick="selectSwatch(this)">
+            <span class="swatch__inner" style="background:#C5A254;"></span>
+          </button>
+
+          <!-- Tan -->
+          <button class="swatch" title="Tan" aria-label="Tan"
+                  data-color-name="Tan"
+                  onclick="selectSwatch(this)">
+            <span class="swatch__inner" style="background:#A89070;"></span>
+          </button>
+
+          <!-- Slate Grey -->
+          <button class="swatch" title="Slate Grey" aria-label="Slate Grey"
+                  data-color-name="Slate Grey"
+                  onclick="selectSwatch(this)">
+            <span class="swatch__inner" style="background:#9B9B9B;"></span>
+          </button>
+
+        </div>
+      </div>
+    </div><!-- /.product-card__body -->
+
+  </article>
+
+  <script>
+    function selectSwatch(el) {
+      if (el.classList.contains('is-unavailable')) return;
+      const group = el.closest('.product-card__swatches');
+      group.querySelectorAll('.swatch').forEach(s => s.classList.remove('is-selected'));
+      el.classList.add('is-selected');
+      // Update label
+      const card = el.closest('.product-card');
+      const nameEl = card.querySelector('.color-name');
+      if (nameEl) nameEl.textContent = el.dataset.colorName;
+    }
+  </script>
+
+</body>
+</html>
