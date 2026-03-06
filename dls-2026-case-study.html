@@ -279,8 +279,8 @@
   }
   .demo-iframe.tall { height: 800px; }
 
-  /* Break demo section out of .page max-width to show full 1440px designs */
-  .section--wide {
+  /* Break demo area out of .page max-width to show full 1440px designs */
+  .demo-wide {
     width: 100vw;
     position: relative;
     left: 50%;
@@ -678,7 +678,7 @@
   </div>
 
   <!-- COMPONENTS — LIVE DEMO IFRAMES -->
-  <div class="section section--wide">
+  <div class="section">
     <span class="eyebrow">Components Built</span>
     <h2>Same Architecture. Three Brand Expressions.</h2>
 
@@ -686,6 +686,8 @@
       <p>Three components built as proof-of-concept — token-wired from Figma JSON, zero hardcoded values. The test: one component structure, three brand voices, switched by a single <code>data-brand</code> attribute. Live demos below, each loading directly from production.</p>
     </div>
 
+    <!-- Wide wrapper for tabs + iframes -->
+    <div class="demo-wide">
     <!-- Tab switcher -->
     <div class="demo-tabs">
       <div class="demo-tab active" onclick="switchDemo('buttons')">Buttons</div>
@@ -766,6 +768,7 @@
       </div>
     </div>
 
+    </div><!-- /demo-wide -->
   </div>
 
   <!-- BEFORE / AFTER — 3 LAYOUT OPTIONS -->
