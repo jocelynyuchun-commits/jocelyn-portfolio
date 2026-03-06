@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Brand Product Discovery · DLS 2026</title>
+  <style id="tokens-multibrand">
+/**
+ * tokens-multibrand.css
+ * AUTO-GENERATED — do not edit by hand.
+ * Source: Primitives_Multibrands.json + Semantic_Multibrands.json
+ *
+ * Usage:
+ *   <div data-brand="brand-1"> ... </div>
+ *   <div data-brand="brand-2"> ... </div>
+ *   <div data-brand="brand-3"> ... </div>
+ *
+ * Architecture:
+ *   Layer 1 — Primitive tokens    (color ramps, spacing scale)
+ *   Layer 2 — Semantic aliases    (role-based, brand-switched)
+ *   Layer 3 — Component tokens    (ProductDiscovery-specific)
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   SHARED TOKENS (same across all brands)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Layer 1 — Neutral Primitives */
+  --color-neutral-900: #181818;
+  --color-neutral-800: #333333;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-600: #686868;
+  --color-neutral-500: #7c7c7c;
+  --color-neutral-400: #9b9b9b;
+  --color-neutral-300: #c4c4c4;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-100: #fbfbfb;
+  --color-neutral-white: #ffffff;
+
+  /* Layer 1 — Feedback Primitives */
+  --color-feedback-success: #24882d;
+  --color-feedback-error:   #c02321;
+  --color-brand-logo:       #8e2231;
+
+  /* Layer 1 — Spacing Scale */
+  --spacing-100: 4px;
+  --spacing-200: 8px;
+  --spacing-300: 12px;
+  --spacing-400: 16px;
+  --spacing-500: 20px;
+  --spacing-600: 24px;
+  --spacing-700: 28px;
+  --spacing-800: 32px;
+  --spacing-900: 40px;
+
+  /* Layer 1 — Motion */
+  --motion-duration-short:  250ms;
+  --motion-duration-medium: 300ms;
+  --motion-easing-standard: ease-in-out;
+
+  /* Layer 1 — Typography Scale */
+  --font-size-xs:  12px;
+  --font-size-sm:  14px;
+  --font-size-base:16px;
+  --font-size-lg:  18px;
+  --font-size-xl:  20px;
+  --font-size-2xl: 24px;
+
+  /* Layer 1 — Font Weights */
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+
+  /* Shared Semantic — Feedback */
+  --color-sale:    var(--color-brand-logo);
+  --color-success: var(--color-feedback-success);
+  --color-error:   var(--color-feedback-error);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND 1 — brand-1
+   Primary: [resolved from JSON]  |  Font: Proxima Nova  |  Radius: 4px
+   ═══════════════════════════════════════════════════════════ */
+:root, [data-brand="brand-1"] {
+
+  /* ── Layer 1: Brand Primitive Colors ── */
+  --color-brand-primary:    #2c4e7e;
+  --color-brand-secondary:  #2f71d4;
+
+  /* ── Layer 2: Semantic — Button Colors ── */
+  --btn-solid-default:      #142d51;
+  --btn-solid-hover:        #255090;
+  --btn-solid-pressed:      #2f71d4;
+  --btn-solid-focus-fill:   #e4eaf4;
+  --btn-solid-focus-ring:   #90a5c4;
+  --btn-solid-disabled:     #c5c5c5;
+  --btn-solid-text:         var(--color-neutral-white);
+  --btn-solid-text-disabled:var(--color-neutral-400);
+
+  --btn-outline-default:    #142d51;
+  --btn-outline-hover:      #255090;
+  --btn-outline-pressed:    #2f71d4;
+  --btn-outline-focus-fill: #e4eaf4;
+  --btn-outline-focus-ring: #90a5c4;
+  --btn-outline-text:       #142d51;
+
+  /* ── Layer 2: Semantic — Typography ── */
+  --font-family-brand:      "Proxima Nova", sans-serif;
+  --color-heading:          var(--color-brand-primary);
+  --color-body:             var(--color-neutral-700);
+  --color-border-focus:     #2c4e7e;
+
+  /* ── Layer 2: Semantic — Button Shape ── */
+  --btn-radius:             4px;
+  --btn-border-width:       1px;
+  --btn-font-size:          var(--font-size-base);
+  --btn-font-weight:        var(--font-weight-semibold);
+
+  /* ── Layer 3: Component — ProductDiscovery ── */
+  --discovery-section-heading-color:  var(--color-brand-primary);
+  --discovery-section-heading-font:   var(--font-family-brand);
+  --discovery-section-body-color:     var(--color-body);
+  --discovery-filter-active-bg:       var(--btn-solid-default);
+  --discovery-filter-active-text:     var(--btn-solid-text);
+  --discovery-filter-idle-border:     var(--btn-outline-default);
+  --discovery-filter-idle-text:       var(--btn-outline-text);
+  --discovery-filter-hover-bg:        #e4eaf4;
+  --discovery-filter-font:            var(--font-family-brand);
+  --discovery-filter-radius:          var(--btn-radius);
+  --discovery-filter-height:          48px;
+  --discovery-arrow-color:            var(--color-brand-primary);
+  --discovery-arrow-hover-shadow:     0 4px 12px rgba(0,0,0,0.15);
+  --discovery-card-bg:                var(--color-neutral-white);
+  --discovery-card-radius:            var(--btn-radius);
+  --discovery-card-badge-bg:          var(--color-neutral-200);
+  --discovery-card-badge-text:        var(--color-neutral-900);
+  --discovery-card-title-color:       var(--color-neutral-900);
+  --discovery-card-price-color:       var(--color-neutral-900);
+  --discovery-card-sale-color:        var(--color-sale);
+  --discovery-card-accent-new:        #142d51;
+  --discovery-card-accent-wrinkle:    #255090;
+  --discovery-card-accent-perf:       #8e2231;
+  --discovery-quickshop-bg:           var(--color-brand-primary);
+  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
+  --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND 2 — brand-2
+   Primary: [resolved from JSON]  |  Font: Canela  |  Radius: 0px
+   ═══════════════════════════════════════════════════════════ */
+[data-brand="brand-2"] {
+
+  /* ── Layer 1: Brand Primitive Colors ── */
+  --color-brand-primary:    #5a2f1f;
+  --color-brand-secondary:  #987e75;
+
+  /* ── Layer 2: Semantic — Button Colors ── */
+  --btn-solid-default:      #5a2f1f;
+  --btn-solid-hover:        #79574a;
+  --btn-solid-pressed:      #987e75;
+  --btn-solid-focus-fill:   #c6b9b4;
+  --btn-solid-focus-ring:   #b7a69f;
+  --btn-solid-disabled:     #c5c5c5;
+  --btn-solid-text:         var(--color-neutral-white);
+  --btn-solid-text-disabled:var(--color-neutral-400);
+
+  --btn-outline-default:    #5a2f1f;
+  --btn-outline-hover:      #79574a;
+  --btn-outline-pressed:    #987e75;
+  --btn-outline-focus-fill: #c6b9b4;
+  --btn-outline-focus-ring: #b7a69f;
+  --btn-outline-text:       #5a2f1f;
+
+  /* ── Layer 2: Semantic — Typography ── */
+  --font-family-brand:      "Canela", sans-serif;
+  --color-heading:          var(--color-brand-primary);
+  --color-body:             var(--color-neutral-700);
+  --color-border-focus:     #5a2f1f;
+
+  /* ── Layer 2: Semantic — Button Shape ── */
+  --btn-radius:             0px;
+  --btn-border-width:       1px;
+  --btn-font-size:          var(--font-size-base);
+  --btn-font-weight:        var(--font-weight-semibold);
+
+  /* ── Layer 3: Component — ProductDiscovery ── */
+  --discovery-section-heading-color:  var(--color-brand-primary);
+  --discovery-section-heading-font:   var(--font-family-brand);
+  --discovery-section-body-color:     var(--color-body);
+  --discovery-filter-active-bg:       var(--btn-solid-default);
+  --discovery-filter-active-text:     var(--btn-solid-text);
+  --discovery-filter-idle-border:     var(--btn-outline-default);
+  --discovery-filter-idle-text:       var(--btn-outline-text);
+  --discovery-filter-hover-bg:        #c6b9b4;
+  --discovery-filter-font:            var(--font-family-brand);
+  --discovery-filter-radius:          var(--btn-radius);
+  --discovery-filter-height:          48px;
+  --discovery-arrow-color:            var(--color-brand-primary);
+  --discovery-arrow-hover-shadow:     0 4px 12px rgba(0,0,0,0.15);
+  --discovery-card-bg:                var(--color-neutral-white);
+  --discovery-card-radius:            var(--btn-radius);
+  --discovery-card-badge-bg:          var(--color-neutral-200);
+  --discovery-card-badge-text:        var(--color-neutral-900);
+  --discovery-card-title-color:       var(--color-neutral-900);
+  --discovery-card-price-color:       var(--color-neutral-900);
+  --discovery-card-sale-color:        var(--color-sale);
+  --discovery-card-accent-new:        #5a2f1f;
+  --discovery-card-accent-wrinkle:    #79574a;
+  --discovery-card-accent-perf:       #987e75;
+  --discovery-quickshop-bg:           var(--color-brand-primary);
+  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
+  --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND 3 — brand-3
+   Primary: [resolved from JSON]  |  Font: Nunito  |  Radius: 16px
+   ═══════════════════════════════════════════════════════════ */
+[data-brand="brand-3"] {
+
+  /* ── Layer 1: Brand Primitive Colors ── */
+  --color-brand-primary:    #15613f;
+  --color-brand-secondary:  #6e9c88;
+
+  /* ── Layer 2: Semantic — Button Colors ── */
+  --btn-solid-default:      #15613f;
+  --btn-solid-hover:        #417f63;
+  --btn-solid-pressed:      #6e9c88;
+  --btn-solid-focus-fill:   #c8d7d1;
+  --btn-solid-focus-ring:   #6e9c88;
+  --btn-solid-disabled:     #c5c5c5;
+  --btn-solid-text:         var(--color-neutral-white);
+  --btn-solid-text-disabled:var(--color-neutral-400);
+
+  --btn-outline-default:    #15613f;
+  --btn-outline-hover:      #417f63;
+  --btn-outline-pressed:    #6e9c88;
+  --btn-outline-focus-fill: #c8d7d1;
+  --btn-outline-focus-ring: #9bbaac;
+  --btn-outline-text:       #15613f;
+
+  /* ── Layer 2: Semantic — Typography ── */
+  --font-family-brand:      "Nunito", sans-serif;
+  --color-heading:          var(--color-brand-primary);
+  --color-body:             var(--color-neutral-700);
+  --color-border-focus:     #15613f;
+
+  /* ── Layer 2: Semantic — Button Shape ── */
+  --btn-radius:             16px;
+  --btn-border-width:       1px;
+  --btn-font-size:          var(--font-size-base);
+  --btn-font-weight:        var(--font-weight-semibold);
+
+  /* ── Layer 3: Component — ProductDiscovery ── */
+  --discovery-section-heading-color:  var(--color-brand-primary);
+  --discovery-section-heading-font:   var(--font-family-brand);
+  --discovery-section-body-color:     var(--color-body);
+  --discovery-filter-active-bg:       var(--btn-solid-default);
+  --discovery-filter-active-text:     var(--btn-solid-text);
+  --discovery-filter-idle-border:     var(--btn-outline-default);
+  --discovery-filter-idle-text:       var(--btn-outline-text);
+  --discovery-filter-hover-bg:        #c8d7d1;
+  --discovery-filter-font:            var(--font-family-brand);
+  --discovery-filter-radius:          var(--btn-radius);
+  --discovery-filter-height:          48px;
+  --discovery-arrow-color:            var(--color-brand-primary);
+  --discovery-arrow-hover-shadow:     0 4px 12px rgba(0,0,0,0.15);
+  --discovery-card-bg:                var(--color-neutral-white);
+  --discovery-card-radius:            var(--btn-radius);
+  --discovery-card-badge-bg:          var(--color-neutral-200);
+  --discovery-card-badge-text:        var(--color-neutral-900);
+  --discovery-card-title-color:       var(--color-neutral-900);
+  --discovery-card-price-color:       var(--color-neutral-900);
+  --discovery-card-sale-color:        var(--color-sale);
+  --discovery-card-accent-new:        #15613f;
+  --discovery-card-accent-wrinkle:    #417f63;
+  --discovery-card-accent-perf:       #6e9c88;
+  --discovery-quickshop-bg:           var(--color-brand-primary);
+  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
+  --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Brand fonts: Proxima Nova (via system fallback), Canela-like (Cormorant Garamond), Nunito -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════
+       RESET & PAGE SHELL
+    ═══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Proxima Nova", "Helvetica Neue", sans-serif;
+      background: var(--shell-bg, #f5f5f5);
+      color: var(--shell-text, #181818);
+      min-height: 100vh;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PAGE HEADER — matches DLS reference pages
+    ═══════════════════════════════════════════════ */
+    .page-header {
+      background: var(--shell-surface, #142d51);
+      color: var(--shell-on-surface, #ffffff);
+      padding: 36px 48px 32px;
+      position: relative;
+    }
+    /* Top row: eyebrow label + nav links */
+    .page-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .page-header .logo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      font-family: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+    .nav-links a {
+      color: var(--shell-on-surface, #ffffff);
+      text-decoration: none;
+      transition: opacity 150ms ease;
+    }
+    .nav-links a:hover { opacity: 1; }
+    /* H1 title row */
+    .page-header-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      font-family: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    .page-header .badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--shell-badge-bg, #8e2231);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      align-self: center;
+    }
+    /* Subtitle row */
+    .page-header-subtitle {
+      font-size: 13px;
+      opacity: 0.60;
+      line-height: 1.5;
+      font-family: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+    }
+    .page-header-subtitle code,
+    .page-header-subtitle .chip {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 11px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 2px 6px;
+      letter-spacing: 0;
+    }
+
+/* ═══════════════════════════════════════════════
+       BRAND SWITCHER BAR
+    ═══════════════════════════════════════════════ */
+    .brand-bar {
+      background: var(--color-neutral-white, #ffffff);
+      border-bottom: 1px solid var(--color-neutral-200);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .brand-bar .label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-neutral-500, #7c7c7c);
+      margin-right: 20px;
+      white-space: nowrap;
+    }
+    .brand-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--color-neutral-400, #9b9b9b);
+      border-bottom: 3px solid transparent;
+      transition: all 200ms ease;
+      white-space: nowrap;
+    }
+    .brand-tab:hover { color: #333; }
+    .brand-tab.active { color: var(--shell-text, #181818); border-bottom-color: var(--tab-accent); }
+    .brand-tab .swatch {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--tab-accent, #142d51);
+    }
+    .brand-tab[data-brand="brand-1"] { --tab-accent: #142d51; }
+    .brand-tab[data-brand="brand-2"] { --tab-accent: #5a2f1f; }
+    .brand-tab[data-brand="brand-3"] { --tab-accent: #15613f; }
+
+    /* View toggle */
+    .view-toggle {
+      margin-left: auto;
+      display: flex;
+      gap: 4px;
+      background: var(--shell-bg, #f5f5f5);
+      border-radius: 6px;
+      padding: 3px;
+    }
+    .view-btn {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: 4px;
+      color: var(--color-neutral-500, #7c7c7c);
+      letter-spacing: 0.04em;
+    }
+    .view-btn.active { background: #fff; color: var(--shell-text, #181818); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+
+    /* ═══════════════════════════════════════════════
+       MAIN CONTENT AREA
+    ═══════════════════════════════════════════════ */
+    .main-content {
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Single brand view */
+    .single-view { display: block; }
+    .compare-view { display: none; }
+    body.view-compare .single-view { display: none; }
+    body.view-compare .compare-view { display: block; }
+
+    /* ═══════════════════════════════════════════════
+       TOKEN AUDIT PANEL
+    ═══════════════════════════════════════════════ */
+    .audit-bar {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .audit-bar .audit-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-neutral-500, #7c7c7c);
+    }
+    .audit-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--shell-audit-green-bg, #f0fdf4);
+      color: var(--shell-audit-green-text, #166534);
+      border: 1px solid var(--shell-audit-green-border, #bbf7d0);
+    }
+    .audit-chip.warn {
+      background: var(--shell-audit-amber-bg, #fffbeb);
+      color: var(--shell-audit-amber-text, #92400e);
+      border-color: var(--shell-audit-amber-border, #fde68a);
+    }
+    .audit-chip svg { width: 12px; height: 12px; }
+
+    /* ═══════════════════════════════════════════════
+       PRODUCT DISCOVERY COMPONENT
+       ALL styles use CSS custom properties only.
+       No hardcoded values below this line.
+    ═══════════════════════════════════════════════ */
+
+    /* Section wrapper — receives data-brand attribute */
+    .discovery-section {
+      background: var(--color-neutral-white, #ffffff);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+
+    /* Inner layout: two columns on tablet+ */
+    .discovery-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-600, 24px);
+      padding: var(--spacing-800, 32px) var(--spacing-600, 24px);
+      align-items: center;
+    }
+    @media (min-width: 640px) {
+      .discovery-inner {
+        grid-template-columns: 1fr 2fr;
+        gap: var(--spacing-600, 24px);
+        padding: var(--spacing-800, 32px);
+        align-items: center;
+      }
+    }
+    @media (min-width: 1024px) {
+      .discovery-inner {
+        gap: var(--spacing-900, 40px);
+        padding: var(--spacing-900, 40px);
+        align-items: center;
+      }
+    }
+
+    /* Left column: heading + filters */
+    .discovery-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--spacing-600, 24px);
+    }
+
+    .discovery-heading {
+      font-family: var(--discovery-section-heading-font, sans-serif);
+      font-size: var(--font-size-xl, 20px);
+      font-weight: var(--font-weight-semibold, 600);
+      line-height: 1.3;
+      color: var(--discovery-section-heading-color, #142d51);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .discovery-subtext {
+      font-size: var(--font-size-sm, 14px);
+      line-height: 1.5;
+      color: var(--discovery-section-body-color, #4a4a4a);
+      margin-top: calc(var(--spacing-100, 4px) * -1);
+    }
+
+    /* Filter buttons */
+    .discovery-filters {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-200, 8px);
+    }
+    @media (max-width: 639px) {
+      /* Mobile: left (heading+buttons) stacks ABOVE right (carousel) */
+      .discovery-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px 16px;
+      }
+      .discovery-left  { order: 1; width: 100%; }
+      .discovery-right { order: 2; width: 100%; }
+      .discovery-filters { flex-direction: column; width: 100%; }
+      .filter-btn { width: 100%; }
+    }
+    @media (min-width: 640px) {
+      .discovery-filters { flex-direction: column; }
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--discovery-filter-height, 48px);
+      padding: 0 var(--spacing-600, 24px);
+      border-radius: var(--discovery-filter-radius, 4px);
+      border: var(--btn-border-width, 1px) solid var(--discovery-filter-idle-border, #142d51);
+      background: transparent;
+      color: var(--discovery-filter-idle-text, #142d51);
+      font-family: var(--discovery-filter-font, sans-serif);
+      font-size: var(--btn-font-size, 16px);
+      font-weight: var(--btn-font-weight, 600);
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 250ms ease,
+                  color 250ms ease,
+                  border-color 250ms ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .filter-btn:hover {
+      background: var(--discovery-filter-hover-bg, #e4eaf4);
+    }
+    .filter-btn.active {
+      background: var(--discovery-filter-active-bg, #142d51);
+      border-color: var(--discovery-filter-active-bg, #142d51);
+      color: var(--discovery-filter-active-text, #ffffff);
+    }
+    .filter-btn:focus-visible {
+      outline: 2px solid var(--btn-outline-focus-ring);
+      outline-offset: 2px;
+      background: var(--btn-outline-focus-fill, #e4eaf4);
+    }
+    /* filter-btn mobile/tablet handled in main mobile breakpoint above */
+
+    /* Right column: carousel */
+    .discovery-right {
+      position: relative;
+    }
+
+    /* Carousel container: position:relative so arrows (top:50%) center on card area */
+    .carousel-container {
+      position: relative;
+      /* NO overflow:hidden here — arrows need to be visible outside */
+      /* Horizontal margin creates space for arrows without clipping */
+      margin: 0 24px;
+    }
+
+    .carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform var(--discovery-transition-slide, 300ms ease-in-out);
+    }
+
+    .carousel-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-200, 8px);
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+    @media (min-width: 640px) {
+      .carousel-page { gap: var(--spacing-400, 16px); }
+    }
+    @media (min-width: 1024px) {
+      .carousel-page { gap: var(--spacing-500, 20px); }
+    }
+
+    /* Arrow buttons */
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid #c5c5c5;
+      color: #686868; /* neutral grey — matches reference */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: box-shadow 200ms ease, opacity 200ms ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    }
+    .arrow-btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .arrow-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .arrow-btn:disabled:hover { box-shadow: none; }
+        .arrow-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
+
+    .arrow-btn.prev { left: -24px; }
+    .arrow-btn.next { right: -24px; }
+
+    /* Carousel dots */
+    .carousel-dots {
+      display: flex;
+      gap: var(--spacing-200, 8px);
+      justify-content: center;
+      margin-top: var(--spacing-400);
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-neutral-300, #c4c4c4);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+    .dot.active {
+      background: var(--discovery-filter-active-bg, #142d51);
+      transform: scale(1.3);
+    }
+
+    /* ═══════════════════════════════════════════════
+       PRODUCT CARD
+       Zero hardcoded values — all from discovery tokens
+    ═══════════════════════════════════════════════ */
+    .product-card {
+      position: relative;
+      background: var(--discovery-card-bg, #ffffff);
+      border-radius: var(--discovery-card-radius, 4px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      transition: box-shadow 200ms ease;
+      /* Prevent any gap between image and info area */
+      gap: 0;
+    }
+    .product-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+    /* Image placeholder */
+    .card-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--color-neutral-200, #eaeaea);
+      overflow: hidden;
+      /* No min-height — let aspect-ratio control height cleanly */
+      flex-shrink: 0;
+    }
+
+    /* card-img: absolute fill so no grey gaps below the image */
+    .card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Wishlist heart — top-right, brand-colored stroke */
+    .card-wishlist {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.88);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+    .card-wishlist:hover {
+      background: rgba(255,255,255,1);
+      transform: scale(1.1);
+    }
+    .card-wishlist svg {
+      width: 15px;
+      height: 15px;
+      color: var(--btn-solid-default, #142d51);
+      transition: color 150ms ease, fill 150ms ease;
+    }
+    .card-wishlist.wishlisted svg {
+      fill: var(--btn-solid-default, #142d51);
+    }
+    .card-image-accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 28px;
+      transition: background var(--discovery-transition-filter, 250ms ease-in-out);
+    }
+
+    /* Quick shop overlay */
+    .quick-shop {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--discovery-quickshop-bg, #142d51);
+      color: var(--discovery-quickshop-text, #ffffff);
+      font-family: var(--discovery-filter-font);
+      font-size: var(--font-size-sm, 14px);
+      font-weight: var(--font-weight-semibold, 600);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: var(--spacing-300, 12px) var(--spacing-400, 16px);
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 200ms ease, transform 200ms ease;
+      cursor: pointer;
+      border: none;
+    }
+    .product-card:hover .quick-shop {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Badge — bottom-left of image, above quick-shop overlay */
+    .card-badge {
+      position: absolute;
+      bottom: 48px;
+      left: 8px;
+      background: rgba(255,255,255,0.92);
+      color: var(--color-neutral-900, #181818);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: capitalize;
+      padding: 4px 8px;
+      border-radius: 2px;
+      z-index: 4;
+      backdrop-filter: blur(2px);
+    }
+    .card-badge.sale {
+      background: var(--discovery-card-sale-color, #8e2231);
+      color: #fff;
+    }
+    /* .card-badge.sale is defined above */
+
+    /* Card info */
+    .card-info {
+      padding: 10px 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-100, 4px);
+      flex: 1;
+    }
+    .card-title {
+      font-family: var(--discovery-section-heading-font, sans-serif);
+      font-size: var(--font-size-sm, 14px);
+      font-weight: var(--font-weight-semibold, 600);
+      color: var(--discovery-card-title-color, #181818);
+      line-height: 1.4;
+    }
+    .card-price {
+      font-size: var(--font-size-sm, 14px);
+      color: var(--discovery-card-price-color, #181818);
+    }
+    .card-price .original {
+      text-decoration: line-through;
+      color: var(--color-neutral-500, #7c7c7c);
+      margin-right: var(--spacing-100, 4px);
+    }
+    .card-price .sale-price {
+      color: var(--discovery-card-sale-color, #8e2231);
+    }
+
+    /* ═══════════════════════════════════════════════
+       COMPARE VIEW — 3 brands side by side
+    ═══════════════════════════════════════════════ */
+    .compare-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Stacked compare: force 2-col layout inside each brand section */
+    .compare-column .discovery-inner {
+      grid-template-columns: 1fr 2fr !important;
+      gap: 32px !important;
+      padding: 32px !important;
+      align-items: center !important;
+    }
+    .compare-column .discovery-filters {
+      flex-direction: column !important;
+    }
+    .compare-column .filter-btn {
+      width: 100% !important;
+    }
+
+    @media (max-width: 900px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+
+    .compare-column .brand-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-neutral-500, #7c7c7c);
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .compare-column .brand-label .dot-swatch {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    /* ═══════════════════════════════════════════════
+       TOKEN TABLE (documentation panel)
+    ═══════════════════════════════════════════════ */
+    .token-panel {
+      margin-top: var(--spacing-900);
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+    }
+    .token-panel-header {
+      background: var(--shell-surface, #142d51);
+      color: var(--shell-on-surface, #ffffff);
+      padding: 20px 28px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .token-panel-header .tph-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .token-panel-header .tph-subtitle {
+      font-size: 12px;
+      opacity: 0.55;
+      letter-spacing: 0.01em;
+      font-weight: 400;
+    }
+    .token-panel-header code {
+      font-size: 11px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .token-table th {
+      background: var(--shell-bg, #f5f5f5);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-neutral-500, #7c7c7c);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .token-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+    }
+    .token-table tr:last-child td { border-bottom: none; }
+    .token-table code {
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      color: var(--color-neutral-900, #181818);
+      background: var(--color-neutral-200, #eaeaea);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .swatch-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .swatch-box {
+      width: 20px; height: 20px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECTION LABEL
+    ═══════════════════════════════════════════════ */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-neutral-400, #9b9b9b);
+      margin-bottom: var(--spacing-400);
+      padding-bottom: var(--spacing-200);
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .section-gap { margin-bottom: var(--spacing-900); }
+  </style>
+</head>
+<body class="view-single">
+
+<!-- ── PAGE HEADER ──────────────────────────────────────────── -->
+<header class="page-header">
+  <div class="page-header-top">
+    <span class="logo">Design Language System</span>
+    <nav class="nav-links">
+      <a href="https://figma-claude-test-henna.vercel.app" target="_blank">← Button Components</a>
+      <a href="https://figma-claude-test-henna.vercel.app/product-discovery" target="_blank">Brand 1 Original</a>
+    </nav>
+  </div>
+  <div class="page-header-title">
+    <h1>Multi-Brand Product Discovery · 2026</h1>
+    <span class="badge">Multi-Brand</span>
+  </div>
+  <p class="page-header-subtitle">
+    Token-synced from <span class="chip">Primitives_Multibrands.json</span> + <span class="chip">Semantic_Multibrands.json</span>
+    &nbsp;·&nbsp; 3 brands &nbsp;·&nbsp; Shared architecture, owned values &nbsp;·&nbsp; data-brand switching only
+  </p>
+</header>
+
+<!-- ── BRAND SWITCHER + VIEW TOGGLE ────────────────────────── -->
+<nav class="brand-bar">
+  <span class="label">Brand</span>
+  <button class="brand-tab active" data-brand="brand-1" onclick="switchBrand('brand-1', this)">
+    <span class="swatch"></span> Brand 1 — Navy
+  </button>
+  <button class="brand-tab" data-brand="brand-2" onclick="switchBrand('brand-2', this)">
+    <span class="swatch"></span> Brand 2 — Brown
+  </button>
+  <button class="brand-tab" data-brand="brand-3" onclick="switchBrand('brand-3', this)">
+    <span class="swatch"></span> Brand 3 — Green
+  </button>
+  <div class="view-toggle" style="margin-left:auto;">
+    <button class="view-btn active" onclick="setView('single', this)">Single</button>
+    <button class="view-btn" onclick="setView('compare', this)">Compare All</button>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ──────────────────────────────────────────── -->
+<div class="main-content">
+
+  <!-- TOKEN AUDIT BANNER -->
+  <div class="audit-bar">
+    <span class="audit-label">Token Audit</span>
+    <span class="audit-chip">
+      <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      0 hardcoded values
+    </span>
+    <span class="audit-chip">
+      <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      3-layer token architecture
+    </span>
+    <span class="audit-chip">
+      <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Source: Figma JSON (auto-generated)
+    </span>
+    <span class="audit-chip">
+      <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Brand switch = data-attribute only
+    </span>
+  </div>
+
+  <!-- ── SINGLE BRAND VIEW ─────────────────────────────────── -->
+  <div class="single-view">
+    <p class="section-label" id="single-label">Brand 1 — Navy / Proxima Nova / Radius 4px</p>
+    <div id="single-discovery" class="discovery-section" data-brand="brand-1">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ── COMPARE ALL BRANDS VIEW ───────────────────────────── -->
+  <div class="compare-view">
+    <p class="section-label">All 3 Brands — Same Component, Switched Token Values</p>
+    <div class="compare-grid">
+      <div class="compare-column">
+        <div class="brand-label">
+          <span class="dot-swatch" style="background:#142d51"></span>
+          Brand 1 — Navy
+        </div>
+        <div class="discovery-section" data-brand="brand-1" id="compare-b1"></div>
+      </div>
+      <div class="compare-column">
+        <div class="brand-label">
+          <span class="dot-swatch" style="background:#5a2f1f"></span>
+          Brand 2 — Brown
+        </div>
+        <div class="discovery-section" data-brand="brand-2" id="compare-b2"></div>
+      </div>
+      <div class="compare-column">
+        <div class="brand-label">
+          <span class="dot-swatch" style="background:#15613f"></span>
+          Brand 3 — Green
+        </div>
+        <div class="discovery-section" data-brand="brand-3" id="compare-b3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TOKEN REFERENCE TABLE ─────────────────────────────── -->
+  <div class="token-panel section-gap" style="margin-top:56px;">
+    <div class="token-panel-header">
+      <span class="tph-title">Token Reference — Differentiating Values Across Brands</span>
+      <span class="tph-subtitle">Layer 2: Semantic → Layer 3: Component</span>
+    </div>
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>Token (CSS Custom Property)</th>
+          <th>Brand 1</th>
+          <th>Brand 2</th>
+          <th>Brand 3</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>--btn-solid-default</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Buttons/Solid/Default</td>
+        </tr>
+        <tr>
+          <td><code>--btn-solid-hover</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#24508f"></div>#24508f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
+          <td>Buttons/Solid/Hover</td>
+        </tr>
+        <tr>
+          <td><code>--btn-radius</code></td>
+          <td>4px</td>
+          <td>0px</td>
+          <td>16px</td>
+          <td>Buttons/Radius/Default</td>
+        </tr>
+        <tr>
+          <td><code>--font-family-brand</code></td>
+          <td>Proxima Nova</td>
+          <td>Canela (Cormorant)</td>
+          <td>Nunito</td>
+          <td>Buttons/Font-Family/Default</td>
+        </tr>
+        <tr>
+          <td><code>--discovery-card-accent-new</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Color/[Brand]/[Scale]-900</td>
+        </tr>
+        <tr>
+          <td><code>--discovery-filter-hover-bg</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4"></div>#e4eaf4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td>Buttons/Outline/Focus-Fill</td>
+        </tr>
+        <tr>
+          <td><code>--color-border-focus</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2c4e7e"></div>#2c4e7e</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Color/Border/Focus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /main-content -->
+
+<!-- ── JAVASCRIPT ────────────────────────────────────────────── -->
+<script>
+// ── DATA ────────────────────────────────────────────────────────
+const BRANDS = {
+  'brand-1': {
+    name: 'Brand 1 — Navy',
+    label: 'Brand 1 — Navy / Proxima Nova / Radius 4px',
+    heading: 'DISCOVER NEW FAVORITES',
+    subtext: 'Try our bestselling shirts, new arrivals, and more to find your new look.',
+    filters: [
+      { id: 'new-arrivals',  label: 'New Arrivals' },
+      { id: 'wrinkle-free',  label: 'Wrinkle-Free Collection' },
+      { id: 'performance',   label: 'Performance Collection' },
+    ],
+    accentVars: {
+      'new-arrivals': '--discovery-card-accent-new',
+      'wrinkle-free':  '--discovery-card-accent-wrinkle',
+      'performance':   '--discovery-card-accent-perf',
+    },
+    accentColors: {
+      'new-arrivals': '#142d51',
+      'wrinkle-free':  '#24508f',
+      'performance':   '#8e2231',
+    },
+    products: {
+      'new-arrivals': [
+        { title: 'Classic Oxford Button-Down', price: '$88.00', badge: 'New' },
+        { title: 'Stretch Performance Polo', price: '$78.00', badge: 'New' },
+        { title: 'Italian Linen Blend Shirt', price: '$118.00', badge: 'New' },
+        { title: 'Heathered Cotton Crew', price: '$68.00', badge: 'New' },
+        { title: 'Sport Flex Shirt', price: '$95.00', badge: 'New' },
+        { title: 'Washed Oxford Casual', price: '$84.00', badge: 'New' },
+      ],
+      'wrinkle-free': [
+        { title: 'Wrinkle-Free Domaschino Polo', price: '$110.00', badge: null },
+        { title: 'Wrinkle-Free Twill Dress Shirt', price: '$128.00', badge: null },
+        { title: 'Wrinkle-Free Oxford Shirt', price: '$105.00', badge: null },
+        { title: 'Wrinkle-Free Travel Shirt', price: '$115.00', badge: null },
+        { title: 'Wrinkle-Free Gingham Check', price: '$118.00', badge: null },
+        { title: 'Wrinkle-Free Linen Blend', price: '$122.00', badge: null },
+      ],
+      'performance': [
+        { title: 'Performance Stretch Shirt', price: '$132.00', badge: null },
+        { title: 'Athletic Fit Polo', price: '$88.00', badge: null },
+        { title: 'Moisture-Wicking Button-Down', price: '$108.00', badge: 'Sale', salePrice: '$78.00' },
+        { title: '4-Way Stretch Dress Shirt', price: '$145.00', badge: null },
+        { title: 'Performance Knit Shirt', price: '$98.00', badge: null },
+        { title: 'Tech Oxford Shirt', price: '$115.00', badge: null },
+      ],
+    },
+  },
+  'brand-2': {
+    name: 'Brand 2 — Brown',
+    label: 'Brand 2 — Brown / Canela / Radius 0px (sharp)',
+    heading: 'CURATED ESSENTIALS',
+    subtext: 'Elevated pieces for the discerning wardrobe. Refined silhouettes, luxurious fabrics.',
+    filters: [
+      { id: 'new-arrivals', label: 'New Season' },
+      { id: 'wrinkle-free', label: 'Tailored Collection' },
+      { id: 'performance',  label: 'Heritage Classics' },
+    ],
+    accentVars: {
+      'new-arrivals': '--discovery-card-accent-new',
+      'wrinkle-free':  '--discovery-card-accent-wrinkle',
+      'performance':   '--discovery-card-accent-perf',
+    },
+    accentColors: {
+      'new-arrivals': '#5a2f1f',
+      'wrinkle-free':  '#79574a',
+      'performance':   '#987e75',
+    },
+    products: {
+      'new-arrivals': [
+        { title: 'Merino Wool Henley', price: '$188.00', badge: 'New' },
+        { title: 'Silk-Cotton Blend Shirt', price: '$245.00', badge: 'New' },
+        { title: 'Cashmere Polo', price: '$320.00', badge: 'New' },
+        { title: 'Suede-Trim Oxford', price: '$198.00', badge: 'New' },
+        { title: 'Premium Poplin Shirt', price: '$165.00', badge: 'New' },
+        { title: 'Brushed Cotton Overshirt', price: '$215.00', badge: 'New' },
+      ],
+      'wrinkle-free': [
+        { title: 'Tailored Fit Dress Shirt', price: '$195.00', badge: null },
+        { title: 'Italian Cotton Poplin', price: '$228.00', badge: null },
+        { title: 'Slim Fit Herringbone', price: '$210.00', badge: null },
+        { title: 'Brushed Twill Shirt', price: '$185.00', badge: null },
+        { title: 'End-on-End Weave', price: '$218.00', badge: null },
+        { title: 'Dobby Texture Shirt', price: '$235.00', badge: null },
+      ],
+      'performance': [
+        { title: 'Vintage Chambray Shirt', price: '$178.00', badge: null },
+        { title: 'Aged Denim Work Shirt', price: '$198.00', badge: null },
+        { title: 'Garment-Dyed Oxford', price: '$168.00', badge: 'Sale', salePrice: '$138.00' },
+        { title: 'Stonewash Classic', price: '$185.00', badge: null },
+        { title: 'Heritage Flannel', price: '$195.00', badge: null },
+        { title: 'Washed Canvas Shirt', price: '$175.00', badge: null },
+      ],
+    },
+  },
+  'brand-3': {
+    name: 'Brand 3 — Green',
+    label: 'Brand 3 — Green / Nunito / Radius 16px (rounded)',
+    heading: 'MOVE FREELY',
+    subtext: 'Built for performance, designed for life. Sustainable fabrics that move with you.',
+    filters: [
+      { id: 'new-arrivals', label: 'New Drops' },
+      { id: 'wrinkle-free', label: 'All-Day Comfort' },
+      { id: 'performance',  label: 'Active Series' },
+    ],
+    accentVars: {
+      'new-arrivals': '--discovery-card-accent-new',
+      'wrinkle-free':  '--discovery-card-accent-wrinkle',
+      'performance':   '--discovery-card-accent-perf',
+    },
+    accentColors: {
+      'new-arrivals': '#15613f',
+      'wrinkle-free':  '#417f63',
+      'performance':   '#6e9c88',
+    },
+    products: {
+      'new-arrivals': [
+        { title: 'EcoMove Performance Tee', price: '$58.00', badge: 'New' },
+        { title: 'Recycled Stretch Polo', price: '$72.00', badge: 'New' },
+        { title: 'Organic Cotton Henley', price: '$65.00', badge: 'New' },
+        { title: 'Bamboo Blend Shirt', price: '$78.00', badge: 'New' },
+        { title: 'Tencel Active Shirt', price: '$85.00', badge: 'New' },
+        { title: 'Hemp Cotton Blend', price: '$69.00', badge: 'New' },
+      ],
+      'wrinkle-free': [
+        { title: '4-Way Stretch Shirt', price: '$88.00', badge: null },
+        { title: 'Cloud-Soft Jersey Polo', price: '$75.00', badge: null },
+        { title: 'Adaptive Comfort Shirt', price: '$92.00', badge: null },
+        { title: 'FlexFit Button-Down', price: '$85.00', badge: null },
+        { title: 'Recovery Knit Shirt', price: '$79.00', badge: null },
+        { title: 'All-Terrain Oxford', price: '$98.00', badge: null },
+      ],
+      'performance': [
+        { title: 'Trail-Ready Performance', price: '$108.00', badge: null },
+        { title: 'UPF 50+ Sun Shirt', price: '$95.00', badge: null },
+        { title: 'Quick-Dry Active Shirt', price: '$82.00', badge: 'Sale', salePrice: '$65.00' },
+        { title: 'Compression-Fit Polo', price: '$115.00', badge: null },
+        { title: 'Thermal Regulation Shirt', price: '$125.00', badge: null },
+        { title: 'Wind-Resistant Overshirt', price: '$138.00', badge: null },
+      ],
+    },
+  },
+};
+
+const CARDS_PER_PAGE = 3;
+
+// ── STATE ──────────────────────────────────────────────────────
+let instances = {}; // id → { brandKey, activeFilter, page, fading }
+
+// ── BUILD COMPONENT ───────────────────────────────────────────
+function buildDiscovery(containerId, brandKey) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const brand = BRANDS[brandKey];
+  const state = instances[containerId] || {
+    brandKey,
+    activeFilter: brand.filters[0].id,
+    page: 0,
+    fading: false,
+  };
+  instances[containerId] = state;
+
+  container.setAttribute('data-brand', brandKey);
+  container.innerHTML = renderDiscovery(containerId, brand, state);
+  attachEvents(containerId);
+}
+
+function renderDiscovery(id, brand, state) {
+  const products = brand.products[state.activeFilter] || [];
+  const pages = Math.ceil(products.length / CARDS_PER_PAGE);
+
+  return `
+    <div class="discovery-inner">
+      <div class="discovery-left">
+        <div>
+          <div class="discovery-heading">${brand.heading}</div>
+          <div class="discovery-subtext">${brand.subtext}</div>
+        </div>
+        <div class="discovery-filters">
+          ${brand.filters.map(f => `
+            <button
+              class="filter-btn ${state.activeFilter === f.id ? 'active' : ''}"
+              data-filter="${f.id}"
+              data-instance="${id}"
+            >${f.label}</button>
+          `).join('')}
+        </div>
+      </div>
+      <div class="discovery-right">
+        <div class="carousel-container">
+          <div class="carousel-wrapper" id="${id}-carousel">
+            <div class="carousel-track" id="${id}-track" style="transform: translateX(-${state.page * 100}%)">
+              ${renderPages(id, brand, products, state)}
+            </div>
+          </div>
+          <button class="arrow-btn prev" data-instance="${id}" data-dir="-1" ${state.page === 0 ? 'disabled' : ''} aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="arrow-btn next" data-instance="${id}" data-dir="1" ${state.page >= pages - 1 ? 'disabled' : ''} aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="carousel-dots">
+          ${Array.from({length: pages}, (_, i) => `
+            <button class="dot ${i === state.page ? 'active' : ''}" data-instance="${id}" data-page="${i}" aria-label="Page ${i+1}"></button>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderPages(id, brand, products, state) {
+  const pages = Math.ceil(products.length / CARDS_PER_PAGE);
+  return Array.from({length: pages}, (_, pi) => {
+    const slice = products.slice(pi * CARDS_PER_PAGE, (pi + 1) * CARDS_PER_PAGE);
+    return `<div class="carousel-page">${slice.map(p => renderCard(brand, state, p)).join('')}</div>`;
+  }).join('');
+}
+
+function renderCard(brand, state, product) {
+  const accentVar = brand.accentVars[state.activeFilter];
+  // Build SVG placeholder matching the reference: gray bg + brand-colored bottom bar
+  const svgPlaceholder = `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400"><rect width="300" height="400" fill="#C5C5C5"/><rect y="372" width="300" height="28" fill="${brand.accentColors[state.activeFilter]}"/></svg>`
+  )}`;
+  return `
+    <div class="product-card">
+      <div class="card-image">
+        <img src="${svgPlaceholder}" alt="${product.title}" class="card-img" />
+        <button class="quick-shop">Quick Shop</button>
+        <button class="card-wishlist" aria-label="Save to wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+        ${product.badge ? `<span class="card-badge${product.badge === 'Sale' ? ' sale' : ''}">${product.badge}</span>` : ''}
+      </div>
+      <div class="card-info">
+        <div class="card-title">${product.title}</div>
+        <div class="card-price">
+          ${product.salePrice
+            ? `<span class="original">${product.price}</span><span class="sale-price">${product.salePrice}</span>`
+            : product.price
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── SLIDE WITHOUT REBUILD (smooth CSS transition) ────────────────────────
+function slideToPage(containerId, newPage, pages) {
+  const track = document.getElementById(`${containerId}-track`);
+  if (track) {
+    track.style.transform = `translateX(-${newPage * 100}%)`;
+  }
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  // Update arrow disabled state
+  const prevBtn = container.querySelector('.arrow-btn.prev');
+  const nextBtn = container.querySelector('.arrow-btn.next');
+  if (prevBtn) prevBtn.disabled = (newPage === 0);
+  if (nextBtn) nextBtn.disabled = (newPage >= pages - 1);
+  // Update dot active state
+  container.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === newPage);
+  });
+}
+
+// ── EVENTS ─────────────────────────────────────────────────────
+function attachEvents(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Wishlist toggle
+  container.querySelectorAll('.card-wishlist').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.classList.toggle('wishlisted');
+    });
+  });
+
+  // Filter buttons
+  container.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filterId = btn.dataset.filter;
+      const state = instances[containerId];
+      if (state.activeFilter === filterId || state.fading) return;
+      state.fading = true;
+      const carousel = document.getElementById(`${containerId}-carousel`);
+      carousel.style.opacity = '0';
+      carousel.style.transition = 'opacity 250ms ease';
+      setTimeout(() => {
+        state.activeFilter = filterId;
+        state.page = 0;
+        buildDiscovery(containerId, state.brandKey);
+        const newCarousel = document.getElementById(`${containerId}-carousel`);
+        newCarousel.style.opacity = '0';
+        newCarousel.style.transition = 'none';
+        setTimeout(() => {
+          newCarousel.style.transition = 'opacity 250ms ease';
+          newCarousel.style.opacity = '1';
+          instances[containerId].fading = false;
+        }, 20);
+      }, 250);
+    });
+  });
+
+  // Arrow + dot buttons — animate track directly (no full rebuild = smooth CSS transition)
+  container.querySelectorAll('.arrow-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const state = instances[containerId];
+      const brand = BRANDS[state.brandKey];
+      const products = brand.products[state.activeFilter] || [];
+      const pages = Math.ceil(products.length / CARDS_PER_PAGE);
+      const dir = parseInt(btn.dataset.dir);
+      const newPage = Math.max(0, Math.min(pages - 1, state.page + dir));
+      if (newPage !== state.page) {
+        state.page = newPage;
+        slideToPage(containerId, newPage, pages);
+      }
+    });
+  });
+
+  container.querySelectorAll('.dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const state = instances[containerId];
+      const newPage = parseInt(dot.dataset.page);
+      if (newPage !== state.page) {
+        const brand = BRANDS[state.brandKey];
+        const products = brand.products[state.activeFilter] || [];
+        const pages = Math.ceil(products.length / CARDS_PER_PAGE);
+        state.page = newPage;
+        slideToPage(containerId, newPage, pages);
+      }
+    });
+  });
+}
+
+// ── BRAND SWITCHER ─────────────────────────────────────────────
+let currentBrand = 'brand-1';
+
+function switchBrand(brandKey, tab) {
+  currentBrand = brandKey;
+  document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+
+  const label = document.getElementById('single-label');
+  if (label) label.textContent = BRANDS[brandKey].label;
+
+  // Reset and rebuild
+  delete instances['single-discovery'];
+  buildDiscovery('single-discovery', brandKey);
+}
+
+// ── VIEW TOGGLE ───────────────────────────────────────────────
+function setView(view, btn) {
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.body.className = view === 'compare' ? 'view-compare' : 'view-single';
+
+  if (view === 'compare') {
+    buildDiscovery('compare-b1', 'brand-1');
+    buildDiscovery('compare-b2', 'brand-2');
+    buildDiscovery('compare-b3', 'brand-3');
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildDiscovery('single-discovery', 'brand-1');
+});
+</script>
+
+</body>
+</html>

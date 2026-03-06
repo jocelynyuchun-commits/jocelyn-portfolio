@@ -1,0 +1,297 @@
+/**
+ * tokens-multibrand.css — AUTO-GENERATED from Figma JSON exports
+ * Source: Primitives_Multibrands.json + Semantic_Multibrands.json
+ *
+ * Shell tokens (manually defined, not from Figma):
+ *   --shell-surface:    #142d51   (DLS nav navy — same across ALL documentation pages)
+ *   --shell-bg:         #f5f5f5
+ *   --shell-text:       #181818
+ *   --shell-on-surface: #ffffff
+ *
+ * Brand summary:
+ *   Brand 1 (Navy):  #142d51  radius:4px   Proxima Nova
+ *   Brand 2 (Brown): #5a2f1f  radius:0px   Cormorant Garamond
+ *   Brand 3 (Green): #15613f  radius:16px  Nunito
+ *
+ * Architecture: Layer 1 (:root primitives) → Layer 2 ([data-brand] semantic) → Layer 3 (component vars)
+ */
+
+/**
+ * tokens-multibrand.css
+ * AUTO-GENERATED — do not edit by hand.
+ * Source: Primitives_Multibrands.json + Semantic_Multibrands.json
+ *
+ * Usage:
+ *   <div data-brand="brand-1"> ... </div>
+ *   <div data-brand="brand-2"> ... </div>
+ *   <div data-brand="brand-3"> ... </div>
+ *
+ * Architecture:
+ *   Layer 1 — Primitive tokens    (color ramps, spacing scale)
+ *   Layer 2 — Semantic aliases    (role-based, brand-switched)
+ *   Layer 3 — Component tokens    (ProductDiscovery-specific)
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   SHARED TOKENS (same across all brands)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Layer 1 — Neutral Primitives */
+  --color-neutral-900: #181818;
+  --color-neutral-800: #333333;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-600: #686868;
+  --color-neutral-500: #7c7c7c;
+  --color-neutral-400: #9b9b9b;
+  --color-neutral-300: #c4c4c4;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-100: #fbfbfb;
+  --color-neutral-white: #ffffff;
+
+  /* Layer 1 — Feedback Primitives */
+  --color-feedback-success: #24882d;
+  --color-feedback-error:   #c02321;
+  --color-brand-logo:       #8e2231;
+
+  /* Layer 1 — Spacing Scale */
+  --spacing-100: 4px;
+  --spacing-200: 8px;
+  --spacing-300: 12px;
+  --spacing-400: 16px;
+  --spacing-500: 20px;
+  --spacing-600: 24px;
+  --spacing-700: 28px;
+  --spacing-800: 32px;
+  --spacing-900: 40px;
+
+  /* Layer 1 — Motion */
+  --motion-duration-short:  250ms;
+  --motion-duration-medium: 300ms;
+  --motion-easing-standard: ease-in-out;
+
+  /* Layer 1 — Typography Scale */
+  --font-size-xs:  12px;
+  --font-size-sm:  14px;
+  --font-size-base:16px;
+  --font-size-lg:  18px;
+  --font-size-xl:  20px;
+  --font-size-2xl: 24px;
+
+  /* Layer 1 — Font Weights */
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+
+  /* Shared Semantic — Feedback */
+  --color-sale:    var(--color-brand-logo);
+  --color-success: var(--color-feedback-success);
+  --color-error:   var(--color-feedback-error);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND 1 — brand-1
+   Primary: [resolved from JSON]  |  Font: Proxima Nova  |  Radius: 4px
+   ═══════════════════════════════════════════════════════════ */
+:root, [data-brand="brand-1"] {
+
+  /* ── Layer 1: Brand Primitive Colors ── */
+  --color-brand-primary:    #2c4e7e;
+  --color-brand-secondary:  #2f71d4;
+
+  /* ── Layer 2: Semantic — Button Colors ── */
+  --btn-solid-default:      #142d51;
+  --btn-solid-hover:        #255090;
+  --btn-solid-pressed:      #2f71d4;
+  --btn-solid-focus-fill:   #e4eaf4;
+  --btn-solid-focus-ring:   #90a5c4;
+  --btn-solid-disabled:     #c5c5c5;
+  --btn-solid-text:         var(--color-neutral-white);
+  --btn-solid-text-disabled:var(--color-neutral-400);
+
+  --btn-outline-default:    #142d51;
+  --btn-outline-hover:      #255090;
+  --btn-outline-pressed:    #2f71d4;
+  --btn-outline-focus-fill: #e4eaf4;
+  --btn-outline-focus-ring: #90a5c4;
+  --btn-outline-text:       #142d51;
+
+  /* ── Layer 2: Semantic — Typography ── */
+  --font-family-brand:      "Proxima Nova", sans-serif;
+  --color-heading:          var(--color-brand-primary);
+  --color-body:             var(--color-neutral-700);
+  --color-border-focus:     #2c4e7e;
+
+  /* ── Layer 2: Semantic — Button Shape ── */
+  --btn-radius:             4px;
+  --btn-border-width:       1px;
+  --btn-font-size:          var(--font-size-base);
+  --btn-font-weight:        var(--font-weight-semibold);
+
+  /* ── Layer 3: Component — ProductDiscovery ── */
+  --discovery-section-heading-color:  var(--color-brand-primary);
+  --discovery-section-heading-font:   var(--font-family-brand);
+  --discovery-section-body-color:     var(--color-body);
+  --discovery-filter-active-bg:       var(--btn-solid-default);
+  --discovery-filter-active-text:     var(--btn-solid-text);
+  --discovery-filter-idle-border:     var(--btn-outline-default);
+  --discovery-filter-idle-text:       var(--btn-outline-text);
+  --discovery-filter-hover-bg:        #e4eaf4;
+  --discovery-filter-font:            var(--font-family-brand);
+  --discovery-filter-radius:          var(--btn-radius);
+  --discovery-filter-height:          48px;
+  --discovery-arrow-color:            var(--color-brand-primary);
+  --discovery-arrow-hover-shadow:     0 4px 12px rgba(0,0,0,0.15);
+  --discovery-card-bg:                var(--color-neutral-white);
+  --discovery-card-radius:            var(--btn-radius);
+  --discovery-card-badge-bg:          var(--color-neutral-200);
+  --discovery-card-badge-text:        var(--color-neutral-900);
+  --discovery-card-title-color:       var(--color-neutral-900);
+  --discovery-card-price-color:       var(--color-neutral-900);
+  --discovery-card-sale-color:        var(--color-sale);
+  --discovery-card-accent-new:        #142d51;
+  --discovery-card-accent-wrinkle:    #255090;
+  --discovery-card-accent-perf:       #8e2231;
+  --discovery-quickshop-bg:           var(--color-brand-primary);
+  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
+  --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND 2 — brand-2
+   Primary: [resolved from JSON]  |  Font: Canela  |  Radius: 0px
+   ═══════════════════════════════════════════════════════════ */
+[data-brand="brand-2"] {
+
+  /* ── Layer 1: Brand Primitive Colors ── */
+  --color-brand-primary:    #5a2f1f;
+  --color-brand-secondary:  #987e75;
+
+  /* ── Layer 2: Semantic — Button Colors ── */
+  --btn-solid-default:      #5a2f1f;
+  --btn-solid-hover:        #79574a;
+  --btn-solid-pressed:      #987e75;
+  --btn-solid-focus-fill:   #c6b9b4;
+  --btn-solid-focus-ring:   #b7a69f;
+  --btn-solid-disabled:     #c5c5c5;
+  --btn-solid-text:         var(--color-neutral-white);
+  --btn-solid-text-disabled:var(--color-neutral-400);
+
+  --btn-outline-default:    #5a2f1f;
+  --btn-outline-hover:      #79574a;
+  --btn-outline-pressed:    #987e75;
+  --btn-outline-focus-fill: #c6b9b4;
+  --btn-outline-focus-ring: #b7a69f;
+  --btn-outline-text:       #5a2f1f;
+
+  /* ── Layer 2: Semantic — Typography ── */
+  --font-family-brand:      "Canela", sans-serif;
+  --color-heading:          var(--color-brand-primary);
+  --color-body:             var(--color-neutral-700);
+  --color-border-focus:     #5a2f1f;
+
+  /* ── Layer 2: Semantic — Button Shape ── */
+  --btn-radius:             0px;
+  --btn-border-width:       1px;
+  --btn-font-size:          var(--font-size-base);
+  --btn-font-weight:        var(--font-weight-semibold);
+
+  /* ── Layer 3: Component — ProductDiscovery ── */
+  --discovery-section-heading-color:  var(--color-brand-primary);
+  --discovery-section-heading-font:   var(--font-family-brand);
+  --discovery-section-body-color:     var(--color-body);
+  --discovery-filter-active-bg:       var(--btn-solid-default);
+  --discovery-filter-active-text:     var(--btn-solid-text);
+  --discovery-filter-idle-border:     var(--btn-outline-default);
+  --discovery-filter-idle-text:       var(--btn-outline-text);
+  --discovery-filter-hover-bg:        #c6b9b4;
+  --discovery-filter-font:            var(--font-family-brand);
+  --discovery-filter-radius:          var(--btn-radius);
+  --discovery-filter-height:          48px;
+  --discovery-arrow-color:            var(--color-brand-primary);
+  --discovery-arrow-hover-shadow:     0 4px 12px rgba(0,0,0,0.15);
+  --discovery-card-bg:                var(--color-neutral-white);
+  --discovery-card-radius:            var(--btn-radius);
+  --discovery-card-badge-bg:          var(--color-neutral-200);
+  --discovery-card-badge-text:        var(--color-neutral-900);
+  --discovery-card-title-color:       var(--color-neutral-900);
+  --discovery-card-price-color:       var(--color-neutral-900);
+  --discovery-card-sale-color:        var(--color-sale);
+  --discovery-card-accent-new:        #5a2f1f;
+  --discovery-card-accent-wrinkle:    #79574a;
+  --discovery-card-accent-perf:       #987e75;
+  --discovery-quickshop-bg:           var(--color-brand-primary);
+  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
+  --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND 3 — brand-3
+   Primary: [resolved from JSON]  |  Font: Nunito  |  Radius: 16px
+   ═══════════════════════════════════════════════════════════ */
+[data-brand="brand-3"] {
+
+  /* ── Layer 1: Brand Primitive Colors ── */
+  --color-brand-primary:    #15613f;
+  --color-brand-secondary:  #6e9c88;
+
+  /* ── Layer 2: Semantic — Button Colors ── */
+  --btn-solid-default:      #15613f;
+  --btn-solid-hover:        #417f63;
+  --btn-solid-pressed:      #6e9c88;
+  --btn-solid-focus-fill:   #c8d7d1;
+  --btn-solid-focus-ring:   #6e9c88;
+  --btn-solid-disabled:     #c5c5c5;
+  --btn-solid-text:         var(--color-neutral-white);
+  --btn-solid-text-disabled:var(--color-neutral-400);
+
+  --btn-outline-default:    #15613f;
+  --btn-outline-hover:      #417f63;
+  --btn-outline-pressed:    #6e9c88;
+  --btn-outline-focus-fill: #c8d7d1;
+  --btn-outline-focus-ring: #9bbaac;
+  --btn-outline-text:       #15613f;
+
+  /* ── Layer 2: Semantic — Typography ── */
+  --font-family-brand:      "Nunito", sans-serif;
+  --color-heading:          var(--color-brand-primary);
+  --color-body:             var(--color-neutral-700);
+  --color-border-focus:     #15613f;
+
+  /* ── Layer 2: Semantic — Button Shape ── */
+  --btn-radius:             16px;
+  --btn-border-width:       1px;
+  --btn-font-size:          var(--font-size-base);
+  --btn-font-weight:        var(--font-weight-semibold);
+
+  /* ── Layer 3: Component — ProductDiscovery ── */
+  --discovery-section-heading-color:  var(--color-brand-primary);
+  --discovery-section-heading-font:   var(--font-family-brand);
+  --discovery-section-body-color:     var(--color-body);
+  --discovery-filter-active-bg:       var(--btn-solid-default);
+  --discovery-filter-active-text:     var(--btn-solid-text);
+  --discovery-filter-idle-border:     var(--btn-outline-default);
+  --discovery-filter-idle-text:       var(--btn-outline-text);
+  --discovery-filter-hover-bg:        #c8d7d1;
+  --discovery-filter-font:            var(--font-family-brand);
+  --discovery-filter-radius:          var(--btn-radius);
+  --discovery-filter-height:          48px;
+  --discovery-arrow-color:            var(--color-brand-primary);
+  --discovery-arrow-hover-shadow:     0 4px 12px rgba(0,0,0,0.15);
+  --discovery-card-bg:                var(--color-neutral-white);
+  --discovery-card-radius:            var(--btn-radius);
+  --discovery-card-badge-bg:          var(--color-neutral-200);
+  --discovery-card-badge-text:        var(--color-neutral-900);
+  --discovery-card-title-color:       var(--color-neutral-900);
+  --discovery-card-price-color:       var(--color-neutral-900);
+  --discovery-card-sale-color:        var(--color-sale);
+  --discovery-card-accent-new:        #15613f;
+  --discovery-card-accent-wrinkle:    #417f63;
+  --discovery-card-accent-perf:       #6e9c88;
+  --discovery-quickshop-bg:           var(--color-brand-primary);
+  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
+  --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
+}
