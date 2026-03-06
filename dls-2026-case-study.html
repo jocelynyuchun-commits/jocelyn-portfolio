@@ -279,6 +279,17 @@
   }
   .demo-iframe.tall { height: 800px; }
 
+  /* Break demo section out of .page max-width to show full 1440px designs */
+  .section--wide {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1440px;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
   /* BEFORE / AFTER */
   .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 36px; }
   .ba-col { background: var(--white); padding: 40px; }
@@ -667,7 +678,7 @@
   </div>
 
   <!-- COMPONENTS — LIVE DEMO IFRAMES -->
-  <div class="section">
+  <div class="section section--wide">
     <span class="eyebrow">Components Built</span>
     <h2>Same Architecture. Three Brand Expressions.</h2>
 
