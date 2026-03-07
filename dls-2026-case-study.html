@@ -33,13 +33,19 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV — matches Framer header */
+  /* NAV — matches Framer header responsive behavior */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: #ffffff;
     height: 80px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 60px;
+  }
+  @media (max-width: 1439px) and (min-width: 901px) {
+    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
+  }
+  @media (max-width: 900px) and (min-width: 641px) {
+    nav { height: clamp(56px, 7.8vw, 72px); }
   }
   .nav-logo {
     font-family: 'Poppins', sans-serif;
@@ -397,7 +403,6 @@
     .fact:last-child { border-bottom: none; }
     .next-project { flex-direction: column; gap: 20px; align-items: flex-start; }
     .site-footer { flex-direction: column; gap: 12px; align-items: flex-start; }
-    nav { padding: 0 24px; }
     .demo-tabs { flex-wrap: wrap; }
   }
 
