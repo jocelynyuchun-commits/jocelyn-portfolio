@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-Augmented Design System Experiment 2026 — Jocelyn Lin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
@@ -33,26 +33,38 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
+  /* NAV — matches Framer header responsive behavior */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    height: 52px;
+    background: #ffffff;
+    height: 80px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 var(--gutter);
-    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
   }
-  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--black); }
+  @media (max-width: 1439px) and (min-width: 901px) {
+    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
+  }
+  @media (max-width: 900px) and (min-width: 641px) {
+    nav { height: clamp(56px, 7.8vw, 72px); }
+  }
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--black); text-decoration: none;
+    text-transform: capitalize; transition: opacity 0.15s;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-links a.active { opacity: 1; }
 
   /* LAYOUT */
   .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
 
   /* HERO */
-  .hero { padding-top: 120px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
+  .hero { padding-top: 140px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
   .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
   .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--black); max-width: 800px; margin-bottom: 22px; }
   .hero-desc { font-size: 17px; font-weight: 300; color: var(--gray-dark); max-width: 620px; line-height: 1.75; margin-bottom: 32px; }
@@ -378,6 +390,26 @@
   .site-footer p { font-size: 13px; color: var(--gray-mid); max-width: none; margin: 0; }
   .site-footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
 
+  /* HANDOFF SECTION */
+  .handoff-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 36px; }
+  .handoff-card { border: 1px solid var(--border); padding: 24px 20px; }
+  .handoff-card-header { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid var(--border); }
+  .handoff-item { margin-bottom: 20px; }
+  .handoff-item:last-child { margin-bottom: 0; }
+  .handoff-item-title { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .handoff-item-desc { font-size: 12px; font-weight: 300; color: var(--gray-dark); line-height: 1.6; }
+  .handoff-item-ref { font-size: 11px; font-weight: 400; color: var(--gray-mid); margin-top: 4px; }
+  .handoff-practices { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); margin-top: 36px; }
+  .handoff-practice { padding: 28px 32px; }
+  .handoff-practice + .handoff-practice { border-left: 1px solid var(--border); }
+  .handoff-practice-header { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .handoff-practice-icon { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; color: white; flex-shrink: 0; }
+  .handoff-practice-icon.do { background: #2e7d32; }
+  .handoff-practice-icon.dont { background: #c62828; }
+  .handoff-practice ul { list-style: none; }
+  .handoff-practice li { font-size: 13px; font-weight: 300; color: var(--gray-dark); padding: 6px 0; display: flex; gap: 8px; line-height: 1.5; }
+  .handoff-practice li::before { content: '•'; color: var(--gray-light); flex-shrink: 0; }
+
   /* HAMBURGER BUTTON */
   .nav-burger {
     display: none;
@@ -406,21 +438,23 @@
   }
   .mobile-overlay-close svg { display: block; }
   .mobile-overlay-logo {
-    position: absolute; top: 16px; left: 24px;
-    font-size: 15px; font-weight: 500; color: var(--black);
-    text-decoration: none; letter-spacing: -0.01em;
+    position: absolute; top: 20px; left: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black);
+    text-decoration: none;
   }
   .mobile-overlay-links {
     list-style: none; text-align: center;
     display: flex; flex-direction: column; gap: 12px;
   }
   .mobile-overlay-links a {
+    font-family: 'Poppins', sans-serif;
     font-size: 28px; font-weight: 500;
     color: var(--black); text-decoration: none;
     letter-spacing: -0.02em;
-    transition: color 0.15s;
+    transition: opacity 0.15s;
   }
-  .mobile-overlay-links a:hover { color: var(--gray-mid); }
+  .mobile-overlay-links a:hover { opacity: 0.6; }
   .mobile-overlay-links a.active {
     color: var(--gray-mid);
     text-decoration: underline;
@@ -432,11 +466,16 @@
     :root { --gutter: 24px; }
     .facts-row, .brand-cards, .arch-slide, .flow-steps, .ba-grid,
     .ba-a-header, .ba-a-row, .ba-b-wrap,
-    .ba-c-metrics, .learn-a-grid, .learn-b-grid { grid-template-columns: 1fr; }
+    .ba-c-metrics, .learn-a-grid, .learn-b-grid,
+    .handoff-cards { grid-template-columns: 1fr; }
+    .handoff-practices { grid-template-columns: 1fr; }
+    .handoff-practice + .handoff-practice { border-left: none; border-top: 1px solid var(--border); }
     .learning { grid-template-columns: 1fr; gap: 10px; }
     .learning-num { font-size: 40px; }
-    .fact { border-right: none; padding: 0 0 20px; border-bottom: 1px solid var(--border); }
-    .fact:last-child { border-bottom: none; }
+    .fact { border-right: none; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .fact:first-child { padding-top: 0; }
+    .fact:last-child { border-bottom: none; padding-bottom: 0; }
+    .fact + .fact { padding-left: 0; }
     .next-project { flex-direction: column; gap: 20px; align-items: flex-start; }
     .site-footer { flex-direction: column; gap: 12px; align-items: flex-start; }
     nav { padding: 0 24px; }
@@ -452,6 +491,7 @@
   <a href="https://jocelynlin.framer.ai" class="nav-logo">Jocelyn Lin</a>
   <ul class="nav-links">
     <li><a href="https://jocelynlin.framer.ai">Work</a></li>
+    <li><a href="#">AI Experiments</a></li>
     <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
   </ul>
   <button class="nav-burger" aria-label="Open menu" onclick="document.getElementById('mobileOverlay').classList.add('open'); document.body.style.overflow='hidden';">
@@ -473,7 +513,7 @@
     </svg>
   </button>
   <ul class="mobile-overlay-links">
-    <li><a href="https://jocelynlin.framer.ai/work">Work</a></li>
+    <li><a href="https://jocelynlin.framer.ai">Work</a></li>
     <li><a href="#">AI Experiment</a></li>
     <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
   </ul>
@@ -828,6 +868,121 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- DESIGN → DEVELOPER HANDOFF -->
+  <div class="section">
+    <span class="eyebrow">Engineering Handoff</span>
+    <h2>Design → Developer Handoff</h2>
+    <p>What to share so the workflow is actually useful in production</p>
+
+    <div class="handoff-cards">
+      <div class="handoff-card">
+        <div class="handoff-card-header">Step 1: Design Tokens</div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Primitives</div>
+          <div class="handoff-item-desc">Raw color, spacing &amp; type values. The foundation layer.</div>
+          <div class="handoff-item-ref">→ primitives.json</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Semantic Tokens</div>
+          <div class="handoff-item-desc">Mapped meanings: button-bg, focus-ring, surface, text.</div>
+          <div class="handoff-item-ref">→ semantic.json</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">CSS Custom Properties</div>
+          <div class="handoff-item-desc">Ready-to-use variables for any framework or vanilla CSS.</div>
+          <div class="handoff-item-ref">→ globals.css</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Spacing Scale</div>
+          <div class="handoff-item-desc">4px base, 15 steps.</div>
+        </div>
+      </div>
+
+      <div class="handoff-card">
+        <div class="handoff-card-header">Step 2: Component Specs</div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Props &amp; API</div>
+          <div class="handoff-item-desc">Define variant, size, and state as the component contract.</div>
+          <div class="handoff-item-ref">variant / size / state</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">State Matrix</div>
+          <div class="handoff-item-desc">Default, hover, active, focus, disabled — for every variant.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Responsive Rules</div>
+          <div class="handoff-item-desc">Breakpoints and layout shifts.</div>
+          <div class="handoff-item-ref">1 col → 2 col → 4 col</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Content Rules</div>
+          <div class="handoff-item-desc">Capitalization, truncation, min/max widths.</div>
+        </div>
+      </div>
+
+      <div class="handoff-card">
+        <div class="handoff-card-header">Step 3: Visual Reference</div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Hosted Prototype</div>
+          <div class="handoff-item-desc">Live HTML devs can inspect in the browser. Not production code.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Figma Link</div>
+          <div class="handoff-item-desc">Source of truth for pixel specs, redlines, and measurements.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Interaction Notes</div>
+          <div class="handoff-item-desc">Animations, transitions, timing, and micro-interactions.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Label as Reference Only</div>
+          <div class="handoff-item-desc">Clearly mark HTML prototypes as non-production code.</div>
+        </div>
+      </div>
+
+      <div class="handoff-card">
+        <div class="handoff-card-header">Step 4: Context &amp; Docs</div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">README</div>
+          <div class="handoff-item-desc">How to consume the tokens and run the prototype locally.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Font &amp; Asset Notes</div>
+          <div class="handoff-item-desc">Licenses, fallback stacks, CDN links.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Accessibility Requirements</div>
+          <div class="handoff-item-desc">Focus order, ARIA roles, contrast ratios.</div>
+        </div>
+        <div class="handoff-item">
+          <div class="handoff-item-title">Acceptance Criteria</div>
+          <div class="handoff-item-desc">What "done" looks like for QA.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="handoff-practices">
+      <div class="handoff-practice">
+        <div class="handoff-practice-header"><span class="handoff-practice-icon do">✓</span> Best Practices</div>
+        <ul>
+          <li>Share tokens as JSON — framework-agnostic and durable</li>
+          <li>Document the component API: props, variants, states</li>
+          <li>Host prototypes as inspectable visual reference</li>
+          <li>Note font licenses and asset dependencies</li>
+        </ul>
+      </div>
+      <div class="handoff-practice">
+        <div class="handoff-practice-header"><span class="handoff-practice-icon dont">✕</span> Avoid</div>
+        <ul>
+          <li>Expecting devs to copy-paste HTML into React or Swift</li>
+          <li>Sharing Tailwind classes as "the spec" — share values</li>
+          <li>Skipping "reference only" labels on prototypes</li>
+          <li>Omitting interaction states: hover, focus, disabled</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <!-- BEFORE / AFTER — 3 LAYOUT OPTIONS -->
