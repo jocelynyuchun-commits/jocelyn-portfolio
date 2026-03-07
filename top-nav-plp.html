@@ -167,10 +167,61 @@
   footer p { font-size: 13px; color: var(--gray-mid); margin: 0; max-width: none; }
   footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
 
+  /* HAMBURGER BUTTON */
+  .nav-burger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px;
+    align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .nav-burger svg { display: block; }
+
+  /* MOBILE OVERLAY */
+  .mobile-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .mobile-overlay.open { display: flex; }
+  .mobile-overlay-close {
+    position: absolute; top: 14px; right: 24px;
+    background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .mobile-overlay-close svg { display: block; }
+  .mobile-overlay-logo {
+    position: absolute; top: 16px; left: 24px;
+    font-size: 15px; font-weight: 500; color: var(--black);
+    text-decoration: none; letter-spacing: -0.01em;
+  }
+  .mobile-overlay-links {
+    list-style: none; text-align: center;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .mobile-overlay-links a {
+    font-size: 28px; font-weight: 500;
+    color: var(--black); text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color 0.15s;
+  }
+  .mobile-overlay-links a:hover { color: var(--gray-mid); }
+  .mobile-overlay-links a.active {
+    color: var(--gray-mid);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 800px) {
     :root { --gutter: 24px; }
     nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
     .facts-row { grid-template-columns: 1fr 1fr; gap: 32px 0; }
     .fact { border-right: none; padding: 0; }
     .fact + .fact { padding-left: 0; }
@@ -207,10 +258,33 @@
         </a>
       </div>
     </li>
-    <li><a href="./ai-experiments.html">AI Experiments</a></li>
+    <li><a href="file:///Users/jocelynlin/Downloads/ai-experiments_4.html">AI Experiments</a></li>
     <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
   </ul>
+  <button class="nav-burger" aria-label="Open menu" onclick="document.getElementById('mobileOverlay').classList.add('open'); document.body.style.overflow='hidden';">
+    <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+      <line x1="0" y1="1" x2="22" y2="1" stroke="#111" stroke-width="2"/>
+      <line x1="0" y1="8" x2="22" y2="8" stroke="#111" stroke-width="2"/>
+      <line x1="0" y1="15" x2="22" y2="15" stroke="#111" stroke-width="2"/>
+    </svg>
+  </button>
 </nav>
+
+<!-- Mobile fullscreen menu overlay -->
+<div id="mobileOverlay" class="mobile-overlay">
+  <a href="https://jocelynlin.framer.ai" class="mobile-overlay-logo">Jocelyn Lin</a>
+  <button class="mobile-overlay-close" aria-label="Close menu" onclick="document.getElementById('mobileOverlay').classList.remove('open'); document.body.style.overflow='';">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <line x1="2" y1="2" x2="18" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18" y1="2" x2="2" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <ul class="mobile-overlay-links">
+    <li><a href="https://jocelynlin.framer.ai/work" class="active">Work</a></li>
+    <li><a href="file:///Users/jocelynlin/Downloads/ai-experiments_4.html">AI Experiment</a></li>
+    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+  </ul>
+</div>
 
 <div class="page">
 

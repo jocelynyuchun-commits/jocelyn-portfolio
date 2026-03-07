@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Experiments — Jocelyn Lin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
@@ -29,39 +29,65 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV — matches Framer header responsive behavior */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: #ffffff;
-    height: 80px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    height: 52px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 60px;
+    padding: 0 var(--gutter);
+    border-bottom: 1px solid var(--border);
   }
-  @media (max-width: 1439px) and (min-width: 901px) {
-    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
+  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+
+  /* DROPDOWN */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-trigger {
+    font-size: 13px; font-weight: 400; color: var(--gray-mid);
+    cursor: pointer; transition: color 0.15s;
+    display: flex; align-items: center; gap: 4px;
+    user-select: none;
   }
-  @media (max-width: 900px) and (min-width: 641px) {
-    nav { height: clamp(56px, 7.8vw, 72px); }
+  .nav-dropdown-trigger:hover, .nav-dropdown-trigger.active { color: var(--black); }
+  .nav-dropdown-trigger svg { transition: transform 0.15s; }
+  .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: calc(100% + 12px); right: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    min-width: 200px;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 200;
   }
-  .nav-logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px; font-weight: 500; color: var(--black); text-decoration: none;
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1; pointer-events: all; transform: translateY(0);
   }
-  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
-  .nav-links a {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px; font-weight: 500; color: var(--black); text-decoration: none;
-    text-transform: capitalize; transition: opacity 0.15s;
+  .nav-dropdown-item {
+    display: block;
+    padding: 11px 16px;
+    font-size: 13px; font-weight: 400;
+    color: var(--gray-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
   }
-  .nav-links a:hover { opacity: 0.6; }
-  .nav-links a.active { opacity: 1; }
+  .nav-dropdown-item:last-child { border-bottom: none; }
+  .nav-dropdown-item:hover { background: var(--gray-bg); color: var(--black); }
+  .nav-dropdown-item .item-label { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 2px; }
+  .nav-dropdown-item .item-sub { font-size: 11px; font-weight: 300; color: var(--gray-mid); }
 
   /* PAGE */
   .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
 
   /* HEADER */
   .page-header {
-    padding-top: 140px;
+    padding-top: 112px;
     padding-bottom: 56px;
     border-bottom: 1px solid var(--border);
   }
@@ -188,9 +214,61 @@
   footer p { font-size: 13px; color: var(--gray-mid); margin: 0; max-width: none; }
   footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
 
+  /* HAMBURGER BUTTON */
+  .nav-burger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px;
+    align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .nav-burger svg { display: block; }
+
+  /* MOBILE OVERLAY */
+  .mobile-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .mobile-overlay.open { display: flex; }
+  .mobile-overlay-close {
+    position: absolute; top: 14px; right: 24px;
+    background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .mobile-overlay-close svg { display: block; }
+  .mobile-overlay-logo {
+    position: absolute; top: 16px; left: 24px;
+    font-size: 15px; font-weight: 500; color: var(--black);
+    text-decoration: none; letter-spacing: -0.01em;
+  }
+  .mobile-overlay-links {
+    list-style: none; text-align: center;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .mobile-overlay-links a {
+    font-size: 28px; font-weight: 500;
+    color: var(--black); text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color 0.15s;
+  }
+  .mobile-overlay-links a:hover { color: var(--gray-mid); }
+  .mobile-overlay-links a.active {
+    color: var(--gray-mid);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 800px) {
     :root { --gutter: 24px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
     .exp-grid { grid-template-columns: 1fr; }
     .about-strip { flex-direction: column; align-items: flex-start; }
     footer { flex-direction: column; gap: 8px; align-items: flex-start; }
@@ -202,11 +280,53 @@
 <nav>
   <a href="https://jocelynlin.framer.ai" class="nav-logo">Jocelyn Lin</a>
   <ul class="nav-links">
-    <li><a href="https://jocelynlin.framer.ai">Work</a></li>
+    <!-- Work dropdown -->
+    <li class="nav-dropdown">
+      <div class="nav-dropdown-trigger">
+        Work
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1L5 5L9 1" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="https://jocelynlin.framer.ai/work/top-nav-plp">
+          <div class="item-label">Top Nav &amp; PLP Redesign</div>
+          <div class="item-sub">UX / E-commerce</div>
+        </a>
+        <a class="nav-dropdown-item" href="https://jocelynlin.framer.ai/work/pdp">
+          <div class="item-label">PDP Redesign</div>
+          <div class="item-sub">UX / E-commerce</div>
+        </a>
+      </div>
+    </li>
+    <!-- AI Experiments — current page -->
+    <li><a href="#" class="active">AI Experiments</a></li>
+    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Open menu" onclick="document.getElementById('mobileOverlay').classList.add('open'); document.body.style.overflow='hidden';">
+    <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+      <line x1="0" y1="1" x2="22" y2="1" stroke="#111" stroke-width="2"/>
+      <line x1="0" y1="8" x2="22" y2="8" stroke="#111" stroke-width="2"/>
+      <line x1="0" y1="15" x2="22" y2="15" stroke="#111" stroke-width="2"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- Mobile fullscreen menu overlay -->
+<div id="mobileOverlay" class="mobile-overlay">
+  <a href="https://jocelynlin.framer.ai" class="mobile-overlay-logo">Jocelyn Lin</a>
+  <button class="mobile-overlay-close" aria-label="Close menu" onclick="document.getElementById('mobileOverlay').classList.remove('open'); document.body.style.overflow='';">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <line x1="2" y1="2" x2="18" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18" y1="2" x2="2" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <ul class="mobile-overlay-links">
+    <li><a href="https://jocelynlin.framer.ai/work">Work</a></li>
     <li><a href="#" class="active">AI Experiment</a></li>
     <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
   </ul>
-</nav>
+</div>
 
 <div class="page">
 
@@ -222,7 +342,7 @@
     <div class="exp-grid">
 
       <!-- Experiment 1 — LIVE -->
-      <a class="exp-card" href="./dls-2026-case-study.html">
+      <a class="exp-card" href="file:///Users/jocelynlin/Downloads/dls-2026-case-study_8.html">
         <div class="exp-number">01</div>
         <div class="exp-tag-row">
           <span class="exp-tag ai">AI</span>
