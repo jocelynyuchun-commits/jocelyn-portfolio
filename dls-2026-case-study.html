@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-Augmented Design System Experiment 2026 — Jocelyn Lin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
@@ -33,26 +33,38 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
+  /* NAV — matches Framer header responsive behavior */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    height: 52px;
+    background: #ffffff;
+    height: 80px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 var(--gutter);
-    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
   }
-  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--black); }
+  @media (max-width: 1439px) and (min-width: 901px) {
+    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
+  }
+  @media (max-width: 900px) and (min-width: 641px) {
+    nav { height: clamp(56px, 7.8vw, 72px); }
+  }
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--black); text-decoration: none;
+    text-transform: capitalize; transition: opacity 0.15s;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-links a.active { opacity: 1; }
 
   /* LAYOUT */
   .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
 
   /* HERO */
-  .hero { padding-top: 120px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
+  .hero { padding-top: 140px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
   .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
   .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--black); max-width: 800px; margin-bottom: 22px; }
   .hero-desc { font-size: 17px; font-weight: 300; color: var(--gray-dark); max-width: 620px; line-height: 1.75; margin-bottom: 32px; }
@@ -406,21 +418,23 @@
   }
   .mobile-overlay-close svg { display: block; }
   .mobile-overlay-logo {
-    position: absolute; top: 16px; left: 24px;
-    font-size: 15px; font-weight: 500; color: var(--black);
-    text-decoration: none; letter-spacing: -0.01em;
+    position: absolute; top: 20px; left: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black);
+    text-decoration: none;
   }
   .mobile-overlay-links {
     list-style: none; text-align: center;
     display: flex; flex-direction: column; gap: 12px;
   }
   .mobile-overlay-links a {
+    font-family: 'Poppins', sans-serif;
     font-size: 28px; font-weight: 500;
     color: var(--black); text-decoration: none;
     letter-spacing: -0.02em;
-    transition: color 0.15s;
+    transition: opacity 0.15s;
   }
-  .mobile-overlay-links a:hover { color: var(--gray-mid); }
+  .mobile-overlay-links a:hover { opacity: 0.6; }
   .mobile-overlay-links a.active {
     color: var(--gray-mid);
     text-decoration: underline;

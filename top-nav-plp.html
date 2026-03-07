@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Top Nav & PLP Redesign — Jocelyn Lin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
@@ -29,59 +29,32 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
+  /* NAV — matches Framer header responsive behavior */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    height: 52px;
+    background: #ffffff;
+    height: 80px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 var(--gutter);
-    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
   }
-  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
-  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--black); }
-
-  /* DROPDOWN */
-  .nav-dropdown { position: relative; }
-  .nav-dropdown-trigger {
-    font-size: 13px; font-weight: 400; color: var(--black);
-    cursor: pointer; transition: color 0.15s;
-    display: flex; align-items: center; gap: 4px;
-    user-select: none;
+  @media (max-width: 1439px) and (min-width: 901px) {
+    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
   }
-  .nav-dropdown-trigger svg { transition: transform 0.15s; }
-  .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
-  .nav-dropdown-menu {
-    position: absolute; top: calc(100% + 12px); right: 0;
-    background: var(--white);
-    border: 1px solid var(--border);
-    min-width: 200px;
-    opacity: 0; pointer-events: none;
-    transform: translateY(-4px);
-    transition: opacity 0.15s, transform 0.15s;
-    z-index: 200;
+  @media (max-width: 900px) and (min-width: 641px) {
+    nav { height: clamp(56px, 7.8vw, 72px); }
   }
-  .nav-dropdown:hover .nav-dropdown-menu {
-    opacity: 1; pointer-events: all; transform: translateY(0);
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black); text-decoration: none;
   }
-  .nav-dropdown-item {
-    display: block;
-    padding: 11px 16px;
-    font-size: 13px; font-weight: 400;
-    color: var(--gray-dark);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.1s;
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--black); text-decoration: none;
+    text-transform: capitalize; transition: opacity 0.15s;
   }
-  .nav-dropdown-item:last-child { border-bottom: none; }
-  .nav-dropdown-item:hover { background: var(--gray-bg); color: var(--black); }
-  .nav-dropdown-item .item-label { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 2px; }
-  .nav-dropdown-item .item-sub { font-size: 11px; font-weight: 300; color: var(--gray-mid); }
-  .nav-dropdown-item.current { background: var(--gray-bg); }
-  .nav-dropdown-item.current .item-label { font-weight: 600; }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-links a.active { opacity: 1; }
 
   /* PAGE */
   .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
@@ -195,19 +168,21 @@
   }
   .mobile-overlay-close svg { display: block; }
   .mobile-overlay-logo {
-    position: absolute; top: 16px; left: 24px;
-    font-size: 15px; font-weight: 500; color: var(--black);
-    text-decoration: none; letter-spacing: -0.01em;
+    position: absolute; top: 20px; left: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black);
+    text-decoration: none;
   }
   .mobile-overlay-links {
     list-style: none; text-align: center;
     display: flex; flex-direction: column; gap: 12px;
   }
   .mobile-overlay-links a {
+    font-family: 'Poppins', sans-serif;
     font-size: 28px; font-weight: 500;
     color: var(--black); text-decoration: none;
     letter-spacing: -0.02em;
-    transition: color 0.15s;
+    transition: opacity 0.15s;
   }
   .mobile-overlay-links a:hover { color: var(--gray-mid); }
   .mobile-overlay-links a.active {
