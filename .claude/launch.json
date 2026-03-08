@@ -12,6 +12,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "/Users/jocelynlin/Desktop/figma-claude-test/_portfolio", "-l", "8080", "--no-clipboard"],
       "port": 8080
+    },
+    {
+      "name": "case-study-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public", "-l", "8081", "--no-clipboard"],
+      "port": 8081
     }
   ]
 }
