@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design → Developer Handoff</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #F5F5F5;
+    color: #1A1A1A;
+    padding: 60px 40px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .slide {
+    max-width: 1200px;
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    padding: 56px 56px 48px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  /* ---- Title ---- */
+  .slide-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .slide-subtitle {
+    font-size: 15px;
+    color: #999999;
+    margin-bottom: 40px;
+  }
+
+  /* ---- Card Grid ---- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    padding: 24px 22px;
+  }
+
+  .card-header {
+    font-size: 10px;
+    font-weight: 500;
+    color: #1A1A1A;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  /* ---- Card Items ---- */
+  .card-item {
+    margin-bottom: 24px;
+  }
+
+  .card-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-item-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+  }
+
+  .card-item-desc {
+    font-size: 14px;
+    color: #777777;
+    line-height: 1.5;
+  }
+
+  .card-item-file {
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 12px;
+    color: #999999;
+    margin-top: 4px;
+  }
+
+  .card-item-meta {
+    font-size: 13px;
+    color: #AAAAAA;
+    margin-top: 4px;
+  }
+
+  /* ---- Summary Section ---- */
+  .summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    padding-top: 32px;
+    border-top: 1px solid #E0E0E0;
+  }
+
+  .summary-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .summary-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: #AAAAAA;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .summary-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .summary-icon-do {
+    background: #22A355;
+  }
+
+  .summary-icon-dont {
+    background: #8B2020;
+  }
+
+  .summary-list {
+    list-style: none;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #1A1A1A;
+  }
+
+  .summary-list li::before {
+    content: "●";
+    margin-right: 10px;
+    color: #1A1A1A;
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <!-- Title -->
+  <div class="slide-title">Design → Developer Handoff</div>
+  <div class="slide-subtitle">What to share so the workflow is actually useful in production</div>
+
+  <!-- 4-Column Card Grid -->
+  <div class="card-grid">
+
+    <!-- Step 1: Design Tokens -->
+    <div class="card">
+      <div class="card-header">Step 1: Design Tokens</div>
+
+      <div class="card-item">
+        <div class="card-item-title">Primitives</div>
+        <div class="card-item-desc">Raw color, spacing &amp; type values. The foundation layer.</div>
+        <div class="card-item-file">→ primitives.json</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Semantic Tokens</div>
+        <div class="card-item-desc">Mapped meanings: button-bg, focus-ring, surface, text.</div>
+        <div class="card-item-file">→ semantic.json</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">CSS Custom Properties</div>
+        <div class="card-item-desc">Ready-to-use variables for any framework or vanilla CSS.</div>
+        <div class="card-item-file">→ globals.css</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Spacing Scale</div>
+        <div class="card-item-desc">4px base, 15 steps.</div>
+      </div>
+    </div>
+
+    <!-- Step 2: Component Specs -->
+    <div class="card">
+      <div class="card-header">Step 2: Component Specs</div>
+
+      <div class="card-item">
+        <div class="card-item-title">Props &amp; API</div>
+        <div class="card-item-desc">Define variant, size, and state as the component contract.</div>
+        <div class="card-item-meta">variant / size / state</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">State Matrix</div>
+        <div class="card-item-desc">Default, hover, active, focus, disabled — for every variant.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Responsive Rules</div>
+        <div class="card-item-desc">Breakpoints and layout shifts.</div>
+        <div class="card-item-meta">1 col → 2 col → 4 col</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Content Rules</div>
+        <div class="card-item-desc">Capitalization, truncation, min/max widths.</div>
+      </div>
+    </div>
+
+    <!-- Step 3: Visual Reference -->
+    <div class="card">
+      <div class="card-header">Step 3: Visual Reference</div>
+
+      <div class="card-item">
+        <div class="card-item-title">Hosted Prototype</div>
+        <div class="card-item-desc">Live HTML devs can inspect in the browser. Not production code.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Figma Link</div>
+        <div class="card-item-desc">Source of truth for pixel specs, redlines, and measurements.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Interaction Notes</div>
+        <div class="card-item-desc">Animations, transitions, timing, and micro-interactions.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Label as Reference Only</div>
+        <div class="card-item-desc">Clearly mark HTML prototypes as non-production code.</div>
+      </div>
+    </div>
+
+    <!-- Step 4: Context & Docs -->
+    <div class="card">
+      <div class="card-header">Step 4: Context &amp; Docs</div>
+
+      <div class="card-item">
+        <div class="card-item-title">README</div>
+        <div class="card-item-desc">How to consume the tokens and run the prototype locally.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Font &amp; Asset Notes</div>
+        <div class="card-item-desc">Licenses, fallback stacks, CDN links.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Accessibility Requirements</div>
+        <div class="card-item-desc">Focus order, ARIA roles, contrast ratios.</div>
+      </div>
+
+      <div class="card-item">
+        <div class="card-item-title">Acceptance Criteria</div>
+        <div class="card-item-desc">What "done" looks like for QA.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Summary: Best Practices / Avoid -->
+  <div class="summary">
+    <div>
+      <div class="summary-section-header">
+        <span class="summary-label">Best Practices</span>
+        <span class="summary-icon summary-icon-do">✓</span>
+      </div>
+      <ul class="summary-list">
+        <li>Share tokens as JSON — framework-agnostic and durable</li>
+        <li>Document the component API: props, variants, states</li>
+        <li>Host prototypes as inspectable visual reference</li>
+        <li>Note font licenses and asset dependencies</li>
+      </ul>
+    </div>
+    <div>
+      <div class="summary-section-header">
+        <span class="summary-label">Avoid</span>
+        <span class="summary-icon summary-icon-dont">✗</span>
+      </div>
+      <ul class="summary-list">
+        <li>Expecting devs to copy-paste HTML into React or Swift</li>
+        <li>Sharing Tailwind classes as "the spec" — share values</li>
+        <li>Skipping "reference only" labels on prototypes</li>
+        <li>Omitting interaction states: hover, focus, disabled</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

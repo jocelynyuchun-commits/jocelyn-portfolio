@@ -1,0 +1,203 @@
+<svg width="1200" height="580" viewBox="0 0 1200 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="1200" height="580" fill="#F5F5F5"/>
+
+  <!-- ==================== TITLE ==================== -->
+  <g id="Title-Section">
+    <text x="52" y="40" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#1A1A1A" letter-spacing="-0.01em">Design &#x2192; Developer Handoff</text>
+    <text x="52" y="62" font-family="Inter, sans-serif" font-size="13" fill="#999999">What to share so the workflow is actually useful in production</text>
+  </g>
+
+  <!-- ==================== COLUMN 1: DESIGN TOKENS ==================== -->
+  <g id="Step-1-Design-Tokens">
+    <!-- Card -->
+    <rect x="52" y="86" width="266" height="320" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+
+    <!-- Header -->
+    <text x="72" y="112" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#AAAAAA" letter-spacing="0.1em">STEP 1: DESIGN TOKENS</text>
+    <line x1="72" y1="122" x2="298" y2="122" stroke="#E8E8E8" stroke-width="1"/>
+
+    <!-- Item 1: Primitives -->
+    <g id="Token-Primitives">
+      <text x="72" y="148" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Primitives</text>
+      <text x="72" y="164" font-family="Inter, sans-serif" font-size="12" fill="#777777">Raw color, spacing &amp; type values.</text>
+      <text x="72" y="180" font-family="Inter, sans-serif" font-size="12" fill="#777777">The foundation layer.</text>
+      <text x="72" y="197" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#999999">&#x2192; primitives.json</text>
+    </g>
+
+    <!-- Item 2: Semantic tokens -->
+    <g id="Token-Semantic">
+      <text x="72" y="226" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Semantic Tokens</text>
+      <text x="72" y="242" font-family="Inter, sans-serif" font-size="12" fill="#777777">Mapped meanings: button-bg,</text>
+      <text x="72" y="256" font-family="Inter, sans-serif" font-size="12" fill="#777777">focus-ring, surface, text.</text>
+      <text x="72" y="273" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#999999">&#x2192; semantic.json</text>
+    </g>
+
+    <!-- Item 3: CSS variables -->
+    <g id="Token-CSS">
+      <text x="72" y="302" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">CSS Custom Properties</text>
+      <text x="72" y="318" font-family="Inter, sans-serif" font-size="12" fill="#777777">Ready-to-use variables for any</text>
+      <text x="72" y="332" font-family="Inter, sans-serif" font-size="12" fill="#777777">framework or vanilla CSS.</text>
+      <text x="72" y="349" font-family="SF Mono, Menlo, monospace" font-size="10" fill="#999999">&#x2192; globals.css</text>
+    </g>
+
+    <!-- Item 4: Spacing scale -->
+    <g id="Token-Spacing">
+      <text x="72" y="378" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Spacing Scale</text>
+      <text x="72" y="394" font-family="Inter, sans-serif" font-size="12" fill="#777777">4px base, 15 steps.</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 2: COMPONENT SPECS ==================== -->
+  <g id="Step-2-Component-Specs">
+    <!-- Card -->
+    <rect x="334" y="86" width="266" height="320" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+
+    <!-- Header -->
+    <text x="354" y="112" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#AAAAAA" letter-spacing="0.1em">STEP 2: COMPONENT SPECS</text>
+    <line x1="354" y1="122" x2="580" y2="122" stroke="#E8E8E8" stroke-width="1"/>
+
+    <!-- Item 1: Props & API -->
+    <g id="Spec-Props">
+      <text x="354" y="148" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Props &amp; API</text>
+      <text x="354" y="164" font-family="Inter, sans-serif" font-size="12" fill="#777777">Define variant, size, and state</text>
+      <text x="354" y="178" font-family="Inter, sans-serif" font-size="12" fill="#777777">as the component contract.</text>
+      <text x="354" y="196" font-family="Inter, sans-serif" font-size="11" fill="#AAAAAA">variant / size / state</text>
+    </g>
+
+    <!-- Item 2: State matrix -->
+    <g id="Spec-States">
+      <text x="354" y="226" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">State Matrix</text>
+      <text x="354" y="242" font-family="Inter, sans-serif" font-size="12" fill="#777777">Default, hover, active, focus,</text>
+      <text x="354" y="256" font-family="Inter, sans-serif" font-size="12" fill="#777777">disabled &#x2014; for every variant.</text>
+    </g>
+
+    <!-- Item 3: Responsive rules -->
+    <g id="Spec-Responsive">
+      <text x="354" y="286" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Responsive Rules</text>
+      <text x="354" y="302" font-family="Inter, sans-serif" font-size="12" fill="#777777">Breakpoints and layout shifts.</text>
+      <text x="354" y="318" font-family="Inter, sans-serif" font-size="11" fill="#AAAAAA">1 col &#x2192; 2 col &#x2192; 4 col</text>
+    </g>
+
+    <!-- Item 4: Content rules -->
+    <g id="Spec-Content">
+      <text x="354" y="348" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Content Rules</text>
+      <text x="354" y="364" font-family="Inter, sans-serif" font-size="12" fill="#777777">Capitalization, truncation,</text>
+      <text x="354" y="378" font-family="Inter, sans-serif" font-size="12" fill="#777777">min/max widths.</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 3: VISUAL REFERENCE ==================== -->
+  <g id="Step-3-Visual-Reference">
+    <!-- Card -->
+    <rect x="616" y="86" width="266" height="320" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+
+    <!-- Header -->
+    <text x="636" y="112" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#AAAAAA" letter-spacing="0.1em">STEP 3: VISUAL REFERENCE</text>
+    <line x1="636" y1="122" x2="862" y2="122" stroke="#E8E8E8" stroke-width="1"/>
+
+    <!-- Item 1: Hosted prototype -->
+    <g id="Ref-Prototype">
+      <text x="636" y="148" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Hosted Prototype</text>
+      <text x="636" y="164" font-family="Inter, sans-serif" font-size="12" fill="#777777">Live HTML devs can inspect in</text>
+      <text x="636" y="178" font-family="Inter, sans-serif" font-size="12" fill="#777777">the browser. Not production code.</text>
+    </g>
+
+    <!-- Item 2: Figma link -->
+    <g id="Ref-Figma">
+      <text x="636" y="210" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Figma Link</text>
+      <text x="636" y="226" font-family="Inter, sans-serif" font-size="12" fill="#777777">Source of truth for pixel specs,</text>
+      <text x="636" y="240" font-family="Inter, sans-serif" font-size="12" fill="#777777">redlines, and measurements.</text>
+    </g>
+
+    <!-- Item 3: Interaction notes -->
+    <g id="Ref-Interactions">
+      <text x="636" y="272" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Interaction Notes</text>
+      <text x="636" y="288" font-family="Inter, sans-serif" font-size="12" fill="#777777">Animations, transitions, timing,</text>
+      <text x="636" y="302" font-family="Inter, sans-serif" font-size="12" fill="#777777">and micro-interactions.</text>
+    </g>
+
+    <!-- Item 4: Label clearly -->
+    <g id="Ref-Label">
+      <text x="636" y="334" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Label as Reference Only</text>
+      <text x="636" y="350" font-family="Inter, sans-serif" font-size="12" fill="#777777">Clearly mark HTML prototypes</text>
+      <text x="636" y="364" font-family="Inter, sans-serif" font-size="12" fill="#777777">as non-production code.</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 4: CONTEXT & DOCS ==================== -->
+  <g id="Step-4-Context-Docs">
+    <!-- Card -->
+    <rect x="898" y="86" width="266" height="320" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+
+    <!-- Header -->
+    <text x="918" y="112" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#AAAAAA" letter-spacing="0.1em">STEP 4: CONTEXT &amp; DOCS</text>
+    <line x1="918" y1="122" x2="1144" y2="122" stroke="#E8E8E8" stroke-width="1"/>
+
+    <!-- Item 1: README -->
+    <g id="Docs-README">
+      <text x="918" y="148" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">README</text>
+      <text x="918" y="164" font-family="Inter, sans-serif" font-size="12" fill="#777777">How to consume the tokens</text>
+      <text x="918" y="178" font-family="Inter, sans-serif" font-size="12" fill="#777777">and run the prototype locally.</text>
+    </g>
+
+    <!-- Item 2: Font & asset notes -->
+    <g id="Docs-Fonts">
+      <text x="918" y="210" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Font &amp; Asset Notes</text>
+      <text x="918" y="226" font-family="Inter, sans-serif" font-size="12" fill="#777777">Licenses, fallback stacks,</text>
+      <text x="918" y="240" font-family="Inter, sans-serif" font-size="12" fill="#777777">CDN links.</text>
+    </g>
+
+    <!-- Item 3: A11y requirements -->
+    <g id="Docs-A11y">
+      <text x="918" y="272" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Accessibility Requirements</text>
+      <text x="918" y="288" font-family="Inter, sans-serif" font-size="12" fill="#777777">Focus order, ARIA roles,</text>
+      <text x="918" y="302" font-family="Inter, sans-serif" font-size="12" fill="#777777">contrast ratios.</text>
+    </g>
+
+    <!-- Item 4: Acceptance criteria -->
+    <g id="Docs-Acceptance">
+      <text x="918" y="334" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Acceptance Criteria</text>
+      <text x="918" y="350" font-family="Inter, sans-serif" font-size="12" fill="#777777">What "done" looks like for QA.</text>
+    </g>
+  </g>
+
+  <!-- ==================== SUMMARY ==================== -->
+  <line x1="52" y1="424" x2="1164" y2="424" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Best Practices -->
+  <g id="Summary-Best-Practices">
+    <text x="52" y="452" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#AAAAAA" letter-spacing="0.1em">BEST PRACTICES</text>
+
+    <circle cx="60" cy="476" r="3" fill="#555555"/>
+    <text x="72" y="480" font-family="Inter, sans-serif" font-size="12" fill="#555555">Share tokens as JSON &#x2014; framework-agnostic and durable</text>
+
+    <circle cx="60" cy="498" r="3" fill="#555555"/>
+    <text x="72" y="502" font-family="Inter, sans-serif" font-size="12" fill="#555555">Document the component API: props, variants, states</text>
+
+    <circle cx="60" cy="520" r="3" fill="#555555"/>
+    <text x="72" y="524" font-family="Inter, sans-serif" font-size="12" fill="#555555">Host prototypes as inspectable visual reference</text>
+
+    <circle cx="60" cy="542" r="3" fill="#555555"/>
+    <text x="72" y="546" font-family="Inter, sans-serif" font-size="12" fill="#555555">Note font licenses and asset dependencies</text>
+  </g>
+
+  <!-- Avoid -->
+  <g id="Summary-Avoid">
+    <text x="616" y="452" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#AAAAAA" letter-spacing="0.1em">AVOID</text>
+
+    <circle cx="624" cy="476" r="3" fill="#BBBBBB"/>
+    <text x="636" y="480" font-family="Inter, sans-serif" font-size="12" fill="#999999">Expecting devs to copy-paste HTML into React or Swift</text>
+
+    <circle cx="624" cy="498" r="3" fill="#BBBBBB"/>
+    <text x="636" y="502" font-family="Inter, sans-serif" font-size="12" fill="#999999">Sharing Tailwind classes as "the spec" &#x2014; share values</text>
+
+    <circle cx="624" cy="520" r="3" fill="#BBBBBB"/>
+    <text x="636" y="524" font-family="Inter, sans-serif" font-size="12" fill="#999999">Skipping "reference only" labels on prototypes</text>
+
+    <circle cx="624" cy="542" r="3" fill="#BBBBBB"/>
+    <text x="636" y="546" font-family="Inter, sans-serif" font-size="12" fill="#999999">Omitting interaction states: hover, focus, disabled</text>
+  </g>
+
+</svg>

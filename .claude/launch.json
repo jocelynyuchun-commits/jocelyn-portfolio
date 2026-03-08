@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "portfolio-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/jocelynlin/Desktop/figma-claude-test/_portfolio", "-l", "8080", "--no-clipboard"],
+      "port": 8080
     }
   ]
 }
