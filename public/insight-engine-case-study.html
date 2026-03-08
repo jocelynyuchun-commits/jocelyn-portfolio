@@ -107,23 +107,26 @@
     transition: opacity 0.15s;
   }
   .tool-logo:hover { opacity: 1; }
-  .tool-logo img { height: 22px; width: auto; display: block; }
-  .tool-logo .lovable-heart { height: 20px; width: auto; }
+  .tool-logo img { width: auto; display: block; }
+  /* Per-logo heights tuned for visual balance */
+  .tool-logo .logo-lovable  { height: 18px; }
   .tool-logo .lovable-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--black);
     letter-spacing: -0.02em;
   }
+  .tool-logo .logo-claude   { height: 22px; }
+  .tool-logo .logo-supabase { height: 20px; }
+  .tool-logo .logo-github   { height: 28px; }
+  .tool-logo .logo-resend   { height: 15px; }
+  .tool-logo .logo-cronjob  { height: 18px; }
   @media (max-width: 900px) {
     .tools-row {
       justify-content: center;
       gap: 24px 32px;
     }
-    .tool-logo img { height: 22px; }
-    .tool-logo .lovable-heart { height: 20px; }
-    .tool-logo .lovable-text { font-size: 18px; }
   }
 
   /* PAIN-POINT CARDS */
@@ -422,23 +425,23 @@
     <span class="eyebrow">Built With</span>
     <div class="tools-row">
       <div class="tool-logo">
-        <img class="lovable-heart" src="images/tools/lovable-icon.svg" alt="">
+        <img class="logo-lovable" src="images/tools/lovable-icon.svg" alt="">
         <span class="lovable-text">Lovable</span>
       </div>
       <div class="tool-logo">
-        <img src="images/tools/claude.png" alt="Claude">
+        <img class="logo-claude" src="images/tools/claude.png" alt="Claude">
       </div>
       <div class="tool-logo">
-        <img src="images/tools/supabase.svg" alt="Supabase">
+        <img class="logo-supabase" src="images/tools/supabase.svg" alt="Supabase">
       </div>
       <div class="tool-logo">
-        <img src="images/tools/cronjob.png" alt="cron-job.org">
+        <img class="logo-cronjob" src="images/tools/cronjob.png" alt="cron-job.org">
       </div>
       <div class="tool-logo">
-        <img src="images/tools/resend.svg" alt="Resend">
+        <img class="logo-resend" src="images/tools/resend.svg" alt="Resend">
       </div>
       <div class="tool-logo">
-        <img src="images/tools/github.png" alt="GitHub">
+        <img class="logo-github" src="images/tools/github.png" alt="GitHub">
       </div>
     </div>
   </div>
