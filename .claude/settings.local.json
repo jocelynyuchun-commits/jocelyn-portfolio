@@ -94,7 +94,8 @@
       "Bash(# Let me try direct URL paths common for logos curl -sIL \"\"https://lovable.dev/img/logo.svg\"\")",
       "Bash(grep -i \"content-type\\\\|HTTP\" curl -sIL \"https://lovable.dev/logo.svg\")",
       "Bash(grep -i \"content-type\\\\|HTTP\" curl -sIL \"https://lovable.dev/favicon.svg\")",
-      "Bash(curl -sL \"https://lovable.dev/favicon.svg\" -o /tmp/lovable-favicon.svg)"
+      "Bash(curl -sL \"https://lovable.dev/favicon.svg\" -o /tmp/lovable-favicon.svg)",
+      "Bash(python3 -c \":*)"
     ]
   }
 }
