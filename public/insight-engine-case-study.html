@@ -89,6 +89,43 @@
   p:last-child { margin-bottom: 0; }
   em { font-style: italic; }
 
+  /* TOOL STACK */
+  .tools-section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .tools-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .tool-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    opacity: 0.75;
+    transition: opacity 0.15s;
+  }
+  .tool-logo:hover { opacity: 1; }
+  .tool-logo img { height: 22px; width: auto; display: block; }
+  .tool-logo .lovable-heart { height: 20px; width: auto; }
+  .tool-logo .lovable-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.02em;
+  }
+  @media (max-width: 900px) {
+    .tools-row {
+      justify-content: center;
+      gap: 24px 32px;
+    }
+    .tool-logo img { height: 22px; }
+    .tool-logo .lovable-heart { height: 20px; }
+    .tool-logo .lovable-text { font-size: 18px; }
+  }
+
   /* PAIN-POINT CARDS */
   .pain-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 36px 0; }
   .pain-card { border: 1px solid var(--border); padding: 28px 24px; position: relative; }
@@ -377,6 +414,32 @@
       <div class="fact-num">04</div>
       <div class="fact-title">Key Result</div>
       <div class="fact-body">Functional MVP — profile-based onboarding, AI-generated insights, and automated daily emails personalized to each user. Scalable across unlimited subjects and languages.</div>
+    </div>
+  </div>
+
+  <!-- TOOL STACK -->
+  <div class="tools-section">
+    <span class="eyebrow">Built With</span>
+    <div class="tools-row">
+      <div class="tool-logo">
+        <img class="lovable-heart" src="images/tools/lovable-icon.svg" alt="">
+        <span class="lovable-text">Lovable</span>
+      </div>
+      <div class="tool-logo">
+        <img src="images/tools/claude.png" alt="Claude">
+      </div>
+      <div class="tool-logo">
+        <img src="images/tools/supabase.svg" alt="Supabase">
+      </div>
+      <div class="tool-logo">
+        <img src="images/tools/cronjob.png" alt="cron-job.org">
+      </div>
+      <div class="tool-logo">
+        <img src="images/tools/resend.svg" alt="Resend">
+      </div>
+      <div class="tool-logo">
+        <img src="images/tools/github.png" alt="GitHub">
+      </div>
     </div>
   </div>
 

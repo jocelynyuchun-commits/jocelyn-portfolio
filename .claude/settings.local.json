@@ -83,7 +83,18 @@
       "Bash(git branch --set-upstream-to=origin/main main)",
       "Bash(ls /Users/jocelynlin/Desktop/figma-claude-test/public/ai-experiments*)",
       "Bash(git add public/ai-experiments.html)",
-      "Bash(git add .claude/launch.json .claude/settings.local.json \"_portfolio/ai-experiments_4.html\" \"_portfolio/top-nav-plp.html\" \"public/multibrand/component.css\" \"public/multibrand/index.html\" \"030526 Synced Token/02_Flow Diagram/token-sync-flow-diagram.svg\" \"030526 Synced Token/00_Flow Diagram/\" \"030526 Synced Token/02_Multibrand Json/\" \"030626_Mutlibrand/\" handoff-visual.html handoff-visual.svg public/handoff-visual.html public/handoff-visual.svg public/workflow-diagram.html)"
+      "Bash(git add .claude/launch.json .claude/settings.local.json \"_portfolio/ai-experiments_4.html\" \"_portfolio/top-nav-plp.html\" \"public/multibrand/component.css\" \"public/multibrand/index.html\" \"030526 Synced Token/02_Flow Diagram/token-sync-flow-diagram.svg\" \"030526 Synced Token/00_Flow Diagram/\" \"030526 Synced Token/02_Multibrand Json/\" \"030626_Mutlibrand/\" handoff-visual.html handoff-visual.svg public/handoff-visual.html public/handoff-visual.svg public/workflow-diagram.html)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/d82cee75-b884-4353-973b-5986b5212392\" -o /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/tools/claude.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/954278ce-9a81-4c19-b690-c625ab7ac349\" -o /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/tools/supabase.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/93206378-a9e8-41e8-a4d8-8f0506f009cc\" -o /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/tools/resend.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/7c94bf41-9cb9-4dee-a360-223e544a707a\" -o /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/tools/cronjob.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/b17717fb-e13d-4b1c-9b58-75b174d120ce\" -o /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/tools/github.png)",
+      "Bash(file /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/tools/*)",
+      "Bash(curl -sL \"https://lovable.dev\")",
+      "Bash(# Let me try direct URL paths common for logos curl -sIL \"\"https://lovable.dev/img/logo.svg\"\")",
+      "Bash(grep -i \"content-type\\\\|HTTP\" curl -sIL \"https://lovable.dev/logo.svg\")",
+      "Bash(grep -i \"content-type\\\\|HTTP\" curl -sIL \"https://lovable.dev/favicon.svg\")",
+      "Bash(curl -sL \"https://lovable.dev/favicon.svg\" -o /tmp/lovable-favicon.svg)"
     ]
   }
 }
