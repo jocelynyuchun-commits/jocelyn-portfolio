@@ -95,7 +95,19 @@
       "Bash(grep -i \"content-type\\\\|HTTP\" curl -sIL \"https://lovable.dev/logo.svg\")",
       "Bash(grep -i \"content-type\\\\|HTTP\" curl -sIL \"https://lovable.dev/favicon.svg\")",
       "Bash(curl -sL \"https://lovable.dev/favicon.svg\" -o /tmp/lovable-favicon.svg)",
-      "Bash(python3 -c \":*)"
+      "Bash(python3 -c \":*)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/978fd429-c68d-48d6-a4a3-fe0353f9a4ed\" -o test-asset.png)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''PIL available''\\)\")",
+      "Bash(python3 -c \"import importlib; print\\(''python3 available, no PIL''\\)\")",
+      "Bash(sips --help)",
+      "Bash(osascript -e 'set imgData to the clipboard as «class PNGf»' -e 'set filePath to POSIX file \"\"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/pain-generic.png\"\"' -e 'set fileRef to open for access filePath with write permission' -e 'write imgData to fileRef' -e 'close access fileRef')",
+      "Bash(python3:*)",
+      "Bash(osascript -e 'clipboard info')",
+      "Bash(ls -la /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/pain-*)",
+      "Bash(brew install poppler)",
+      "Bash(pip3 install PyPDF2)",
+      "Bash(pip3 install pdfplumber)",
+      "Bash(curl -L -o \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/solution-flow.png\" \"https://www.figma.com/api/mcp/asset/33c95187-d4ee-4c15-9cdc-b01bbc19285b\")"
     ]
   }
 }
