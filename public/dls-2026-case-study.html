@@ -389,27 +389,42 @@
   .ba-c-desc { font-size: 13px; font-weight: 400; color: var(--black); line-height: 1.5; }
   .ba-c-desc span { font-size: 12px; font-weight: 300; color: var(--gray-mid); display: block; margin-top: 3px; }
 
-  /* LEARN OPTION A — 3 column cards */
-  .learn-a-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px; }
-  .learn-a-item { background: var(--white); padding: 28px 24px; }
-  .learn-a-num { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #686868; margin-bottom: 12px; }
-  .learn-a-title { font-size: 15px; font-weight: 600; color: var(--black); line-height: 1.35; margin-bottom: 12px; }
-  .learn-a-item p { font-size: 13px; font-weight: 300; color: #333333; max-width: none; line-height: 1.7; margin: 0; }
+  /* APPLYING LEARNINGS — SIDE-BY-SIDE CARDS */
+  .apply-subtitle { font-size: 15px; font-weight: 300; color: var(--gray-dark); margin-top: 12px; line-height: 1.6; }
+  .apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .apply-card { border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; background: var(--white); }
+  .apply-card-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+  .apply-card-num { font-size: 13px; font-weight: 400; color: var(--gray-mid); }
+  .apply-card-title { font-size: 17px; font-weight: 600; color: var(--black); }
+  .apply-card p { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.7; margin-bottom: 16px; max-width: none; }
+  .apply-card strong { font-weight: 600; color: var(--black); }
+  .apply-ba { display: grid; grid-template-columns: 44px 1fr; gap: 4px 10px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; }
+  .apply-ba-label { font-weight: 500; color: var(--gray-mid); }
+  .apply-ba-value { font-weight: 300; color: var(--gray-dark); }
+  .apply-code { background: #f8f8f8; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #333; white-space: pre-wrap; }
+  .apply-code .code-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; color: var(--gray-mid); margin-bottom: 10px; display: block; }
+  .apply-code .kw { color: #8b5cf6; }
+  .apply-code .prop { color: #c2410c; }
+  .apply-code .val { color: #2563eb; }
+  .apply-check-list { background: #f8f8f8; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; }
+  .apply-check-list .code-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.04em; color: var(--gray-mid); margin-bottom: 10px; display: block; }
+  .apply-check-item { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.8; }
+  .apply-check-item::before { content: '✓ '; color: var(--gray-mid); font-weight: 500; }
+  .apply-card-footer { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.6; }
 
-  /* LEARN OPTION B — horizontal tag cards */
-  .learn-b-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 8px; }
-  .learn-b-card { border: 1px solid var(--border); padding: 28px 24px; }
-  .learn-b-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 14px; }
-  .learn-b-title { font-size: 16px; font-weight: 600; color: var(--black); line-height: 1.3; margin-bottom: 14px; }
-  .learn-b-card p { font-size: 13px; font-weight: 300; color: #333333; max-width: none; line-height: 1.7; margin: 0; }
-
-  /* LEARN OPTION C — minimal inline list */
-  .learn-c-list { margin-top: 8px; }
-  .learn-c-item { display: grid; grid-template-columns: 24px 1fr; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--border); align-items: start; }
-  .learn-c-item:last-child { border-bottom: none; }
-  .learn-c-marker { font-size: 16px; font-weight: 300; color: #686868; padding-top: 2px; }
-  .learn-c-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
-  .learn-c-item p { font-size: 14px; font-weight: 300; color: var(--gray-dark); max-width: none; line-height: 1.75; margin: 0; }
+  /* LIMITATION CALLOUT */
+  .apply-limitation { margin-top: 32px; border: 1px solid var(--border); border-radius: 12px; padding: 32px; background: var(--white); }
+  .apply-limitation-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .apply-limitation-title { font-size: 17px; font-weight: 600; color: var(--black); }
+  .apply-limitation-tag { font-size: 12px; font-weight: 400; color: var(--gray-mid); }
+  .apply-limitation p { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.7; margin-bottom: 0; max-width: none; }
+  .apply-limitation strong { font-weight: 600; color: var(--black); }
+  .apply-limitation-divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .apply-limitation-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .apply-limitation-col-label { font-size: 12px; font-weight: 400; color: var(--gray-mid); margin-bottom: 4px; }
+  .apply-limitation-col-value { font-size: 14px; font-weight: 500; color: var(--black); }
+  .apply-limitation-workflow-label { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 8px; }
+  .apply-limitation-workflow { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; color: #333; }
 
   /* NEXT / FOOTER */
   .next-project { padding: 72px 0 0; display: flex; justify-content: space-between; align-items: flex-end; }
@@ -497,6 +512,8 @@
     :root { --gutter: 24px; }
     .arch-flow { grid-template-columns: 1fr 1fr; gap: 30px 20px; padding: 24px; }
     .arch-flow-svg { display: none; }
+    .apply-grid { grid-template-columns: 1fr; }
+    .apply-limitation-cols { grid-template-columns: 1fr; gap: 12px; }
     .facts-row, .brand-cards, .arch-slide, .flow-steps, .ba-grid,
     .ba-a-header, .ba-a-row, .ba-b-wrap,
     .ba-c-metrics, .learn-a-grid, .learn-b-grid,
@@ -1169,27 +1186,86 @@
     </div>
   </div>
 
-  <!-- LEARNINGS — 3 LAYOUT OPTIONS -->
+  <!-- APPLYING LEARNINGS -->
   <div class="section">
-    <span class="eyebrow">What I Learned</span>
-    <h2>Three Findings From The Experiment</h2>
+    <span class="eyebrow">Applying the Learnings</span>
+    <h2>How This Applies to Real Work</h2>
 
-    <div class="learn-a-grid">
-      <div class="learn-a-item">
-        <div class="learn-a-num">01</div>
-        <div class="learn-a-title">Speed up front, slow down in the middle.</div>
-        <p>AI compresses ideation — layout variations and token-wired code faster than Figma mockups. But matching an existing spec is high-iteration. AI is fast at "good enough." Pixel-perfect is still human work.</p>
+    <p class="apply-subtitle">Two areas where AI creates the most leverage in design systems work.</p>
+
+    <div class="apply-grid">
+      <!-- Card 1 -->
+      <div class="apply-card">
+        <div class="apply-card-header">
+          <span class="apply-card-num">01</span>
+          <span class="apply-card-title">AI Component Creation</span>
+        </div>
+        <p>Instead of designers manually building every component from scratch, AI acts as a <strong>rapid scaffolding tool</strong> — generating layout, token wiring, and responsive variants in seconds.</p>
+
+        <div class="apply-ba">
+          <span class="apply-ba-label">Before</span>
+          <span class="apply-ba-value">1–2 days per component, manual spec handoff</span>
+          <span class="apply-ba-label">After</span>
+          <span class="apply-ba-value">Minutes to scaffold, designer refines details</span>
+        </div>
+
+        <div class="apply-code"><span class="code-label">EXAMPLE OUTPUT</span><span class="kw">.card-recommendation</span> {
+  <span class="prop">background</span>: <span class="val">var(--color-surface-card)</span>;
+  <span class="prop">padding</span>: <span class="val">var(--space-4)</span>;
+  <span class="prop">border-radius</span>: <span class="val">var(--radius-md)</span>;
+}</div>
+
+        <p class="apply-card-footer">Design shifts from <strong>construction → refinement</strong>.</p>
       </div>
-      <div class="learn-a-item">
-        <div class="learn-a-num">02</div>
-        <div class="learn-a-title">The prompt is the source of truth.</div>
-        <p>AI has no memory between sessions. Every correction must be rewritten into the prompt or it disappears. Prompt updates work best treated like code commits — incremental, versioned, intentional.</p>
+
+      <!-- Card 2 -->
+      <div class="apply-card">
+        <div class="apply-card-header">
+          <span class="apply-card-num">02</span>
+          <span class="apply-card-title">AI Documentation</span>
+        </div>
+        <p>Documentation is usually the most time-consuming part of design systems. AI generates comprehensive docs by <strong>reading the component code directly</strong> — always accurate, always in sync.</p>
+
+        <div class="apply-ba">
+          <span class="apply-ba-label">Before</span>
+          <span class="apply-ba-value">2–5 hours per component, manual updates</span>
+          <span class="apply-ba-label">After</span>
+          <span class="apply-ba-value">Auto-generated, fully regeneratable</span>
+        </div>
+
+        <div class="apply-check-list"><span class="code-label">AI-GENERATED DOCS INCLUDE</span>
+          <div class="apply-check-item">Prop tables with types & defaults</div>
+          <div class="apply-check-item">State matrix (hover, focus, disabled)</div>
+          <div class="apply-check-item">Usage examples with live code</div>
+          <div class="apply-check-item">Always in sync with source</div>
+        </div>
+
+        <p class="apply-card-footer">Designer focuses on <strong>visual refinement & brand expression</strong>.</p>
       </div>
-      <div class="learn-a-item">
-        <div class="learn-a-num">03</div>
-        <div class="learn-a-title">Plan the role before you start.</div>
-        <p>AI saves designer time on exploration. It saves engineer time on implementation. But it doesn't save time if you start without clear scope and token constraints — it just optimizes for the wrong thing faster.</p>
+    </div>
+
+    <!-- LIMITATION -->
+    <div class="apply-limitation">
+      <div class="apply-limitation-title">The limitation I discovered</div>
+      <p>AI can generate <strong>visual documentation</strong> quickly, but the current toolchain still lacks full system integration. Through testing and research, I found that documentation is typically generated as SVG visuals rather than linked components. The visuals are accurate but not connected to the design system. As design tools evolve, documentation will likely become automatically synced with components and tokens.</p>
+      <div class="apply-limitation-divider"></div>
+      <div class="apply-limitation-cols">
+        <div>
+          <div class="apply-limitation-col-label">Figma</div>
+          <div class="apply-limitation-col-value">Component linking</div>
+        </div>
+        <div>
+          <div class="apply-limitation-col-label">Storybook</div>
+          <div class="apply-limitation-col-value">Integration layer</div>
+        </div>
+        <div>
+          <div class="apply-limitation-col-label">Tokens</div>
+          <div class="apply-limitation-col-value">Pipeline setup</div>
+        </div>
       </div>
+      <div class="apply-limitation-divider"></div>
+      <div class="apply-limitation-workflow-label">Workflow</div>
+      <div class="apply-limitation-workflow">AI draft → Designer links → Engineering connects</div>
     </div>
 
     <!-- NEXT -->
