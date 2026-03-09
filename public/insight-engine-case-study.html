@@ -72,7 +72,7 @@
   .tag { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: var(--gray-bg); padding: 5px 12px; border-radius: 2px; }
 
   /* QUICK FACTS */
-  .facts-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .facts-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; padding: 56px 0; border-bottom: 1px solid var(--border); }
   .fact { padding-right: 40px; border-right: 1px solid var(--border); }
   .fact + .fact { padding-left: 40px; }
   .fact:last-child { border-right: none; }
@@ -185,6 +185,57 @@
   .step-num { width: 24px; height: 24px; border: 1.5px solid var(--black); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
   .flow-step h4 { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 7px; }
   .flow-step p { font-size: 13px; font-weight: 300; color: #333333; max-width: none; margin: 0; line-height: 1.6; }
+
+  /* AI SYSTEM DESIGN */
+  .sys-flow { display: flex; align-items: stretch; gap: 0; margin: 36px 0 40px; }
+  .sys-node {
+    flex: 1; border: 1px solid var(--border); border-radius: 4px; padding: 20px 16px;
+    text-align: center; background: var(--white); position: relative;
+  }
+  .sys-node-layer {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray-mid); margin-bottom: 8px;
+  }
+  .sys-node-title { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 6px; line-height: 1.3; }
+  .sys-node-desc { font-size: 11px; font-weight: 300; color: #333333; line-height: 1.5; }
+  .sys-arrow {
+    flex: 0 0 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--gray-mid); font-weight: 300;
+  }
+  .sys-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .sys-diagram {
+    border: 1px solid var(--border); border-radius: 4px; padding: 28px 24px;
+  }
+  .sys-diagram-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); background: var(--black); display: inline-block;
+    padding: 4px 10px; margin-bottom: 20px;
+  }
+  .sys-diagram-title { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 16px; }
+  .sys-tree-item {
+    display: flex; gap: 10px; padding: 10px 0;
+    border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5;
+  }
+  .sys-tree-item:last-child { border-bottom: none; }
+  .sys-tree-key { font-weight: 600; color: var(--black); min-width: 80px; flex-shrink: 0; }
+  .sys-tree-val { font-weight: 300; color: #333333; }
+  .sys-persona-block {
+    border: 1px solid var(--border); border-radius: 4px; padding: 16px 18px;
+    background: var(--gray-bg);
+  }
+  .sys-persona-block + .sys-persona-arrow { text-align: center; padding: 10px 0; color: var(--gray-mid); font-size: 18px; }
+  .sys-persona-block-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray-mid); margin-bottom: 8px;
+  }
+  .sys-persona-row { display: flex; gap: 6px; font-size: 12px; line-height: 1.7; }
+  .sys-persona-row-key { font-weight: 600; color: var(--black); }
+  .sys-persona-row-val { font-weight: 300; color: #333333; }
+  .sys-persona-engine {
+    border: 1px solid var(--black); border-radius: 4px; padding: 14px 18px;
+    text-align: center; background: var(--white);
+  }
+  .sys-persona-engine-label { font-size: 13px; font-weight: 600; color: var(--black); }
 
   /* DEMO IFRAME */
   .demo-intro { margin-bottom: 32px; }
@@ -443,6 +494,10 @@
     .fact:first-child { padding-top: 0; }
     .fact:last-child { border-bottom: none; padding-bottom: 0; }
     .fact + .fact { padding-left: 0; }
+    .sys-flow { flex-wrap: wrap; gap: 8px; }
+    .sys-node { flex: 1 1 100%; }
+    .sys-arrow { flex: 0 0 100%; font-size: 14px; padding: 2px 0; transform: rotate(90deg); }
+    .sys-detail-grid { grid-template-columns: 1fr; }
     .next-project { flex-direction: column; gap: 20px; align-items: flex-start; }
     .site-footer { flex-direction: column; gap: 12px; align-items: flex-start; }
     nav { padding: 0 24px; }
@@ -508,7 +563,7 @@
     <div class="fact">
       <div class="fact-num">01</div>
       <div class="fact-title">My Role</div>
-      <div class="fact-body">Sole product builder responsible for end-to-end development of the system: product strategy and problem framing · AI interaction design and prompt architecture · backend orchestration (Claude API, Supabase, Resend, Cron pipeline) · front-end UX and onboarding flow · system debugging across six integrated services. This prototype demonstrates how a design leader can move from concept → working AI product.</div>
+      <div class="fact-body">Sole product builder — product strategy · AI interaction design and prompt architecture · backend orchestration · front-end UX and onboarding · system debugging across six integrated services.</div>
     </div>
     <div class="fact">
       <div class="fact-num">02</div>
@@ -517,11 +572,6 @@
     </div>
     <div class="fact">
       <div class="fact-num">03</div>
-      <div class="fact-title">Stack</div>
-      <div class="fact-body">Claude API · Supabase · Resend · Cron · Lovable · Custom prompt templates</div>
-    </div>
-    <div class="fact">
-      <div class="fact-num">04</div>
       <div class="fact-title">Key Result</div>
       <div class="fact-body">Functional MVP — profile-based onboarding, AI-generated insights, and automated daily emails personalized to each user. Scalable across unlimited subjects and languages.</div>
     </div>
@@ -775,6 +825,101 @@
         <source src="images/solution-flow.mov" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+    </div>
+  </div>
+
+  <!-- AI SYSTEM DESIGN -->
+  <div class="section">
+    <span class="eyebrow">AI System Design</span>
+    <h2>Five Layers That Power Every Insight</h2>
+    <p>Instead of storing educational content, the system generates knowledge dynamically using user context and AI reasoning.</p>
+
+    <!-- Visual 1: System Architecture Flow -->
+    <div class="sys-flow">
+      <div class="sys-node">
+        <div class="sys-node-layer">Layer 1</div>
+        <div class="sys-node-title">User Context</div>
+        <div class="sys-node-desc">Goals, interests, reading level, language preference</div>
+      </div>
+      <div class="sys-arrow">→</div>
+      <div class="sys-node">
+        <div class="sys-node-layer">Layer 2</div>
+        <div class="sys-node-title">Prompt Orchestration</div>
+        <div class="sys-node-desc">Role definition, context injection, format rules, guardrails</div>
+      </div>
+      <div class="sys-arrow">→</div>
+      <div class="sys-node">
+        <div class="sys-node-layer">Layer 3</div>
+        <div class="sys-node-title">LLM Generation</div>
+        <div class="sys-node-desc">Claude API processes prompt + user profile into structured insight</div>
+      </div>
+      <div class="sys-arrow">→</div>
+      <div class="sys-node">
+        <div class="sys-node-layer">Layer 4</div>
+        <div class="sys-node-title">Delivery Automation</div>
+        <div class="sys-node-desc">Cron trigger → Edge Function → Resend email pipeline</div>
+      </div>
+      <div class="sys-arrow">→</div>
+      <div class="sys-node">
+        <div class="sys-node-layer">Layer 5</div>
+        <div class="sys-node-title">User Experience</div>
+        <div class="sys-node-desc">Daily email, settings, chat exploration</div>
+      </div>
+    </div>
+
+    <!-- Visual 2 + 3 side by side -->
+    <div class="sys-detail-grid">
+
+      <!-- Visual 2: Prompt Engineering Structure -->
+      <div class="sys-diagram">
+        <div class="sys-diagram-label">Visual 2</div>
+        <div class="sys-diagram-title">Prompt Architecture</div>
+        <div class="sys-tree-item">
+          <div class="sys-tree-key">Role</div>
+          <div class="sys-tree-val">AI learning advisor tailored to user's professional context</div>
+        </div>
+        <div class="sys-tree-item">
+          <div class="sys-tree-key">Context</div>
+          <div class="sys-tree-val">User goals + selected interests + reading level</div>
+        </div>
+        <div class="sys-tree-item">
+          <div class="sys-tree-key">Format</div>
+          <div class="sys-tree-val">Hook → Explanation → Relevance → Real example → Reflection question</div>
+        </div>
+        <div class="sys-tree-item">
+          <div class="sys-tree-key">Tone</div>
+          <div class="sys-tree-val">Matched to reading level — everyday analogies to field-specific language</div>
+        </div>
+        <div class="sys-tree-item">
+          <div class="sys-tree-key">Language</div>
+          <div class="sys-tree-val">English, English + native, or native only</div>
+        </div>
+      </div>
+
+      <!-- Visual 3: Personalization Engine -->
+      <div class="sys-diagram">
+        <div class="sys-diagram-label">Visual 3</div>
+        <div class="sys-diagram-title">Personalization Engine</div>
+
+        <div class="sys-persona-block">
+          <div class="sys-persona-block-label">User Profile</div>
+          <div class="sys-persona-row"><span class="sys-persona-row-key">Interests:</span> <span class="sys-persona-row-val">Psychology, AI, UX Design, and more</span></div>
+          <div class="sys-persona-row"><span class="sys-persona-row-key">Level:</span> <span class="sys-persona-row-val">Practitioner</span></div>
+          <div class="sys-persona-row"><span class="sys-persona-row-key">Language:</span> <span class="sys-persona-row-val">English + Traditional Chinese</span></div>
+        </div>
+        <div class="sys-persona-arrow">↓</div>
+        <div class="sys-persona-engine">
+          <div class="sys-persona-engine-label">AI Personalization Engine</div>
+        </div>
+        <div class="sys-persona-arrow">↓</div>
+        <div class="sys-persona-block">
+          <div class="sys-persona-block-label">Generated Insight</div>
+          <div class="sys-persona-row"><span class="sys-persona-row-key">Topic:</span> <span class="sys-persona-row-val">Cognitive Bias in UX Decision Making</span></div>
+          <div class="sys-persona-row"><span class="sys-persona-row-key">Format:</span> <span class="sys-persona-row-val">Practitioner-level with real examples</span></div>
+          <div class="sys-persona-row"><span class="sys-persona-row-key">Language:</span> <span class="sys-persona-row-val">Bilingual (EN + 繁體中文)</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 
