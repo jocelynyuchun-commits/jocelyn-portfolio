@@ -205,6 +205,16 @@
   .mini-card:nth-child(2) .mini-card-body { font-family: 'Canela Text', 'Canela', Georgia, 'Times New Roman', serif; }
   .mini-card:nth-child(3) .mini-card-body { font-family: 'Nunito', sans-serif; }
 
+  /* ARCHITECTURE FLOW DIAGRAM */
+  .arch-flow { display: flex; flex-direction: column; align-items: center; margin-top: 40px; margin-bottom: 8px; }
+  .arch-flow-node { width: 320px; border: 1px solid var(--border); background: var(--white); padding: 18px 24px; text-align: center; position: relative; }
+  .arch-flow-node-title { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 4px; }
+  .arch-flow-node-sub { font-size: 12px; font-weight: 300; color: var(--gray-dark); line-height: 1.5; }
+  .arch-flow-arrow { display: flex; flex-direction: column; align-items: center; padding: 6px 0; }
+  .arch-flow-arrow-line { width: 1.5px; height: 20px; background: var(--black); }
+  .arch-flow-arrow-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-dark); padding: 4px 0; }
+  .arch-flow-arrow-tip { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--black); }
+
   /* FLOW STEPS */
   .flow-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-top: 36px; }
   .flow-step { border: 1px solid var(--border); padding: 20px 16px; }
@@ -754,6 +764,58 @@
     <span class="eyebrow">Figma MCP &amp; Claude Integration</span>
     <h2>How It Actually Works</h2>
     <p>The workflow chains Figma as the single source of truth through an MCP server into Claude Code. Tokens are extracted as structured JSON, then auto-generated into a three-layer CSS system. Components are built once — consuming CSS variables, never raw values.</p>
+
+    <div class="arch-flow">
+      <div class="arch-flow-node">
+        <div class="arch-flow-node-title">Figma Design File</div>
+        <div class="arch-flow-node-sub">Tokens + Components</div>
+      </div>
+      <div class="arch-flow-arrow">
+        <div class="arch-flow-arrow-line"></div>
+        <div class="arch-flow-arrow-label">Extract</div>
+        <div class="arch-flow-arrow-tip"></div>
+      </div>
+      <div class="arch-flow-node">
+        <div class="arch-flow-node-title">Figma MCP Server</div>
+        <div class="arch-flow-node-sub">Token JSON</div>
+      </div>
+      <div class="arch-flow-arrow">
+        <div class="arch-flow-arrow-line"></div>
+        <div class="arch-flow-arrow-label">Send to AI</div>
+        <div class="arch-flow-arrow-tip"></div>
+      </div>
+      <div class="arch-flow-node">
+        <div class="arch-flow-node-title">Claude Code</div>
+        <div class="arch-flow-node-sub">Token Processing + Generation</div>
+      </div>
+      <div class="arch-flow-arrow">
+        <div class="arch-flow-arrow-line"></div>
+        <div class="arch-flow-arrow-label">Generate</div>
+        <div class="arch-flow-arrow-tip"></div>
+      </div>
+      <div class="arch-flow-node">
+        <div class="arch-flow-node-title">Design Token Files</div>
+        <div class="arch-flow-node-sub">JSON / CSS Variables</div>
+      </div>
+      <div class="arch-flow-arrow">
+        <div class="arch-flow-arrow-line"></div>
+        <div class="arch-flow-arrow-label">Build</div>
+        <div class="arch-flow-arrow-tip"></div>
+      </div>
+      <div class="arch-flow-node">
+        <div class="arch-flow-node-title">React Components</div>
+        <div class="arch-flow-node-sub">Button / Card / Discovery</div>
+      </div>
+      <div class="arch-flow-arrow">
+        <div class="arch-flow-arrow-line"></div>
+        <div class="arch-flow-arrow-label">Theme Switching</div>
+        <div class="arch-flow-arrow-tip"></div>
+      </div>
+      <div class="arch-flow-node">
+        <div class="arch-flow-node-title">Multi-Brand UI</div>
+        <div class="arch-flow-node-sub">Single attribute swaps brand expression</div>
+      </div>
+    </div>
 
     <div class="flow-steps">
       <div class="flow-step">
