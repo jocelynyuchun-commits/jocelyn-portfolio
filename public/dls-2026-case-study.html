@@ -206,14 +206,30 @@
   .mini-card:nth-child(3) .mini-card-body { font-family: 'Nunito', sans-serif; }
 
   /* ARCHITECTURE FLOW DIAGRAM */
-  .arch-flow { display: flex; flex-direction: column; align-items: center; margin-top: 40px; margin-bottom: 8px; }
-  .arch-flow-node { width: 320px; border: 1px solid var(--border); background: var(--white); padding: 18px 24px; text-align: center; position: relative; }
+  .arch-flow { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 40px; margin-top: 48px; margin-bottom: 16px; padding: 40px; background: #fafaf8; border-radius: 16px; background-image: radial-gradient(circle, #e0e0e0 0.8px, transparent 0.8px); background-size: 24px 24px; }
+  .arch-flow-node { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; text-align: center; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.02); transition: transform 0.25s ease, box-shadow 0.25s ease; cursor: default; opacity: 0; animation: archNodeIn 0.5s ease forwards; }
+  .arch-flow-node:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04); }
+  .arch-flow-node:nth-child(1) { animation-delay: 0s; }
+  .arch-flow-node:nth-child(2) { animation-delay: 0.1s; }
+  .arch-flow-node:nth-child(3) { animation-delay: 0.2s; }
+  .arch-flow-node:nth-child(4) { animation-delay: 0.3s; }
+  .arch-flow-node:nth-child(5) { animation-delay: 0.4s; }
+  .arch-flow-node:nth-child(6) { animation-delay: 0.5s; }
+  @keyframes archNodeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .arch-flow-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 18px; }
+  .arch-flow-icon.figma { background: #f3e8ff; color: #7c3aed; }
+  .arch-flow-icon.mcp { background: #dbeafe; color: #2563eb; }
+  .arch-flow-icon.claude { background: #fce7d6; color: #c2410c; }
+  .arch-flow-icon.tokens { background: #d1fae5; color: #059669; }
+  .arch-flow-icon.react { background: #e0f2fe; color: #0284c7; }
+  .arch-flow-icon.brand { background: #111111; color: #ffffff; }
   .arch-flow-node-title { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 4px; }
-  .arch-flow-node-sub { font-size: 12px; font-weight: 300; color: var(--gray-dark); line-height: 1.5; }
-  .arch-flow-arrow { display: flex; flex-direction: column; align-items: center; padding: 6px 0; }
-  .arch-flow-arrow-line { width: 1.5px; height: 20px; background: var(--black); }
-  .arch-flow-arrow-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-dark); padding: 4px 0; }
-  .arch-flow-arrow-tip { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--black); }
+  .arch-flow-node-sub { font-size: 11.5px; font-weight: 400; color: var(--gray-mid); line-height: 1.5; }
+  .arch-flow-connector { display: none; }
+  .arch-flow-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .arch-flow-svg path { fill: none; stroke-width: 2; stroke-linecap: round; }
+  .arch-flow-svg .connector-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+  .arch-flow-node { z-index: 1; }
 
   /* FLOW STEPS */
   .flow-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-top: 36px; }
@@ -479,6 +495,8 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     :root { --gutter: 24px; }
+    .arch-flow { grid-template-columns: 1fr 1fr; gap: 30px 20px; padding: 24px; }
+    .arch-flow-svg { display: none; }
     .facts-row, .brand-cards, .arch-slide, .flow-steps, .ba-grid,
     .ba-a-header, .ba-a-row, .ba-b-wrap,
     .ba-c-metrics, .learn-a-grid, .learn-b-grid,
@@ -765,57 +783,120 @@
     <h2>How It Actually Works</h2>
     <p>The workflow chains Figma as the single source of truth through an MCP server into Claude Code. Tokens are extracted as structured JSON, then auto-generated into a three-layer CSS system. Components are built once — consuming CSS variables, never raw values.</p>
 
-    <div class="arch-flow">
-      <div class="arch-flow-node">
+    <div class="arch-flow" id="archFlow">
+      <svg class="arch-flow-svg" id="archFlowSvg"></svg>
+
+      <div class="arch-flow-node" data-node="figma">
+        <div class="arch-flow-icon figma">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="currentColor"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="currentColor" opacity=".8"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4z" fill="currentColor" opacity=".6"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="currentColor" opacity=".7"/><circle cx="16" cy="12" r="4" fill="currentColor" opacity=".9"/></svg>
+        </div>
         <div class="arch-flow-node-title">Figma Design File</div>
         <div class="arch-flow-node-sub">Tokens + Components</div>
       </div>
-      <div class="arch-flow-arrow">
-        <div class="arch-flow-arrow-line"></div>
-        <div class="arch-flow-arrow-label">Extract</div>
-        <div class="arch-flow-arrow-tip"></div>
-      </div>
-      <div class="arch-flow-node">
+
+      <div class="arch-flow-node" data-node="mcp">
+        <div class="arch-flow-icon mcp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
         <div class="arch-flow-node-title">Figma MCP Server</div>
         <div class="arch-flow-node-sub">Token JSON</div>
       </div>
-      <div class="arch-flow-arrow">
-        <div class="arch-flow-arrow-line"></div>
-        <div class="arch-flow-arrow-label">Send to AI</div>
-        <div class="arch-flow-arrow-tip"></div>
-      </div>
-      <div class="arch-flow-node">
+
+      <div class="arch-flow-node" data-node="claude">
+        <div class="arch-flow-icon claude">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z" opacity=".85"/></svg>
+        </div>
         <div class="arch-flow-node-title">Claude Code</div>
         <div class="arch-flow-node-sub">Token Processing + Generation</div>
       </div>
-      <div class="arch-flow-arrow">
-        <div class="arch-flow-arrow-line"></div>
-        <div class="arch-flow-arrow-label">Generate</div>
-        <div class="arch-flow-arrow-tip"></div>
-      </div>
-      <div class="arch-flow-node">
+
+      <div class="arch-flow-node" data-node="tokens">
+        <div class="arch-flow-icon tokens">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
         <div class="arch-flow-node-title">Design Token Files</div>
         <div class="arch-flow-node-sub">JSON / CSS Variables</div>
       </div>
-      <div class="arch-flow-arrow">
-        <div class="arch-flow-arrow-line"></div>
-        <div class="arch-flow-arrow-label">Build</div>
-        <div class="arch-flow-arrow-tip"></div>
-      </div>
-      <div class="arch-flow-node">
+
+      <div class="arch-flow-node" data-node="react">
+        <div class="arch-flow-icon react">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+        </div>
         <div class="arch-flow-node-title">React Components</div>
         <div class="arch-flow-node-sub">Button / Card / Discovery</div>
       </div>
-      <div class="arch-flow-arrow">
-        <div class="arch-flow-arrow-line"></div>
-        <div class="arch-flow-arrow-label">Theme Switching</div>
-        <div class="arch-flow-arrow-tip"></div>
-      </div>
-      <div class="arch-flow-node">
+
+      <div class="arch-flow-node" data-node="brand">
+        <div class="arch-flow-icon brand">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
         <div class="arch-flow-node-title">Multi-Brand UI</div>
         <div class="arch-flow-node-sub">Single attribute swaps brand expression</div>
       </div>
     </div>
+
+    <script>
+    (function() {
+      const flow = document.getElementById('archFlow');
+      const svg = document.getElementById('archFlowSvg');
+      if (!flow || !svg) return;
+
+      const connections = [
+        { from: 'figma', to: 'mcp', label: 'Extract', color: '#7c3aed' },
+        { from: 'mcp', to: 'claude', label: 'Send to AI', color: '#2563eb' },
+        { from: 'claude', to: 'tokens', label: 'Generate', color: '#c2410c' },
+        { from: 'tokens', to: 'react', label: 'Build', color: '#059669' },
+        { from: 'react', to: 'brand', label: 'Theme Switch', color: '#0284c7' }
+      ];
+
+      function drawConnectors() {
+        if (window.innerWidth <= 900) { svg.innerHTML = ''; return; }
+        const rect = flow.getBoundingClientRect();
+        svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+        let paths = '';
+
+        connections.forEach(c => {
+          const fromEl = flow.querySelector(`[data-node="${c.from}"]`);
+          const toEl = flow.querySelector(`[data-node="${c.to}"]`);
+          if (!fromEl || !toEl) return;
+
+          const fR = fromEl.getBoundingClientRect();
+          const tR = toEl.getBoundingClientRect();
+          const fx = fR.left + fR.width / 2 - rect.left;
+          const fy = fR.top + fR.height - rect.top;
+          const tx = tR.left + tR.width / 2 - rect.left;
+          const ty = tR.top - rect.top;
+
+          const sameRow = Math.abs(fy - (tR.top + tR.height - rect.top)) < 80;
+          let d;
+          if (sameRow) {
+            const fromRight = fR.left + fR.width - rect.left;
+            const toLeft = tR.left - rect.left;
+            const midX = (fromRight + toLeft) / 2;
+            const midY = fR.top + fR.height / 2 - rect.top;
+            const midYt = tR.top + tR.height / 2 - rect.top;
+            d = `M ${fromRight} ${midY} C ${midX} ${midY}, ${midX} ${midYt}, ${toLeft} ${midYt}`;
+          } else {
+            const cp1y = fy + (ty - fy) * 0.4;
+            const cp2y = fy + (ty - fy) * 0.6;
+            d = `M ${fx} ${fy} C ${fx} ${cp1y}, ${tx} ${cp2y}, ${tx} ${ty}`;
+          }
+
+          const midParam = 0.5;
+          const labelId = `label-${c.from}-${c.to}`;
+          paths += `<path d="${d}" stroke="${c.color}" opacity="0.5" />`;
+          paths += `<circle r="3" fill="${c.color}" opacity="0.7"><animateMotion dur="2.5s" repeatCount="indefinite" path="${d}" /></circle>`;
+          paths += `<path id="${labelId}" d="${d}" />`;
+          paths += `<text class="connector-label" fill="${c.color}" opacity="0.8"><textPath href="#${labelId}" startOffset="50%" text-anchor="middle">${c.label}</textPath></text>`;
+        });
+        svg.innerHTML = paths;
+      }
+
+      let resizeTimer;
+      window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawConnectors, 150); });
+      setTimeout(drawConnectors, 600);
+    })();
+    </script>
 
     <div class="flow-steps">
       <div class="flow-step">
