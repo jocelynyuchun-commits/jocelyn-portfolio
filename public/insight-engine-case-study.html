@@ -399,10 +399,14 @@
   .metric-item:last-child { border-right: none; }
   .metric-num { font-size: clamp(26px, 3vw, 36px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px; }
   .metric-label { font-size: 13px; font-weight: 300; color: #333333; line-height: 1.5; }
-  .demonstrates-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 28px; }
-  .demonstrates-item { padding: 16px 20px; background: var(--gray-bg); }
-  .demonstrates-item h4 { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
-  .demonstrates-item p { font-size: 13px; font-weight: 300; color: #333333; max-width: none; margin: 0; line-height: 1.6; }
+  .demonstrates-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 28px; }
+  .demonstrates-item { padding: 24px 20px; border: 1px solid var(--border); }
+  .demonstrates-item h4 { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .demonstrates-item p { font-size: 13px; font-weight: 300; color: #333333; max-width: none; margin: 0; line-height: 1.7; }
+  .demonstrates-item ul { list-style: none; padding: 0; margin: 0; }
+  .demonstrates-item li { font-size: 13px; font-weight: 300; color: #333333; line-height: 1.6; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .demonstrates-item li:last-child { border-bottom: none; }
+  .demonstrates-item li strong { font-weight: 600; color: var(--black); }
 
   /* PHASE 2 ROADMAP */
   .phase2-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 36px; }
@@ -1154,44 +1158,34 @@
   <!-- RESULTS & IMPACT -->
   <div class="section">
     <span class="eyebrow">Results & Impact</span>
-    <h2>What This Build Demonstrates</h2>
-    <p>A weekend MVP that grew into a fully functional AI product — proving that design leaders can build, not just spec.</p>
-
-    <div class="metrics-grid">
-      <div class="metric-item">
-        <div class="metric-num">1</div>
-        <div class="metric-label">Weekend to functional MVP</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">100%</div>
-        <div class="metric-label">Email delivery rate (since cron-job.org)</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">51+</div>
-        <div class="metric-label">AI-generated insights in production</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">6</div>
-        <div class="metric-label">Integrated services in the pipeline</div>
-      </div>
-    </div>
+    <h2>System Capabilities</h2>
+    <p>A weekend MVP that grew into a fully functional AI product — measured by system complexity, automation reliability, generation capability, and personalization scale.</p>
 
     <div class="demonstrates-grid">
       <div class="demonstrates-item">
-        <h4>Full-Stack Capability</h4>
-        <p>Design AND build end-to-end — from product strategy through prompt engineering to deployed infrastructure.</p>
+        <h4>System Capability</h4>
+        <ul>
+          <li><strong>51+</strong> AI insights generated during testing</li>
+          <li><strong>15+</strong> subject domains supported</li>
+          <li><strong>4</strong> reading levels of adaptive content</li>
+          <li><strong>2</strong> languages generated in a single request</li>
+        </ul>
       </div>
       <div class="demonstrates-item">
-        <h4>Real AI Integration</h4>
-        <p>Actual Claude API integration, prompt engineering, and LLM output parsing — not "I used ChatGPT."</p>
+        <h4>Automation Pipeline</h4>
+        <ul>
+          <li><strong>6</strong> integrated services (Claude, Supabase, Resend, etc.)</li>
+          <li><strong>100%</strong> email delivery reliability after cron migration</li>
+          <li><strong>~5 sec</strong> generation-to-delivery latency</li>
+        </ul>
       </div>
       <div class="demonstrates-item">
-        <h4>Problem-Solving Under Pressure</h4>
-        <p>Pivoted when Supabase cron failed. Debugged email duplicates across 6 services. Shipped despite setbacks.</p>
-      </div>
-      <div class="demonstrates-item">
-        <h4>Global-First Thinking</h4>
-        <p>Bilingual support (EN/ZH) from day one — not an afterthought. Taiwan Traditional Chinese with vocabulary-level specificity.</p>
+        <h4>Scalability Potential</h4>
+        <ul>
+          <li><strong>1,000+</strong> personalized insight variations based on user profiles</li>
+          <li><strong>365</strong> insights per user annually with automated scheduling</li>
+          <li>Architecture supports unlimited subject expansion</li>
+        </ul>
       </div>
     </div>
   </div>
