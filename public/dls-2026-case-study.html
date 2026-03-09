@@ -228,8 +228,8 @@
   .arch-flow-connector { display: none; }
   .arch-flow-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   .arch-flow-svg path { fill: none; stroke-width: 2; stroke-linecap: round; }
-  .arch-flow-svg .connector-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
   .arch-flow-node { z-index: 1; }
+  .arch-flow-label { position: absolute; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; white-space: nowrap; z-index: 2; pointer-events: none; background: var(--white); }
 
   /* FLOW STEPS */
   .flow-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-top: 36px; }
@@ -791,7 +791,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="currentColor"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="currentColor" opacity=".8"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4z" fill="currentColor" opacity=".6"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="currentColor" opacity=".7"/><circle cx="16" cy="12" r="4" fill="currentColor" opacity=".9"/></svg>
         </div>
         <div class="arch-flow-node-title">Figma Design File</div>
-        <div class="arch-flow-node-sub">Tokens + Components</div>
+        <div class="arch-flow-node-sub">Single source of truth. Queryable by Claude via MCP connection (GUI + terminal).</div>
       </div>
 
       <div class="arch-flow-node" data-node="mcp">
@@ -799,7 +799,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
         <div class="arch-flow-node-title">Figma MCP Server</div>
-        <div class="arch-flow-node-sub">Token JSON</div>
+        <div class="arch-flow-node-sub">Primitives, semantic tokens, and component values extracted from Figma JSON per brand.</div>
       </div>
 
       <div class="arch-flow-node" data-node="claude">
@@ -807,7 +807,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z" opacity=".85"/></svg>
         </div>
         <div class="arch-flow-node-title">Claude Code</div>
-        <div class="arch-flow-node-sub">Token Processing + Generation</div>
+        <div class="arch-flow-node-sub">Processes extracted tokens and auto-generates structured output across all layers.</div>
       </div>
 
       <div class="arch-flow-node" data-node="tokens">
@@ -815,7 +815,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <div class="arch-flow-node-title">Design Token Files</div>
-        <div class="arch-flow-node-sub">JSON / CSS Variables</div>
+        <div class="arch-flow-node-sub">Primitives.json + Semantic.json generated as structured data with resolved values per brand.</div>
       </div>
 
       <div class="arch-flow-node" data-node="react">
@@ -823,7 +823,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
         </div>
         <div class="arch-flow-node-title">React Components</div>
-        <div class="arch-flow-node-sub">Button / Card / Discovery</div>
+        <div class="arch-flow-node-sub">BEM class composition. Zero hardcoded values. All visual decisions resolved through the token chain.</div>
       </div>
 
       <div class="arch-flow-node" data-node="brand">
@@ -831,17 +831,17 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
         </div>
         <div class="arch-flow-node-title">Multi-Brand UI</div>
-        <div class="arch-flow-node-sub">Single attribute swaps brand expression</div>
+        <div class="arch-flow-node-sub">Brand switching via single <code>data-brand</code> attribute across all 3 token layers.</div>
       </div>
     </div>
 
     <script>
     (function() {
-      const flow = document.getElementById('archFlow');
-      const svg = document.getElementById('archFlowSvg');
+      var flow = document.getElementById('archFlow');
+      var svg = document.getElementById('archFlowSvg');
       if (!flow || !svg) return;
 
-      const connections = [
+      var connections = [
         { from: 'figma', to: 'mcp', label: 'Extract', color: '#7c3aed' },
         { from: 'mcp', to: 'claude', label: 'Send to AI', color: '#2563eb' },
         { from: 'claude', to: 'tokens', label: 'Generate', color: '#c2410c' },
@@ -849,82 +849,68 @@
         { from: 'react', to: 'brand', label: 'Theme Switch', color: '#0284c7' }
       ];
 
-      function drawConnectors() {
-        if (window.innerWidth <= 900) { svg.innerHTML = ''; return; }
-        const rect = flow.getBoundingClientRect();
-        svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
-        let paths = '';
+      function clearLabels() {
+        flow.querySelectorAll('.arch-flow-label').forEach(function(el) { el.remove(); });
+      }
 
-        connections.forEach(c => {
-          const fromEl = flow.querySelector(`[data-node="${c.from}"]`);
-          const toEl = flow.querySelector(`[data-node="${c.to}"]`);
+      function drawConnectors() {
+        clearLabels();
+        if (window.innerWidth <= 900) { svg.innerHTML = ''; return; }
+        var rect = flow.getBoundingClientRect();
+        svg.setAttribute('viewBox', '0 0 ' + rect.width + ' ' + rect.height);
+        var paths = '';
+
+        connections.forEach(function(c) {
+          var fromEl = flow.querySelector('[data-node="' + c.from + '"]');
+          var toEl = flow.querySelector('[data-node="' + c.to + '"]');
           if (!fromEl || !toEl) return;
 
-          const fR = fromEl.getBoundingClientRect();
-          const tR = toEl.getBoundingClientRect();
-          const fx = fR.left + fR.width / 2 - rect.left;
-          const fy = fR.top + fR.height - rect.top;
-          const tx = tR.left + tR.width / 2 - rect.left;
-          const ty = tR.top - rect.top;
+          var fR = fromEl.getBoundingClientRect();
+          var tR = toEl.getBoundingClientRect();
+          var sameRow = Math.abs((fR.top + fR.height / 2) - (tR.top + tR.height / 2)) < 40;
+          var d, labelX, labelY;
 
-          const sameRow = Math.abs(fy - (tR.top + tR.height - rect.top)) < 80;
-          let d;
           if (sameRow) {
-            const fromRight = fR.left + fR.width - rect.left;
-            const toLeft = tR.left - rect.left;
-            const midX = (fromRight + toLeft) / 2;
-            const midY = fR.top + fR.height / 2 - rect.top;
-            const midYt = tR.top + tR.height / 2 - rect.top;
-            d = `M ${fromRight} ${midY} C ${midX} ${midY}, ${midX} ${midYt}, ${toLeft} ${midYt}`;
+            var fromRight = fR.left + fR.width - rect.left;
+            var toLeft = tR.left - rect.left;
+            var midX = (fromRight + toLeft) / 2;
+            var midY = fR.top + fR.height / 2 - rect.top;
+            var midYt = tR.top + tR.height / 2 - rect.top;
+            d = 'M ' + fromRight + ' ' + midY + ' C ' + midX + ' ' + midY + ', ' + midX + ' ' + midYt + ', ' + toLeft + ' ' + midYt;
+            labelX = midX;
+            labelY = (midY + midYt) / 2 - 14;
           } else {
-            const cp1y = fy + (ty - fy) * 0.4;
-            const cp2y = fy + (ty - fy) * 0.6;
-            d = `M ${fx} ${fy} C ${fx} ${cp1y}, ${tx} ${cp2y}, ${tx} ${ty}`;
+            var fx = fR.left + fR.width / 2 - rect.left;
+            var fy = fR.top + fR.height - rect.top;
+            var tx = tR.left + tR.width / 2 - rect.left;
+            var ty = tR.top - rect.top;
+            var cp1y = fy + (ty - fy) * 0.35;
+            var cp2y = fy + (ty - fy) * 0.65;
+            d = 'M ' + fx + ' ' + fy + ' C ' + fx + ' ' + cp1y + ', ' + tx + ' ' + cp2y + ', ' + tx + ' ' + ty;
+            labelX = (fx + tx) / 2;
+            labelY = (fy + ty) / 2 - 8;
           }
 
-          const midParam = 0.5;
-          const labelId = `label-${c.from}-${c.to}`;
-          paths += `<path d="${d}" stroke="${c.color}" opacity="0.5" />`;
-          paths += `<circle r="3" fill="${c.color}" opacity="0.7"><animateMotion dur="2.5s" repeatCount="indefinite" path="${d}" /></circle>`;
-          paths += `<path id="${labelId}" d="${d}" />`;
-          paths += `<text class="connector-label" fill="${c.color}" opacity="0.8"><textPath href="#${labelId}" startOffset="50%" text-anchor="middle">${c.label}</textPath></text>`;
+          paths += '<path d="' + d + '" stroke="' + c.color + '" opacity="0.4" />';
+          paths += '<circle r="3" fill="' + c.color + '" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite" path="' + d + '" /></circle>';
+
+          var label = document.createElement('div');
+          label.className = 'arch-flow-label';
+          label.textContent = c.label;
+          label.style.color = c.color;
+          label.style.left = labelX + 'px';
+          label.style.top = labelY + 'px';
+          label.style.transform = 'translate(-50%, -50%)';
+          flow.appendChild(label);
         });
         svg.innerHTML = paths;
       }
 
-      let resizeTimer;
-      window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawConnectors, 150); });
+      var resizeTimer;
+      window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawConnectors, 150); });
       setTimeout(drawConnectors, 600);
     })();
     </script>
-
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="step-num">1</div>
-        <h4>Connect Figma MCP to Claude Code</h4>
-        <p>Desktop MCP (GUI + terminal) or Remote MCP (terminal only). Figma becomes queryable by Claude.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">2</div>
-        <h4>Extract Figma Tokens</h4>
-        <p>Primitives, semantic tokens, and component values read directly from Figma JSON export per brand.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">3</div>
-        <h4>Export JSON Token Files</h4>
-        <p>Primitives.json + Semantic.json generated as structured data with resolved values per brand.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">4</div>
-        <h4>CSS Token System</h4>
-        <p>Tokens.css auto-generated across all 3 layers. Brand switching via data-brand attribute only.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">5</div>
-        <h4>React Components</h4>
-        <p>BEM class composition. Zero hardcoded values. All visual decisions resolved through the token chain.</p>
-      </div>
-    </div>
   </div>
 
   <!-- COMPONENTS — LIVE DEMO IFRAMES -->
