@@ -285,7 +285,7 @@
   .ba-a-after { padding: 14px 20px; font-size: 13px; font-weight: 400; color: var(--black); border-left: 1px solid var(--border); }
 
   /* LEARNINGS — 3-column cards */
-  .learn-a-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px; }
+  .learn-a-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px; }
   .learn-a-item { background: var(--white); padding: 28px 24px; }
   .learn-a-num { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--gray-light); margin-bottom: 12px; }
   .learn-a-title { font-size: 15px; font-weight: 600; color: var(--black); line-height: 1.35; margin-bottom: 12px; }
@@ -326,6 +326,12 @@
   /* CHALLENGE CARDS */
   .challenge-cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 36px; }
   .challenge-card { border: 1px solid var(--border); padding: 28px 24px; }
+  .challenge-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px;
+  }
+  .challenge-card:last-child:nth-child(odd) .challenge-card-num { grid-column: 1 / -1; }
+  .challenge-card:last-child:nth-child(odd) h4 { grid-column: 1 / -1; }
   .challenge-card-num { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 14px; }
   .challenge-card h4 { font-size: 16px; font-weight: 600; color: var(--black); line-height: 1.3; margin-bottom: 16px; }
   .challenge-step { margin-bottom: 12px; }
@@ -502,7 +508,7 @@
     <div class="fact">
       <div class="fact-num">01</div>
       <div class="fact-title">My Role</div>
-      <div class="fact-body">Sole creator — product strategy, UX/AI design, prompt engineering, and full-stack implementation.</div>
+      <div class="fact-body">Sole product builder responsible for end-to-end development of the system: product strategy and problem framing · AI interaction design and prompt architecture · backend orchestration (Claude API, Supabase, Resend, Cron pipeline) · front-end UX and onboarding flow · system debugging across six integrated services. This prototype demonstrates how a design leader can move from concept → working AI product.</div>
     </div>
     <div class="fact">
       <div class="fact-num">02</div>
@@ -885,7 +891,7 @@
     <div class="challenge-cards">
 
       <div class="challenge-card">
-        <div class="challenge-card-num">Challenge 01 · Days 2–6</div>
+        <div class="challenge-card-num">Challenge 01</div>
         <h4>The Cron Job Nightmare</h4>
         <div class="challenge-step">
           <div class="challenge-step-label">Problem</div>
@@ -906,7 +912,7 @@
       </div>
 
       <div class="challenge-card">
-        <div class="challenge-card-num">Challenge 02 · Day 8</div>
+        <div class="challenge-card-num">Challenge 02</div>
         <h4>Email Template Persistence</h4>
         <div class="challenge-step">
           <div class="challenge-step-label">Problem</div>
@@ -927,7 +933,7 @@
       </div>
 
       <div class="challenge-card">
-        <div class="challenge-card-num">Challenge 03 · Day 17</div>
+        <div class="challenge-card-num">Challenge 03</div>
         <h4>Duplicate Emails & Wrong Sender</h4>
         <div class="challenge-step">
           <div class="challenge-step-label">Problem</div>
@@ -944,27 +950,6 @@
         <div class="challenge-learning">
           <div class="challenge-learning-label">Learning</div>
           <div class="challenge-learning-text">"When debugging multi-service systems, audit each service systematically rather than guessing. Write the diagnostic checklist before you start fixing."</div>
-        </div>
-      </div>
-
-      <div class="challenge-card">
-        <div class="challenge-card-num">Challenge 04 · Ongoing</div>
-        <h4>Simplified vs. Traditional Chinese</h4>
-        <div class="challenge-step">
-          <div class="challenge-step-label">Problem</div>
-          <div class="challenge-step-text">Default "translate to Chinese" prompt produced Simplified Chinese (简体), not Traditional Chinese (繁體) needed for Taiwan audience.</div>
-        </div>
-        <div class="challenge-step">
-          <div class="challenge-step-label">What I Tried</div>
-          <div class="challenge-step-text">Added "Traditional Chinese" to the prompt. Still inconsistent — some vocabulary defaulted to mainland conventions (软件 instead of 軟體).</div>
-        </div>
-        <div class="challenge-step">
-          <div class="challenge-step-label">Solution</div>
-          <div class="challenge-step-text">Updated Claude prompt to specify "Taiwan Traditional Chinese (台灣繁體)" with explicit vocabulary examples: 軟體 not 软件, 網路 not 网络.</div>
-        </div>
-        <div class="challenge-learning">
-          <div class="challenge-learning-label">Learning</div>
-          <div class="challenge-learning-text">"AI prompts need extreme specificity. 'Chinese' has multiple variants — always provide examples, not just descriptions."</div>
         </div>
       </div>
 
@@ -1069,23 +1054,20 @@
   <!-- LEARNINGS -->
   <div class="section">
     <span class="eyebrow">What I Learned</span>
-    <h2>Three Lessons From My Build Diary</h2>
+    <h2>Key Lessons From Building My First AI Product</h2>
 
     <div class="learn-a-grid">
       <div class="learn-a-item">
         <div class="learn-a-num">01</div>
         <div class="learn-a-title">Build First, Design Second (For AI Products)</div>
-        <p>I discovered Supabase cron was unreliable BEFORE designing a UI for it. I learned Claude API takes 3–5 seconds BEFORE designing loading states. I found bilingual content works in one API call BEFORE assuming I needed separate calls. For novel AI features, validate feasibility first — design second.</p>
+        <p>As a designer, creating UI in Figma is familiar and relatively straightforward. What proved more important was understanding the workflow and constraints of the AI development stack. Before designing polished interfaces, I needed to experiment with the tools, APIs, and integration patterns to confirm what could actually work.</p>
+        <p style="margin-top: 12px;">Building early prototypes helped me understand how the system behaves — response time, data flow, and feature feasibility. In AI products, validating what is technically possible should come before designing the final experience.</p>
       </div>
       <div class="learn-a-item">
         <div class="learn-a-num">02</div>
-        <div class="learn-a-title">AI Prompts Need Extreme Specificity</div>
-        <p>I rewrote the daily insights prompt to speak to a 15-year-old. "Chinese" defaulted to Simplified — I had to specify "Taiwan Traditional Chinese (台灣繁體)" with vocabulary examples (軟體 not 软件). Prompt engineering is a design discipline: the same UX principles — clarity, specificity, user mental models — apply.</p>
-      </div>
-      <div class="learn-a-item">
-        <div class="learn-a-num">03</div>
         <div class="learn-a-title">Ship Working Solutions Over Architectural Purity</div>
-        <p>I spent 6 hours trying to make Supabase native cron work because it felt like the "right" solution. External cron-job.org solved it in 30 minutes with 100% reliability. External dependencies aren't "cheating" — they're pragmatic. Being technical means knowing when NOT to build.</p>
+        <p>While integrating multiple tools and platforms, I learned how sensitive these systems can be to configuration changes. A small setting change in one platform can break synchronization across several services, and diagnosing the issue can take hours — especially for designers without deep engineering backgrounds.</p>
+        <p style="margin-top: 12px;">Instead of over-optimizing architecture, I learned to prioritize solutions that work reliably. In fast-moving AI workflows, pragmatic solutions that keep the system running are often more valuable than perfectly engineered ones.</p>
       </div>
     </div>
   </div>
