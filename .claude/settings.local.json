@@ -110,7 +110,8 @@
       "Bash(curl -L -o \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/solution-flow.png\" \"https://www.figma.com/api/mcp/asset/33c95187-d4ee-4c15-9cdc-b01bbc19285b\")",
       "Bash(ls -t ~/Downloads/*.png)",
       "Bash(ls -lt ~/Downloads/*.png)",
-      "Bash(ls -lt /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/settings-preview*)"
+      "Bash(ls -lt /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/settings-preview*)",
+      "WebFetch(domain:figma-claude-test-henna.vercel.app)"
     ]
   }
 }
