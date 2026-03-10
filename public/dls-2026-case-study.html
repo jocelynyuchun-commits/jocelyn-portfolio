@@ -322,6 +322,28 @@
   }
   .demo-iframe.tall { height: 800px; }
 
+  /* Desktop-scale overrides — render wide, scale to fit 938px container */
+  #demo-discovery .demo-frame-wrap,
+  #demo-multibrand .demo-frame-wrap {
+    overflow: hidden;
+  }
+  #demo-discovery .demo-iframe.tall {
+    width: 1400px;
+    height: 1100px;
+    transform: scale(0.67);
+    transform-origin: top left;
+    margin-right: calc(-1400px * 0.33);
+    margin-bottom: calc(-1100px * 0.33);
+  }
+  #demo-multibrand .demo-iframe.tall {
+    width: 1600px;
+    height: 1300px;
+    transform: scale(0.585);
+    transform-origin: top left;
+    margin-right: calc(-1600px * 0.415);
+    margin-bottom: calc(-1300px * 0.415);
+  }
+
   /* BEFORE / AFTER */
   .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 36px; }
   .ba-col { background: var(--white); padding: 40px; }
