@@ -111,7 +111,12 @@
       "Bash(ls -t ~/Downloads/*.png)",
       "Bash(ls -lt ~/Downloads/*.png)",
       "Bash(ls -lt /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/settings-preview*)",
-      "WebFetch(domain:figma-claude-test-henna.vercel.app)"
+      "WebFetch(domain:figma-claude-test-henna.vercel.app)",
+      "Bash(git tag -a baseline-2026-03-09 -m \"Locked baseline: end-of-day snapshot March 9, 2026. Desktop iframe scaling for Product Discovery and Multi-Brand demos. DO NOT modify without explicit approval.\")",
+      "Bash(git branch next-development)",
+      "Bash(git push origin baseline-2026-03-09)",
+      "Bash(git push origin next-development)",
+      "Bash(git push)"
     ]
   }
 }
