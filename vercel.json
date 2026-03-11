@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/ai-experiments", "destination": "/ai-experiments.html" },
+    { "source": "/ai-experiments/dls-2026-case-study", "destination": "/dls-2026-case-study.html" },
+    { "source": "/ai-experiments/insight-engine-case-study", "destination": "/insight-engine-case-study.html" },
+    { "source": "/:path*", "destination": "https://jocelynlin.framer.ai/:path*" }
+  ]
+}
