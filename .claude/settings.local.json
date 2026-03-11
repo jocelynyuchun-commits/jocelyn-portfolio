@@ -116,7 +116,10 @@
       "Bash(git branch next-development)",
       "Bash(git push origin baseline-2026-03-09)",
       "Bash(git push origin next-development)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://jocelynlin.framer.ai/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://www.jocelyn-lin.com/ai-experiments)",
+      "Bash(curl -s https://www.jocelyn-lin.com/)"
     ]
   }
 }
