@@ -125,7 +125,14 @@
       "Bash(git add public/top-nav-plp.html public/index.html public/assets/ vercel.json)",
       "Bash(ls -lh /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/pdp-*.mp4)",
       "Bash(brew list poppler)",
-      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")"
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Read(//home/linuxbrew/.linuxbrew/bin/**)",
+      "Bash(pip3 install poppler-utils)",
+      "Bash(pip3 install pdf2image)",
+      "Bash(python -m markitdown \"/Users/jocelynlin/Desktop/CPO-Deep Dive.pptx\")",
+      "Bash(pip install \"markitdown[pptx]\" -q)"
     ]
   }
 }

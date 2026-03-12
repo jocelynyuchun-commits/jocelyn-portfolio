@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>+46% Revenue Growth — CPO Website Redesign — Jocelyn Lin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --gray-dark: #444444;
+    --gray-mid: #686868;
+    --gray-light: #cccccc;
+    --gray-bg: #f5f5f5;
+    --border: #e8e8e8;
+    --white: #ffffff;
+    --max-width: 1100px;
+    --gutter: 80px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #ffffff;
+    height: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px;
+  }
+  @media (max-width: 1439px) and (min-width: 901px) {
+    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
+  }
+  @media (max-width: 900px) and (min-width: 641px) {
+    nav { height: clamp(56px, 7.8vw, 72px); }
+  }
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--black); text-decoration: none;
+    text-transform: capitalize; transition: opacity 0.15s;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-links a.active { opacity: 1; }
+
+  /* PAGE */
+  .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* BACK LINK */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--gray-mid);
+    text-decoration: none; transition: color 0.15s;
+    padding-top: 120px; padding-bottom: 0;
+  }
+  .back-link:hover { color: var(--black); }
+  .back-link svg { width: 14px; height: 14px; }
+
+  /* HERO */
+  .hero { padding-top: 24px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
+  .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
+  .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--black); max-width: 800px; margin-bottom: 22px; }
+  .hero-desc { font-size: 17px; font-weight: 400; color: var(--gray-dark); max-width: 680px; line-height: 1.75; margin-bottom: 32px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: var(--gray-bg); padding: 5px 12px; border-radius: 2px; }
+
+  /* QUICK FACTS */
+  .facts-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .fact { padding-right: 40px; border-right: 1px solid var(--border); }
+  .fact + .fact { padding-left: 40px; }
+  .fact:last-child { border-right: none; }
+  .fact-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 9px; }
+  .fact-value { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .fact-detail { font-size: 14px; font-weight: 400; color: var(--gray-dark); line-height: 1.65; }
+
+  /* SECTIONS */
+  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  h2 { font-size: clamp(23px, 3vw, 33px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--black); margin-bottom: 18px; }
+  h3 { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 10px; margin-top: 40px; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 16px; font-weight: 400; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; max-width: none; }
+  p:last-child { margin-bottom: 0; }
+  .section ul { list-style: disc; padding-left: 20px; margin-bottom: 16px; max-width: 680px; }
+  .section ul li { font-size: 16px; font-weight: 400; color: var(--gray-dark); line-height: 1.8; margin-bottom: 4px; }
+
+  /* INSIGHT CARDS */
+  .insights-block { margin: 36px 0; border-top: 1px solid var(--border); padding-top: 28px; }
+  .insights-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--black); margin-bottom: 24px;
+  }
+  .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .insight-card { border: 1px solid var(--border); padding: 28px 24px; display: flex; flex-direction: column; }
+  .insight-num { font-size: 13px; font-weight: 500; color: var(--gray-mid); margin-bottom: 8px; }
+  .insight-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; line-height: 1.4; }
+  .insight-text { font-size: 14px; font-weight: 400; color: var(--gray-dark); line-height: 1.7; max-width: none; margin: 0 0 16px 0; }
+  .insight-quote {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 15px; font-style: italic; font-weight: 400;
+    color: #333333; line-height: 1.65;
+  }
+
+  /* STAT CARDS */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .stat-card { border: 1px solid var(--border); padding: 36px 24px; text-align: center; }
+  .stat-num { font-size: clamp(32px, 4vw, 48px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 14px; font-weight: 400; color: var(--gray-mid); line-height: 1.5; }
+
+  /* IMAGE PLACEHOLDERS */
+  .ph {
+    background: #f0f0f0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; color: #b0b0b0;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--border);
+    margin-top: 36px;
+  }
+  .ph-wide { aspect-ratio: 16 / 9; }
+  .ph-ultra { aspect-ratio: 21 / 9; }
+  .ph-short { aspect-ratio: 3 / 1; }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+
+  /* COMPARISON */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .compare-col {}
+  .compare-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 12px; }
+
+  /* MACBOOK FRAME */
+  .macbook-frame {
+    width: 100%; max-width: 1000px;
+    filter: drop-shadow(0 8px 30px rgba(0,0,0,0.12));
+    margin: 36px auto 0;
+  }
+  .macbook-lid {
+    background: #222;
+    border-radius: 14px;
+    padding: 10px;
+  }
+  .macbook-toolbar {
+    background: #e8e8ec;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .macbook-dots { display: flex; gap: 6px; }
+  .macbook-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .macbook-dot--red { background: #ff5f57; }
+  .macbook-dot--yellow { background: #febc2e; }
+  .macbook-dot--green { background: #28c840; }
+  .macbook-url {
+    flex: 1; height: 24px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #d0d0d4;
+    margin-left: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .macbook-url span {
+    font-size: 11px; color: var(--gray-mid); font-family: 'DM Sans', sans-serif;
+  }
+  .macbook-viewport {
+    background: #fff;
+    line-height: 0;
+  }
+  .macbook-viewport video,
+  .macbook-viewport img {
+    width: 100%; display: block;
+  }
+  .macbook-base { display: none; }
+  .macbook-bottom { display: none; }
+  .device-label {
+    text-align: center; margin-top: 20px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray-mid);
+  }
+
+  /* TESTING QUOTES */
+  .testing-masonry {
+    background: var(--gray-bg);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin-top: 36px;
+    column-count: 3;
+    column-gap: 24px;
+  }
+  .testing-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    margin-bottom: 24px;
+    break-inside: avoid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .testing-card-icon {
+    width: 32px; height: 24px; margin-bottom: 14px; display: block;
+  }
+  .testing-card-icon path { fill: #ccc; }
+  .testing-card-text {
+    font-size: 15px; font-weight: 500; color: var(--black);
+    line-height: 1.65; margin: 0 0 12px; max-width: none;
+  }
+  .testing-card-attr {
+    font-size: 12px; font-weight: 400; color: var(--gray-mid);
+    margin: 0; max-width: none;
+  }
+
+  /* DESIGN SYSTEM IMAGE */
+  .sg-hero-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-top: 36px;
+  }
+
+  /* CALLOUT */
+  .callout { margin: 36px 0; padding: 24px 28px; background: var(--gray-bg); border-left: 3px solid var(--black); }
+  .callout p { font-size: 15px; font-weight: 400; color: var(--black); max-width: none; margin: 0; line-height: 1.7; }
+
+  /* SUB-SECTION LIST */
+  .process-list { margin-top: 24px; }
+  .process-item { padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .process-item:last-child { border-bottom: none; }
+  .process-item h4 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .process-item p { font-size: 14px; max-width: none; margin: 0; }
+
+  /* PERSONA CARDS */
+  .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .persona-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .persona-card img {
+    width: 100%;
+    display: block;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    padding: 56px 0;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 40px;
+  }
+  .about-strip p { font-size: 14px; font-weight: 400; color: var(--gray-mid); max-width: 480px; line-height: 1.75; margin: 0; }
+  .about-strip a {
+    font-size: 13px; font-weight: 500; color: var(--black); text-decoration: none;
+    white-space: nowrap; border-bottom: 1px solid var(--black); padding-bottom: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px var(--gutter);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 13px; color: var(--gray-mid); margin: 0; max-width: none; }
+  footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
+
+  /* HAMBURGER */
+  .nav-burger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px;
+    align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .nav-burger svg { display: block; }
+
+  /* MOBILE OVERLAY */
+  .mobile-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .mobile-overlay.open { display: flex; }
+  .mobile-overlay-close {
+    position: absolute; top: 14px; right: 24px;
+    background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+  }
+  .mobile-overlay-close svg { display: block; }
+  .mobile-overlay-logo {
+    position: absolute; top: 20px; left: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black);
+    text-decoration: none;
+  }
+  .mobile-overlay-links {
+    list-style: none; text-align: center;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .mobile-overlay-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--black); text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: opacity 0.15s;
+  }
+  .mobile-overlay-links a:hover { opacity: 0.6; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    :root { --gutter: 24px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .back-link { padding-top: 100px; }
+    .facts-row { grid-template-columns: 1fr 1fr; gap: 32px 0; }
+    .fact { border-right: none; padding: 0; }
+    .fact + .fact { padding-left: 0; }
+    .fact:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
+    .grid-2, .compare, .persona-grid { grid-template-columns: 1fr; }
+    .macbook-lid { padding: 6px; border-radius: 10px; }
+    .macbook-toolbar { padding: 7px 10px; }
+    .macbook-dot { width: 8px; height: 8px; }
+    .macbook-url { height: 20px; }
+    .macbook-url span { font-size: 10px; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .testing-masonry { column-count: 1; padding: 24px; }
+    .stats { grid-template-columns: 1fr; }
+    .about-strip { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Jocelyn Lin</a>
+  <ul class="nav-links">
+    <li><a href="/">Work</a></li>
+    <li><a href="/ai-experiments">AI Experiments</a></li>
+    <li><a href="/about-me">About Me</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Open menu" onclick="document.getElementById('mobileOverlay').classList.add('open'); document.body.style.overflow='hidden';">
+    <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+      <line x1="0" y1="1" x2="22" y2="1" stroke="#111" stroke-width="2"/>
+      <line x1="0" y1="8" x2="22" y2="8" stroke="#111" stroke-width="2"/>
+      <line x1="0" y1="15" x2="22" y2="15" stroke="#111" stroke-width="2"/>
+    </svg>
+  </button>
+</nav>
+
+<div id="mobileOverlay" class="mobile-overlay">
+  <a href="/" class="mobile-overlay-logo">Jocelyn Lin</a>
+  <button class="mobile-overlay-close" aria-label="Close menu" onclick="document.getElementById('mobileOverlay').classList.remove('open'); document.body.style.overflow='';">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <line x1="2" y1="2" x2="18" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18" y1="2" x2="2" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <ul class="mobile-overlay-links">
+    <li><a href="/">Work</a></li>
+    <li><a href="/ai-experiments">AI Experiments</a></li>
+    <li><a href="/about-me">About Me</a></li>
+  </ul>
+</div>
+
+<div class="page">
+
+  <!-- BACK LINK -->
+  <a href="/" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Back to Work
+  </a>
+
+  <!-- 1. HEADER -->
+  <div class="hero">
+    <span class="eyebrow">Case Study &middot; CPO Outlets &middot; 2019</span>
+    <h1>+46% Revenue Growth &mdash; CPO Website Redesign</h1>
+    <p class="hero-desc">How I led a full UX and UI redesign for CPO Outlets&rsquo; e-commerce platform, improving product discovery, decision confidence, and conversion in a complex, spec-driven power tools environment.</p>
+    <div class="tag-row">
+      <span class="tag">E-Commerce</span>
+      <span class="tag">UX Research</span>
+      <span class="tag">Product Design</span>
+      <span class="tag">Responsive</span>
+    </div>
+  </div>
+
+  <!-- 2. PROJECT OVERVIEW -->
+  <div class="section">
+    <h2>Project Overview</h2>
+    <p>CPO Outlets is a web-only retailer selling both new and reconditioned power tools. Their catalog is large and highly spec-driven, making information architecture, search, and comparison critical to the experience.</p>
+    <p>CPO came to us during a period of declining online performance despite operating in a growing tools market. The site worked reasonably well for expert users but struggled with product discovery, onboarding new customers, and supporting confident purchase decisions. The goal was to redesign the full e-commerce experience &mdash; from search and navigation through product detail pages &mdash; to help users quickly find the right tools and buy with confidence.</p>
+  </div>
+
+  <!-- 3. MY ROLE / QUICK FACTS -->
+  <div class="facts-row">
+    <div class="fact">
+      <div class="fact-label">Role</div>
+      <div class="fact-value">Lead Product Designer</div>
+      <div class="fact-detail">End-to-end experience strategy, interaction design, and UI</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">Team</div>
+      <div class="fact-value">Designer + UX Researcher</div>
+      <div class="fact-detail">Partnered with a UX researcher for interviews and usability testing</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">Timeline</div>
+      <div class="fact-value">2019</div>
+      <div class="fact-detail">Discovery through holiday launch</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">Platform</div>
+      <div class="fact-value">Web &mdash; Desktop &amp; Mobile</div>
+      <div class="fact-detail">Responsive e-commerce</div>
+    </div>
+  </div>
+
+  <!-- 4. IMPACT & RESULTS -->
+  <div class="section">
+    <h2>Impact &amp; Results</h2>
+    <p>The redesign launched ahead of CPO&rsquo;s peak holiday season in November 2019. Results comparing the post-launch holiday season (2019 vs. 2018) showed significant improvements across every key metric.</p>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num" data-target="46">+0%</div>
+        <div class="stat-label">Revenue growth<br>year over year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="17">+0%</div>
+        <div class="stat-label">Conversion rate<br>year over year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="25">+0%</div>
+        <div class="stat-label">Additional conversion<br>with continued optimization</div>
+      </div>
+    </div>
+
+    <div class="stats" style="grid-template-columns: 1fr; max-width: 320px; margin-top: 16px;">
+      <div class="stat-card">
+        <div class="stat-num" data-target="-9" style="font-size: clamp(28px, 3.5vw, 40px);">0%</div>
+        <div class="stat-label">Bounce rate reduction</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MY ROLE & RESPONSIBILITY -->
+  <div class="section">
+    <h2>My Role &amp; Responsibility</h2>
+    <p>I was the sole designer on the project, partnering with a UX researcher who led interviews and usability testing. I owned the end-to-end experience strategy and design &mdash; defining research questions, synthesizing insights, and translating them into product direction, interaction models, and UI. I also led prototyping, execution, and stakeholder alignment.</p>
+
+    <div class="process-list">
+      <div class="process-item">
+        <h4>User Research &amp; Strategy</h4>
+        <p>Defined research questions, synthesized insights, and translated findings into product direction and design principles.</p>
+      </div>
+      <div class="process-item">
+        <h4>Design Execution &amp; Prototyping</h4>
+        <p>Owned interaction design, visual design, and prototyping across the full e-commerce experience.</p>
+      </div>
+      <div class="process-item">
+        <h4>Client Partnership &amp; Team Leadership</h4>
+        <p>Led stakeholder alignment and ensured insights quickly turned into shipped outcomes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. DISCOVERY & RESEARCH -->
+  <div class="section">
+    <h2>Discovery</h2>
+    <p>We began discovery to understand why performance was lagging &mdash; not just where it was down. The CPO team lacked deep user insight and relied mostly on high-level Google Analytics. Search and navigation drove high bounce rates, PDPs were missing critical information, and customers had to call support for basic tasks.</p>
+
+    <h3>Research Methodology</h3>
+    <p>We recruited 12 participants across three segments: frequent customers, occasional customers, and new customers. Each participant completed a 30-minute conversational interview followed by a 30-minute remote usability testing session with screen sharing and think-aloud protocol.</p>
+
+    <div class="insights-block">
+      <div class="insights-label">Key Insights</div>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-num">01</div>
+          <div class="insight-title">Social Learning Dependency</div>
+          <p class="insight-text">Users weren&rsquo;t learning about tools on CPO. Over 50% relied on YouTube reviews, 40% followed DIY communities on Instagram, and 20% used Pinterest for ideas and tool guides.</p>
+          <div class="insight-quote">&ldquo;I watch reviews on YouTube from professional testers &amp; follow the DIY community on Instagram.&rdquo;</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">02</div>
+          <div class="insight-title">Comparison Shopping Behavior</div>
+          <p class="insight-text">56% of users turned to Amazon to compare reviews and search for the latest styles. 70% used Google to compare prices on other websites &mdash; leaving CPO during their purchase journey.</p>
+          <div class="insight-quote">&ldquo;Rather than looking for tools, I decided to look for people who make furniture and see what tools they are using.&rdquo;</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">03</div>
+          <div class="insight-title">No Product Comparison</div>
+          <p class="insight-text">Users couldn&rsquo;t compare products side by side, increasing cognitive load and slowing decisions. They had to open multiple tabs to evaluate similar tools.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">04</div>
+          <div class="insight-title">New Users Intimidated</div>
+          <p class="insight-text">First-time buyers lacked guidance, reducing confidence and increasing abandonment. Users needed 3&ndash;5 tries to find the right product, and large result sets without clear prioritization led to analysis paralysis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. USER PERSONAS -->
+  <div class="section">
+    <h2>User Personas</h2>
+    <p>Based on research, we defined three core personas to guide design decisions. Experienced users cared most about brand, durability, and reliability, while amateur users focused more on price and felt overwhelmed by options.</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <img src="/assets/cpo-persona-professional.png" alt="The Professional persona — high-frequency, high-value user">
+      </div>
+      <div class="persona-card">
+        <img src="/assets/cpo-persona-professional-2.png" alt="The Professional persona details">
+      </div>
+    </div>
+    <div class="device-label">The Professional &mdash; efficiency-driven, high-frequency buyer</div>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <img src="/assets/cpo-persona-savvy.png" alt="The Savvy Enthusiast persona — knowledgeable, brand-driven explorer">
+      </div>
+      <div class="persona-card">
+        <img src="/assets/cpo-persona-savvy-2.png" alt="The Savvy Enthusiast persona details">
+      </div>
+    </div>
+    <div class="device-label">The Savvy Enthusiast &mdash; knowledgeable, exploratory shopper</div>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <img src="/assets/cpo-persona-amateur.png" alt="The Amateur DIYer persona — first-time buyer needing guidance">
+      </div>
+      <div class="persona-card">
+        <img src="/assets/cpo-persona-amateur-2.png" alt="The Amateur DIYer persona details">
+      </div>
+    </div>
+    <div class="device-label">The Amateur DIYer &mdash; motivated but overwhelmed, needs guidance</div>
+  </div>
+
+  <!-- 8. VISION -->
+  <div class="section">
+    <h2>Vision</h2>
+    <p>With these insights, we aligned on a clear vision: to make CPO not just a place to buy tools, but a trusted destination where users can quickly find the right tool for their needs.</p>
+
+    <div class="callout">
+      <p>&ldquo;Our vision for CPO Outlet website is to be the destination where <strong>not only can users buy tools online, but also learn about new tools.</strong> When users think about CPO Outlet, they know they can trust CPO to help them quickly find the right tools that match their needs.&rdquo;</p>
+    </div>
+
+    <p>We translated that vision into three guiding questions: how to improve shopping efficiency, how to increase engagement and trust, and how to better educate new users without slowing experts down. This led to a focused set of solutions &mdash; stronger filtering, improved search, product comparison, customizable tool kits, saved products, and a future-facing tool finder.</p>
+  </div>
+
+  <!-- 9. DESIGN -->
+  <div class="section">
+    <h2>Design</h2>
+    <p>Rather than walking through the full end-to-end build process, I&rsquo;ll focus on the key features and strategic decisions that were unique to CPO &mdash; particularly how we addressed user segmentation, comparison gaps, and decision-support challenges.</p>
+
+    <h3>1. Search Redesign</h3>
+    <p>Research showed users were bouncing between search and filters, often needing exact model numbers to find products &mdash; which created friction, especially for less experienced users. I redesigned search to be more assistive and intent-driven by surfacing popular categories, related keywords, and product images, while improving suggestion accuracy through cleaner search data.</p>
+
+    <div class="macbook-frame">
+      <div class="macbook-lid">
+        <div class="macbook-toolbar">
+          <div class="macbook-dots">
+            <div class="macbook-dot macbook-dot--red"></div>
+            <div class="macbook-dot macbook-dot--yellow"></div>
+            <div class="macbook-dot macbook-dot--green"></div>
+          </div>
+          <div class="macbook-url"><span>cpooutlets.com</span></div>
+        </div>
+        <div class="macbook-viewport">
+          <video autoplay loop muted playsinline poster="/assets/cpo-search-poster.png">
+            <source src="/assets/cpo-search.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="macbook-base"></div>
+      <div class="macbook-bottom"></div>
+    </div>
+    <div class="device-label">Intent-driven search with category suggestions and product previews</div>
+
+    <h3>2. Product Comparison</h3>
+    <p>One of the most consistent pain points was product comparison. Users had to open multiple tabs to compare tools, which was especially frustrating in a spec-driven category like power tools. We introduced product comparison directly on the Product Listing Page, allowing users to scan key features side by side without leaving the flow.</p>
+
+    <div class="macbook-frame">
+      <div class="macbook-lid">
+        <div class="macbook-toolbar">
+          <div class="macbook-dots">
+            <div class="macbook-dot macbook-dot--red"></div>
+            <div class="macbook-dot macbook-dot--yellow"></div>
+            <div class="macbook-dot macbook-dot--green"></div>
+          </div>
+          <div class="macbook-url"><span>cpooutlets.com</span></div>
+        </div>
+        <div class="macbook-viewport">
+          <video autoplay loop muted playsinline poster="/assets/cpo-comparison-poster.png">
+            <source src="/assets/cpo-comparison.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="macbook-base"></div>
+      <div class="macbook-bottom"></div>
+    </div>
+    <div class="device-label">Side-by-side product comparison on the PLP</div>
+
+    <h3>3. Product Detail Page</h3>
+    <p>On the PDP, the biggest issue was information overload without clear hierarchy &mdash; especially for combo kits. Key details were buried, and users struggled to understand what was included. I reorganized the page around decision-making: surfacing important features near the product images, structuring specs into scannable tables, and adding sticky tabs for longer pages.</p>
+
+    <div class="macbook-frame">
+      <div class="macbook-lid">
+        <div class="macbook-toolbar">
+          <div class="macbook-dots">
+            <div class="macbook-dot macbook-dot--red"></div>
+            <div class="macbook-dot macbook-dot--yellow"></div>
+            <div class="macbook-dot macbook-dot--green"></div>
+          </div>
+          <div class="macbook-url"><span>cpooutlets.com</span></div>
+        </div>
+        <div class="macbook-viewport">
+          <video autoplay loop muted playsinline poster="/assets/cpo-pdp-poster.png">
+            <source src="/assets/cpo-pdp.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="macbook-base"></div>
+      <div class="macbook-bottom"></div>
+    </div>
+    <div class="device-label">Reorganized PDP with clear information hierarchy and sticky navigation</div>
+
+    <h3>4. Cross-Selling &amp; Alternative Configurations</h3>
+    <p>Many users were looking at a single tool without realizing it was available in different bundles or combo kits that might better fit their needs. I surfaced alternative configurations directly on the PDP &mdash; for example, showing how a drill could be purchased alone or as part of a higher-value kit. This created a more natural upsell moment aligned with user intent.</p>
+
+    <div class="macbook-frame">
+      <div class="macbook-lid">
+        <div class="macbook-toolbar">
+          <div class="macbook-dots">
+            <div class="macbook-dot macbook-dot--red"></div>
+            <div class="macbook-dot macbook-dot--yellow"></div>
+            <div class="macbook-dot macbook-dot--green"></div>
+          </div>
+          <div class="macbook-url"><span>cpooutlets.com</span></div>
+        </div>
+        <div class="macbook-viewport">
+          <video autoplay loop muted playsinline poster="/assets/cpo-cross-sell-poster.png">
+            <source src="/assets/cpo-cross-sell.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="macbook-base"></div>
+      <div class="macbook-bottom"></div>
+    </div>
+    <div class="device-label">Contextual cross-selling with alternative product configurations</div>
+
+    <h3>5. Create Your Own Kit</h3>
+    <p>User research showed users didn&rsquo;t want a fixed combo kit. Some already owned tools, and others wanted to build a kit based on a specific job. Instead of forcing them to leave the page, I designed a &ldquo;Create Your Own Kit&rdquo; experience directly on the PDP &mdash; surfacing compatible products and letting users customize their setup in context.</p>
+
+    <div class="macbook-frame">
+      <div class="macbook-lid">
+        <div class="macbook-toolbar">
+          <div class="macbook-dots">
+            <div class="macbook-dot macbook-dot--red"></div>
+            <div class="macbook-dot macbook-dot--yellow"></div>
+            <div class="macbook-dot macbook-dot--green"></div>
+          </div>
+          <div class="macbook-url"><span>cpooutlets.com</span></div>
+        </div>
+        <div class="macbook-viewport">
+          <video autoplay loop muted playsinline poster="/assets/cpo-custom-kit-poster.png">
+            <source src="/assets/cpo-custom-kit.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="macbook-base"></div>
+      <div class="macbook-bottom"></div>
+    </div>
+    <div class="device-label">Customizable &ldquo;Create Your Own Kit&rdquo; experience on the PDP</div>
+  </div>
+
+  <!-- 10. REFLECTION -->
+  <div class="section">
+    <h2>Reflection</h2>
+
+    <div class="process-list">
+      <div class="process-item">
+        <h4>Ship impact under constraints</h4>
+        <p>The biggest constraint was balancing ambition with budget and timeline. We couldn&rsquo;t launch the full tool-finder in phase one, but we scoped deliberately and shipped a strong core experience in time for the holidays &mdash; which drove meaningful revenue impact.</p>
+      </div>
+      <div class="process-item">
+        <h4>Quality is a shared responsibility</h4>
+        <p>This project reinforced the value of early cross-functional alignment. Involving design, engineering, and stakeholders upfront helped us manage scope, reduce risk, and make better tradeoffs.</p>
+      </div>
+      <div class="process-item">
+        <h4>Design for long-term scalability</h4>
+        <p>As a consultant, it also reminded me to design for long-term flexibility &mdash; building scalable foundations so the product could evolve beyond the initial launch.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <p>This project was completed as a consulting engagement, where I served as the lead product designer responsible for end-to-end UX strategy, research synthesis, and design execution.</p>
+    <a href="/about-me">About Jocelyn &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Jocelyn Lin</p>
+  <a href="https://www.linkedin.com/in/linjocelyn/" target="_blank">LinkedIn</a>
+</footer>
+
+<script>
+(function() {
+  var animated = false;
+  var statsSections = document.querySelectorAll('.stats');
+  if (!statsSections.length) return;
+
+  function animateNumbers() {
+    if (animated) return;
+    var firstStats = statsSections[0];
+    var rect = firstStats.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      animated = true;
+      statsSections.forEach(function(section) {
+        var nums = section.querySelectorAll('.stat-num[data-target]');
+        nums.forEach(function(el) {
+          var target = parseInt(el.getAttribute('data-target'), 10);
+          var absTarget = Math.abs(target);
+          var prefix = target >= 0 ? '+' : '-';
+          var duration = 1200;
+          var startTime = null;
+
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.round(eased * absTarget);
+            el.textContent = prefix + current + '%';
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            }
+          }
+          requestAnimationFrame(step);
+        });
+      });
+    }
+  }
+
+  window.addEventListener('scroll', animateNumbers, { passive: true });
+  animateNumbers();
+})();
+</script>
+
+</body>
+</html>
