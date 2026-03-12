@@ -303,16 +303,8 @@
   .persona-tab.active .persona-tab-desc { color: var(--gray-dark); }
   .persona-panel { display: none; margin-top: 28px; }
   .persona-panel.active { display: block; }
-  .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .persona-card {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .persona-card img {
+  .persona-panel img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
     display: block;
   }
 
@@ -395,7 +387,7 @@
     .fact { border-right: none; padding: 0; }
     .fact + .fact { padding-left: 0; }
     .fact:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
-    .grid-2, .compare, .persona-grid { grid-template-columns: 1fr; }
+    .grid-2, .compare { grid-template-columns: 1fr; }
     .persona-tab-desc { display: none; }
     .persona-tab { padding: 12px 8px; }
     .persona-tab-name { font-size: 13px; }
@@ -612,36 +604,15 @@
     </div>
 
     <div class="persona-panel active" data-persona="professional">
-      <div class="persona-grid">
-        <div class="persona-card">
-          <img src="/assets/cpo-persona-professional.png" alt="The Professional persona — high-frequency, high-value user">
-        </div>
-        <div class="persona-card">
-          <img src="/assets/cpo-persona-professional-2.png" alt="The Professional persona journey map">
-        </div>
-      </div>
+      <img src="/assets/cpo-persona-professional-combined.png" alt="The Professional — persona overview and journey map">
     </div>
 
     <div class="persona-panel" data-persona="savvy">
-      <div class="persona-grid">
-        <div class="persona-card">
-          <img src="/assets/cpo-persona-savvy.png" alt="The Savvy Enthusiast persona — knowledgeable, brand-driven explorer">
-        </div>
-        <div class="persona-card">
-          <img src="/assets/cpo-persona-savvy-2.png" alt="The Savvy Enthusiast persona journey map">
-        </div>
-      </div>
+      <img src="/assets/cpo-persona-savvy-combined.png" alt="The Savvy Enthusiast — persona overview and journey map">
     </div>
 
     <div class="persona-panel" data-persona="amateur">
-      <div class="persona-grid">
-        <div class="persona-card">
-          <img src="/assets/cpo-persona-amateur.png" alt="The Amateur DIYer persona — first-time buyer needing guidance">
-        </div>
-        <div class="persona-card">
-          <img src="/assets/cpo-persona-amateur-2.png" alt="The Amateur DIYer persona details">
-        </div>
-      </div>
+      <img src="/assets/cpo-persona-amateur-combined.png" alt="The Amateur DIYer — persona overview and journey map">
     </div>
   </div>
 
