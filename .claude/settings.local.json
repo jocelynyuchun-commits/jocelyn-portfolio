@@ -133,7 +133,10 @@
       "Bash(pip3 install pdf2image)",
       "Bash(python -m markitdown \"/Users/jocelynlin/Desktop/CPO-Deep Dive.pptx\")",
       "Bash(pip install \"markitdown[pptx]\" -q)",
-      "Bash(ls -la /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/cpo-persona-*.png)"
+      "Bash(ls -la /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/cpo-persona-*.png)",
+      "Bash(git status -u)",
+      "Bash(git ls-files public/cpo-case-study.html public/assets/cpo-persona-*)",
+      "Bash(git diff --stat HEAD -- public/cpo-case-study.html public/assets/cpo-persona-*)"
     ]
   }
 }
