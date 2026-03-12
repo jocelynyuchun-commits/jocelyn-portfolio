@@ -119,7 +119,11 @@
       "Bash(git push)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://jocelynlin.framer.ai/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://www.jocelyn-lin.com/ai-experiments)",
-      "Bash(curl -s https://www.jocelyn-lin.com/)"
+      "Bash(curl -s https://www.jocelyn-lin.com/)",
+      "Bash(cp \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/Portfoliio assets UNTUCKit/PLP.mp4\" \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/plp-desktop.mp4\")",
+      "Bash(cp \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/Portfoliio assets UNTUCKit/PLP_Mobile_Trimmed.mp4\" \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/plp-mobile.mp4\")",
+      "Bash(git add public/top-nav-plp.html public/index.html public/assets/ vercel.json)",
+      "Bash(ls -lh /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/pdp-*.mp4)"
     ]
   }
 }
