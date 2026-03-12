@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Nav & PLP Redesign — Jocelyn Lin</title>
+<title>+23% Conversion — Top Nav & PLP Redesign — Jocelyn Lin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
     --gray-dark: #444444;
-    --gray-mid: #888888;
+    --gray-mid: #686868;
     --gray-light: #cccccc;
     --gray-bg: #f5f5f5;
     --border: #e8e8e8;
@@ -24,7 +24,7 @@
     font-family: 'DM Sans', -apple-system, sans-serif;
     background: var(--white);
     color: var(--black);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
@@ -32,67 +32,50 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    height: 52px;
+    background: #ffffff;
+    height: 80px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 var(--gutter);
-    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
   }
-  .nav-logo { font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; letter-spacing: -0.01em; }
-  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-  .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--black); }
-
-  /* DROPDOWN */
-  .nav-dropdown { position: relative; }
-  .nav-dropdown-trigger {
-    font-size: 13px; font-weight: 400; color: var(--black);
-    cursor: pointer; transition: color 0.15s;
-    display: flex; align-items: center; gap: 4px;
-    user-select: none;
+  @media (max-width: 1439px) and (min-width: 901px) {
+    nav { height: clamp(80px, 7.8vw, 110px); padding: 0 81px 0 60px; }
   }
-  .nav-dropdown-trigger svg { transition: transform 0.15s; }
-  .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
-  .nav-dropdown-menu {
-    position: absolute; top: calc(100% + 12px); right: 0;
-    background: var(--white);
-    border: 1px solid var(--border);
-    min-width: 200px;
-    opacity: 0; pointer-events: none;
-    transform: translateY(-4px);
-    transition: opacity 0.15s, transform 0.15s;
-    z-index: 200;
+  @media (max-width: 900px) and (min-width: 641px) {
+    nav { height: clamp(56px, 7.8vw, 72px); }
   }
-  .nav-dropdown:hover .nav-dropdown-menu {
-    opacity: 1; pointer-events: all; transform: translateY(0);
+  .nav-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black); text-decoration: none;
   }
-  .nav-dropdown-item {
-    display: block;
-    padding: 11px 16px;
-    font-size: 13px; font-weight: 400;
-    color: var(--gray-dark);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.1s;
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--black); text-decoration: none;
+    text-transform: capitalize; transition: opacity 0.15s;
   }
-  .nav-dropdown-item:last-child { border-bottom: none; }
-  .nav-dropdown-item:hover { background: var(--gray-bg); color: var(--black); }
-  .nav-dropdown-item .item-label { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 2px; }
-  .nav-dropdown-item .item-sub { font-size: 11px; font-weight: 300; color: var(--gray-mid); }
-  .nav-dropdown-item.current { background: var(--gray-bg); }
-  .nav-dropdown-item.current .item-label { font-weight: 600; }
+  .nav-links a:hover { opacity: 0.6; }
+  .nav-links a.active { opacity: 1; }
 
   /* PAGE */
   .page { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
 
+  /* BACK LINK */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--gray-mid);
+    text-decoration: none; transition: color 0.15s;
+    padding-top: 120px; padding-bottom: 0;
+  }
+  .back-link:hover { color: var(--black); }
+  .back-link svg { width: 14px; height: 14px; }
+
   /* HERO */
-  .hero { padding-top: 120px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
-  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
+  .hero { padding-top: 24px; padding-bottom: 72px; border-bottom: 1px solid var(--border); }
+  .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 20px; display: block; }
   .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--black); max-width: 800px; margin-bottom: 22px; }
-  .hero-desc { font-size: 17px; font-weight: 300; color: var(--gray-dark); max-width: 620px; line-height: 1.75; margin-bottom: 32px; }
+  .hero-desc { font-size: 17px; font-weight: 400; color: var(--gray-dark); max-width: 680px; line-height: 1.75; margin-bottom: 32px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: var(--gray-bg); padding: 5px 12px; border-radius: 2px; }
+  .tag { font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-dark); background: var(--gray-bg); padding: 5px 12px; border-radius: 2px; }
 
   /* QUICK FACTS */
   .facts-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 56px 0; border-bottom: 1px solid var(--border); }
@@ -100,20 +83,49 @@
   .fact + .fact { padding-left: 40px; }
   .fact:last-child { border-right: none; }
   .fact-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 9px; }
-  .fact-value { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
-  .fact-detail { font-size: 13px; font-weight: 300; color: var(--gray-dark); line-height: 1.65; }
+  .fact-value { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .fact-detail { font-size: 14px; font-weight: 400; color: var(--gray-dark); line-height: 1.65; }
 
   /* SECTIONS */
   .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
-  .section:last-of-type { border-bottom: none; }
-  h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--black); margin-bottom: 18px; }
-  h3 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
-  p { font-size: 15px; font-weight: 300; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; max-width: 680px; }
+  .section:last-child { border-bottom: none; }
+  h2 { font-size: clamp(23px, 3vw, 33px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--black); margin-bottom: 18px; }
+  h3 { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 10px; margin-top: 40px; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 16px; font-weight: 400; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; max-width: none; }
   p:last-child { margin-bottom: 0; }
+  .section ul { list-style: disc; padding-left: 20px; margin-bottom: 16px; max-width: 680px; }
+  .section ul li { font-size: 16px; font-weight: 400; color: var(--gray-dark); line-height: 1.8; margin-bottom: 4px; }
 
-  /* PLACEHOLDERS */
+  /* INSIGHT CARDS */
+  .insights-block { margin: 36px 0; border-top: 1px solid var(--border); padding-top: 28px; }
+  .insights-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--black); margin-bottom: 24px;
+  }
+  .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .insight-card { border: 1px solid var(--border); padding: 28px 24px; display: flex; flex-direction: column; }
+  .insight-num { font-size: 13px; font-weight: 500; color: var(--gray-mid); margin-bottom: 8px; }
+  .insight-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; line-height: 1.4; }
+  .insight-text { font-size: 14px; font-weight: 400; color: var(--gray-dark); line-height: 1.7; max-width: none; margin: 0 0 16px 0; }
+  .insight-quote {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 15px; font-style: italic; font-weight: 400;
+    color: #333333; line-height: 1.65;
+  }
+
+  /* STAT CARDS */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .stat-card { border: 1px solid var(--border); padding: 36px 24px; text-align: center; }
+  .stat-num { font-size: clamp(32px, 4vw, 48px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 14px; font-weight: 400; color: var(--gray-mid); line-height: 1.5; }
+
+  /* IMAGE PLACEHOLDERS */
   .ph {
-    background: #ebebeb;
+    background: #f0f0f0;
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 500; color: #b0b0b0;
     letter-spacing: 0.06em; text-transform: uppercase;
@@ -122,28 +134,176 @@
   }
   .ph-wide { aspect-ratio: 16 / 9; }
   .ph-ultra { aspect-ratio: 21 / 9; }
-  .ph-diagram { aspect-ratio: 2 / 1; }
-  .ph-square { aspect-ratio: 1 / 1; }
-  .ph-portrait { aspect-ratio: 3 / 5; }
+  .ph-short { aspect-ratio: 3 / 1; }
 
   /* GRIDS */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
 
   /* COMPARISON */
   .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .compare-col {}
   .compare-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 12px; }
 
-  /* STAT CARDS */
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
-  .stat-card { border: 1px solid var(--border); padding: 32px 24px; text-align: center; }
-  .stat-num { font-size: clamp(28px, 4vw, 40px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
-  .stat-label { font-size: 13px; font-weight: 400; color: var(--gray-mid); }
+  /* DEVICE SLIDESHOW */
+  .device-slideshow {
+    margin-top: 36px;
+  }
+  .slideshow-tabs {
+    display: flex; justify-content: center; gap: 0; margin-bottom: 32px;
+  }
+  .slideshow-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gray-mid); background: var(--white);
+    border: 1px solid var(--border); padding: 10px 32px;
+    cursor: pointer; transition: all 0.2s ease;
+  }
+  .slideshow-tab:first-child { border-radius: 4px 0 0 4px; }
+  .slideshow-tab:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+  .slideshow-tab.active {
+    color: var(--black); background: var(--gray-bg);
+    border-color: #bbb;
+  }
+  .slideshow-slides { position: relative; }
+  .slideshow-slide {
+    display: none; justify-content: center; align-items: center;
+    animation: slideFadeIn 0.4s ease;
+  }
+  .slideshow-slide.active { display: flex; }
+  @keyframes slideFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MACBOOK FRAME */
+  .macbook-frame {
+    width: 100%; max-width: 1000px;
+    filter: drop-shadow(0 8px 30px rgba(0,0,0,0.12));
+  }
+  .macbook-lid {
+    background: #222;
+    border-radius: 14px;
+    padding: 10px;
+  }
+  .macbook-toolbar {
+    background: #e8e8ec;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .macbook-dots { display: flex; gap: 6px; }
+  .macbook-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .macbook-dot--red { background: #ff5f57; }
+  .macbook-dot--yellow { background: #febc2e; }
+  .macbook-dot--green { background: #28c840; }
+  .macbook-url {
+    flex: 1; height: 24px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #d0d0d4;
+    margin-left: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .macbook-url span {
+    font-size: 11px; color: var(--gray-mid); font-family: 'DM Sans', sans-serif;
+  }
+  .macbook-viewport {
+    background: #fff;
+    line-height: 0;
+  }
+  .macbook-viewport video {
+    width: 100%; display: block;
+  }
+  .macbook-base { display: none; }
+  .macbook-bottom { display: none; }
+  .device-label {
+    text-align: center; margin-top: 20px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray-mid);
+  }
+
+  /* IPHONE FRAME */
+  .iphone-frame { width: 300px; }
+  .iphone-body {
+    background: #0d0d0d;
+    border-radius: 40px;
+    padding: 14px;
+    position: relative;
+  }
+  .iphone-island {
+    width: 80px; height: 22px;
+    background: #0d0d0d;
+    border-radius: 20px;
+    position: absolute;
+    top: 22px; left: 50%; transform: translateX(-50%);
+    z-index: 2;
+  }
+  .iphone-screen {
+    border-radius: 28px;
+    overflow: hidden;
+    background: #000;
+  }
+  .iphone-screen video {
+    width: 100%; display: block;
+  }
+  .iphone-home-bar {
+    width: 96px; height: 4px;
+    background: #555;
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  /* TESTING QUOTES */
+  .testing-masonry {
+    background: var(--gray-bg);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin-top: 36px;
+    column-count: 3;
+    column-gap: 24px;
+  }
+  .testing-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    margin-bottom: 24px;
+    break-inside: avoid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .testing-card-icon {
+    width: 32px; height: 24px; margin-bottom: 14px; display: block;
+  }
+  .testing-card-icon path { fill: #ccc; }
+  .testing-card-text {
+    font-size: 15px; font-weight: 500; color: var(--black);
+    line-height: 1.65; margin: 0 0 12px; max-width: none;
+  }
+  .testing-card-attr {
+    font-size: 12px; font-weight: 400; color: var(--gray-mid);
+    margin: 0; max-width: none;
+  }
+
+  /* DESIGN SYSTEM IMAGE */
+  .sg-hero-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-top: 36px;
+  }
 
   /* CALLOUT */
   .callout { margin: 36px 0; padding: 24px 28px; background: var(--gray-bg); border-left: 3px solid var(--black); }
-  .callout p { font-size: 14px; font-weight: 400; color: var(--black); max-width: none; margin: 0; line-height: 1.7; }
+  .callout p { font-size: 15px; font-weight: 400; color: var(--black); max-width: none; margin: 0; line-height: 1.7; }
+
+  /* SUB-SECTION LIST */
+  .process-list { margin-top: 24px; }
+  .process-item { padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .process-item:last-child { border-bottom: none; }
+  .process-item h4 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .process-item p { font-size: 14px; max-width: none; margin: 0; }
 
   /* ABOUT STRIP */
   .about-strip {
@@ -152,7 +312,7 @@
     display: flex; align-items: center;
     justify-content: space-between; gap: 40px;
   }
-  .about-strip p { font-size: 14px; font-weight: 300; color: var(--gray-mid); max-width: 480px; line-height: 1.75; margin: 0; }
+  .about-strip p { font-size: 14px; font-weight: 400; color: var(--gray-mid); max-width: 480px; line-height: 1.75; margin: 0; }
   .about-strip a {
     font-size: 13px; font-weight: 500; color: var(--black); text-decoration: none;
     white-space: nowrap; border-bottom: 1px solid var(--black); padding-bottom: 1px;
@@ -167,7 +327,7 @@
   footer p { font-size: 13px; color: var(--gray-mid); margin: 0; max-width: none; }
   footer a { font-size: 13px; color: var(--black); text-decoration: none; font-weight: 500; }
 
-  /* HAMBURGER BUTTON */
+  /* HAMBURGER */
   .nav-burger {
     display: none;
     background: none; border: none; cursor: pointer;
@@ -195,40 +355,48 @@
   }
   .mobile-overlay-close svg { display: block; }
   .mobile-overlay-logo {
-    position: absolute; top: 16px; left: 24px;
-    font-size: 15px; font-weight: 500; color: var(--black);
-    text-decoration: none; letter-spacing: -0.01em;
+    position: absolute; top: 20px; left: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 500; color: var(--black);
+    text-decoration: none;
   }
   .mobile-overlay-links {
     list-style: none; text-align: center;
     display: flex; flex-direction: column; gap: 12px;
   }
   .mobile-overlay-links a {
+    font-family: 'Poppins', sans-serif;
     font-size: 28px; font-weight: 500;
     color: var(--black); text-decoration: none;
     letter-spacing: -0.02em;
-    transition: color 0.15s;
+    transition: opacity 0.15s;
   }
-  .mobile-overlay-links a:hover { color: var(--gray-mid); }
-  .mobile-overlay-links a.active {
-    color: var(--gray-mid);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
+  .mobile-overlay-links a:hover { opacity: 0.6; }
 
   /* RESPONSIVE */
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     :root { --gutter: 24px; }
     nav { padding: 0 24px; }
     .nav-links { display: none; }
     .nav-burger { display: flex; }
+    .back-link { padding-top: 100px; }
     .facts-row { grid-template-columns: 1fr 1fr; gap: 32px 0; }
     .fact { border-right: none; padding: 0; }
     .fact + .fact { padding-left: 0; }
     .fact:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
     .grid-2, .compare { grid-template-columns: 1fr; }
-    .grid-3 { grid-template-columns: 1fr 1fr; }
-    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .macbook-lid { padding: 6px; border-radius: 10px; }
+    .macbook-toolbar { padding: 7px 10px; }
+    .macbook-dot { width: 8px; height: 8px; }
+    .macbook-url { height: 20px; }
+    .macbook-url span { font-size: 10px; }
+    .iphone-frame { width: 240px; }
+    .iphone-body { border-radius: 32px; padding: 10px; }
+    .iphone-screen { border-radius: 24px; }
+    .iphone-island { width: 64px; height: 18px; top: 18px; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .testing-masonry { column-count: 1; padding: 24px; }
     .stats { grid-template-columns: 1fr; }
     .about-strip { flex-direction: column; align-items: flex-start; }
     footer { flex-direction: column; gap: 8px; align-items: flex-start; }
@@ -238,28 +406,11 @@
 <body>
 
 <nav>
-  <a href="https://jocelynlin.framer.ai" class="nav-logo">Jocelyn Lin</a>
+  <a href="/" class="nav-logo">Jocelyn Lin</a>
   <ul class="nav-links">
-    <li class="nav-dropdown">
-      <div class="nav-dropdown-trigger">
-        Work
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-          <path d="M1 1L5 5L9 1" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="nav-dropdown-menu">
-        <a class="nav-dropdown-item current" href="#">
-          <div class="item-label">Top Nav &amp; PLP Redesign</div>
-          <div class="item-sub">UX / E-commerce</div>
-        </a>
-        <a class="nav-dropdown-item" href="https://jocelynlin.framer.ai/work/pdp">
-          <div class="item-label">PDP Redesign</div>
-          <div class="item-sub">UX / E-commerce</div>
-        </a>
-      </div>
-    </li>
-    <li><a href="file:///Users/jocelynlin/Downloads/ai-experiments_4.html">AI Experiments</a></li>
-    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+    <li><a href="/">Work</a></li>
+    <li><a href="/ai-experiments">AI Experiments</a></li>
+    <li><a href="/about-me">About Me</a></li>
   </ul>
   <button class="nav-burger" aria-label="Open menu" onclick="document.getElementById('mobileOverlay').classList.add('open'); document.body.style.overflow='hidden';">
     <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
@@ -270,9 +421,8 @@
   </button>
 </nav>
 
-<!-- Mobile fullscreen menu overlay -->
 <div id="mobileOverlay" class="mobile-overlay">
-  <a href="https://jocelynlin.framer.ai" class="mobile-overlay-logo">Jocelyn Lin</a>
+  <a href="/" class="mobile-overlay-logo">Jocelyn Lin</a>
   <button class="mobile-overlay-close" aria-label="Close menu" onclick="document.getElementById('mobileOverlay').classList.remove('open'); document.body.style.overflow='';">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <line x1="2" y1="2" x2="18" y2="18" stroke="#111" stroke-width="2" stroke-linecap="round"/>
@@ -280,199 +430,367 @@
     </svg>
   </button>
   <ul class="mobile-overlay-links">
-    <li><a href="https://jocelynlin.framer.ai/work" class="active">Work</a></li>
-    <li><a href="file:///Users/jocelynlin/Downloads/ai-experiments_4.html">AI Experiment</a></li>
-    <li><a href="https://jocelynlin.framer.ai/about-me">About Me</a></li>
+    <li><a href="/">Work</a></li>
+    <li><a href="/ai-experiments">AI Experiments</a></li>
+    <li><a href="/about-me">About Me</a></li>
   </ul>
 </div>
 
 <div class="page">
 
-  <!-- HERO -->
+  <!-- BACK LINK -->
+  <a href="/" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Back to Work
+  </a>
+
+  <!-- 1. HEADER -->
   <div class="hero">
-    <span class="eyebrow">Case Study &middot; 2025</span>
-    <h1>Top Nav &amp; PLP Redesign</h1>
-    <p class="hero-desc">Redesigning the global navigation and product listing experience for a major e-commerce platform &mdash; improving wayfinding, reducing bounce, and creating a scalable system that works across categories.</p>
+    <span class="eyebrow">Case Study &middot; UNTUCKit &middot; 2022</span>
+    <h1>+23% Conversion YoY &mdash; Top Navigation &amp; Product Listing Page</h1>
+    <p class="hero-desc">How I redesigned UNTUCKit's global navigation and product listing experience to drive record-breaking holiday sales, improving wayfinding, product discovery, and conversion across desktop and mobile.</p>
     <div class="tag-row">
-      <span class="tag">UX Design</span>
       <span class="tag">E-Commerce</span>
       <span class="tag">Navigation</span>
+      <span class="tag">UX Design</span>
       <span class="tag">Responsive</span>
     </div>
   </div>
 
-  <!-- QUICK FACTS -->
+  <!-- 2. PROJECT OVERVIEW -->
+  <div class="section">
+    <h2>Project Overview</h2>
+    <p>UNTUCKit's existing top navigation and product listing pages hadn't been updated in years. Analytics revealed high bounce rates on category pages, low engagement with filtering, and a growing gap between mobile and desktop conversion. The navigation architecture was dense and difficult to scan, causing users to abandon before discovering relevant products.</p>
+    <p>The goal was to rethink both the navigation and PLP as a connected system &mdash; simplifying the path from browsing to purchase while creating a scalable framework for seasonal merchandising and future category expansion.</p>
+  </div>
+
+  <!-- 3. MY ROLE / QUICK FACTS -->
   <div class="facts-row">
     <div class="fact">
       <div class="fact-label">Role</div>
-      <div class="fact-value">Lead Designer</div>
-      <div class="fact-detail">UX, visual design, prototyping</div>
+      <div class="fact-value">Sr. Director, Product Design</div>
+      <div class="fact-detail">Led UX strategy, visual design, and cross-functional alignment</div>
     </div>
     <div class="fact">
       <div class="fact-label">Team</div>
-      <div class="fact-value">Cross-functional</div>
-      <div class="fact-detail">PM, 2 engineers, researcher</div>
+      <div class="fact-value">10-person product team</div>
+      <div class="fact-detail">Designers, engineers, PM, QA</div>
     </div>
     <div class="fact">
       <div class="fact-label">Timeline</div>
-      <div class="fact-value">12 weeks</div>
+      <div class="fact-value">2022 Q1 &ndash; Q3</div>
       <div class="fact-detail">Research through launch</div>
     </div>
     <div class="fact">
-      <div class="fact-label">Tools</div>
-      <div class="fact-value">Figma, Analytics</div>
-      <div class="fact-detail">Hotjar, Google Analytics</div>
+      <div class="fact-label">Platform</div>
+      <div class="fact-value">Web &mdash; Desktop &amp; Mobile</div>
+      <div class="fact-detail">Responsive e-commerce</div>
     </div>
   </div>
 
-  <!-- 1. OVERVIEW -->
+  <!-- 4. IMPACT / RESULTS -->
   <div class="section">
-    <h2>Overview</h2>
-    <p>The existing top navigation and product listing pages hadn't been updated in three years. Analytics showed high bounce rates on category pages, low engagement with the nav menu, and a growing gap between mobile and desktop conversion rates.</p>
-    <p>The goal was to rethink both the navigation architecture and the PLP layout as a connected system &mdash; making it easier for users to find what they're looking for and browse with confidence.</p>
-    <div class="ph ph-wide">Hero image &mdash; Final PLP design overview</div>
-  </div>
-
-  <!-- 2. RESEARCH & DISCOVERY -->
-  <div class="section">
-    <h2>Research &amp; Discovery</h2>
-    <p>We started with a two-week discovery sprint: reviewing analytics, running heatmap analysis on the existing PLP, and conducting 8 moderated user interviews to understand browsing and filtering behavior.</p>
-    <p>Key findings shaped the rest of the project: users weren't discovering sub-categories, filters were underused on mobile, and the nav mega-menu felt overwhelming with too many links competing for attention.</p>
-    <div class="grid-2">
-      <div class="ph ph-wide">Analytics dashboard &mdash; bounce rate by category</div>
-      <div class="ph ph-wide">Heatmap &mdash; existing PLP interaction patterns</div>
-    </div>
-
-    <div class="callout" style="margin-top:36px">
-      <p><strong>Key insight:</strong> 62% of users who landed on a PLP left without clicking a single product. The primary driver wasn't lack of interest &mdash; it was decision paralysis from too many unfiltered options.</p>
-    </div>
-
-    <div class="grid-2">
-      <div class="ph ph-wide">User interview synthesis &mdash; affinity map</div>
-      <div class="ph ph-wide">Competitive audit &mdash; nav patterns comparison</div>
-    </div>
-  </div>
-
-  <!-- 3. INFORMATION ARCHITECTURE -->
-  <div class="section">
-    <h2>Information Architecture</h2>
-    <p>Before touching UI, we restructured the category taxonomy. The existing nav had 140+ links across 4 levels. Card sorting with 12 participants helped us consolidate to a flatter, more intuitive hierarchy.</p>
-    <p>The new IA reduced top-level categories from 12 to 7, introduced curated "shop by" entry points, and gave sub-categories more descriptive labels.</p>
-    <div class="ph ph-diagram">Sitemap &mdash; before vs. after category hierarchy</div>
-  </div>
-
-  <!-- 4. NAVIGATION DESIGN -->
-  <div class="section">
-    <h2>Navigation Design</h2>
-    <p>The redesigned nav moved from a dense mega-menu to a cleaner, category-focused panel. Each top-level category opens a contextual flyout showing sub-categories with visual cues &mdash; reducing cognitive load while maintaining deep access.</p>
-
-    <h3>Before vs. After</h3>
-    <div class="compare">
-      <div>
-        <div class="compare-label">Before</div>
-        <div class="ph ph-wide">Existing mega-menu &mdash; dense link list</div>
-      </div>
-      <div>
-        <div class="compare-label">After</div>
-        <div class="ph ph-wide">Redesigned nav panel &mdash; visual categories</div>
-      </div>
-    </div>
-
-    <h3 style="margin-top:48px">Desktop Navigation Detail</h3>
-    <p>The flyout adapts to content density: categories with many sub-items use a two-column layout, while simpler categories stay single-column with featured imagery.</p>
-    <div class="ph ph-wide">Nav flyout &mdash; expanded state with sub-categories</div>
-
-    <h3 style="margin-top:48px">Mobile Navigation</h3>
-    <p>On mobile, the nav becomes a full-screen drawer with progressive disclosure. Users drill down one level at a time, with a clear breadcrumb trail back.</p>
-    <div class="grid-3">
-      <div class="ph ph-portrait">Mobile nav &mdash; closed state</div>
-      <div class="ph ph-portrait">Mobile nav &mdash; L1 categories</div>
-      <div class="ph ph-portrait">Mobile nav &mdash; L2 sub-categories</div>
-    </div>
-  </div>
-
-  <!-- 5. PLP EXPLORATION -->
-  <div class="section">
-    <h2>PLP Exploration</h2>
-    <p>We explored three directions for the product listing page, each testing a different hypothesis about how users browse: grid-first with minimal filtering, filter-forward with a persistent sidebar, and a hybrid approach with smart defaults.</p>
-    <div class="grid-3">
-      <div class="ph ph-wide">Option A &mdash; Grid-first, minimal filters</div>
-      <div class="ph ph-wide">Option B &mdash; Filter-forward, persistent sidebar</div>
-      <div class="ph ph-wide">Option C &mdash; Hybrid with smart defaults</div>
-    </div>
-
-    <div class="callout" style="margin-top:36px">
-      <p><strong>Decision:</strong> User testing favored Option C. Participants appreciated having pre-applied filters they could remove, rather than starting from a blank slate.</p>
-    </div>
-  </div>
-
-  <!-- 6. VISUAL DESIGN — DESKTOP -->
-  <div class="section">
-    <h2>Visual Design &mdash; Desktop</h2>
-    <p>The final PLP design uses a clean 4-column product grid with a collapsible filter sidebar. Key refinements included larger product imagery, visible color swatches, and a sticky filter bar for quick sorting without scrolling back to the top.</p>
-    <div class="ph ph-ultra">Full PLP page &mdash; desktop, filters expanded</div>
-
-    <div class="grid-2" style="margin-top:24px">
-      <div class="ph ph-wide">Product card detail &mdash; hover state with quick-shop</div>
-      <div class="ph ph-wide">Filter sidebar &mdash; expanded with active selections</div>
-    </div>
-  </div>
-
-  <!-- 7. VISUAL DESIGN — MOBILE -->
-  <div class="section">
-    <h2>Visual Design &mdash; Mobile</h2>
-    <p>On mobile, the PLP shifts to a 2-column grid with a bottom-sheet filter panel. Horizontal scrolling chips at the top surface the most-used filters, so users can refine results without opening the full filter drawer.</p>
-    <div class="grid-4">
-      <div class="ph ph-portrait">Mobile PLP &mdash; default view</div>
-      <div class="ph ph-portrait">Mobile PLP &mdash; filter chips active</div>
-      <div class="ph ph-portrait">Mobile PLP &mdash; filter drawer open</div>
-      <div class="ph ph-portrait">Mobile PLP &mdash; product quick view</div>
-    </div>
-  </div>
-
-  <!-- 8. PRODUCT GRID & FILTERS -->
-  <div class="section">
-    <h2>Product Grid &amp; Filters</h2>
-    <p>The filter system was designed to be contextual: different categories surface different filter types. Apparel shows size, color, and fit; home goods shows material, room, and price range. This reduced irrelevant filter options by 40%.</p>
-    <div class="ph ph-wide">Filter bar &mdash; contextual filters for different categories</div>
-    <div class="ph ph-wide" style="margin-top:16px">Product grid &mdash; mixed layout with editorial tiles</div>
-  </div>
-
-  <!-- 9. RESULTS & IMPACT -->
-  <div class="section">
-    <h2>Results &amp; Impact</h2>
-    <p>The redesign launched as an A/B test across two product categories before a full rollout. Results after 6 weeks showed meaningful improvements across key metrics.</p>
+    <h2>Impact &amp; Results</h2>
+    <p>The redesign launched ahead of UNTUCKit's peak holiday season. Results after the first quarter showed meaningful improvements across every key business metric.</p>
 
     <div class="stats">
       <div class="stat-card">
-        <div class="stat-num">-24%</div>
-        <div class="stat-label">PLP bounce rate</div>
+        <div class="stat-num" data-target="23">+0%</div>
+        <div class="stat-label">Conversion rate<br>year over year</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">+18%</div>
-        <div class="stat-label">Filter engagement</div>
+        <div class="stat-num" data-target="17">+0%</div>
+        <div class="stat-label">Core business<br>increase</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">+12%</div>
-        <div class="stat-label">Add-to-cart rate</div>
+        <div class="stat-num" data-target="8">+0%</div>
+        <div class="stat-label">Online revenue<br>growth</div>
       </div>
     </div>
 
-    <p style="margin-top:36px">Beyond the numbers, the new navigation and PLP system established a scalable framework that the team continued to build on &mdash; adding seasonal merchandising slots, A/B testable grid layouts, and category-specific entry points.</p>
+    <p style="margin-top:36px">These results validated the design decisions we made throughout the process &mdash; from the simplified navigation hierarchy to the improved product grid layout and filtering system.</p>
+  </div>
+
+  <!-- 5a. RESEARCH -->
+  <div class="section">
+    <h2>Research</h2>
+    <p>To understand how customers browse apparel categories, I combined analytics review with heuristic evaluation and competitive analysis. In parallel, I built the user research practice from scratch&mdash;leading audits, interviews, and usability tests&mdash;and translated those insights into practical, user-centered solutions. These insights informed a simplified navigation structure focused on speed of discovery.</p>
+    <div class="insights-block">
+      <div class="insights-label">Key Insights</div>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-num">01</div>
+          <div class="insight-title">Navigation &amp; Product Discovery</div>
+          <p class="insight-text">Users rely heavily on navigation and filtering to discover products, but the current hierarchy creates unnecessary back-and-forth and cognitive load.</p>
+          <div class="insight-quote">&ldquo;If the menu is always open, I don&rsquo;t have to go back and forth between menus.&rdquo;</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">02</div>
+          <div class="insight-title">Product Availability Transparency</div>
+          <p class="insight-text">Users hesitate to use back-in-stock notifications because they lack clarity about when items will return.</p>
+          <div class="insight-quote">&ldquo;I don&rsquo;t want to enter my email to &lsquo;notify me&rsquo; because I don&rsquo;t know how long it will take.&rdquo;</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">03</div>
+          <div class="insight-title">Omnichannel Friction</div>
+          <p class="insight-text">The store-availability experience feels incomplete because users cannot complete the purchase digitally.</p>
+          <div class="insight-quote">&ldquo;Seems much like shopping online but I don&rsquo;t like that you have to call the store to order.&rdquo;</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">04</div>
+          <div class="insight-title">Review Discoverability</div>
+          <p class="insight-text">Users want faster ways to scan reviews for specific concerns rather than reading everything.</p>
+          <div class="insight-quote">&ldquo;I like when reviews have a search bar so I can just search a keyword.&rdquo;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5b. NAVIGATION DESIGN -->
+  <div class="section">
+    <h2>Global Navigation Design</h2>
+    <p>The redesigned navigation moved from a dense mega-menu to a cleaner, category-focused system. We restructured the taxonomy to reduce top-level categories, introduced curated &ldquo;shop by&rdquo; entry points, and gave sub-categories more descriptive labels. On mobile, the nav became a full-screen drawer with progressive disclosure.</p>
+
+    <div class="device-slideshow">
+      <div class="slideshow-tabs">
+        <button class="slideshow-tab active" data-slide="desktop">Desktop</button>
+        <button class="slideshow-tab" data-slide="mobile">Mobile</button>
+      </div>
+      <div class="slideshow-slides">
+        <!-- Desktop: MacBook frame -->
+        <div class="slideshow-slide active" data-slide="desktop">
+          <div class="macbook-frame">
+            <div class="macbook-lid">
+              <div class="macbook-toolbar">
+                <div class="macbook-dots">
+                  <div class="macbook-dot macbook-dot--red"></div>
+                  <div class="macbook-dot macbook-dot--yellow"></div>
+                  <div class="macbook-dot macbook-dot--green"></div>
+                </div>
+                <div class="macbook-url"><span>untuckit.com</span></div>
+              </div>
+              <div class="macbook-viewport">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/top-nav-desktop.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <div class="macbook-base"></div>
+            <div class="macbook-bottom"></div>
+          </div>
+        </div>
+        <!-- Mobile: iPhone frame -->
+        <div class="slideshow-slide" data-slide="mobile">
+          <div class="iphone-frame">
+            <div class="iphone-body">
+              <div class="iphone-island"></div>
+              <div class="iphone-screen">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/top-nav-mobile.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="iphone-home-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 5c. PRODUCT LISTING PAGE -->
+  <div class="section">
+    <h2>Product Listing Page</h2>
+    <p>We explored multiple directions for the PLP &mdash; testing different hypotheses around grid density, filter placement, and product card content. The final design uses a clean product grid with a collapsible filter sidebar on desktop and horizontal scrolling chips on mobile. Contextual filters surface different attributes per category.</p>
+
+    <div class="device-slideshow">
+      <div class="slideshow-tabs">
+        <button class="slideshow-tab active" data-slide="desktop">Desktop</button>
+        <button class="slideshow-tab" data-slide="mobile">Mobile</button>
+      </div>
+      <div class="slideshow-slides">
+        <div class="slideshow-slide active" data-slide="desktop">
+          <div class="macbook-frame">
+            <div class="macbook-lid">
+              <div class="macbook-toolbar">
+                <div class="macbook-dots">
+                  <div class="macbook-dot macbook-dot--red"></div>
+                  <div class="macbook-dot macbook-dot--yellow"></div>
+                  <div class="macbook-dot macbook-dot--green"></div>
+                </div>
+                <div class="macbook-url"><span>untuckit.com</span></div>
+              </div>
+              <div class="macbook-viewport">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/plp-desktop.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <div class="macbook-base"></div>
+            <div class="macbook-bottom"></div>
+          </div>
+        </div>
+        <div class="slideshow-slide" data-slide="mobile">
+          <div class="iphone-frame">
+            <div class="iphone-body">
+              <div class="iphone-island"></div>
+              <div class="iphone-screen">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/plp-mobile.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="iphone-home-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5d. USER TESTING -->
+  <div class="section">
+    <h2>User Testing</h2>
+    <p>We validated the designs through moderated usability testing across desktop and mobile.<br>Participants completed task flows for category browsing, product filtering, and navigation wayfinding.</p>
+
+    <div class="testing-masonry">
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">Very intuitive.</p>
+        <p class="testing-card-attr">Usability Test &mdash; Top Nav</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">It feels more like a retail website.</p>
+        <p class="testing-card-attr">Usability Test &mdash; PLP</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">Self explanatory &mdash; you can see the categories exactly if you&rsquo;re looking for.</p>
+        <p class="testing-card-attr">Usability Test &mdash; Top Nav</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">I really like this, I think this will make it a lot easier to find exactly what it is that I&rsquo;m looking for on that item.</p>
+        <p class="testing-card-attr">Usability Test &mdash; PLP</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">A lot cleaner and easier to maneuver.</p>
+        <p class="testing-card-attr">Usability Test &mdash; Top Nav</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">I think using as many filters as we can eliminates the clutter when you&rsquo;re zoning in on one specific item.</p>
+        <p class="testing-card-attr">Usability Test &mdash; PLP</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">It&rsquo;s less work &mdash; the fact that I have to go back in and select the actual fit with the dropdown, it&rsquo;s just clunky. But with buttons, I see everything right away, and it&rsquo;s very clear to me what&rsquo;s available and what isn&rsquo;t.</p>
+        <p class="testing-card-attr">Usability Test &mdash; PDP / Buttons</p>
+      </div>
+      <div class="testing-card">
+        <svg class="testing-card-icon" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 11.73 0.48 9.33 1.44 7.2C2.43 5.04 3.78 3.24 5.49 1.8L8.64 4.2C7.23 5.52 6.18 6.99 5.49 8.61C4.83 10.23 4.5 12 4.5 13.92H9.6V24H0ZM17.28 24V14.4C17.28 11.73 17.76 9.33 18.72 7.2C19.71 5.04 21.06 3.24 22.77 1.8L25.92 4.2C24.51 5.52 23.46 6.99 22.77 8.61C22.11 10.23 21.78 12 21.78 13.92H26.88V24H17.28Z" fill="#ccc"/></svg>
+        <p class="testing-card-text">This is exactly why I didn&rsquo;t like the dropdown &mdash; I have to get the combination right in order to figure if it is available in-stock. It&rsquo;s a lot of clicking.</p>
+        <p class="testing-card-attr">Usability Test &mdash; PDP / Buttons</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5e. DESIGN SYSTEM -->
+  <div class="section">
+    <h2>Design System</h2>
+    <p>Alongside the UX redesign, we refined the visual language &mdash; updating typography, spacing, and color usage to create a more premium, cohesive browsing experience. The style guide ensured consistency across navigation, product cards, filter components, and mobile touch targets.</p>
+
+    <img class="sg-hero-img" src="/assets/sg-design-system.png" alt="UNTUCKit Design System — Buttons, Typography, Spacing Scale, Color Tokens, Product Cards, Icons">
+  </div>
+
+  <!-- 6. REFLECTION -->
+  <div class="section">
+    <h2>Reflection</h2>
+    <p>This project reinforced the importance of treating navigation and product listing as a connected system rather than separate components. The biggest wins came from simplifying the category hierarchy &mdash; giving users fewer, clearer choices at each level.</p>
+    <p>Working directly with the CEO and CTO allowed us to move fast and make bold decisions. The cross-functional collaboration between design, engineering, and merchandising was key to launching ahead of the holiday season and delivering measurable business results.</p>
+    <p>The redesigned framework continues to serve as the foundation for seasonal merchandising updates, A/B testable layouts, and future category expansion.</p>
   </div>
 
   <!-- ABOUT STRIP -->
   <div class="about-strip">
-    <p>This project was part of a broader e-commerce platform modernization. Each decision was grounded in data and validated through testing before launch.</p>
-    <a href="https://jocelynlin.framer.ai/about-me">About Jocelyn &rarr;</a>
+    <p>This project is part of my work as Senior Director of Product Design at UNTUCKit, where I lead the direction of e-commerce user experience and design operations.</p>
+    <a href="/about-me">About Jocelyn &rarr;</a>
   </div>
 
 </div>
 
 <footer>
   <p>&copy; 2026 Jocelyn Lin</p>
-  <a href="https://jocelynlin.framer.ai">jocelynlin.framer.ai</a>
+  <a href="https://www.linkedin.com/in/linjocelyn/" target="_blank">LinkedIn</a>
 </footer>
+
+<script>
+(function() {
+  var animated = false;
+  var stats = document.querySelector('.stats');
+  if (!stats) return;
+
+  function animateNumbers() {
+    if (animated) return;
+    var rect = stats.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      animated = true;
+      var nums = stats.querySelectorAll('.stat-num[data-target]');
+      nums.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var duration = 1200;
+        var start = 0;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(eased * target);
+          el.textContent = '+' + current + '%';
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', animateNumbers, { passive: true });
+  animateNumbers();
+})();
+
+/* Slideshow tab switching — supports multiple slideshows */
+(function() {
+  var slideshows = document.querySelectorAll('.device-slideshow');
+  slideshows.forEach(function(ss) {
+    var tabs = ss.querySelectorAll('.slideshow-tab');
+    var slides = ss.querySelectorAll('.slideshow-slide');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = this.getAttribute('data-slide');
+
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        this.classList.add('active');
+
+        slides.forEach(function(s) {
+          if (s.getAttribute('data-slide') === target) {
+            s.classList.add('active');
+            var vid = s.querySelector('video');
+            if (vid) vid.play();
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+  });
+})();
+
+</script>
 
 </body>
 </html>
