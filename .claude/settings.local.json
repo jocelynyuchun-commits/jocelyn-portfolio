@@ -123,7 +123,9 @@
       "Bash(cp \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/Portfoliio assets UNTUCKit/PLP.mp4\" \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/plp-desktop.mp4\")",
       "Bash(cp \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/Portfoliio assets UNTUCKit/PLP_Mobile_Trimmed.mp4\" \"/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/plp-mobile.mp4\")",
       "Bash(git add public/top-nav-plp.html public/index.html public/assets/ vercel.json)",
-      "Bash(ls -lh /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/pdp-*.mp4)"
+      "Bash(ls -lh /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/pdp-*.mp4)",
+      "Bash(brew list poppler)",
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")"
     ]
   }
 }
