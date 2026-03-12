@@ -5,6 +5,7 @@
     { "source": "/ai-experiments/insight-engine-case-study", "destination": "/insight-engine-case-study.html" },
     { "source": "/about-me", "destination": "/about-me.html" },
     { "source": "/work/top-nav-plp", "destination": "/top-nav-plp.html" },
-    { "source": "/work/pdp", "destination": "/pdp.html" }
+    { "source": "/work/pdp", "destination": "/pdp.html" },
+    { "source": "/cpo-case-study", "destination": "/cpo-case-study.html" }
   ]
 }
