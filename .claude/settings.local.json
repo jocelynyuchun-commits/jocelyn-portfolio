@@ -132,7 +132,8 @@
       "Bash(pip3 install poppler-utils)",
       "Bash(pip3 install pdf2image)",
       "Bash(python -m markitdown \"/Users/jocelynlin/Desktop/CPO-Deep Dive.pptx\")",
-      "Bash(pip install \"markitdown[pptx]\" -q)"
+      "Bash(pip install \"markitdown[pptx]\" -q)",
+      "Bash(ls -la /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/cpo-persona-*.png)"
     ]
   }
 }

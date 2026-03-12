@@ -118,10 +118,10 @@
   }
 
   /* STAT CARDS */
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
-  .stat-card { border: 1px solid var(--border); padding: 36px 24px; text-align: center; }
-  .stat-num { font-size: clamp(32px, 4vw, 48px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
-  .stat-label { font-size: 14px; font-weight: 400; color: var(--gray-mid); line-height: 1.5; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+  .stat-card { border: 1px solid var(--border); padding: 36px 16px; text-align: center; }
+  .stat-num { font-size: clamp(28px, 3.5vw, 42px); font-weight: 600; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 13px; font-weight: 400; color: var(--gray-mid); line-height: 1.5; }
 
   /* IMAGE PLACEHOLDERS */
   .ph {
@@ -148,7 +148,6 @@
   /* MACBOOK FRAME */
   .macbook-frame {
     width: 100%; max-width: 1000px;
-    filter: drop-shadow(0 8px 30px rgba(0,0,0,0.12));
     margin: 36px auto 0;
   }
   .macbook-lid {
@@ -245,8 +244,66 @@
   .process-item h4 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
   .process-item p { font-size: 14px; max-width: none; margin: 0; }
 
-  /* PERSONA CARDS */
-  .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  /* ROLE CARDS */
+  .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  .role-card { padding: 32px 24px; background: var(--gray-bg); border-radius: 8px; }
+  .role-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .role-icon svg { width: 22px; height: 22px; color: var(--black); }
+  .role-card h4 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; line-height: 1.35; }
+  .role-card p { font-size: 14px; font-weight: 400; color: var(--gray-dark); line-height: 1.7; margin: 0; max-width: none; }
+
+  /* PERSONA TABS */
+  .persona-tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 36px;
+    border-bottom: 2px solid var(--border);
+  }
+  .persona-tab {
+    flex: 1;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-mid);
+    text-align: center;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .persona-tab:hover { color: var(--gray-dark); }
+  .persona-tab.active {
+    color: var(--black);
+    font-weight: 600;
+  }
+  .persona-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--black);
+  }
+  .persona-tab-name { display: block; font-size: 15px; margin-bottom: 2px; }
+  .persona-tab-desc {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--gray-mid);
+  }
+  .persona-tab.active .persona-tab-desc { color: var(--gray-dark); }
+  .persona-panel { display: none; margin-top: 28px; }
+  .persona-panel.active { display: block; }
+  .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .persona-card {
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -254,6 +311,8 @@
   }
   .persona-card img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
@@ -337,6 +396,10 @@
     .fact + .fact { padding-left: 0; }
     .fact:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
     .grid-2, .compare, .persona-grid { grid-template-columns: 1fr; }
+    .persona-tab-desc { display: none; }
+    .persona-tab { padding: 12px 8px; }
+    .persona-tab-name { font-size: 13px; }
+    .role-grid { grid-template-columns: 1fr; }
     .macbook-lid { padding: 6px; border-radius: 10px; }
     .macbook-toolbar { padding: 7px 10px; }
     .macbook-dot { width: 8px; height: 8px; }
@@ -345,7 +408,7 @@
     .grid-3 { grid-template-columns: 1fr; }
     .insights-grid { grid-template-columns: 1fr; }
     .testing-masonry { column-count: 1; padding: 24px; }
-    .stats { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
     .about-strip { flex-direction: column; align-items: flex-start; }
     footer { flex-direction: column; gap: 8px; align-items: flex-start; }
   }
@@ -394,7 +457,7 @@
 
   <!-- 1. HEADER -->
   <div class="hero">
-    <span class="eyebrow">Case Study &middot; CPO Outlets &middot; 2019</span>
+    <span class="eyebrow">Case Study &middot; CPO Outlets</span>
     <h1>+46% Revenue Growth &mdash; CPO Website Redesign</h1>
     <p class="hero-desc">How I led a full UX and UI redesign for CPO Outlets&rsquo; e-commerce platform, improving product discovery, decision confidence, and conversion in a complex, spec-driven power tools environment.</p>
     <div class="tag-row">
@@ -426,7 +489,7 @@
     </div>
     <div class="fact">
       <div class="fact-label">Timeline</div>
-      <div class="fact-value">2019</div>
+      <div class="fact-value">6 months</div>
       <div class="fact-detail">Discovery through holiday launch</div>
     </div>
     <div class="fact">
@@ -439,27 +502,24 @@
   <!-- 4. IMPACT & RESULTS -->
   <div class="section">
     <h2>Impact &amp; Results</h2>
-    <p>The redesign launched ahead of CPO&rsquo;s peak holiday season in November 2019. Results comparing the post-launch holiday season (2019 vs. 2018) showed significant improvements across every key metric.</p>
+    <p>The redesign launched ahead of CPO&rsquo;s peak holiday season. Post-launch results showed significant improvements across every key metric.</p>
 
     <div class="stats">
       <div class="stat-card">
         <div class="stat-num" data-target="46">+0%</div>
-        <div class="stat-label">Revenue growth<br>year over year</div>
+        <div class="stat-label">Revenue growth<br>post-launch</div>
       </div>
       <div class="stat-card">
         <div class="stat-num" data-target="17">+0%</div>
-        <div class="stat-label">Conversion rate<br>year over year</div>
+        <div class="stat-label">Conversion rate<br>post-launch</div>
       </div>
       <div class="stat-card">
         <div class="stat-num" data-target="25">+0%</div>
-        <div class="stat-label">Additional conversion<br>with continued optimization</div>
+        <div class="stat-label">Additional conversion<br>with optimization</div>
       </div>
-    </div>
-
-    <div class="stats" style="grid-template-columns: 1fr; max-width: 320px; margin-top: 16px;">
       <div class="stat-card">
-        <div class="stat-num" data-target="-9" style="font-size: clamp(28px, 3.5vw, 40px);">0%</div>
-        <div class="stat-label">Bounce rate reduction</div>
+        <div class="stat-num" data-target="-9">0%</div>
+        <div class="stat-label">Bounce rate<br>reduction</div>
       </div>
     </div>
   </div>
@@ -469,16 +529,25 @@
     <h2>My Role &amp; Responsibility</h2>
     <p>I was the sole designer on the project, partnering with a UX researcher who led interviews and usability testing. I owned the end-to-end experience strategy and design &mdash; defining research questions, synthesizing insights, and translating them into product direction, interaction models, and UI. I also led prototyping, execution, and stakeholder alignment.</p>
 
-    <div class="process-list">
-      <div class="process-item">
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
         <h4>User Research &amp; Strategy</h4>
         <p>Defined research questions, synthesized insights, and translated findings into product direction and design principles.</p>
       </div>
-      <div class="process-item">
+      <div class="role-card">
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
         <h4>Design Execution &amp; Prototyping</h4>
         <p>Owned interaction design, visual design, and prototyping across the full e-commerce experience.</p>
       </div>
-      <div class="process-item">
+      <div class="role-card">
+        <div class="role-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <h4>Client Partnership &amp; Team Leadership</h4>
         <p>Led stakeholder alignment and ensured insights quickly turned into shipped outcomes.</p>
       </div>
@@ -527,35 +596,53 @@
     <h2>User Personas</h2>
     <p>Based on research, we defined three core personas to guide design decisions. Experienced users cared most about brand, durability, and reliability, while amateur users focused more on price and felt overwhelmed by options.</p>
 
-    <div class="persona-grid">
-      <div class="persona-card">
-        <img src="/assets/cpo-persona-professional.png" alt="The Professional persona — high-frequency, high-value user">
-      </div>
-      <div class="persona-card">
-        <img src="/assets/cpo-persona-professional-2.png" alt="The Professional persona details">
-      </div>
+    <div class="persona-tabs">
+      <button class="persona-tab active" data-persona="professional">
+        <span class="persona-tab-name">The Professional</span>
+        <span class="persona-tab-desc">Efficiency-driven, high-frequency buyer</span>
+      </button>
+      <button class="persona-tab" data-persona="savvy">
+        <span class="persona-tab-name">The Savvy Enthusiast</span>
+        <span class="persona-tab-desc">Knowledgeable, exploratory shopper</span>
+      </button>
+      <button class="persona-tab" data-persona="amateur">
+        <span class="persona-tab-name">The Amateur DIYer</span>
+        <span class="persona-tab-desc">Motivated but overwhelmed, needs guidance</span>
+      </button>
     </div>
-    <div class="device-label">The Professional &mdash; efficiency-driven, high-frequency buyer</div>
 
-    <div class="persona-grid">
-      <div class="persona-card">
-        <img src="/assets/cpo-persona-savvy.png" alt="The Savvy Enthusiast persona — knowledgeable, brand-driven explorer">
-      </div>
-      <div class="persona-card">
-        <img src="/assets/cpo-persona-savvy-2.png" alt="The Savvy Enthusiast persona details">
+    <div class="persona-panel active" data-persona="professional">
+      <div class="persona-grid">
+        <div class="persona-card">
+          <img src="/assets/cpo-persona-professional.png" alt="The Professional persona — high-frequency, high-value user">
+        </div>
+        <div class="persona-card">
+          <img src="/assets/cpo-persona-professional-2.png" alt="The Professional persona journey map">
+        </div>
       </div>
     </div>
-    <div class="device-label">The Savvy Enthusiast &mdash; knowledgeable, exploratory shopper</div>
 
-    <div class="persona-grid">
-      <div class="persona-card">
-        <img src="/assets/cpo-persona-amateur.png" alt="The Amateur DIYer persona — first-time buyer needing guidance">
-      </div>
-      <div class="persona-card">
-        <img src="/assets/cpo-persona-amateur-2.png" alt="The Amateur DIYer persona details">
+    <div class="persona-panel" data-persona="savvy">
+      <div class="persona-grid">
+        <div class="persona-card">
+          <img src="/assets/cpo-persona-savvy.png" alt="The Savvy Enthusiast persona — knowledgeable, brand-driven explorer">
+        </div>
+        <div class="persona-card">
+          <img src="/assets/cpo-persona-savvy-2.png" alt="The Savvy Enthusiast persona journey map">
+        </div>
       </div>
     </div>
-    <div class="device-label">The Amateur DIYer &mdash; motivated but overwhelmed, needs guidance</div>
+
+    <div class="persona-panel" data-persona="amateur">
+      <div class="persona-grid">
+        <div class="persona-card">
+          <img src="/assets/cpo-persona-amateur.png" alt="The Amateur DIYer persona — first-time buyer needing guidance">
+        </div>
+        <div class="persona-card">
+          <img src="/assets/cpo-persona-amateur-2.png" alt="The Amateur DIYer persona details">
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 8. VISION -->
@@ -768,6 +855,24 @@
 
   window.addEventListener('scroll', animateNumbers, { passive: true });
   animateNumbers();
+})();
+
+// Persona tab switching
+(function() {
+  var tabs = document.querySelectorAll('.persona-tab');
+  var panels = document.querySelectorAll('.persona-panel');
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var persona = this.getAttribute('data-persona');
+
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+
+      this.classList.add('active');
+      document.querySelector('.persona-panel[data-persona="' + persona + '"]').classList.add('active');
+    });
+  });
 })();
 </script>
 
