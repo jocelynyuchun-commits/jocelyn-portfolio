@@ -138,7 +138,8 @@
       "Bash(git ls-files public/cpo-case-study.html public/assets/cpo-persona-*)",
       "Bash(git diff --stat HEAD -- public/cpo-case-study.html public/assets/cpo-persona-*)",
       "Bash(md5 public/Jocelyn_Lin_Resume.pdf)",
-      "Bash(md5)"
+      "Bash(md5)",
+      "Bash(git add:*)"
     ]
   }
 }
