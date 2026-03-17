@@ -136,7 +136,9 @@
       "Bash(ls -la /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/assets/cpo-persona-*.png)",
       "Bash(git status -u)",
       "Bash(git ls-files public/cpo-case-study.html public/assets/cpo-persona-*)",
-      "Bash(git diff --stat HEAD -- public/cpo-case-study.html public/assets/cpo-persona-*)"
+      "Bash(git diff --stat HEAD -- public/cpo-case-study.html public/assets/cpo-persona-*)",
+      "Bash(md5 public/Jocelyn_Lin_Resume.pdf)",
+      "Bash(md5)"
     ]
   }
 }
