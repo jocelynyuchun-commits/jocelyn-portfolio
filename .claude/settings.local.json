@@ -140,7 +140,9 @@
       "Bash(md5 public/Jocelyn_Lin_Resume.pdf)",
       "Bash(md5)",
       "Bash(git add:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm list:*)",
+      "Bash(node generate.js)"
     ]
   }
 }
