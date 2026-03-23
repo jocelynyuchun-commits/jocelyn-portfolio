@@ -142,7 +142,8 @@
       "Bash(git add:*)",
       "Bash(npm install:*)",
       "Bash(npm list:*)",
-      "Bash(node generate.js)"
+      "Bash(node generate.js)",
+      "Bash(curl -sI \"https://figma-claude-test-henna.vercel.app/product-discovery\")"
     ]
   }
 }
