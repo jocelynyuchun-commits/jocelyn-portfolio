@@ -1076,8 +1076,8 @@
     <span class="swatch"></span> Brand 3 — Green
   </button>
   <div class="view-toggle" style="margin-left:auto;">
-    <button class="view-btn active" onclick="setView('single', this)">Single</button>
-    <button class="view-btn" onclick="setView('compare', this)">Compare All</button>
+    <button class="view-btn" onclick="setView('single', this)">Single</button>
+    <button class="view-btn active" onclick="setView('compare', this)">Compare All</button>
   </div>
 </nav>
 
@@ -1588,7 +1588,11 @@ function setView(view, btn) {
 
 // ── INIT ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.className = 'view-compare';
   buildDiscovery('single-discovery', 'brand-1');
+  buildDiscovery('compare-b1', 'brand-1');
+  buildDiscovery('compare-b2', 'brand-2');
+  buildDiscovery('compare-b3', 'brand-3');
 });
 </script>
 
