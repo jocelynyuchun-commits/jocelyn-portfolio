@@ -1042,7 +1042,7 @@
     .section-gap { margin-bottom: var(--spacing-900); }
   </style>
 </head>
-<body class="view-single">
+<body class="view-compare">
 
 <!-- ── PAGE HEADER ──────────────────────────────────────────── -->
 <header class="page-header">
@@ -1588,7 +1588,6 @@ function setView(view, btn) {
 
 // ── INIT ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.className = 'view-compare';
   buildDiscovery('single-discovery', 'brand-1');
   buildDiscovery('compare-b1', 'brand-1');
   buildDiscovery('compare-b2', 'brand-2');
