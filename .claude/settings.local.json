@@ -143,7 +143,13 @@
       "Bash(npm install:*)",
       "Bash(npm list:*)",
       "Bash(node generate.js)",
-      "Bash(curl -sI \"https://figma-claude-test-henna.vercel.app/product-discovery\")"
+      "Bash(curl -sI \"https://figma-claude-test-henna.vercel.app/product-discovery\")",
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__list_teams",
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__list_projects",
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__get_project",
+      "Read(//Users/jocelynlin/Desktop/**)",
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__list_deployments",
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__get_deployment"
     ]
   }
 }
