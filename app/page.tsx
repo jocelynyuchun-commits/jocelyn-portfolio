@@ -145,7 +145,7 @@ const STATES: { key: DemoState; label: string }[] = [
 const SIZES: { key: ButtonSize; label: string; dim: string }[] = [
   { key: 'sm',   label: 'Small',    dim: '144 × 40' },
   { key: 'md',   label: 'Regular',  dim: '172 × 48' },
-  { key: 'lg',   label: 'CTA',      dim: '366 × 48' },
+  { key: 'lg',   label: 'Large',    dim: '366 × 48' },
 ]
 
 interface ButtonMatrixProps {
