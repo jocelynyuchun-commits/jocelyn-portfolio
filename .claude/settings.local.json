@@ -149,7 +149,8 @@
       "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__get_project",
       "Read(//Users/jocelynlin/Desktop/**)",
       "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__list_deployments",
-      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__get_deployment"
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__get_deployment",
+      "WebSearch"
     ]
   }
 }
