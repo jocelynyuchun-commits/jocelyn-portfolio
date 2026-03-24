@@ -527,7 +527,6 @@ export default function Page() {
                 <Button variant="solid" size="sm">Shop Now</Button>
                 <Button variant="solid" size="md">Shop Now</Button>
                 <Button variant="solid" size="lg">Shop Now</Button>
-                <Button variant="solid" size="full" className="max-w-[366px] min-w-[366px]">Shop Now</Button>
               </div>
             </div>
 
