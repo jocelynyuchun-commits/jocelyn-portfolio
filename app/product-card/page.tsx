@@ -224,8 +224,7 @@ export default function ProductCardPage() {
                 <thead>
                   <tr className="bg-neutral-50 border-y border-neutral-200">
                     <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400">Token</th>
-                    <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400">Old</th>
-                    <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400">New</th>
+                    <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400">Value</th>
                     <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400">Note</th>
                   </tr>
                 </thead>
@@ -238,12 +237,6 @@ export default function ProductCardPage() {
                   ].map((row, i) => (
                     <tr key={i} className="border-b border-neutral-100">
                       <td className="px-4 py-2.5"><code className="font-mono text-[10px] text-neutral-700">{row.token}</code></td>
-                      <td className="px-4 py-2.5">
-                        <span className="inline-flex items-center gap-1.5">
-                          <span className="w-3 h-3 rounded border border-black/10 shrink-0" style={{ backgroundColor: row.old }} />
-                          <code className="font-mono text-[10px] text-neutral-500 line-through">{row.old}</code>
-                        </span>
-                      </td>
                       <td className="px-4 py-2.5">
                         <span className="inline-flex items-center gap-1.5">
                           <span className="w-3 h-3 rounded border border-black/10 shrink-0" style={{ backgroundColor: row.new }} />
