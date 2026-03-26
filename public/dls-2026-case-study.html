@@ -463,6 +463,14 @@
   .apply-limitation-workflow-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 8px; }
   .apply-limitation-workflow { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 14px; color: #333; }
 
+  /* UPDATE GALLERY */
+  .update-img-wrap { background: var(--gray-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; justify-content: center; padding: 16px; }
+  .update-img-wrap img { max-width: 800px; width: 100%; height: auto; display: block; border-radius: 4px; }
+  .update-slide-notes { padding: 0 0 16px; }
+  .update-slide-notes h3 { font-size: 17px; font-weight: 600; color: var(--black); margin-bottom: 8px; }
+  .update-slide-notes p { font-size: 14px; font-weight: 400; color: var(--gray-dark); line-height: 1.7; max-width: none; margin-bottom: 0; }
+  .update-slide-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 10px; }
+
   /* NEXT / FOOTER */
   .next-project { padding: 72px 0 0; display: flex; justify-content: space-between; align-items: flex-end; }
   .next-project .label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 10px; }
@@ -1303,6 +1311,74 @@
       <div class="apply-limitation-divider"></div>
       <div class="apply-limitation-workflow-label">Workflow</div>
       <div class="apply-limitation-workflow">AI draft → Designer links → Engineering connects</div>
+    </div>
+
+    <!-- FIGMA SKILL UPDATE — March 2026 -->
+    <div class="section">
+      <span class="eyebrow">Update · March 26, 2026</span>
+      <h2>Revisiting the Limitation: Figma's Skill Update</h2>
+      <p>On 3/24/26, Figma launched new MCP skills that let AI write directly to Figma files — creating linked component instances, binding design tokens, and setting variable modes. I re-ran the same documentation workflow to test whether the original limitation still holds. The result: ~80% of components are now properly linked to the design system, but button variant accuracy and sub-brand styling still require designer refinement.</p>
+
+      <!-- Limitation callout — above images -->
+      <div class="apply-limitation" style="margin-top:32px;">
+        <div class="apply-limitation-cols">
+          <div>
+            <div class="apply-limitation-col-label">Before (3/9)</div>
+            <div class="apply-limitation-col-value">SVG visuals only</div>
+          </div>
+          <div>
+            <div class="apply-limitation-col-label">After (3/26)</div>
+            <div class="apply-limitation-col-value">~80% linked components</div>
+          </div>
+          <div>
+            <div class="apply-limitation-col-label">Still needed</div>
+            <div class="apply-limitation-col-value">Designer refinement</div>
+          </div>
+        </div>
+        <div class="apply-limitation-divider"></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+          <div>
+            <div class="apply-limitation-col-label" style="margin-bottom:8px;">What linked correctly</div>
+            <div style="font-size:14px; color:var(--gray-dark); line-height:1.7;">Component instances from DLS page, semantic variable bindings, token reference tables, brand mode containers, typography and spacing scales</div>
+          </div>
+          <div>
+            <div class="apply-limitation-col-label" style="margin-bottom:8px;">What still needs work</div>
+            <div style="font-size:14px; color:var(--gray-dark); line-height:1.7;">Button variant accuracy (missing states), font fallbacks (brand fonts unavailable in runtime), nested variable mode propagation, layout fine-tuning</div>
+          </div>
+        </div>
+        <div class="apply-limitation-divider"></div>
+        <div class="apply-limitation-workflow-label">Updated Workflow</div>
+        <div class="apply-limitation-workflow">AI scaffolds linked components → Designer fixes variants & fonts → System stays connected</div>
+      </div>
+
+      <!-- STACKED IMAGE GALLERY -->
+      <div style="margin-top:36px; margin-bottom:0; display:flex; flex-direction:column; gap:48px;">
+
+        <!-- 1: Buttons -->
+        <div>
+          <div class="update-slide-notes">
+            <div class="update-slide-label">1 / 2</div>
+            <h3>Buttons — Partially Linked</h3>
+            <p>Solid and Outline button instances were imported from the DLS Components page with semantic color variables bound. However, only about half the variant slots rendered correctly — the rest generated as empty placeholders, requiring manual completion by a designer.</p>
+          </div>
+          <div class="update-img-wrap">
+            <img src="/images/update-buttons.jpg" alt="Buttons page — linked Solid and Outline component instances with state grids and dark mode">
+          </div>
+        </div>
+
+        <!-- 2: Multi-Brand -->
+        <div>
+          <div class="update-slide-notes">
+            <div class="update-slide-label">2 / 2</div>
+            <h3>Multi-Brand — Components Linked, Sub-Brand Styling Missing</h3>
+            <p>The new skills successfully linked all component instances and set variable mode containers per brand. Unfortunately, it didn't apply the sub-brand styling — all three brands render with the same generic content and visual treatment, losing the distinct brand personality from the original.</p>
+          </div>
+          <div class="update-img-wrap">
+            <img src="/images/update-multibrand.jpg" alt="Multi-Brand page — same Personalized Module rendered across 3 brand modes">
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <!-- NEXT -->
