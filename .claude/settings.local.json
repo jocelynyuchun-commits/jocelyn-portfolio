@@ -150,7 +150,11 @@
       "Read(//Users/jocelynlin/Desktop/**)",
       "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__list_deployments",
       "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__get_deployment",
-      "WebSearch"
+      "WebSearch",
+      "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__deploy_to_vercel",
+      "mcp__plugin_figma_figma__get_screenshot",
+      "mcp__plugin_figma_figma__use_figma",
+      "mcp__plugin_figma_figma__get_metadata"
     ]
   }
 }
