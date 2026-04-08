@@ -154,7 +154,11 @@
       "mcp__a55995bc-7231-42fd-b53a-b18ae58eed72__deploy_to_vercel",
       "mcp__plugin_figma_figma__get_screenshot",
       "mcp__plugin_figma_figma__use_figma",
-      "mcp__plugin_figma_figma__get_metadata"
+      "mcp__plugin_figma_figma__get_metadata",
+      "Bash(ls -la /Users/jocelynlin/Desktop/Jocelyn-Portfolio/public/images/update-*)",
+      "Bash(curl -s http://localhost:8081/dls-2026-case-study)",
+      "Bash(kill 1853)",
+      "Bash(kill -9 1853)"
     ]
   }
 }
