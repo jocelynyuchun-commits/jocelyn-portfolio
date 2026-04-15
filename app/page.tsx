@@ -155,10 +155,10 @@ interface ButtonMatrixProps {
 
 function ButtonMatrix({ variant, dark = false }: ButtonMatrixProps) {
   return (
-    <div className={`rounded-lg border ${dark ? 'border-blue-800' : 'border-neutral-200'}`}>
+    <div className={`rounded-lg overflow-hidden border ${dark ? 'border-blue-800' : 'border-neutral-200'}`}>
       {/* Column headers */}
       <div
-        className={`grid border-b rounded-t-lg ${dark ? 'border-blue-800 bg-blue-900' : 'border-neutral-200 bg-white'}`}
+        className={`grid border-b ${dark ? 'border-blue-800 bg-blue-900' : 'border-neutral-200 bg-white'}`}
         style={{ gridTemplateColumns: '80px repeat(5, 1fr)' }}
       >
         <div className={`px-3 py-2.5 text-[11px] font-semibold uppercase tracking-widest ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>
@@ -178,9 +178,9 @@ function ButtonMatrix({ variant, dark = false }: ButtonMatrixProps) {
       {SIZES.map((sz, i) =>
         sz.key === 'lg' ? (
           /* CTA row — horizontally scrollable to show full 366px button */
-          <div key={sz.key} className="overflow-x-auto rounded-b-lg">
+          <div key={sz.key} className="overflow-x-auto">
             <div
-              className={`grid items-center rounded-b-lg ${dark ? 'bg-blue-900' : 'bg-white'}`}
+              className={`grid items-center ${dark ? 'bg-blue-900' : 'bg-white'}`}
               style={{ gridTemplateColumns: '80px repeat(5, minmax(390px, 1fr))' }}
             >
               <div className={`px-3 py-4 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>

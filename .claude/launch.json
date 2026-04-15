@@ -2,22 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "dls-buttons",
+      "name": "figma-claude-test",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
-    },
-    {
-      "name": "portfolio-preview",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "/Users/jocelynlin/Desktop/figma-claude-test/_portfolio", "-l", "8080", "--no-clipboard"],
-      "port": 8080
-    },
-    {
-      "name": "case-study-preview",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "/Users/jocelynlin/Desktop/Jocelyn-Portfolio/public", "-l", "8081", "--no-clipboard"],
-      "port": 8081
     }
   ]
 }
