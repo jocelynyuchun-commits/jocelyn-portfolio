@@ -357,12 +357,12 @@ export default function ProductDiscoveryPage() {
           </div>
         </section>
 
-        <Divider />
+        <div className="hidden"><Divider /></div>
 
         {/* ══════════════════════════════════════════════════════════════════
             SECTION 6 — ALL 3 BREAKPOINTS SIDE BY SIDE
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="comparison" aria-labelledby="comparison-heading">
+        <section id="comparison" aria-labelledby="comparison-heading" className="hidden">
           <SectionLabel>Comparison</SectionLabel>
           <SectionHeading id="comparison-heading">All 3 Breakpoints — Side by Side</SectionHeading>
           <p className="text-sm text-neutral-500 mb-8">
