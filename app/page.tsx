@@ -155,10 +155,10 @@ interface ButtonMatrixProps {
 
 function ButtonMatrix({ variant, dark = false }: ButtonMatrixProps) {
   return (
-    <div className={`rounded-lg overflow-hidden border ${dark ? 'border-blue-800' : 'border-neutral-200'}`}>
+    <div className={`rounded-lg border ${dark ? 'border-blue-800' : 'border-neutral-200'}`}>
       {/* Column headers */}
       <div
-        className={`grid border-b ${dark ? 'border-blue-800 bg-blue-900' : 'border-neutral-200 bg-white'}`}
+        className={`grid border-b rounded-t-lg ${dark ? 'border-blue-800 bg-blue-900' : 'border-neutral-200 bg-white'}`}
         style={{ gridTemplateColumns: '80px repeat(5, 1fr)' }}
       >
         <div className={`px-3 py-2.5 text-[11px] font-semibold uppercase tracking-widest ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>
@@ -175,29 +175,48 @@ function ButtonMatrix({ variant, dark = false }: ButtonMatrixProps) {
       </div>
 
       {/* Rows per size */}
-      {SIZES.map((sz, i) => (
-        <div
-          key={sz.key}
-          className={`grid items-center ${
-            i < SIZES.length - 1
-              ? dark ? 'border-b border-blue-800' : 'border-b border-neutral-200'
-              : ''
-          } ${dark ? 'bg-blue-900' : 'bg-white'}`}
-          style={{ gridTemplateColumns: '80px repeat(5, 1fr)' }}
-        >
-          {/* Size label */}
-          <div className={`px-3 py-4 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>
-            <div className={`text-xs font-semibold ${dark ? 'text-white' : 'text-neutral-700'}`}>{sz.label}</div>
-            <div className={`text-[10px] mt-0.5 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>{sz.dim}</div>
-          </div>
-          {/* State cells */}
-          {STATES.map((s) => (
-            <div key={s.key} className="px-3 py-4 flex items-center">
-              <DemoButton variant={variant} size={sz.key} state={s.key} />
+      {SIZES.map((sz, i) =>
+        sz.key === 'lg' ? (
+          /* CTA row — horizontally scrollable to show full 366px button */
+          <div key={sz.key} className="overflow-x-auto rounded-b-lg">
+            <div
+              className={`grid items-center rounded-b-lg ${dark ? 'bg-blue-900' : 'bg-white'}`}
+              style={{ gridTemplateColumns: '80px repeat(5, minmax(390px, 1fr))' }}
+            >
+              <div className={`px-3 py-4 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>
+                <div className={`text-xs font-semibold ${dark ? 'text-white' : 'text-neutral-700'}`}>{sz.label}</div>
+                <div className={`text-[10px] mt-0.5 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>{sz.dim}</div>
+              </div>
+              {STATES.map((s) => (
+                <div key={s.key} className="px-3 py-4 flex items-center">
+                  <DemoButton variant={variant} size={sz.key} state={s.key} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      ))}
+          </div>
+        ) : (
+          /* Small / Regular rows — original compact layout */
+          <div
+            key={sz.key}
+            className={`grid items-center ${
+              i < SIZES.length - 1
+                ? dark ? 'border-b border-blue-800' : 'border-b border-neutral-200'
+                : ''
+            } ${dark ? 'bg-blue-900' : 'bg-white'}`}
+            style={{ gridTemplateColumns: '80px repeat(5, 1fr)' }}
+          >
+            <div className={`px-3 py-4 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>
+              <div className={`text-xs font-semibold ${dark ? 'text-white' : 'text-neutral-700'}`}>{sz.label}</div>
+              <div className={`text-[10px] mt-0.5 ${dark ? 'text-blue-300' : 'text-neutral-400'}`}>{sz.dim}</div>
+            </div>
+            {STATES.map((s) => (
+              <div key={s.key} className="px-3 py-4 flex items-center">
+                <DemoButton variant={variant} size={sz.key} state={s.key} />
+              </div>
+            ))}
+          </div>
+        )
+      )}
     </div>
   )
 }
