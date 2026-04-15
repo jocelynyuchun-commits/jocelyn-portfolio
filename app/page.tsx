@@ -544,7 +544,7 @@ export default function Page() {
 
             {/* State matrix */}
             <div className="overflow-x-auto">
-              <div className="min-w-[760px]">
+              <div className="min-w-[1060px]">
                 <ButtonMatrix variant="solid" />
               </div>
             </div>
@@ -572,7 +572,7 @@ export default function Page() {
             </div>
 
             <div className="overflow-x-auto">
-              <div className="min-w-[760px]">
+              <div className="min-w-[1060px]">
                 <ButtonMatrix variant="outline" />
               </div>
             </div>
@@ -608,7 +608,7 @@ export default function Page() {
               </div>
 
               <div className="overflow-x-auto">
-                <div className="min-w-[760px]">
+                <div className="min-w-[1060px]">
                   <ButtonMatrix variant="inverted" dark />
                 </div>
               </div>
@@ -636,7 +636,7 @@ export default function Page() {
               </div>
 
               <div className="overflow-x-auto">
-                <div className="min-w-[760px]">
+                <div className="min-w-[1060px]">
                   <ButtonMatrix variant="outline-white" dark />
                 </div>
               </div>
