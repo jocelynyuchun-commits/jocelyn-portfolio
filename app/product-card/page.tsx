@@ -407,7 +407,7 @@ export default function ProductCardPage() {
           </div>
 
           {/* ── 2.2  Sale ────────────────────────────────────────────────── */}
-          <div className="mb-10">
+          <div className="mb-10 hidden">
             <div className="flex items-baseline gap-3 mb-4">
               <h3 className="font-semibold text-blue-900 text-base">Sale</h3>
               <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-widest">Promotional Pricing</span>
@@ -442,7 +442,7 @@ export default function ProductCardPage() {
           </div>
 
           {/* ── 2.3  Final Sale ──────────────────────────────────────────── */}
-          <div className="mb-10">
+          <div className="mb-10 hidden">
             <div className="flex items-baseline gap-3 mb-4">
               <h3 className="font-semibold text-blue-900 text-base">Final Sale</h3>
               <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-widest">Non-Returnable</span>
@@ -506,12 +506,12 @@ export default function ProductCardPage() {
           </div>
         </section>
 
-        <Divider />
+        <div className="hidden"><Divider /></div>
 
         {/* ══════════════════════════════════════════════════════════════════
             SECTION 3 — ALL VARIANTS SIDE-BY-SIDE
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="comparison" aria-labelledby="comparison-heading">
+        <section id="comparison" aria-labelledby="comparison-heading" className="hidden">
           <SectionLabel>Comparison</SectionLabel>
           <SectionHeading id="comparison-heading">All 4 Variants — Desktop Small (321 px)</SectionHeading>
           <p className="text-sm text-neutral-500 mb-8">
@@ -550,12 +550,12 @@ export default function ProductCardPage() {
           </div>
         </section>
 
-        <Divider />
+        <div className="hidden"><Divider /></div>
 
         {/* ══════════════════════════════════════════════════════════════════
             SECTION 4 — RESPONSIVE GRID
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="grid" aria-labelledby="grid-heading">
+        <section id="grid" aria-labelledby="grid-heading" className="hidden">
           <SectionLabel>Responsive Grid</SectionLabel>
           <SectionHeading id="grid-heading">Mixed Variants — Fluid Grid</SectionHeading>
           <p className="text-sm text-neutral-500 mb-8">
