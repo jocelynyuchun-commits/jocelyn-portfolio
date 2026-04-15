@@ -1040,19 +1040,42 @@
   <div class="token-panel section-gap" style="margin-top:56px;">
     <div class="token-panel-header">
       <span class="tph-title">Token Reference — Differentiating Values Across Brands</span>
-      <span class="tph-subtitle">Layer 2: Semantic → Layer 3: Component</span>
+      <span class="tph-subtitle">Layer 1: Primitive → Layer 2: Semantic → Layer 3: Component</span>
     </div>
     <table class="token-table">
       <thead>
         <tr>
           <th>Token (CSS Custom Property)</th>
-          <th>Brand 1</th>
-          <th>Brand 2</th>
-          <th>Brand 3</th>
+          <th>Brand 1 — Navy</th>
+          <th>Brand 2 — Brown</th>
+          <th>Brand 3 — Green</th>
           <th>Source</th>
         </tr>
       </thead>
       <tbody>
+        <!-- Layer 1 — Brand Primitive Colors -->
+        <tr style="background:#f8f9fb;">
+          <td colspan="5" style="padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9b9b9b;">Layer 1 — Brand Primitive Colors</td>
+        </tr>
+        <tr>
+          <td><code>--color-brand-primary</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2c4e7e"></div>#2c4e7e</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Color/Brand/Primary</td>
+        </tr>
+        <tr>
+          <td><code>--color-brand-secondary</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div>#2f71d4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td>Color/Brand/Secondary</td>
+        </tr>
+
+        <!-- Layer 2 — Semantic: Button Colors -->
+        <tr style="background:#f8f9fb;">
+          <td colspan="5" style="padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9b9b9b;">Layer 2 — Semantic: Button Colors</td>
+        </tr>
         <tr>
           <td><code>--btn-solid-default</code></td>
           <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
@@ -1062,17 +1085,78 @@
         </tr>
         <tr>
           <td><code>--btn-solid-hover</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#24508f"></div>#24508f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div>#255090</div></td>
           <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
           <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
           <td>Buttons/Solid/Hover</td>
         </tr>
         <tr>
-          <td><code>--btn-radius</code></td>
-          <td>4px</td>
-          <td>0px</td>
-          <td>16px</td>
-          <td>Buttons/Radius/Default</td>
+          <td><code>--btn-solid-pressed</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div>#2f71d4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td>Buttons/Solid/Pressed</td>
+        </tr>
+        <tr>
+          <td><code>--btn-solid-focus-fill</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div>#e4eaf4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td>Buttons/Solid/Focus-Fill</td>
+        </tr>
+        <tr>
+          <td><code>--btn-solid-focus-ring</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#90a5c4"></div>#90a5c4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#b7a69f"></div>#b7a69f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td>Buttons/Solid/Focus-Ring</td>
+        </tr>
+        <tr>
+          <td><code>--btn-outline-default</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Buttons/Outline/Default</td>
+        </tr>
+        <tr>
+          <td><code>--btn-outline-hover</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div>#255090</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
+          <td>Buttons/Outline/Hover</td>
+        </tr>
+        <tr>
+          <td><code>--btn-outline-pressed</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div>#2f71d4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td>Buttons/Outline/Pressed</td>
+        </tr>
+        <tr>
+          <td><code>--btn-outline-focus-fill</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div>#e4eaf4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td>Buttons/Outline/Focus-Fill</td>
+        </tr>
+        <tr>
+          <td><code>--btn-outline-focus-ring</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#90a5c4"></div>#90a5c4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#b7a69f"></div>#b7a69f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#9bbaac"></div>#9bbaac</div></td>
+          <td>Buttons/Outline/Focus-Ring</td>
+        </tr>
+        <tr>
+          <td><code>--btn-outline-text</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Buttons/Outline/Text</td>
+        </tr>
+
+        <!-- Layer 2 — Semantic: Typography & Shape -->
+        <tr style="background:#f8f9fb;">
+          <td colspan="5" style="padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9b9b9b;">Layer 2 — Semantic: Typography &amp; Shape</td>
         </tr>
         <tr>
           <td><code>--font-family-brand</code></td>
@@ -1082,18 +1166,11 @@
           <td>Buttons/Font-Family/Default</td>
         </tr>
         <tr>
-          <td><code>--discovery-card-accent-new</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
-          <td>Color/[Brand]/[Scale]-900</td>
-        </tr>
-        <tr>
-          <td><code>--discovery-filter-hover-bg</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4"></div>#e4eaf4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
-          <td>Buttons/Outline/Focus-Fill</td>
+          <td><code>--btn-radius</code></td>
+          <td>4px</td>
+          <td>0px</td>
+          <td>16px</td>
+          <td>Buttons/Radius/Default</td>
         </tr>
         <tr>
           <td><code>--color-border-focus</code></td>
@@ -1101,6 +1178,39 @@
           <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
           <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
           <td>Color/Border/Focus</td>
+        </tr>
+
+        <!-- Layer 3 — Component: ProductDiscovery -->
+        <tr style="background:#f8f9fb;">
+          <td colspan="5" style="padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9b9b9b;">Layer 3 — Component: ProductDiscovery</td>
+        </tr>
+        <tr>
+          <td><code>--discovery-filter-hover-bg</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div>#e4eaf4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td>Buttons/Outline/Focus-Fill</td>
+        </tr>
+        <tr>
+          <td><code>--discovery-card-accent-new</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td>Color/[Brand]/[Scale]-900</td>
+        </tr>
+        <tr>
+          <td><code>--discovery-card-accent-wrinkle</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div>#255090</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
+          <td>Color/[Brand]/[Scale]-700</td>
+        </tr>
+        <tr>
+          <td><code>--discovery-card-accent-perf</code></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#8e2231"></div>#8e2231</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td>Color/Brand/Secondary</td>
         </tr>
       </tbody>
     </table>
