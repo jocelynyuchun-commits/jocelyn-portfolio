@@ -141,8 +141,8 @@
   --discovery-card-accent-new:        #142d51;
   --discovery-card-accent-wrinkle:    #255090;
   --discovery-card-accent-perf:       #8e2231;
-  --discovery-quickshop-bg:           var(--color-brand-primary);
-  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-quickshop-bg:           rgba(255, 255, 255, 0.6);
+  --discovery-quickshop-text:         var(--color-brand-primary);
   --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
   --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
 }
@@ -210,8 +210,8 @@
   --discovery-card-accent-new:        #5a2f1f;
   --discovery-card-accent-wrinkle:    #79574a;
   --discovery-card-accent-perf:       #987e75;
-  --discovery-quickshop-bg:           var(--color-brand-primary);
-  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-quickshop-bg:           rgba(255, 255, 255, 0.6);
+  --discovery-quickshop-text:         var(--color-brand-primary);
   --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
   --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
 }
@@ -279,8 +279,8 @@
   --discovery-card-accent-new:        #15613f;
   --discovery-card-accent-wrinkle:    #417f63;
   --discovery-card-accent-perf:       #6e9c88;
-  --discovery-quickshop-bg:           var(--color-brand-primary);
-  --discovery-quickshop-text:         var(--color-neutral-white);
+  --discovery-quickshop-bg:           rgba(255, 255, 255, 0.6);
+  --discovery-quickshop-text:         var(--color-brand-primary);
   --discovery-transition-filter:      var(--motion-duration-short) var(--motion-easing-standard);
   --discovery-transition-slide:       var(--motion-duration-medium) var(--motion-easing-standard);
 }
@@ -728,30 +728,33 @@
       transition: background var(--discovery-transition-filter, 250ms ease-in-out);
     }
 
-    /* Quick shop overlay */
+    /* Quick shop overlay — centered pill, matches product-discovery page */
     .quick-shop {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--discovery-quickshop-bg, #142d51);
-      color: var(--discovery-quickshop-text, #ffffff);
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      max-width: calc(100% - 24px);
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--discovery-quickshop-bg, rgba(255, 255, 255, 0.6));
+      color: var(--discovery-quickshop-text, #142d51);
       font-family: var(--discovery-filter-font);
       font-size: var(--font-size-sm, 14px);
-      font-weight: var(--font-weight-semibold, 600);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-weight: var(--font-weight-medium, 500);
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
       text-align: center;
-      padding: var(--spacing-300, 12px) var(--spacing-400, 16px);
       opacity: 0;
-      transform: translateY(100%);
-      transition: opacity 200ms ease, transform 200ms ease;
+      transition: opacity 200ms ease;
       cursor: pointer;
       border: none;
     }
     .product-card:hover .quick-shop {
       opacity: 1;
-      transform: translateY(0);
     }
 
     /* Badge — bottom-left of image, above quick-shop overlay */
@@ -1235,7 +1238,7 @@ const BRANDS = {
     accentColors: {
       'new-arrivals': '#142d51',
       'wrinkle-free':  '#24508f',
-      'performance':   '#8e2231',
+      'performance':   '#3e6dab',
     },
     products: {
       'new-arrivals': [
