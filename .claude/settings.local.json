@@ -87,7 +87,8 @@
       "Bash(git add CLAUDE.md)",
       "Bash(git push)",
       "Bash(git -C /Users/jocelynlin/Desktop/jocelyn-portfolio remote -v)",
-      "Bash(zip -r /Users/jocelynlin/Desktop/figma-claude-test-latest.zip . -x \".git/*\" -x \"node_modules/*\" -x \".next/*\" -x \".vercel/*\" -x \".DS_Store\" -x \"*/.DS_Store\" -x \"030626_Mutlibrand/multibrand-package.zip\")"
+      "Bash(zip -r /Users/jocelynlin/Desktop/figma-claude-test-latest.zip . -x \".git/*\" -x \"node_modules/*\" -x \".next/*\" -x \".vercel/*\" -x \".DS_Store\" -x \"*/.DS_Store\" -x \"030626_Mutlibrand/multibrand-package.zip\")",
+      "Bash(git add:*)"
     ]
   }
 }
