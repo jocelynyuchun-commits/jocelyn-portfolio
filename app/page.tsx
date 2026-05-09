@@ -314,12 +314,12 @@ export default function Page() {
           </div>
         </section>
 
-        <Divider />
+        <div className="hidden"><Divider /></div>
 
         {/* ══════════════════════════════════════════════════════════════════
-            SECTION 1 — DESIGN TOKENS
+            SECTION 1 — DESIGN TOKENS (hidden — moved to /foundations)
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="tokens" aria-labelledby="tokens-heading">
+        <section id="tokens" aria-labelledby="tokens-heading" className="hidden">
           <SectionLabel>Design Tokens</SectionLabel>
           <SectionHeading>Color</SectionHeading>
           <p className="text-sm text-neutral-500 mb-6">
