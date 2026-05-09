@@ -1474,7 +1474,7 @@
     document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
     document.getElementById('demo-' + id).classList.add('active');
     const tabs = document.querySelectorAll('.demo-tab');
-    const map = { 'buttons': 0, 'product-card': 1, 'discovery': 2, 'multibrand': 3 };
+    const map = { 'foundations': 0, 'buttons': 1, 'product-card': 2, 'discovery': 3, 'multibrand': 4 };
     tabs[map[id]].classList.add('active');
   }
   function iframeLoaded(iframe) {}
