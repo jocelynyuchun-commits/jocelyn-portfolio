@@ -69,7 +69,7 @@ const TOKEN_ROWS = [
   { property: 'Badge height',       token: 'Scale/600',            value: '24px',    notes: 'Always bg-[#ececec]' },
   { property: 'Badge inset',        token: 'Scale/300',            value: '10px',    notes: 'bottom-left' },
   { property: 'Badge text (Default)',  token: 'Color/Blue/Blue-900', value: '#142D51', notes: 'Navy' },
-  { property: 'Badge text (Sale)',  token: 'Color/Maroon',         value: '#8E2231', notes: 'Maroon' },
+  { property: 'Badge text (Sale)',  token: 'Color/Maroon',         value: '#8E2231', notes: 'Maroon',          hide: true },
   { property: 'Wishlist hit target',token: 'Scale/800',            value: '32×32px', notes: 'top-right, 12 px inset' },
   { property: 'Swatch size (desktop)', token: '30 px',             value: '30px',    notes: 'w-[30px] h-[30px]' },
   { property: 'Swatch size (mobile)', token: '36 px',              value: '36px',    notes: 'w-9 h-9 (< lg)' },
@@ -78,9 +78,9 @@ const TOKEN_ROWS = [
   { property: 'Swatch ring',        token: '1.5 px / Blue-900',    value: '1.5px #142D51', notes: 'ring-[1.5px] ring-blue-900' },
   { property: 'Title type',         token: 'Label/L_500',          value: '16/20px w500 ls0.02em', notes: 'neutral-700' },
   { property: 'Price type',         token: 'Label/L_400',          value: '16/20px w400 ls0.02em', notes: 'neutral-700' },
-  { property: 'Sale original price', token: 'Label/L_400',         value: '16/20px w400',          notes: 'neutral-500 + asterisk' },
-  { property: 'Sale price',         token: 'Label/L_400',          value: '16/20px w400',          notes: 'maroon (#8E2231)' },
-  { property: 'Promo line type',    token: 'Label/M_400',          value: '14/16px w400 ls0.02em', notes: 'maroon' },
+  { property: 'Sale original price', token: 'Label/L_400',         value: '16/20px w400',          notes: 'neutral-500 + asterisk', hide: true },
+  { property: 'Sale price',         token: 'Label/L_400',          value: '16/20px w400',          notes: 'maroon (#8E2231)',        hide: true },
+  { property: 'Promo line type',    token: 'Label/M_400',          value: '14/16px w400 ls0.02em', notes: 'maroon',                 hide: true },
   { property: 'Color name type',    token: 'Label/M_500',          value: '14/16px w500 ls0.02em', notes: 'neutral-600' },
   { property: 'Price note type',    token: 'Label/XS_600',         value: '10/12px w600 ls0.02em', notes: 'neutral-600' },
 ]
@@ -99,7 +99,7 @@ function TokenTable() {
         </thead>
         <tbody>
           {TOKEN_ROWS.map((row, i) => (
-            <tr key={i} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+            <tr key={i} className={`border-b border-neutral-100 hover:bg-neutral-50 transition-colors${row.hide ? ' hidden' : ''}`}>
               <td className="px-4 py-2.5 text-neutral-700 font-medium">{row.property}</td>
               <td className="px-4 py-2.5">
                 <code className="bg-neutral-100 text-neutral-700 rounded px-1.5 py-0.5 font-mono text-[10px]">{row.token}</code>
@@ -328,12 +328,12 @@ export default function ProductCardPage() {
               <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-widest mb-3">Variant prop</p>
               <div className="space-y-1.5">
                 {[
-                  { v: 'default',   desc: 'Standard card. Optional badge prop.' },
-                  { v: 'sale',      desc: 'Sale badge + sale pricing layout.' },
-                  { v: 'finalSale', desc: '"Final Sale" badge + standard pricing.' },
-                  { v: 'notifyMe',  desc: '"Coming Soon: Notify Me" always visible.' },
-                ].map(({ v, desc }) => (
-                  <div key={v} className="flex items-start gap-2 text-xs text-neutral-600">
+                  { v: 'default',   desc: 'Standard card. Optional badge prop.',        show: true },
+                  { v: 'sale',      desc: 'Sale badge + sale pricing layout.',          show: false },
+                  { v: 'finalSale', desc: '"Final Sale" badge + standard pricing.',     show: false },
+                  { v: 'notifyMe',  desc: '"Coming Soon: Notify Me" always visible.',   show: false },
+                ].map(({ v, desc, show }) => (
+                  <div key={v} className={`flex items-start gap-2 text-xs text-neutral-600${show ? '' : ' hidden'}`}>
                     <code className="bg-neutral-100 rounded px-1.5 py-0.5 text-[10px] font-mono text-neutral-700 shrink-0">{v}</code>
                     <span className="text-neutral-400">{desc}</span>
                   </div>
@@ -386,7 +386,7 @@ export default function ProductCardPage() {
             </p>
 
             {/* Interactive */}
-            <div className="bg-white rounded-t-lg border border-neutral-200 px-5 py-4 mb-px">
+            <div className="bg-white rounded-t-lg border border-neutral-200 px-5 py-4 mb-px hidden">
               <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-widest mb-3">
                 Interactive — hover over card to preview Quick Shop · click heart to toggle wishlist
               </p>
@@ -474,7 +474,7 @@ export default function ProductCardPage() {
           </div>
 
           {/* ── 2.4  Notify Me ───────────────────────────────────────────── */}
-          <div className="mb-10">
+          <div className="mb-10 hidden">
             <div className="flex items-baseline gap-3 mb-4">
               <h3 className="font-semibold text-blue-900 text-base">Notify Me</h3>
               <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-widest">Out of Stock / Coming Soon</span>
