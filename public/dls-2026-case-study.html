@@ -997,14 +997,33 @@
 
     <!-- Tab switcher -->
     <div class="demo-tabs">
-      <div class="demo-tab active" onclick="switchDemo('buttons')">Buttons</div>
+      <div class="demo-tab active" onclick="switchDemo('foundations')">Foundations</div>
+      <div class="demo-tab" onclick="switchDemo('buttons')">Buttons</div>
       <div class="demo-tab" onclick="switchDemo('product-card')">Product Card</div>
       <div class="demo-tab" onclick="switchDemo('discovery')">Product Discovery</div>
       <div class="demo-tab" onclick="switchDemo('multibrand')">Multi-Brand</div>
     </div>
 
+    <!-- Foundations -->
+    <div class="demo-panel active" id="demo-foundations">
+      <div class="demo-frame-wrap">
+        <div class="demo-frame-bar">
+          <div class="demo-frame-dots">
+            <div class="demo-frame-dot"></div><div class="demo-frame-dot"></div><div class="demo-frame-dot"></div>
+          </div>
+          <div class="demo-frame-url">figma-claude-test-henna.vercel.app/foundations</div>
+          <a class="demo-frame-link" href="https://figma-claude-test-henna.vercel.app/foundations" target="_blank">View Full Page ↗</a>
+        </div>
+        <iframe class="demo-iframe tall" src="https://figma-claude-test-henna.vercel.app/foundations" loading="lazy" title="Foundations"
+          onload="iframeLoaded(this)" onerror="iframeFailed(this, 'https://figma-claude-test-henna.vercel.app/foundations')"></iframe>
+        <div class="iframe-fallback" style="display:none;">
+          <p>This page can't be embedded — <a href="https://figma-claude-test-henna.vercel.app/foundations" target="_blank">open live demo ↗</a></p>
+        </div>
+      </div>
+    </div>
+
     <!-- Buttons -->
-    <div class="demo-panel active" id="demo-buttons">
+    <div class="demo-panel" id="demo-buttons">
       <div class="demo-frame-wrap">
         <div class="demo-frame-bar">
           <div class="demo-frame-dots">
