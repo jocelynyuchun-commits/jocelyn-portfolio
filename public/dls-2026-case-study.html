@@ -224,7 +224,7 @@
   .arch-flow-icon.react { background: #e0f2fe; color: #0284c7; }
   .arch-flow-icon.brand { background: #111111; color: #ffffff; }
   .arch-flow-node-title { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 4px; }
-  .arch-flow-node-sub { font-size: 12.5px; font-weight: 400; color: var(--gray-mid); line-height: 1.5; }
+  .arch-flow-node-sub { font-size: 12.5px; font-weight: 400; color: var(--gray-dark); line-height: 1.5; }
   .arch-flow-connector { display: none; }
   .arch-flow-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   .arch-flow-svg path { fill: none; stroke-width: 2; stroke-linecap: round; }
@@ -864,7 +864,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="currentColor"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="currentColor" opacity=".8"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4z" fill="currentColor" opacity=".6"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="currentColor" opacity=".7"/><circle cx="16" cy="12" r="4" fill="currentColor" opacity=".9"/></svg>
         </div>
         <div class="arch-flow-node-title">Figma Design File</div>
-        <div class="arch-flow-node-sub">Single source of truth. Queryable by Claude via MCP connection (GUI + terminal).</div>
+        <div class="arch-flow-node-sub">Single source of truth. Queryable by Claude via MCP.</div>
       </div>
 
       <div class="arch-flow-node" data-node="mcp">
@@ -872,7 +872,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
         <div class="arch-flow-node-title">Figma MCP Server</div>
-        <div class="arch-flow-node-sub">Primitives, semantic tokens, and component values extracted from Figma JSON per brand.</div>
+        <div class="arch-flow-node-sub">Extracts primitives, semantic tokens, and component values per brand.</div>
       </div>
 
       <div class="arch-flow-node" data-node="claude">
@@ -880,7 +880,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z" opacity=".85"/></svg>
         </div>
         <div class="arch-flow-node-title">Claude Code</div>
-        <div class="arch-flow-node-sub">Processes extracted tokens and auto-generates structured output across all layers.</div>
+        <div class="arch-flow-node-sub">Processes tokens and generates structured output across all layers.</div>
       </div>
 
       <div class="arch-flow-node" data-node="tokens">
@@ -888,7 +888,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <div class="arch-flow-node-title">Design Token Files</div>
-        <div class="arch-flow-node-sub">Primitives.json + Semantic.json generated as structured data with resolved values per brand.</div>
+        <div class="arch-flow-node-sub">Primitives + Semantic JSON with resolved values per brand.</div>
       </div>
 
       <div class="arch-flow-node" data-node="react">
@@ -896,7 +896,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
         </div>
         <div class="arch-flow-node-title">React Components</div>
-        <div class="arch-flow-node-sub">BEM class composition. Zero hardcoded values. All visual decisions resolved through the token chain.</div>
+        <div class="arch-flow-node-sub">Zero hardcoded values. All decisions flow through the token chain.</div>
       </div>
 
       <div class="arch-flow-node" data-node="brand">
@@ -904,7 +904,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
         </div>
         <div class="arch-flow-node-title">Multi-Brand UI</div>
-        <div class="arch-flow-node-sub">Brand switching via single <code>data-brand</code> attribute across all 3 token layers.</div>
+        <div class="arch-flow-node-sub">Full brand switch via a single <code>data-brand</code> attribute.</div>
       </div>
     </div>
 
