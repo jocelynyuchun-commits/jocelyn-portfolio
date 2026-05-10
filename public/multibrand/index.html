@@ -923,7 +923,11 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 12px;
+      table-layout: fixed;
     }
+    .token-table col.col-token  { width: 18%; }
+    .token-table col.col-brand  { width: 21%; }
+    .token-table col.col-source { width: 19%; }
     .token-table th {
       background: var(--shell-bg, #f5f5f5);
       font-size: 11px;
@@ -959,6 +963,24 @@
       border-radius: 3px;
       border: 1px solid rgba(0,0,0,0.1);
       flex-shrink: 0;
+    }
+    .swatch-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+    .swatch-text .alias {
+      font-size: 11px;
+      color: #4a4a4a;
+      line-height: 1.35;
+      letter-spacing: 0.005em;
+    }
+    .swatch-text .hex {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 10px;
+      color: #9b9b9b;
+      line-height: 1.35;
     }
 
     /* ═══════════════════════════════════════════════
@@ -1029,6 +1051,13 @@
       <span class="tph-subtitle">Layer 1: Primitive → Layer 2: Semantic → Layer 3: Component</span>
     </div>
     <table class="token-table">
+      <colgroup>
+        <col class="col-token" />
+        <col class="col-brand" />
+        <col class="col-brand" />
+        <col class="col-brand" />
+        <col class="col-source" />
+      </colgroup>
       <thead>
         <tr>
           <th>Token (CSS Custom Property)</th>
@@ -1045,16 +1074,16 @@
         </tr>
         <tr>
           <td><code>--color-brand-primary</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2c4e7e"></div>#2c4e7e</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2c4e7e"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Primary</span><span class="hex">#2c4e7e</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Primary</span><span class="hex">#5a2f1f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Primary</span><span class="hex">#15613f</span></div></div></td>
           <td>Color/Brand/Primary</td>
         </tr>
         <tr>
           <td><code>--color-brand-secondary</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div>#2f71d4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Secondary</span><span class="hex">#2f71d4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Secondary</span><span class="hex">#987e75</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Secondary</span><span class="hex">#6e9c88</span></div></div></td>
           <td>Color/Brand/Secondary</td>
         </tr>
         <!-- Layer 2 — Semantic: Button Colors -->
@@ -1063,79 +1092,79 @@
         </tr>
         <tr>
           <td><code>--btn-solid-default</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-900</span><span class="hex">#142d51</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-900</span><span class="hex">#5a2f1f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-900</span><span class="hex">#15613f</span></div></div></td>
           <td>Buttons/Solid/Default</td>
         </tr>
         <tr>
           <td><code>--btn-solid-hover</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div>#255090</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-700</span><span class="hex">#255090</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-700</span><span class="hex">#79574a</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-700</span><span class="hex">#417f63</span></div></div></td>
           <td>Buttons/Solid/Hover</td>
         </tr>
         <tr>
           <td><code>--btn-solid-pressed</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div>#2f71d4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-500</span><span class="hex">#2f71d4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-500</span><span class="hex">#987e75</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-500</span><span class="hex">#6e9c88</span></div></div></td>
           <td>Buttons/Solid/Pressed</td>
         </tr>
         <tr>
           <td><code>--btn-solid-focus-fill</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div>#e4eaf4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-100</span><span class="hex">#e4eaf4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-100</span><span class="hex">#c6b9b4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-100</span><span class="hex">#c8d7d1</span></div></div></td>
           <td>Buttons/Solid/Focus-Fill</td>
         </tr>
         <tr>
           <td><code>--btn-solid-focus-ring</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#90a5c4"></div>#90a5c4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#b7a69f"></div>#b7a69f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#90a5c4"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-300</span><span class="hex">#90a5c4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#b7a69f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-300</span><span class="hex">#b7a69f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-500</span><span class="hex">#6e9c88</span></div></div></td>
           <td>Buttons/Solid/Focus-Ring</td>
         </tr>
         <tr>
           <td><code>--btn-outline-default</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-900</span><span class="hex">#142d51</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-900</span><span class="hex">#5a2f1f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-900</span><span class="hex">#15613f</span></div></div></td>
           <td>Buttons/Outline/Default</td>
         </tr>
         <tr>
           <td><code>--btn-outline-hover</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div>#255090</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-700</span><span class="hex">#255090</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-700</span><span class="hex">#79574a</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-700</span><span class="hex">#417f63</span></div></div></td>
           <td>Buttons/Outline/Hover</td>
         </tr>
         <tr>
           <td><code>--btn-outline-pressed</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div>#2f71d4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2f71d4"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-500</span><span class="hex">#2f71d4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-500</span><span class="hex">#987e75</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-500</span><span class="hex">#6e9c88</span></div></div></td>
           <td>Buttons/Outline/Pressed</td>
         </tr>
         <tr>
           <td><code>--btn-outline-focus-fill</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div>#e4eaf4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-100</span><span class="hex">#e4eaf4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-100</span><span class="hex">#c6b9b4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-100</span><span class="hex">#c8d7d1</span></div></div></td>
           <td>Buttons/Outline/Focus-Fill</td>
         </tr>
         <tr>
           <td><code>--btn-outline-focus-ring</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#90a5c4"></div>#90a5c4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#b7a69f"></div>#b7a69f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#9bbaac"></div>#9bbaac</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#90a5c4"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-300</span><span class="hex">#90a5c4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#b7a69f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-300</span><span class="hex">#b7a69f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#9bbaac"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-300</span><span class="hex">#9bbaac</span></div></div></td>
           <td>Buttons/Outline/Focus-Ring</td>
         </tr>
         <tr>
           <td><code>--btn-outline-text</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-900</span><span class="hex">#142d51</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-900</span><span class="hex">#5a2f1f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-900</span><span class="hex">#15613f</span></div></div></td>
           <td>Buttons/Outline/Text</td>
         </tr>
         <!-- Layer 2 — Semantic: Typography & Shape -->
@@ -1158,9 +1187,9 @@
         </tr>
         <tr>
           <td><code>--color-border-focus</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2c4e7e"></div>#2c4e7e</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#2c4e7e"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Primary</span><span class="hex">#2c4e7e</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Primary</span><span class="hex">#5a2f1f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Primary</span><span class="hex">#15613f</span></div></div></td>
           <td>Color/Border/Focus</td>
         </tr>
         <!-- Layer 3 — Component: ProductDiscovery -->
@@ -1169,30 +1198,30 @@
         </tr>
         <tr>
           <td><code>--discovery-filter-hover-bg</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div>#e4eaf4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div>#c6b9b4</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div>#c8d7d1</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#e4eaf4;border:1px solid #e0e0e0"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-100</span><span class="hex">#e4eaf4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c6b9b4"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-100</span><span class="hex">#c6b9b4</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#c8d7d1"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-100</span><span class="hex">#c8d7d1</span></div></div></td>
           <td>Buttons/Outline/Focus-Fill</td>
         </tr>
         <tr>
           <td><code>--discovery-card-accent-new</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div>#142d51</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div>#5a2f1f</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div>#15613f</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#142d51"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-900</span><span class="hex">#142d51</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#5a2f1f"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-900</span><span class="hex">#5a2f1f</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#15613f"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-900</span><span class="hex">#15613f</span></div></div></td>
           <td>Color/[Brand]/[Scale]-900</td>
         </tr>
         <tr>
           <td><code>--discovery-card-accent-wrinkle</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div>#255090</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div>#79574a</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div>#417f63</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#255090"></div><div class="swatch-text"><span class="alias">Blue-Brand 1/Blue-700</span><span class="hex">#255090</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#79574a"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-700</span><span class="hex">#79574a</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#417f63"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-700</span><span class="hex">#417f63</span></div></div></td>
           <td>Color/[Brand]/[Scale]-700</td>
         </tr>
         <tr>
           <td><code>--discovery-card-accent-perf</code></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#8e2231"></div>#8e2231</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div>#987e75</div></td>
-          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div>#6e9c88</div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#8e2231"></div><div class="swatch-text"><span class="alias">Color/Brand/Logo</span><span class="hex">#8e2231</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#987e75"></div><div class="swatch-text"><span class="alias">Brown-Brand 2/Brown-500</span><span class="hex">#987e75</span></div></div></td>
+          <td><div class="swatch-cell"><div class="swatch-box" style="background:#6e9c88"></div><div class="swatch-text"><span class="alias">Green-Brand 3/Green-500</span><span class="hex">#6e9c88</span></div></div></td>
           <td>Color/Brand/Secondary</td>
         </tr>
       </tbody>
