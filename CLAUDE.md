@@ -15,3 +15,15 @@ The following public HTML files are finalized and deployed. **Never** overwrite,
 - `vercel.json`
 
 Before making any change to these files, confirm with the user what specifically will be modified and get explicit approval.
+
+## Token Reference Display Conventions
+
+- **Single-brand pages** (`/`, `/product-card`, `/product-discovery`):
+  Token reference cells show the resolved hex value only.
+
+- **Multi-brand page** (`/multibrand/`):
+  Each brand cell MUST show BOTH the semantic→primitive alias path
+  (e.g., "Blue-Brand 1/Blue-900") AND the resolved hex below it.
+  This mirrors how Figma displays semantic tokens in the Variables
+  panel. Don't collapse multibrand cells to hex-only — the alias
+  path IS the architectural story being told.
