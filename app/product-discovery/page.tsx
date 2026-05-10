@@ -159,9 +159,9 @@ export default function ProductDiscoveryPage() {
       <div className="px-6 sm:px-10 py-10 max-w-[1440px] mx-auto">
 
         {/* ══════════════════════════════════════════════════════════════════
-            SECTION 1 — TOKEN SYNC SUMMARY
+            SECTION 1 (HIDDEN) — TOKEN SYNC SUMMARY
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="sync" aria-labelledby="sync-heading">
+        <section id="sync" aria-labelledby="sync-heading" className="hidden">
           <SectionLabel>Token Sync</SectionLabel>
           <SectionHeading id="sync-heading">Token Changes</SectionHeading>
           <p className="text-sm text-neutral-500 mb-6">
@@ -174,7 +174,7 @@ export default function ProductDiscoveryPage() {
           </div>
         </section>
 
-        <Divider />
+        <div className="hidden"><Divider /></div>
 
         {/* ══════════════════════════════════════════════════════════════════
             SECTION 2 — DESIGN TOKENS

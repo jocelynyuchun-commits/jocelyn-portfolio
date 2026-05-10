@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * UNTUCKit DLS 2026 — Design System Showcase
  *
@@ -5,7 +7,7 @@
  *   1. Design Tokens  — colors, typography, spacing
  *   2. Button Components — all variants × sizes × states
  */
-import type { CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { Button, ButtonVariant, ButtonSize } from '@/components/ui/Button'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -232,9 +234,9 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+function SectionHeading({ id, children }: { id?: string; children: React.ReactNode }) {
   return (
-    <h2 className="font-semibold text-blue-900 mb-1" style={{ fontSize: 20, lineHeight: '26px' }}>
+    <h2 id={id} className="font-semibold text-blue-900 mb-1" style={{ fontSize: 20, lineHeight: '26px' }}>
       {children}
     </h2>
   )
@@ -242,6 +244,146 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 function Divider() {
   return <hr className="border-neutral-200 my-12" />
+}
+
+// ─── Token reference table — tabbed (Solid · Outline) ─────────────────────
+
+type TokenRow =
+  | { divider: string }
+  | { property: string; token: string; value: string; notes: string; swatch?: string }
+
+const FOUNDATION_ROWS: TokenRow[] = [
+  { divider: 'Foundation — applies to all variants' },
+  { property: 'Size — sm',     token: '--btn-w-sm × --btn-h-sm',     value: '144px × 40px / px 16px',           notes: 'Buttons/Width+Height/Small' },
+  { property: 'Size — md',     token: '--btn-w-md × --btn-h-md',     value: '172px × 48px / px 20px',           notes: 'Buttons/Width+Height/Medium/Regular' },
+  { property: 'Size — lg',     token: '--btn-w-lg × --btn-h-lg',     value: '366px × 48px / px 20px',           notes: 'Buttons/Width+Height/CTA/Large' },
+  { property: 'Size — full',   token: '--btn-w-full × --btn-h-full', value: '100% × 48px / px 20px',            notes: 'Buttons/Width+Height/Full Width' },
+  { property: 'Label font',    token: '--btn-font-family',           value: 'Proxima Nova',                      notes: 'Medium 500' },
+  { property: 'Label type',    token: '--btn-font-size / line-height', value: '16px / 20px · 0.02em · capitalize', notes: 'Buttons/Font' },
+  { property: 'Border radius', token: '--btn-radius',                value: '4px',                               notes: 'Buttons/Radius/Default' },
+]
+
+const SOLID_VARIANT_ROWS: TokenRow[] = [
+  // ── Light Mode — Solid Blue ────────────────────────────────────────────────
+  { divider: 'Light Mode — Solid Blue (Primary)' },
+  { property: 'Default',    token: '--btn-solid-default',       value: '#142D51',                 notes: 'Buttons/Solid/Default → Blue-900',           swatch: '#142D51' },
+  { property: 'Hover',      token: '--btn-solid-hover',         value: '#255090',                 notes: 'Buttons/Solid/Hover → Blue-700',             swatch: '#255090' },
+  { property: 'Active',     token: '--btn-solid-active',        value: '#2F71D4',                 notes: 'Buttons/Solid/Active-Pressed',               swatch: '#2F71D4' },
+  { property: 'Focus bg',   token: '--btn-solid-focus-fill',    value: '#E4EAF4',                 notes: 'Buttons/Solid/Focus-Fill → Blue-100',        swatch: '#E4EAF4' },
+  { property: 'Focus ring', token: '--btn-solid-focus-ring',    value: '#90A5C3',                 notes: 'Buttons/Solid/Focus-Ring',                   swatch: '#90A5C3' },
+  { property: 'Disabled',   token: '--btn-solid-disabled',      value: '#C5C5C5',                 notes: 'Buttons/Solid/Disabled → Neutral-300',       swatch: '#C5C5C5' },
+
+  // ── Dark Mode — Inverted (White Solid) ─────────────────────────────────────
+  { divider: 'Dark Mode — Inverted / White Solid (Primary on dark)' },
+  { property: 'Default',    token: '--btn-inverted-default',    value: '#FFFFFF · text #142D51',  notes: 'Buttons-Solid/Dark Mode → Inverted_Primary', swatch: '#FFFFFF' },
+  { property: 'Hover',      token: '--btn-inverted-hover',      value: '#E4EAF4',                 notes: 'Blue-100 fill on dark bg',                   swatch: '#E4EAF4' },
+  { property: 'Active',     token: '--btn-inverted-active',     value: '#BDC9DD',                 notes: 'Blue-200 fill on dark bg',                   swatch: '#BDC9DD' },
+  { property: 'Focus bg',   token: '--btn-inverted-focus-fill', value: '#FFFFFF',                 notes: 'Stays white — relies on focus ring',         swatch: '#FFFFFF' },
+  { property: 'Focus ring', token: '--btn-inverted-focus-ring', value: '#90A5C3',                 notes: 'Same ring as Light Mode',                    swatch: '#90A5C3' },
+  { property: 'Disabled',   token: '--btn-inverted-disabled',   value: '#C5C5C5 · text #9B9B9B',  notes: 'Neutral-300 bg, Neutral-400 text',           swatch: '#C5C5C5' },
+]
+
+const OUTLINE_VARIANT_ROWS: TokenRow[] = [
+  // ── Light Mode — Outline Blue ──────────────────────────────────────────────
+  { divider: 'Light Mode — Outline Blue (Secondary)' },
+  { property: 'Default',    token: '--btn-outline-default',     value: 'border #142D51 · text #142D51', notes: 'Buttons/Outline/Default → Blue-900',          swatch: '#142D51' },
+  { property: 'Hover',      token: '--btn-outline-hover',       value: 'border #255090 · text #255090', notes: 'Blue-700',                                    swatch: '#255090' },
+  { property: 'Active',     token: '--btn-outline-active',      value: 'border #2F71D4 · text #2F71D4', notes: 'Blue-500 (Active-Pressed)',                   swatch: '#2F71D4' },
+  { property: 'Focus',      token: '--btn-outline-focus-ring',  value: 'border #142D51 · ring #90A5C3', notes: 'Border stays Blue-900, ring layered on top',  swatch: '#90A5C3' },
+  { property: 'Disabled',   token: '--btn-outline-disabled',    value: 'border #C5C5C5 · text #C5C5C5', notes: 'Neutral-300',                                 swatch: '#C5C5C5' },
+
+  // ── Dark Mode — Outline White ──────────────────────────────────────────────
+  { divider: 'Dark Mode — Outline White (Secondary on dark)' },
+  { property: 'Default',    token: '--btn-outline-white-default', value: 'border #FFFFFF · text #FFFFFF',     notes: 'Buttons-Outline/Dark Mode',                 swatch: '#FFFFFF' },
+  { property: 'Hover',      token: '--btn-outline-white-hover',   value: 'border rgba(255,255,255,0.6)',      notes: 'White at 60% opacity',                      swatch: 'rgba(255,255,255,0.6)' },
+  { property: 'Active',     token: '--btn-outline-white-active',  value: 'border #E4EAF4 · text #E4EAF4',     notes: 'Blue-100',                                  swatch: '#E4EAF4' },
+  { property: 'Focus',      token: '--btn-outline-white-focus',   value: 'border #FFFFFF · ring #90A5C3',     notes: 'White border, same focus ring as Light',    swatch: '#90A5C3' },
+  { property: 'Disabled',   token: '--btn-outline-white-disabled',value: 'border rgba(255,255,255,0.3)',      notes: 'White at 30% opacity',                      swatch: 'rgba(255,255,255,0.3)' },
+]
+
+function TokenTable({ rows }: { rows: TokenRow[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-xs border-collapse min-w-[640px]">
+        <thead>
+          <tr className="bg-neutral-50 border-y border-neutral-200">
+            <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400 w-44">Property</th>
+            <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400 w-56">CSS Token</th>
+            <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400 w-56">Value</th>
+            <th className="px-4 py-2.5 text-left font-semibold text-[11px] uppercase tracking-widest text-neutral-400">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => {
+            if ('divider' in row) {
+              return (
+                <tr key={i} className="bg-neutral-50 border-y border-neutral-200">
+                  <td colSpan={4} className="px-4 py-2 text-[10px] font-semibold uppercase tracking-widest text-neutral-500">
+                    {row.divider}
+                  </td>
+                </tr>
+              )
+            }
+            return (
+              <tr key={i} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                <td className="px-4 py-2.5 text-neutral-700 font-medium">
+                  {row.swatch ? (
+                    <span className="inline-flex items-center gap-2">
+                      <span className="w-3 h-3 rounded border border-black/10 shrink-0" style={{ backgroundColor: row.swatch }} />
+                      {row.property}
+                    </span>
+                  ) : (
+                    row.property
+                  )}
+                </td>
+                <td className="px-4 py-2.5">
+                  <code className="bg-neutral-100 text-neutral-700 rounded px-1.5 py-0.5 font-mono text-[10px]">{row.token}</code>
+                </td>
+                <td className="px-4 py-2.5 font-mono text-neutral-500 text-[10px]">{row.value}</td>
+                <td className="px-4 py-2.5 text-neutral-400">{row.notes}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function TokenReferenceTabs() {
+  const [tab, setTab] = useState<'solid' | 'outline'>('solid')
+  const variantRows = tab === 'solid' ? SOLID_VARIANT_ROWS : OUTLINE_VARIANT_ROWS
+  const rows: TokenRow[] = [...FOUNDATION_ROWS, ...variantRows]
+
+  const tabBase = 'px-5 py-2.5 text-[13px] font-medium whitespace-nowrap cursor-pointer transition-colors border-r border-neutral-200 last:border-r-0 border-b-2'
+  const tabActive = 'bg-white text-neutral-900 border-b-neutral-900'
+  const tabIdle = 'bg-neutral-50 text-neutral-500 border-b-transparent hover:bg-white hover:text-neutral-900'
+
+  return (
+    <div className="mb-10">
+      <div role="tablist" aria-label="Button variant token reference" className="flex w-fit border border-neutral-200 border-b-0">
+        <button
+          role="tab"
+          aria-selected={tab === 'solid'}
+          onClick={() => setTab('solid')}
+          className={`${tabBase} ${tab === 'solid' ? tabActive : tabIdle}`}
+        >
+          Solid
+        </button>
+        <button
+          role="tab"
+          aria-selected={tab === 'outline'}
+          onClick={() => setTab('outline')}
+          className={`${tabBase} ${tab === 'outline' ? tabActive : tabIdle}`}
+        >
+          Outline
+        </button>
+      </div>
+      <div className="bg-white border border-neutral-200 overflow-hidden">
+        <TokenTable rows={rows} />
+      </div>
+    </div>
+  )
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -270,9 +412,26 @@ export default function Page() {
       <div className="px-6 sm:px-10 py-10 max-w-[1440px] mx-auto">
 
         {/* ══════════════════════════════════════════════════════════════════
-            SECTION 0 — TOKEN SYNC SUMMARY
+            SECTION 0 — TOKEN REFERENCE HEADER
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="sync" aria-labelledby="sync-heading">
+        <section id="token-reference" aria-labelledby="token-reference-heading">
+          <SectionLabel>Design Tokens</SectionLabel>
+          <SectionHeading id="token-reference-heading">Token Reference</SectionHeading>
+          <p className="text-sm text-neutral-500 mb-6">
+            All values sourced from{' '}
+            <code className="text-xs">Primitives.json</code> +{' '}
+            <code className="text-xs">Semantic.json</code>.
+            Component uses 3-layer token architecture: Primitives → Semantic → Component (--btn-*).
+            Switch tabs to view tokens for Solid (Light Mode Blue + Dark Mode Inverted) or Outline (Light Mode Blue + Dark Mode White) variants. Foundation rows (sizing, typography, radius) apply to all variants.
+          </p>
+
+          <TokenReferenceTabs />
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            SECTION 0 (HIDDEN) — TOKEN SYNC SUMMARY
+        ══════════════════════════════════════════════════════════════════ */}
+        <section id="sync" aria-labelledby="sync-heading" className="hidden">
           <SectionLabel>Token Sync</SectionLabel>
           <SectionHeading>Token Changes</SectionHeading>
           <p className="text-sm text-neutral-500 mb-6">

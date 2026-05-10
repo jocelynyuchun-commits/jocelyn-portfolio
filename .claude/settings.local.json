@@ -88,7 +88,12 @@
       "Bash(git push)",
       "Bash(git -C /Users/jocelynlin/Desktop/jocelyn-portfolio remote -v)",
       "Bash(zip -r /Users/jocelynlin/Desktop/figma-claude-test-latest.zip . -x \".git/*\" -x \"node_modules/*\" -x \".next/*\" -x \".vercel/*\" -x \".DS_Store\" -x \"*/.DS_Store\" -x \"030626_Mutlibrand/multibrand-package.zip\")",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(awk '$4==\"cwd\"{print $NF}')",
+      "Bash(PORT=3002 npm run dev)",
+      "Bash(echo \"started, pid=$!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3002/)",
+      "Bash(kill 34166)"
     ]
   }
 }
