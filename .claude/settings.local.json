@@ -93,7 +93,14 @@
       "Bash(PORT=3002 npm run dev)",
       "Bash(echo \"started, pid=$!\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3002/)",
-      "Bash(kill 34166)"
+      "Bash(kill 34166)",
+      "Bash(git push *)",
+      "Bash(awk -F'-' '{print $3}')",
+      "Bash(curl -s \"http://localhost:3001/multibrand/?t=$\\(date +%s\\)\")",
+      "Bash(curl -s \"http://localhost:3001/multibrand/\")",
+      "Bash(curl -sI \"http://localhost:3001/multibrand/\")",
+      "Bash(ps -p 6393 -o command=)",
+      "Bash(curl -s \"http://localhost:3001/multibrand/index.html?v=$\\(date +%s\\)\" -H \"Cache-Control: no-cache\")"
     ]
   }
 }
